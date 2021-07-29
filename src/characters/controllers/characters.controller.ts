@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+import { FilterCharacter } from '../dtos/character.dto';
 import { CharactersService } from '../services/characters.service';
 
 @ApiTags('character')
@@ -10,7 +11,7 @@ export class CharactersController {
 
   @Get()
   @ApiOperation({ summary: 'List of character' })
-  async getAllCharacter() {
-    return await this.characterService.getAllCharacter();
+  async getAllCharacter(@Query() params: FilterCharacter) {
+    return await this.characterService.getAllCharacter(params);
   }
 }
