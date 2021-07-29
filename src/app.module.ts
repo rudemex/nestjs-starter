@@ -4,8 +4,9 @@ import * as Joi from 'joi';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { enviroments } from './enviroments';
 import { CharactersModule } from './characters/characters.module';
+
+import { enviroments } from './enviroments';
 import config from './config';
 
 @Module({
