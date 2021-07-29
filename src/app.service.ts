@@ -8,6 +8,10 @@ export class AppService {
   constructor(@Inject(config.KEY) private appConfig: ConfigType<typeof config>) {}
 
   getHello(): string {
-    return `Hello World! ${this.appConfig.testEnv}`;
+    return 'Hello World!';
+  }
+
+  getTestEnv(): string {
+    return `${this.appConfig.testEnv}`;
   }
 }
