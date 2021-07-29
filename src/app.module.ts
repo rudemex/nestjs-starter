@@ -5,6 +5,7 @@ import * as Joi from 'joi';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { enviroments } from './enviroments';
+import { CharactersModule } from './characters/characters.module';
 import config from './config';
 
 @Module({
@@ -18,6 +19,7 @@ import config from './config';
         RICK_AND_MORTY_API: Joi.string().required(),
       }),
     }),
+    CharactersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
