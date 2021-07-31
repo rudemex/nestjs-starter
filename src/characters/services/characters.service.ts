@@ -2,9 +2,9 @@ import { Inject, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigType } from '@nestjs/config';
 
-import { FilterCharacter } from '../dtos/character.dto';
+import { FilterCharacter } from '@characters/dtos/character.dto';
 
-import config from '../../config';
+import config from '@config';
 
 @Injectable()
 export class CharactersService {
@@ -13,10 +13,9 @@ export class CharactersService {
     private readonly httpClient: HttpService,
   ) {}
 
-  async getAllCharacter(params?: FilterCharacter) {
-    const { page } = params;
+  async getCharacter(params?: FilterCharacter) {
     return await this.httpClient
-      .get(`${this.appConfig.services.rickAndMortyAPI}/character${page ? `?page=${page}` : ''}`)
+      .get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), { params })
       .toPromise()
       .then((res) => res.data)
       .catch((err) => console.log(err));
