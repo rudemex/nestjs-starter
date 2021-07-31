@@ -14,11 +14,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@*": ["src/*"],
-      "@characters": ["src/characters/*", "dist/src/characters/*"],
-      //"@**/controllers/*": ["src/*/controllers/*"],
-      //"@**/dtos/*": ["src/**/dtos/*"],
-      //"@**/entities/*": ["src/**/entities/*"],
-      //"@**/services/*": ["src/**/services/*"],
+      "@characters": ["src/characters/*"]
     }
   },
   "exclude": ["node_modules"]
