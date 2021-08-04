@@ -56,18 +56,9 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json,md,ts,tsx}": [
+    "*.{ts,json,md}": [
       "prettier --write",
       "git add"
-    ],
-    "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --ext .ts,.tsx,.js,.jsx",
-      "git add"
-    ]
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
     ]
   },
   "engines": {
