@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
-import { HttpModule } from '@nestjs/axios';
+
+import { HttpClientModule } from '@td-nest-capabilities/http-client';
 
 import { CharactersController } from '@characters/controllers/characters.controller';
 import { CharactersService } from '@characters/services/characters.service';
 
 @Module({
-  imports: [HttpModule],
+  imports: [HttpClientModule],
   controllers: [CharactersController],
   providers: [CharactersService],
 })
