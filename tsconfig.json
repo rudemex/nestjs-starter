@@ -14,6 +14,7 @@
     "resolveJsonModule": true,
     "paths": {
       "@*": ["src/*"],
+      "@config/*": ["src/config/*"],
       "@characters": ["src/characters/*"]
     }
   },
