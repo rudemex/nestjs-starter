@@ -12,6 +12,6 @@ export class AppService {
   }
 
   getTestEnv(): string {
-    return `${this.appConfig.testEnv}`;
+    return `${this.appConfig.params.testEnv}`;
   }
 }
