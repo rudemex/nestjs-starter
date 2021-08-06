@@ -7,9 +7,9 @@ import * as PACKAGE_JSON from '../package.json';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+  const { server, swagger } = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
 
-  app.setGlobalPrefix(`${appConfig.server.context}`);
+  app.setGlobalPrefix(`${server.context}`);
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -21,25 +21,25 @@ async function bootstrap() {
     }),
   );
 
-  if (appConfig.swagger.enabled) {
+  if (swagger.enabled) {
     const config = new DocumentBuilder()
       .setTitle(`${PACKAGE_JSON.name}`)
       .setDescription(`Swagger - ${PACKAGE_JSON.description}`)
       .setVersion(`${PACKAGE_JSON.version}`)
       .build();
     const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup(`${appConfig.swagger.path}`, app, document);
+    SwaggerModule.setup(`${swagger.path}`, app, document);
   }
 
-  if (appConfig.server.corsEnabled) {
+  if (server.corsEnabled) {
     app.enableCors({
-      origin: appConfig.server.origins,
-      allowedHeaders: `${appConfig.server.allowedHeaders}`,
-      methods: `${appConfig.server.allowedMethods}`,
-      credentials: appConfig.server.corsCredentials,
+      origin: server.origins,
+      allowedHeaders: `${server.allowedHeaders}`,
+      methods: `${server.allowedMethods}`,
+      credentials: server.corsCredentials,
     });
   }
-  await app.listen(appConfig.server.port || 8080);
+  await app.listen(server.port || 8080);
 }
 
 bootstrap();
