@@ -1,3 +1,3 @@
-export { default as config } from './config';
+export { default as config } from './configuration';
 export * from './enviroments';
 export * from './validationSchema';
