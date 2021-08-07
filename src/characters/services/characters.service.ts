@@ -15,10 +15,13 @@ export class CharactersService {
   ) {}
 
   async getCharacter(params?: FilterCharacter) {
-    return await this.httpClient
-      .get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), { params })
-      .toPromise()
-      .then((res) => res.data)
-      .catch((err) => console.log(err));
+    try {
+      const { data } = await this.httpClient
+        .get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), { params })
+        .toPromise();
+      return data;
+    } catch (error) {
+      return error;
+    }
   }
 }
