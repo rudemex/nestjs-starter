@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { ConfigType } from '@nestjs/config';
-
-import { HttpClientService } from '@td-nest-capabilities/http-client';
 
 import { FilterCharacter } from '@characters/dtos/character.dto';
 
@@ -11,7 +10,7 @@ import { config } from '@config';
 export class CharactersService {
   constructor(
     @Inject(config.KEY) private appConfig: ConfigType<typeof config>,
-    private readonly httpClient: HttpClientService,
+    private readonly httpClient: HttpService,
   ) {}
 
   async getCharacter(params?: FilterCharacter) {
