@@ -5,7 +5,7 @@ module.exports = {
   forceExit: true,
   verbose: true,
   rootDir: 'src',
-  testRegex: '.*\\.spec\\.ts$',
+  testRegex: '.*\\.(spec|it|test|e2e)\\.ts$',
   transform: {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
