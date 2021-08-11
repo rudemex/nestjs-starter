@@ -2,9 +2,9 @@ import { Inject, Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { ConfigType } from '@nestjs/config';
 
-import { FilterCharacter } from '@characters/dtos/character.dto';
+import { FilterCharacter } from '../dtos/character.dto';
 
-import { config } from '@config';
+import { config } from '../../config';
 
 @Injectable()
 export class CharactersService {
