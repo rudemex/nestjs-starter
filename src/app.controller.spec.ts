@@ -13,14 +13,14 @@ describe('AppController', () => {
 
   beforeEach(async () => {
     const app: TestingModule = await Test.createTestingModule({
-      controllers: [AppController],
-      providers: [AppService],
       imports: [
         ConfigModule.forRoot({
           load: [config],
         }),
         UtilsModule,
       ],
+      controllers: [AppController],
+      providers: [AppService],
     }).compile();
 
     appController = app.get<AppController>(AppController);

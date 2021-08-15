@@ -1,4 +1,4 @@
-import { Test } from '@nestjs/testing';
+import { Test, TestingModule } from '@nestjs/testing';
 
 import { CharactersController } from '../controllers/characters.controller';
 import { CharactersService } from '../services/characters.service';
@@ -11,7 +11,7 @@ describe('CharactersController', () => {
   let charactersService: CharactersService;
 
   beforeEach(async () => {
-    const moduleRef = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [],
       controllers: [CharactersController],
       providers: [CharactersService],
