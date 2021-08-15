@@ -9,7 +9,7 @@ import { config } from '../../config';
 @Injectable()
 export class CharactersService {
   constructor(
-    @Inject(config.KEY) private appConfig: ConfigType<typeof config>,
+    @Inject(config.KEY) private readonly appConfig: ConfigType<typeof config>,
     private readonly httpClient: HttpService,
   ) {}
 

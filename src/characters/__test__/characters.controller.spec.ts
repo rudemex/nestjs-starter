@@ -1,10 +1,10 @@
 import { Test } from '@nestjs/testing';
 
-import { CharactersController } from '../../controllers/characters.controller';
-import { CharactersService } from '../../services/characters.service';
-import { charactersStub } from '../stubs/characters.stub';
+import { CharactersController } from '../controllers/characters.controller';
+import { CharactersService } from '../services/characters.service';
+import { charactersStub } from './stubs/characters.stub';
 
-jest.mock('../../services/characters.service');
+jest.mock('../services/characters.service');
 
 describe('CharactersController', () => {
   let charactersController: CharactersController;
@@ -23,8 +23,8 @@ describe('CharactersController', () => {
   });
 
   it('should be return characters', async () => {
-    const characters = await charactersController.getCharacter(charactersStub());
-    expect(charactersService.getCharacter).toBeCalledWith(charactersStub());
-    //expect(characters).toEqual(charactersStub());
+    const characters = await charactersController.getCharacter();
+    expect(charactersService.getCharacter).toHaveBeenCalled();
+    expect(characters).toEqual(charactersStub());
   });
 });
