@@ -14,4 +14,9 @@ export class AppController {
   getTestEnv(): string {
     return this.appService.getTestEnv();
   }
+
+  @Get('my-util')
+  getMyUtil() {
+    return this.appService.getMyCustomUtil();
+  }
 }

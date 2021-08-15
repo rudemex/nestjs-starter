@@ -1,9 +1,5 @@
 process.env.NODE_ENV = 'test';
 
-require('dotenv').config({
-  path: '.env.test',
-});
-
 module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts'],
   forceExit: true,

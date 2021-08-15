@@ -1,7 +1,10 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UtilsModule } from './utils/utils.module';
+
 import { config } from './config';
 
 describe('AppController', () => {
@@ -16,6 +19,7 @@ describe('AppController', () => {
         ConfigModule.forRoot({
           load: [config],
         }),
+        UtilsModule,
       ],
     }).compile();
 
@@ -30,6 +34,10 @@ describe('AppController', () => {
 
     it('should return test_key', () => {
       expect(appController.getTestEnv()).toBe(configService.get('TEST_KEY'));
+    });
+
+    it('should return custom util', () => {
+      expect(appController.getMyUtil()).toBe('this is an util');
     });
   });
 });

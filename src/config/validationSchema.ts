@@ -8,6 +8,7 @@ export const validationSchema = Joi.object({
   ALLOWED_METHODS: Joi.string().required(),
   CORS_ENABLED: Joi.boolean().required(),
   CORS_CREDENTIALS: Joi.boolean().required(),
+  IGNORE_ENV_FILE: Joi.boolean().required(),
   SWAGGER_PATH: Joi.string().required(),
   SWAGGER_ENABLED: Joi.boolean().required(),
   TEST_KEY: Joi.string().required(),

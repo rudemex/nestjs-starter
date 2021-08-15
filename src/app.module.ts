@@ -4,18 +4,20 @@ import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CharactersModule } from './characters/characters.module';
+import { UtilsModule } from './utils/utils.module';
 
-import { config, validationSchema, enviroments } from './config';
+import { config, enviroments, validationSchema } from './config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: enviroments[process.env.NODE_ENV] || '.env',
-      ignoreEnvFile: false,
+      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true',
       load: [config],
       isGlobal: true,
       validationSchema,
     }),
+    UtilsModule,
     CharactersModule,
   ],
   controllers: [AppController],

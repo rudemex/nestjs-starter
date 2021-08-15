@@ -3,4 +3,5 @@ export const enviroments = {
   int: '.int.env',
   qas: '.qas.env',
   prod: '.prod.env',
+  test: '.env.test',
 };
