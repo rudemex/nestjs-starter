@@ -12,7 +12,7 @@ import { config, enviroments, validationSchema } from './config';
   imports: [
     ConfigModule.forRoot({
       envFilePath: enviroments[process.env.NODE_ENV] || '.env',
-      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true',
+      ignoreEnvFile: false,
       load: [config],
       isGlobal: true,
       validationSchema,
