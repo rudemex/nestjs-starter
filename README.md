@@ -89,8 +89,8 @@ Para los mensajes de commits se toma como referencia [`conventional commits`](ht
 
 <div align="center">
     <img src="./.readme-static/logo-mex-red.svg" width="95" alt="Mex" />
-    <p>Made with ❤</p>
     <a href="mailto:mdelgado@tresdoce.com.ar" target="_blank" alt="Send an email">
         <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Mex%20Delgado&message=Sr.%20Fullstack%20Developer&labelColor=1A1A1A&color=999999&logo=hackaday" alt="Mex Delgado" />
     </a>
+    <p>Made with ❤</p>
 </div>
