@@ -62,6 +62,44 @@ dependencias.
 
 ## 💻 Scripts
 
+Inicia la aplicación en modo desarrollo
+
+```
+npm run start:dev
+```
+
+Inicia los test con coverage
+
+```
+npm run test
+```
+
+Realiza el build de la aplicación
+
+```
+npm run build
+```
+
+Inicia la aplicación en modo productivo
+
+```
+npm run start
+```
+
+#### Otros scripts
+
+Formatea el código
+
+```
+npm run format
+```
+
+Eslintea el código
+
+```
+npm run lint
+```
+
 <a name="swagger-info"></a>
 
 ## 📚 Swagger
