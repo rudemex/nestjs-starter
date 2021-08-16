@@ -91,6 +91,6 @@ Para los mensajes de commits se toma como referencia [`conventional commits`](ht
 📜 [License MIT](license.md)
 
 <div align="right">
-  <img src="./.readme-static/logo-mex-red.svg" width="95" alt="Mex" />
   <p>Made with ❤</p>
+  <img src="./.readme-static/logo-mex-red.svg" width="95" alt="Mex" />
 </div>
