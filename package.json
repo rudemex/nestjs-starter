@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/rudemex/nestjs-starter#readme",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
