@@ -32,21 +32,20 @@
 - [💻 Scripts](#scripts)
 - [📚 Swagger](#swagger-info)
 - [📤 Commits](#commits)
-- [😝 Mocks](#mocks)
 - [📜 License MIT](license.md)
 
 ---
 
 <a name="basic-requirements"></a>
 
-#### 📝 Requerimientos básicos
+## 📝 Requerimientos básicos
 
 - Node.js v14.15.4 or higher ([Download](https://nodejs.org/es/download/))
 - NPM v6.14.10 or higher
 
 <a name="install-dependencies"></a>
 
-#### 🛠 Instalar dependencias
+## 🛠️ Instalar dependencias
 
 Cuando tenemos los requisitos básicos, clonamos el repositorio, vamos a la carpeta del proyecto e instalamos sus
 dependencias.
