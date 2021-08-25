@@ -25,8 +25,6 @@ describe('AppController', () => {
 
     appController = app.get<AppController>(AppController);
     configService = app.get<ConfigService>(ConfigService);
-
-    console.log(config());
   });
 
   describe('root', () => {
