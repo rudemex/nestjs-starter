@@ -38,7 +38,7 @@ jobs:
       - name: "👨‍💻 Run Test"
         run: npm run test
         env:
-          NODE_ENV: test
+          NODE_ENV: 'test'
       - name: "📊 Upload coverage report to Codecov"
         uses: codecov/codecov-action@v1
         with:
