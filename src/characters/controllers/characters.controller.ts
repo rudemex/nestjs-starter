@@ -12,6 +12,6 @@ export class CharactersController {
   @Get()
   @ApiOperation({ summary: 'Get character' })
   async getCharacter(@Query() params?: FilterCharacter) {
-    return await this.characterService.getCharacter(params);
+    return this.characterService.getCharacter(params);
   }
 }
