@@ -5,7 +5,7 @@ export default registerAs('config', () => {
     server: {
       port: parseInt(process.env.PORT, 10),
       context: process.env.CONTEXT,
-      origins: process.env.ORIGINS.split(','),
+      origins: process.env.ORIGINS,
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',

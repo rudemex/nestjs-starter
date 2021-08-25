@@ -9,7 +9,7 @@ import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const { server, swagger } = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
-  const port = server.port || 8080;
+  const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`);
 
@@ -35,13 +35,13 @@ async function bootstrap() {
 
   if (server.corsEnabled) {
     app.enableCors({
-      origin: server.origins,
+      origin: server.origins.split(','),
       allowedHeaders: `${server.allowedHeaders}`,
       methods: `${server.allowedMethods}`,
       credentials: server.corsCredentials,
     });
   }
-  await app.listen(port || 8080, () => {
+  await app.listen(port, () => {
     console.log(`App running on: http://localhost:${port}`);
   });
 }
