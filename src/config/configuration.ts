@@ -4,15 +4,15 @@ export default registerAs('config', () => {
   return {
     server: {
       port: parseInt(process.env.PORT, 10),
-      context: process.env.CONTEXT,
-      origins: process.env.ORIGINS.split(','),
+      context: process.env.CONTEXT || 'api',
+      origins: process.env.ORIGINS.split(',') || '*',
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',
       corsCredentials: process.env.CORS_CREDENTIALS.toLowerCase() === 'true',
     },
     swagger: {
-      path: process.env.SWAGGER_PATH,
+      path: process.env.SWAGGER_PATH || 'docs',
       enabled: process.env.SWAGGER_ENABLED.toLowerCase() === 'true',
     },
     params: {

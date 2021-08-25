@@ -15,6 +15,7 @@ describe('AppController', () => {
     const app: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot({
+          envFilePath: '.env.test',
           load: [config],
         }),
         UtilsModule,
@@ -25,7 +26,6 @@ describe('AppController', () => {
 
     appController = app.get<AppController>(AppController);
     configService = app.get<ConfigService>(ConfigService);
-    console.log(process.env.NODE_ENV);
   });
 
   describe('root', () => {
