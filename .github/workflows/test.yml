@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
       - name: "💾 Restore packages from cache"
         uses: actions/cache@v2
         with:
@@ -38,7 +40,7 @@ jobs:
       - name: "👨‍💻 Run Test"
         run: npm run test
         env:
-          NODE_ENV: test
+          NODE_ENV: 'test'
       - name: "📊 Upload coverage report to Codecov"
         uses: codecov/codecov-action@v1
         with:
