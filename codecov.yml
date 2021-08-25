@@ -1,0 +1,7 @@
+parsers:
+  typescript:
+    enable_partials: yes
+
+ignore:
+  - "./node_modules/*"
+  - "./src/main.ts"
