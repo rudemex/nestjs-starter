@@ -35,7 +35,7 @@ async function bootstrap() {
 
   if (server.corsEnabled) {
     app.enableCors({
-      origin: server.origins.split(','),
+      origin: server.origins,
       allowedHeaders: `${server.allowedHeaders}`,
       methods: `${server.allowedMethods}`,
       credentials: server.corsCredentials,
