@@ -17,10 +17,11 @@
     </a>-->
     <!--<img alt="GitHub Workflow Status" src="https://github.com/rudemex/node-express-starter/workflows/CI/CD/badge.svg?branch=master">-->
     <!--<img alt="Codecov" src="https://img.shields.io/codecov/c/github/rudemex/nestjs-starter">-->
-    <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Node&message=v14.15.4&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=Npm&message=v6.14.10&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=NestJs&message=v8.0.6&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
-    <img alt="GitHub license" src="https://img.shields.io/github/license/rudemex/nestjs-starter?style=flat-square" alt="License">
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=Node&message=v14.15.4&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=Npm&message=v6.14.10&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJs&message=v8.0.6&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://sonarcloud.io/api/project_badges/measure?project=rudemex_nestjs-starter&metric=alert_status" alt="sonarcloud">
+    <img alt="GitHub license" src="https://img.shields.io/github/license/rudemex/nestjs-starter?style=flat" alt="License">
     <br/> 
 </p>
 
