@@ -9,11 +9,16 @@ on:
 jobs:
   setup:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [ 10.x, 12.x, 14.x, 15.x ]
+
     steps:
-      - name: "⚙ Set up Node.js"
+      - name: ⚙ Set up Node.js - v${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: ${{ matrix.node-version }}
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
