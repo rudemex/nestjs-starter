@@ -26,6 +26,10 @@ jobs:
     needs: setup
     runs-on: ubuntu-latest
     steps:
+      - name: ⚙ Set up Node.js - v${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
