@@ -18,4 +18,22 @@ describe('AppController (e2e)', () => {
   it('/ (GET)', () => {
     return request(app.getHttpServer()).get('/').expect(200).expect('Hello World!');
   });
+
+  it('/test-env (GET)', () => {
+    return request(app.getHttpServer()).get('/test-env').expect(200).expect('testKeyEnv-test');
+  });
+
+  it('/my-util (GET)', () => {
+    return request(app.getHttpServer()).get('/my-util').expect(200).expect('this is an util');
+  });
+
+  it('/characters (GET)', () => {
+    return request(app.getHttpServer())
+      .get('/characters')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toHaveProperty('info');
+        expect(res.body).toHaveProperty('results');
+      });
+  });
 });
