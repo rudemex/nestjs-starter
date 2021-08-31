@@ -60,7 +60,6 @@ ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origi
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
 CORS_ENABLED=true
 CORS_CREDENTIALS=false
-IGNORE_ENV_FILE=false
 
 # SWAGGER ENVIRONMENTS
 SWAGGER_PATH=docs
@@ -115,11 +114,6 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 - Type: `Boolean`
 - Default: `false`
 
-`IGNORE_ENV_FILE`: Habilita o deshabilita el uso de variables de entorno por archivo para consumir las expuestas por el SO.
-
-- Type: `Boolean`
-- Default: `false`
-
 #### Swagger
 
 `SWAGGER_PATH`: Define la ruta de la documentación **Swagger**, se escribe sin el `/` (slash).
@@ -152,7 +146,8 @@ todo el proyecto, lo que te permite darle soporte más fácil si se requiere cam
 
 También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato y si es requerido o no dicha variable.
 
-Todos estos features los podemos encontrar en la carpeta **./src/config**.
+Todos estos features los podemos encontrar en la carpeta **./src/config**, en dicha carpeta podemos encontrar el archivo
+**enviroments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
 
 <a name="scripts"></a>
 
