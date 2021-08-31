@@ -154,7 +154,7 @@ También cuenta con un validador de variables de entorno, que nos permite valida
 
 Todos estos features los podemos encontrar en la carpeta **./src/config**.
 
-<a name="scriptsr"></a>
+<a name="scripts"></a>
 
 ## 💻 Scripts
 
