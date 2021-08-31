@@ -10,7 +10,6 @@ export default registerAs('config', () => {
       allowedMethods: process.env.ALLOWED_METHODS,
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',
       corsCredentials: process.env.CORS_CREDENTIALS.toLowerCase() === 'true',
-      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true',
     },
     swagger: {
       path: process.env.SWAGGER_PATH || 'docs',
