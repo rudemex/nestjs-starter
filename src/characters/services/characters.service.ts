@@ -19,7 +19,7 @@ export class CharactersService {
         .get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), { params })
         .toPromise();
       return data;
-    } catch (error) {
+    } catch (error) /* istanbul ignore next */ {
       return error;
     }
   }

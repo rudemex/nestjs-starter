@@ -27,4 +27,17 @@ describe('CharactersController', () => {
     expect(charactersService.getCharacter).toHaveBeenCalled();
     expect(characters).toEqual(charactersStub());
   });
+
+  /*it('should be return error', async () => {
+    jest.spyOn(charactersService, 'getCharacter').mockImplementationOnce(
+      jest.fn().mockResolvedValue({
+        error: 'Character not found',
+      }),
+    );
+    const characters = await charactersController.getCharacter();
+    expect(charactersService.getCharacter).toHaveBeenCalled();
+    expect(characters).toEqual({
+      error: 'Character not found',
+    });
+  });*/
 });

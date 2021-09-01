@@ -13,6 +13,7 @@ import { config, enviroments, validationSchema } from './config';
 @Module({
   imports: [
     ConfigModule.forRoot({
+      /* istanbul ignore next */
       envFilePath: enviroments[`${process.env.NODE_ENV}`] || '.env',
       ignoreEnvFile: false,
       load: [config],
