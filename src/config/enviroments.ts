@@ -3,5 +3,6 @@ export const enviroments = {
   int: '.int.env',
   qas: '.qas.env',
   prod: '.prod.env',
+  production: '.prod.env',
   test: '.env.test',
 };
