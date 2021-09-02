@@ -15,6 +15,7 @@
 
 ## Glosario
 
+- [🥳 Demo](https://rudemex-nestjs-starter.herokuapp.com/api)
 - [📝 Requerimientos básicos](#basic-requirements)
 - [🛠️ Instalar dependencias](#install-dependencies)
 - [⚙️ Configuración](#configurations)
@@ -195,7 +196,7 @@ npm run lint
 
 ## 📚 Swagger
 
-El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus definiciones.
+El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/docs/)
 
 Para expandir la documentación, es importante aplicar los decoradores correspondientes a la aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
 
@@ -218,7 +219,7 @@ Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/doc
 
 #### Exportar el swagger en JSON
 
-Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path definido.
+Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-json)
 
 - Default: `http://localhost:8080/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
