@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { CharactersModule } from './characters/characters.module';
 
 import { config, enviroments, validationSchema } from './config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { config, enviroments, validationSchema } from './config';
     HealthModule,
     UtilsModule,
     CharactersModule,
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
