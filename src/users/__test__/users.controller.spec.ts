@@ -7,7 +7,7 @@ import { userStub } from './stubs/user.stub';
 
 describe('UsersController', () => {
   let controller: UsersController;
-  let service: UsersService;
+  //let service: UsersService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -17,7 +17,7 @@ describe('UsersController', () => {
     }).compile();
 
     controller = module.get<UsersController>(UsersController);
-    service = module.get<UsersService>(UsersService);
+    //service = module.get<UsersService>(UsersService);
   });
 
   it('should be defined', () => {
@@ -25,14 +25,14 @@ describe('UsersController', () => {
   });
 
   it('should be return find user by id', async () => {
-    jest.spyOn(service, 'findOne').mockImplementationOnce(jest.fn().mockResolvedValue(userStub()));
+    /*jest.spyOn(service, 'findOne').mockImplementationOnce(jest.fn().mockResolvedValue(userStub()));*/
     expect(await controller.findeOne(userStub().id)).toEqual(userStub());
   });
 
   it('should be return users', async () => {
-    jest
+    /*jest
       .spyOn(service, 'findAll')
-      .mockImplementationOnce(jest.fn().mockResolvedValue([userStub()]));
+      .mockImplementationOnce(jest.fn().mockResolvedValue([userStub()]));*/
     expect(await controller.findAll()).toEqual([userStub()]);
   });
 
@@ -43,8 +43,8 @@ describe('UsersController', () => {
       email: userStub().email,
     };
 
-    jest.spyOn(service, 'create').mockImplementationOnce(jest.fn().mockResolvedValue(payload));
-    expect(await controller.create(payload)).toEqual(payload);
+    /*jest.spyOn(service, 'create').mockImplementationOnce(jest.fn().mockResolvedValue(payload));*/
+    expect(await controller.create(payload)).toEqual(expect.objectContaining(payload));
   });
 
   it('should be update user', async () => {
@@ -54,12 +54,14 @@ describe('UsersController', () => {
       email: 'mdelgado@email.com',
     };
 
-    jest.spyOn(service, 'update').mockImplementationOnce(jest.fn().mockResolvedValue(changes));
-    expect(await controller.update(userStub().id, changes)).toEqual(changes);
+    /*jest.spyOn(service, 'update').mockImplementationOnce(jest.fn().mockResolvedValue(changes));*/
+    expect(await controller.update(userStub().id, changes)).toEqual(
+      expect.objectContaining(changes),
+    );
   });
 
   it('should be delete user', async () => {
-    jest.spyOn(service, 'remove').mockImplementationOnce(jest.fn().mockResolvedValue(true));
+    /*jest.spyOn(service, 'remove').mockImplementationOnce(jest.fn().mockResolvedValue(true));*/
     expect(await controller.remove(userStub().id)).toBeTruthy();
   });
 });

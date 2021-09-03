@@ -10,7 +10,8 @@ module.exports = {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
   roots: ['<rootDir>/test/', '<rootDir>/src/'],
-  collectCoverageFrom: ['**/*.(t|j)s'],
+  collectCoverage: true,
+  collectCoverageFrom: ['**/*.(t|j)s', '!**/*.entity.(t|j)s'],
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: [
     'node_modules',
@@ -20,6 +21,7 @@ module.exports = {
     'src/main.ts',
     'src/config',
     'src/config/*',
+    'src/*/entities/*',
   ],
   testEnvironment: 'node',
   setupFilesAfterEnv: ['./jest.setup.js', 'jest-extended'],

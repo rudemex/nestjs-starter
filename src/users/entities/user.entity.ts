@@ -1,5 +1,6 @@
+/* ss istanbul ignore file */
 export class User {
-  id: number;
+  id?: number;
   firstName: string;
   lastName: string;
   email: string;
