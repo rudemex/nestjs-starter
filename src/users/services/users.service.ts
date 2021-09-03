@@ -38,13 +38,12 @@ export class UsersService {
   }
 
   async update(id: number, changes: UpdateUserDto) {
-    const user = await this.findOne(id);
-    const index = this.users.findIndex((item) => item.id === id);
-
-    if (index === -1) {
+    const user = this.users.find((item) => item.id === id);
+    if (!user) {
       throw new NotFoundException(`User #${id} not found`);
     }
 
+    const index = this.users.findIndex((item) => item.id === id);
     this.users[index] = {
       ...user,
       ...changes,

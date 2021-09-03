@@ -10,7 +10,7 @@ module.exports = {
     '^.+\\.(t|j)s$': 'ts-jest',
   },
   roots: ['<rootDir>/test/', '<rootDir>/src/'],
-  collectCoverage: true,
+  //collectCoverage: true,
   collectCoverageFrom: ['**/*.(t|j)s', '!**/*.entity.(t|j)s'],
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: [

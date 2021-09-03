@@ -30,9 +30,7 @@ describe('UsersController', () => {
   });
 
   it('should be return users', async () => {
-    /*jest
-      .spyOn(service, 'findAll')
-      .mockImplementationOnce(jest.fn().mockResolvedValue([userStub()]));*/
+    /*jest.spyOn(service, 'findAll').mockImplementationOnce(jest.fn().mockResolvedValue([userStub()]));*/
     expect(await controller.findAll()).toEqual([userStub()]);
   });
 

@@ -17,33 +17,86 @@ describe('UsersService', () => {
     }).compile();
 
     service = module.get<UsersService>(UsersService);
-    jest.clearAllMocks();
+    //jest.clearAllMocks();
   });
 
   it('should be defined', () => {
     expect(service).toBeDefined();
   });
 
-  /*it('should be return all users', async () => {
+  it('should be return all users', async () => {
     const users: User[] = await service.findAll();
-    expect(await service.findAll).toBeCalledWith();
     expect(users).toEqual([userStub()]);
-  });*/
+  });
 
   it('should be return user find by id', async () => {
     const userID = 1;
     const user: User = await service.findOne(userID);
-    //expect(await service.findOne(userID)).toHaveBeenCalled();
     expect(user).toEqual(userStub());
   });
 
-  /*it('should be find user by id', async () => {
+  it('should be return error exception when find user by id and dont exist', async () => {
+    const userID = 9999;
+    await expect(service.findOne(userID)).rejects.toThrowError(`User #${userID} not found`);
+  });
+
+  it('should be create a new user', async () => {
+    const payload: CreateUserDto = {
+      firstName: 'Jane',
+      lastName: 'Doe',
+      email: 'janedoe@email.com',
+    };
+    const user: User = await service.create(payload);
+    expect(user).toEqual(expect.objectContaining(payload));
+  });
+
+  it('should be update user info if the user id exist', async () => {
+    const userID = 1;
+    const changes: UpdateUserDto = {
+      firstName: 'Jhon',
+      lastName: 'Doe',
+      email: 'jdoe@email.com',
+    };
+    const user: User = await service.update(userID, changes);
+    expect(user).toEqual({ id: userID, ...changes });
+  });
+
+  it('should be return error exception when user id dont exist for update info', async () => {
+    const userID = 9999;
+    const changes: UpdateUserDto = {
+      firstName: 'Jhon',
+      lastName: 'Doe',
+      email: 'jdoe@email.com',
+    };
+    await expect(service.update(userID, changes)).rejects.toThrowError(`User #${userID} not found`);
+  });
+
+  it('should be remove user by id', async () => {
+    const userID = 1;
+    const user: boolean = await service.remove(userID);
+    expect(user).toBeTruthy();
+  });
+
+  it('should be return error exception when user id dont exist for remove user', async () => {
+    const userID = 9999;
+    await expect(service.remove(userID)).rejects.toThrowError(`User #${userID} not found`);
+  });
+
+  // Test for mocks
+  /*
+  it('should be return all users', async () => {
+    const users: User[] = await service.findAll();
+    expect(await service.findAll).toBeCalledWith();
+    expect(users).toEqual([userStub()]);
+  });
+
+  it('should be find user by id', async () => {
     const user: User = await service.findOne(userStub().id);
     //expect(await service.findOne).toBeCalledWith(userStub().id);
     expect(user).toEqual(userStub());
-  });*/
+  });
 
-  /*it('should be return error when find user by incorrect id', async () => {
+  it('should be return error when find user by incorrect id', async () => {
     jest.spyOn(service, 'findOne').mockImplementationOnce(
       jest.fn().mockResolvedValue({
         statusCode: 404,
@@ -57,9 +110,9 @@ describe('UsersService', () => {
     } catch (error) {
       expect(error).toBeInstanceOf(NotFoundException);
     }
-  });*/
+  });
 
-  /*it('should be create a user', async () => {
+  it('should be create a user', async () => {
     const payload: CreateUserDto = {
       firstName: userStub().firstName,
       lastName: userStub().lastName,
