@@ -21,7 +21,7 @@ describe('UsersService', () => {
   });
 
   it('should be defined', () => {
-    expect(service).toBeDefined();
+    expect(service).not.toBeDefined();
   });
 
   it('should be return all users', async () => {
