@@ -22,7 +22,7 @@ export class UsersController {
     summary: 'Find user',
   })
   @Get(':id')
-  findeOne(@Param('id') id: number): Promise<User> {
+  findOne(@Param('id') id: number): Promise<User> {
     return this.usersService.findOne(+id);
   }
 

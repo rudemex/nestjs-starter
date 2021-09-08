@@ -12,4 +12,5 @@ export const validationSchema = Joi.object({
   SWAGGER_ENABLED: Joi.boolean().required(),
   TEST_KEY: Joi.string().required(),
   RICK_AND_MORTY_API_URL: Joi.string().required(),
+  NEST_JS_DOCS_URL: Joi.string().required(),
 });

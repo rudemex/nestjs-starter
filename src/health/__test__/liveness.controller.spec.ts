@@ -1,12 +1,12 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule } from '@nestjs/config';
 
-import { HealthController } from '../controllers/health.controller';
+import { LivenessController } from '../controllers/liveness.controller';
 
 import { config } from '../../config';
 
 describe('LivenessController', () => {
-  let controller: HealthController;
+  let controller: LivenessController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -16,10 +16,10 @@ describe('LivenessController', () => {
           load: [config],
         }),
       ],
-      controllers: [HealthController],
+      controllers: [LivenessController],
     }).compile();
 
-    controller = module.get<HealthController>(HealthController);
+    controller = module.get<LivenessController>(LivenessController);
   });
 
   it('should be defined', () => {
@@ -27,8 +27,6 @@ describe('LivenessController', () => {
   });
 
   it('should be return up', () => {
-    expect(controller.getLiveness()).toEqual({
-      status: 'up',
-    });
+    expect(controller.getLiveness()).toEqual({ status: 'up' });
   });
 });

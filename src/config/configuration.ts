@@ -19,6 +19,7 @@ export default registerAs('config', () => {
       testEnv: process.env.TEST_KEY,
     },
     services: {
+      nestJsDocs: process.env.NEST_JS_DOCS_URL,
       rickAndMortyAPI: process.env.RICK_AND_MORTY_API_URL,
     },
   };

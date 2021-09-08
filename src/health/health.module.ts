@@ -1,15 +1,11 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
-import { HealthController } from './controllers/health.controller';
+import { TerminusModule } from '@nestjs/terminus';
 
-import { config } from '../config';
+import { LivenessController } from './controllers/liveness.controller';
+import { ReadinessController } from './controllers/readiness.controller';
 
 @Module({
-  imports: [
-    ConfigModule.forRoot({
-      load: [config],
-    }),
-  ],
-  controllers: [HealthController],
+  imports: [TerminusModule],
+  controllers: [LivenessController, ReadinessController],
 })
 export class HealthModule {}

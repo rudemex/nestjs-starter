@@ -4,7 +4,6 @@ import { User } from '../entities/user.entity';
 import { UsersService } from '../services/users.service';
 import { userStub } from './stubs/user.stub';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { NotFoundException } from '@nestjs/common';
 
 //jest.mock('../services/users.service');
 
