@@ -26,8 +26,9 @@ async function bootstrap() {
   if (swagger.enabled) {
     const config = new DocumentBuilder()
       .setTitle(`${PACKAGE_JSON.name}`)
-      .setDescription(`Swagger - ${PACKAGE_JSON.description}`)
       .setVersion(`${PACKAGE_JSON.version}`)
+      .setDescription(`Swagger - ${PACKAGE_JSON.description}`)
+      .setExternalDoc('Documentation', PACKAGE_JSON.homepage)
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup(`${swagger.path}`, app, document);
