@@ -47,6 +47,19 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
       - name: "📊 SonarCloud Scan"
         uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=${{ github.event.repository.owner.name }}
+            -Dsonar.projectKey=${{ github.event.repository.owner.name }}_${{ github.event.repository.name }}
+            -Dsonar.projectName=${{ github.event.repository.owner.name }}_${{ github.event.repository.name }}
+            -Dsonar.projectVersion=1.0
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.sources=./src
+            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/config/**,src/main.ts
+            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/config/**,src/main.ts
+            -Dsonar.testExecutionReportPaths=test-report.xml
+            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
