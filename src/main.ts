@@ -2,13 +2,13 @@ import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import * as PACKAGE_JSON from '../package.json';
 
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const { server, swagger } = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+  const { server, swagger, project } =
+    app.get<ConfigService>(ConfigService)['internalConfig']['config'];
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`);
@@ -25,10 +25,10 @@ async function bootstrap() {
 
   if (swagger.enabled) {
     const config = new DocumentBuilder()
-      .setTitle(`${PACKAGE_JSON.name}`)
-      .setVersion(`${PACKAGE_JSON.version}`)
-      .setDescription(`Swagger - ${PACKAGE_JSON.description}`)
-      .setExternalDoc('Documentation', PACKAGE_JSON.homepage)
+      .setTitle(`${project.name}`)
+      .setVersion(`${project.version}`)
+      .setDescription(`Swagger - ${project.description}`)
+      .setExternalDoc('Documentation', project.homepage)
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup(`${swagger.path}`, app, document);
