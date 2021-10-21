@@ -5,6 +5,7 @@ import { ReadinessController } from '../controllers/readiness.controller';
 import { ConfigModule } from '@nestjs/config';
 
 import { config } from '../../config';
+import { HttpModule } from '@nestjs/axios';
 
 describe('ReadinessController', () => {
   let controller: ReadinessController;
@@ -12,6 +13,7 @@ describe('ReadinessController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
+        HttpModule,
         TerminusModule,
         ConfigModule.forRoot({
           envFilePath: '.env.test',
