@@ -3,13 +3,13 @@ import { ConfigModule } from '@nestjs/config';
 
 import { HealthModule } from './health/health.module';
 import { UtilsModule } from './utils/utils.module';
+import { UsersModule } from './users/users.module';
+import { CharactersModule } from './characters/characters.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { CharactersModule } from './characters/characters.module';
 
 import { config, enviroments, validationSchema } from './config';
-import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
