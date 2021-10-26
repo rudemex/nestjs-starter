@@ -55,8 +55,8 @@ jobs:
             -Dsonar.projectVersion=1.0
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.sources=./src
-            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/config/**,src/main.ts
-            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/config/**,src/main.ts
+            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
+            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.testExecutionReportPaths=test-report.xml
             -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info

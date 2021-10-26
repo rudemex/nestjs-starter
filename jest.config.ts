@@ -1,4 +1,10 @@
+import * as dotenv from 'dotenv';
+
 process.env.NODE_ENV = 'test';
+
+dotenv.config({
+  path: '.env.test',
+});
 
 module.exports = {
   moduleFileExtensions: ['js', 'json', 'ts'],
@@ -19,12 +25,10 @@ module.exports = {
     'dist',
     'dist/*',
     'src/main.ts',
-    'src/config',
-    'src/config/*',
     'src/*/entities/*',
   ],
   testEnvironment: 'node',
-  setupFilesAfterEnv: ['./jest.setup.js', 'jest-extended'],
+  setupFilesAfterEnv: ['./jest.setup.ts', 'jest-extended'],
   moduleDirectories: ['node_modules'],
   preset: 'ts-jest',
   testResultsProcessor: 'jest-sonar-reporter',

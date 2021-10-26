@@ -27,8 +27,8 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer()).get('/my-util').expect(200).expect('this is an util');
   });
 
-  it('/health (GET)', () => {
-    return request(app.getHttpServer()).get('/health/liveness').expect(200).expect({
+  it('/liveness (GET)', () => {
+    return request(app.getHttpServer()).get('/liveness').expect(200).expect({
       status: 'up',
     });
   });

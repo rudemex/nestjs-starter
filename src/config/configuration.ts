@@ -13,9 +13,9 @@ export default registerAs('config', () => {
       homepage: PACKAGE_JSON.homepage,
     },
     server: {
-      port: parseInt(process.env.PORT, 10),
+      port: parseInt(process.env.PORT, 10) || 8080,
       context: process.env.CONTEXT || 'api',
-      origins: process.env.ORIGINS.split(',') || '*',
+      origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',

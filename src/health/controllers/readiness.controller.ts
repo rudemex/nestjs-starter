@@ -6,7 +6,7 @@ import { HealthCheckService, HttpHealthIndicator, HealthCheck } from '@nestjs/te
 import { config } from '../../config';
 
 @ApiTags('Health')
-@Controller('health/readiness')
+@Controller('readiness')
 export class ReadinessController {
   constructor(
     @Inject(config.KEY) private appConfig: ConfigType<typeof config>,
