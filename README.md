@@ -10,6 +10,7 @@
     <img alt="GitHub Workflow Status" src="https://github.com/rudemex/nestjs-starter/actions/workflows/master.yml/badge.svg?branch=master">
     <img alt="Codecov" src="https://img.shields.io/codecov/c/github/rudemex/nestjs-starter?logoColor=FFFFFF&logo=Codecov&labelColor=#F01F7A">
     <img src="https://sonarcloud.io/api/project_badges/measure?project=rudemex_nestjs-starter&metric=alert_status" alt="sonarcloud">
+    <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     <img alt="GitHub license" src="https://img.shields.io/github/license/rudemex/nestjs-starter?style=flat">
     <br/> 
 </p>
@@ -23,6 +24,7 @@
 - [💻 Scripts](#scripts)
 - [📚 Swagger](#swagger-info)
 - [📤 Commits](#commits)
+- [📄 Changelog](./CHANGELOG.md)
 - [📜 License MIT](license.md)
 
 ---
@@ -243,6 +245,10 @@ Para los mensajes de commits se toma como referencia [`conventional commits`](ht
 - **type:** chore, docs, feat, fix, refactor (más comunes)
 - **scope:** indica la página, componente, funcionalidad
 - **description:** comienza en minúsculas y no debe superar los 72 caracteres.
+
+## 📄 Changelog
+
+All notable changes to this project will be documented in [Changelog](./CHANGELOG.md) file.
 
 ---
 
