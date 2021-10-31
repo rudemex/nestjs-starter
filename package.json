@@ -1,6 +1,6 @@
 {
   "name": "nestjs-starter",
-  "version": "1.1.7",
+  "version": "1.0.0",
   "description": "NestJS Starter - Server",
   "author": {
     "name": "Maximiliano \"Mex\" Delgado",
@@ -35,8 +35,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "release": "standard-version",
     "release:first": "standard-version --first-release",
-    "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
+    "release:minor": "standard-version --release-as minor",
     "release:major": "standard-version --release-as major"
   },
   "prettier": {

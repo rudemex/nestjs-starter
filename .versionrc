@@ -15,9 +15,14 @@
   "issuePrefixes": ["#"],
   "issueUrlFormat": "https://github.com/rudemex/nestjs-starter/issues/{{id}}",
   "skip": {
-    "bump": false,
-    "commit": false,
-    "tag": false,
-    "changelog":false
-  }
+      "bump": false,
+      "commit": false,
+      "tag": false
+    },
+    "bumpFiles":[
+      {
+          "filename": "VERSION_TRACKER.txt",
+          "type": "plain-text"
+      }
+    ]
 }
