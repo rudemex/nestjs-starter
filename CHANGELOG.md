@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.7](https://github.com/rudemex/nestjs-starter/compare/v1.1.6...v1.1.7) (2021-10-31)
+
+
+### 📝 Docs
+
+* **readme:** edit readme ([7d78878](https://github.com/rudemex/nestjs-starter/commit/7d7887883b8831914f9b370ac6fdbf3ed1400bc0))
+
 ### [1.1.6](https://github.com/rudemex/nestjs-starter/compare/v1.1.5...v1.1.6) (2021-10-31)
 
 
