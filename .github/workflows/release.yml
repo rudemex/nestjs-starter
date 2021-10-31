@@ -10,6 +10,7 @@ on:
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+  GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
 
 jobs:
   setup:
@@ -29,6 +30,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
       - name: "💾 Restore Dependencies from cache"
         uses: actions/cache@v2
         with:
@@ -36,19 +38,23 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: "📦 Install Dependencies"
         run: npm install
+
       - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
         run: |
           git config --global user.name "GitHub CD bot"
-          git config --global user.email "mdelgado@tresdoce.com.ar"
+          git config --global user.email "${GITHUB_EMAIL}"
           npm run release -- --release-as ${{github.event.inputs.newVersion}}
           git push --follow-tags origin master
+
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
         id: Changelog
         env:
           REPO: ${{ github.repository }}
+
       - name: "🚀 Publish Release: v${{github.event.inputs.newVersion}}"
         uses: actions/create-release@v1
         with:
