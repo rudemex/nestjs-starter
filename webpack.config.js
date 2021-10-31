@@ -1,4 +1,4 @@
-const isBuild = process.env.NODE_ENV === 'build';
+const isBuild = process.env.APP_BUILD === 'build';
 
 module.exports = (options) => {
   return {

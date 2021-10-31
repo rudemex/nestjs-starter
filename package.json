@@ -19,7 +19,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "cross-env NODE_ENV=build nest build --webpack",
+    "build": "cross-env APP_BUILD=build nest build --webpack",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "cross-env NODE_ENV=production node dist/main",
     "start:nest": "nest start",
@@ -32,7 +32,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./test/jest-e2e.json"
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "release": "standard-version",
+    "release:first": "standard-version --first-release",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "prettier": {
     "semi": true,
@@ -100,6 +105,7 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.4.1",
+    "standard-version": "^9.3.2",
     "supertest": "^6.1.6",
     "ts-jest": "^26.5.4",
     "ts-loader": "^9.2.6",
