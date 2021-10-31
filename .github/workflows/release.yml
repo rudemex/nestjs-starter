@@ -45,7 +45,7 @@ jobs:
           npm run release -- --release-as ${{github.event.inputs.newVersion}}
           git push --follow-tags origin master
       - name: "📄 Create Changelog"
-        uses: scottbrenner/generate-changelog-action@master
+        uses: Bullrich/generate-release-changelog@master
         id: Changelog
         env:
           REPO: ${{ github.repository }}
