@@ -41,3 +41,4 @@ test-report.xml
 .*.env
 .env
 !.env.test
+!.env.example
