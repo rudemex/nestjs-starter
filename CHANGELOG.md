@@ -2,6 +2,25 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.8](https://github.com/rudemex/nestjs-starter/compare/v1.1.7...v1.1.8) (2021-11-01)
+
+
+### 👨‍💻 Chore
+
+* **changelog:** add version tracker file ([2cb1772](https://github.com/rudemex/nestjs-starter/commit/2cb17728cb653614962528318a69526d2f84ec1a))
+* **workflow:** edit workflow release ([1b5c7c5](https://github.com/rudemex/nestjs-starter/commit/1b5c7c58fac3be23c47485ff997e5e8fa55fdb27))
+
+
+### 📝 Docs
+
+* **readme:** edit readme badge version ([874e969](https://github.com/rudemex/nestjs-starter/commit/874e9699c7d729e966a9ca1dc4ba3b14e8dc6114))
+
+
+### 🐛 Bug Fixes
+
+* **readme:** edit br to badges ([03f58b0](https://github.com/rudemex/nestjs-starter/commit/03f58b0f98c5e53c0ec425918361e88c173f5100))
+* **release.yml:** change use artifact to generate changelog in release ([4c5207b](https://github.com/rudemex/nestjs-starter/commit/4c5207be8265793f978556c0af422792e33d3b4d))
+
 ### [1.1.7](https://github.com/rudemex/nestjs-starter/compare/v1.1.6...v1.1.7) (2021-10-31)
 
 
