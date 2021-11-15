@@ -2,6 +2,13 @@
 
 ---
 
+### [1.1.11](https://github.com/rudemex/nestjs-starter/compare/v1.1.10...v1.1.11) (2021-11-15)
+
+
+### 👨‍💻 Chores
+
+* **readiness:** edit test ([3daf72c](https://github.com/rudemex/nestjs-starter/commit/3daf72c2fe6a0b2afac72247c333541d0b14fff6))
+
 ### [1.1.10](https://github.com/rudemex/nestjs-starter/compare/v1.1.9...v1.1.10) (2021-11-15)
 
 
