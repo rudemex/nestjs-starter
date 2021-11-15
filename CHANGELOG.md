@@ -1,6 +1,14 @@
-# Changelog
+<div align="center"><h1>📝 Changelog</h1><p>All changes of this project will be documented in this file.</p></div>
 
-All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+---
+
+### [1.1.9](https://github.com/rudemex/nestjs-starter/compare/v1.1.8...v1.1.9) (2021-11-15)
+
+
+### 👨‍💻 Chores
+
+* **env:** add env example ([50e5fba](https://github.com/rudemex/nestjs-starter/commit/50e5fba59774a21892fc0010ac5a5cae73b0b23a))
+* **versionrc:** changes in config to standard version ([6f13f4f](https://github.com/rudemex/nestjs-starter/commit/6f13f4f645c3c1eff5e79c088a958ceef483e38b))
 
 ### [1.1.8](https://github.com/rudemex/nestjs-starter/compare/v1.1.7...v1.1.8) (2021-11-01)
 
