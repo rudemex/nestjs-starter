@@ -2,6 +2,14 @@
 
 ---
 
+### [1.1.10](https://github.com/rudemex/nestjs-starter/compare/v1.1.9...v1.1.10) (2021-11-15)
+
+
+### 👨‍💻 Chores
+
+* **package:** install nest class validator ([9f89b2b](https://github.com/rudemex/nestjs-starter/commit/9f89b2b64c1a239b7434df6c41f8bb349ff709fe))
+* **package:** update dependencies ([0040982](https://github.com/rudemex/nestjs-starter/commit/004098255fbe6841bb638ced1e2b6b6bea70e64f))
+
 ### [1.1.9](https://github.com/rudemex/nestjs-starter/compare/v1.1.8...v1.1.9) (2021-11-15)
 
 
