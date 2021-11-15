@@ -33,11 +33,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "release": "standard-version",
-    "release:first": "standard-version --first-release",
-    "release:patch": "standard-version --release-as patch",
-    "release:minor": "standard-version --release-as minor",
-    "release:major": "standard-version --release-as major"
+    "release": "standard-version"
   },
   "prettier": {
     "semi": true,
