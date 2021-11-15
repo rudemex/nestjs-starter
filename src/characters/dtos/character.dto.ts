@@ -1,4 +1,4 @@
-import { IsOptional, IsPositive, IsString } from 'class-validator';
+import { IsOptional, IsPositive, IsString } from '@nestjs/class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
 export class FilterCharacter {
