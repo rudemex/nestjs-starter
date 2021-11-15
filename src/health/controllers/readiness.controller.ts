@@ -22,7 +22,7 @@ export class ReadinessController {
       (key) => () => this.http.pingCheck(key, this.appConfig.services[key]),
     );
 
-    const response = this.health.check([...servicesPingCheckList]);
+    const response = await this.health.check([...servicesPingCheckList]);
     return (await response).info;
   }
 }
