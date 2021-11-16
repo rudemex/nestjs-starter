@@ -26,6 +26,8 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
+      validatorPackage: require('@nestjs/class-validator'),
+      transformerPackage: require('@nestjs/class-transformer'),
       whitelist: true,
       forbidNonWhitelisted: true,
       forbidUnknownValues: true,

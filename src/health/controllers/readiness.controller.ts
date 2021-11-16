@@ -19,10 +19,10 @@ export class ReadinessController {
   @ApiOperation({ summary: 'Get readiness' })
   async check() {
     const servicesPingCheckList = Object.keys(this.appConfig.services).map(
-      (key) => () => this.http.pingCheck(key, this.appConfig.services[key]),
+      (key) => () => this.http.pingCheck(`${key}`, this.appConfig.services[key]),
     );
 
-    const response = await this.health.check([...servicesPingCheckList]);
+    const response = this.health.check([...servicesPingCheckList]);
     return (await response).info;
   }
 }

@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { HttpModule } from '@nestjs/axios';
 
 import { HealthModule } from './health/health.module';
 import { UtilsModule } from './utils/utils.module';
@@ -20,6 +21,7 @@ import { config, enviroments, validationSchema } from './config';
       isGlobal: true,
       validationSchema,
     }),
+    HttpModule,
     HealthModule,
     UtilsModule,
     CharactersModule,
