@@ -2,6 +2,13 @@
 
 ---
 
+## [1.2.0](https://github.com/rudemex/nestjs-starter/compare/v1.1.11...v1.2.0) (2021-11-16)
+
+
+### 🐛 Bug Fixes
+
+* **class-validator:** resolve vulnerabilities in class validator and readiness with terminus ([4622f42](https://github.com/rudemex/nestjs-starter/commit/4622f42f811944fa08a9f66ceb7898d9b2e97544))
+
 ### [1.1.11](https://github.com/rudemex/nestjs-starter/compare/v1.1.10...v1.1.11) (2021-11-15)
 
 
