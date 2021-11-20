@@ -1,7 +1,7 @@
 import { Controller, Get, Inject } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { HealthCheckService, HttpHealthIndicator, HealthCheck } from '@nestjs/terminus';
+import { HealthCheck, HealthCheckService, HttpHealthIndicator } from '@nestjs/terminus';
 
 import { config } from '../../config';
 
@@ -18,9 +18,10 @@ export class ReadinessController {
   @HealthCheck()
   @ApiOperation({ summary: 'Get readiness' })
   async check() {
-    const servicesPingCheckList = Object.keys(this.appConfig.services).map(
-      (key) => () => this.http.pingCheck(`${key}`, this.appConfig.services[key]),
-    );
+    const servicesPingCheckList = Object.keys(this.appConfig.services).map((key) => {
+      const urlService = new URL(this.appConfig.services[key]);
+      return () => this.http.pingCheck(`${key}`, `${urlService.origin}`);
+    });
 
     const response = this.health.check([...servicesPingCheckList]);
     return (await response).info;
