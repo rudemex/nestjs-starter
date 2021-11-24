@@ -71,7 +71,7 @@
     "@nestjs/core": "^8.2.0",
     "@nestjs/platform-express": "^8.2.0",
     "@nestjs/swagger": "^5.1.4",
-    "@nestjs/terminus": "^8.0.1",
+    "@tresdoce/nestjs-health": "0.0.2",
     "cross-env": "^7.0.3",
     "joi": "^17.4.2",
     "reflect-metadata": "^0.1.13",

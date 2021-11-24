@@ -33,6 +33,10 @@ describe('AppController (e2e)', () => {
     });
   });
 
+  it('/readiness (GET)', () => {
+    return request(app.getHttpServer()).get('/readiness').expect(200);
+  });
+
   it('/characters (GET)', () => {
     return request(app.getHttpServer())
       .get('/characters')

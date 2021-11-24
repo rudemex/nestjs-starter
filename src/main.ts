@@ -1,7 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { RequestMethod, ValidationPipe } from '@nestjs/common';
+import { ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { controllersExcludes } from '@tresdoce/nestjs-health';
 
 import { AppModule } from './app.module';
 
@@ -12,16 +13,7 @@ async function bootstrap() {
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
-    exclude: [
-      {
-        path: '/liveness',
-        method: RequestMethod.GET,
-      },
-      {
-        path: '/readiness',
-        method: RequestMethod.GET,
-      },
-    ],
+    exclude: [...controllersExcludes],
   });
 
   app.useGlobalPipes(
