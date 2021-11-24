@@ -2,6 +2,18 @@
 
 ---
 
+### [1.2.1](https://github.com/rudemex/nestjs-starter/compare/v1.2.0...v1.2.1) (2021-11-24)
+
+
+### 👨‍💻 Chores
+
+* **readiness:** work with readiness functions ([a878c46](https://github.com/rudemex/nestjs-starter/commit/a878c462e1be6810e89f6de34674e696bfbac6f6))
+
+
+### ♻️Refactors
+
+* **health:** remove health module and implement health dependencie ([193830c](https://github.com/rudemex/nestjs-starter/commit/193830c11e2f5739502f0b72483a736756651454))
+
 ## [1.2.0](https://github.com/rudemex/nestjs-starter/compare/v1.1.11...v1.2.0) (2021-11-16)
 
 
