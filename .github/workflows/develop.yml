@@ -65,6 +65,9 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: "☣️ Snyk scan for vulnerabilities"
-        uses: snyk/actions/node@master
+        run: |
+          npm install snyk@latest -g
+          snyk auth ${{ secrets.SNYK_TOKEN }}
+          snyk test
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
