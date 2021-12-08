@@ -64,10 +64,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: "☣️ Snyk scan for vulnerabilities"
-        run: |
-          npm install snyk@latest -g
-          snyk auth ${{ secrets.SNYK_TOKEN }}
-          snyk config set api=${{ secrets.SNYK_TOKEN }}
-          snyk monitor --org=${{ github.event.repository.owner.name }} --project-name=${{ github.event.repository.name }}
-    
