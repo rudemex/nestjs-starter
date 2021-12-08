@@ -24,6 +24,7 @@
 - [⚙️ Configuración](#configurations)
 - [💻 Scripts](#scripts)
 - [📚 Swagger](#swagger-info)
+- [🧰 Toolkit](#toolkit)
 - [📤 Commits](#commits)
 - [📄 Changelog](./CHANGELOG.md)
 - [📜 License MIT](license.md)
@@ -228,6 +229,17 @@ Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** 
 
 - Default: `http://localhost:8080/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
+
+<a name="toolkit"></a>
+
+## 🧰 Toolkit
+
+Los módulos de la siguiente lista, están pensados para ser consumidos para la arquitectura de este starter, o arquitectura similar siguiento los lineamientos de `schematics`.
+
+| Package                                                                    | Descripción                                | Versión                                                                                                                           | Changelog                                                                         |
+| -------------------------------------------------------------------------- | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| [`@tresdoce/nestjs-health`](https://github.com/tresdoce/nestjs-health)     | Módulo de health check: liveness/readiness | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-health.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-health)     | [changelog](https://github.com/tresdoce/nestjs-health/blob/master/CHANGELOG.md)   |
+| [`@tresdoce/nestjs-database`](https://github.com/tresdoce/nestjs-database) | Módulo conexión a base de datos Mongo      | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-database.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-database) | [changelog](https://github.com/tresdoce/nestjs-database/blob/master/CHANGELOG.md) |
 
 <a name="commits"></a>
 
