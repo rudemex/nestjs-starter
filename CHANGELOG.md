@@ -2,6 +2,23 @@
 
 ---
 
+### [1.2.2](https://github.com/rudemex/nestjs-starter/compare/v1.2.1...v1.2.2) (2021-12-08)
+
+
+### 👨‍💻 Chores
+
+* add isprod in configuration and anothers changes ([7dd4a8e](https://github.com/rudemex/nestjs-starter/commit/7dd4a8e0ef356d63d04551de41af07c12e2222d6))
+
+
+### ♻️Refactors
+
+* **config:** add is prod property and refactor env files fot enviroments ([f975c90](https://github.com/rudemex/nestjs-starter/commit/f975c90a5dc36b4f49a4fb5c14f3b55120929259))
+
+
+### 📝 Docs
+
+* **readme:** add toolkit list to readme ([3f43aaf](https://github.com/rudemex/nestjs-starter/commit/3f43aafa4ef0b6891597fc69c445c77ce78bd8bd))
+
 ### [1.2.1](https://github.com/rudemex/nestjs-starter/compare/v1.2.0...v1.2.1) (2021-11-24)
 
 
