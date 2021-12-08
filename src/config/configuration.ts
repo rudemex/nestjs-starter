@@ -13,6 +13,7 @@ export default registerAs('config', () => {
       homepage: PACKAGE_JSON.homepage,
     },
     server: {
+      isProd: process.env.NODE_ENV === 'production',
       port: parseInt(process.env.PORT, 10) || 8080,
       context: process.env.CONTEXT || 'api',
       origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',

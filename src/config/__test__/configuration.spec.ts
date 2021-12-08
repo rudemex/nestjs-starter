@@ -65,6 +65,24 @@ describe('configuration', () => {
     expect(homepage).toEqual(PACKAGE_JSON.homepage);
   });
 
+  it('should have isProd false', () => {
+    const { isProd } = appConfig.server;
+
+    expect(isProd).toBeDefined();
+    expect(isProd).toEqual(expect.any(Boolean));
+    expect(isProd).toEqual(false);
+  });
+
+  it('should have isProd true', () => {
+    process.env.NODE_ENV = 'production';
+    appConfig = config();
+    const { isProd } = appConfig.server;
+
+    expect(isProd).toBeDefined();
+    expect(isProd).toEqual(expect.any(Boolean));
+    expect(isProd).toEqual(true);
+  });
+
   it('should have a PORT', () => {
     const { port } = appConfig.server;
 
