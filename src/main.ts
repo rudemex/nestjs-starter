@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { ValidationPipe } from '@nestjs/common';
+import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { controllersExcludes } from '@tresdoce/nestjs-health';
@@ -7,7 +7,10 @@ import { controllersExcludes } from '@tresdoce/nestjs-health';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: new Logger(),
+  });
+
   const { server, swagger, project } =
     app.get<ConfigService>(ConfigService)['internalConfig']['config'];
   const port = parseInt(server.port, 10) || 8080;
