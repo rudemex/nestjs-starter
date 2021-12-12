@@ -2,6 +2,31 @@
 
 ---
 
+### [1.2.3](https://github.com/rudemex/nestjs-starter/compare/v1.2.2...v1.2.3) (2021-12-12)
+
+
+### 📝 Docs
+
+* **readme:** add badge snyk ([d17354c](https://github.com/rudemex/nestjs-starter/commit/d17354c6cd31684e0545ca59b85f4b3a36c18905))
+
+
+### 👨‍💻 Chores
+
+* edit config with enviroment and edit readme ([c567717](https://github.com/rudemex/nestjs-starter/commit/c5677176ff17a40195a693c663dbb356ef2ffac6))
+* update dependencies ([817b9ef](https://github.com/rudemex/nestjs-starter/commit/817b9efc2981d3764c9ed58759d0f05f30a119ae))
+* **workflow/develop:** edit action to snyk scan ([561b805](https://github.com/rudemex/nestjs-starter/commit/561b805c48150a5a292fc6d1c7f6d5f59b44732e))
+* **workflow:** add snyk check for vulnerabilities ([ba02a42](https://github.com/rudemex/nestjs-starter/commit/ba02a421a65d6c7b637944c4a69d750ca547e53b))
+* **workflow:** change snyk scan commands ([7acf21a](https://github.com/rudemex/nestjs-starter/commit/7acf21aa703cb07939ab3a323e15279a3f3c0300))
+* **workflow:** edit script snyk scan ([7a62c63](https://github.com/rudemex/nestjs-starter/commit/7a62c63f81421607bbf5e6def5300c9ef44b0879))
+* **workflow:** edit script snyk scan 2 ([7884641](https://github.com/rudemex/nestjs-starter/commit/78846419a117cdfdfb9ce6b4afc4546f1f8a5ec4))
+* **workflow:** remove scripts of snyk in workflow ([4f17532](https://github.com/rudemex/nestjs-starter/commit/4f17532fca9b67110f920ed89fa7c9d99764316f))
+
+
+### 🐛 Bug Fixes
+
+* **engines:** fixed engines admited to starter ([1cc23cf](https://github.com/rudemex/nestjs-starter/commit/1cc23cf0b58b89dc6c36baa8b8413c851266fb41))
+* **vulnerabilities:** audit vulnerabilities and resolve code smell ([3491a84](https://github.com/rudemex/nestjs-starter/commit/3491a84cce0e29e287890461cb121dbb77e425c9))
+
 ### [1.2.2](https://github.com/rudemex/nestjs-starter/compare/v1.2.1...v1.2.2) (2021-12-08)
 
 
