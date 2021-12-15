@@ -20,7 +20,7 @@ body:
       options:
         - label: You are using NodeJs 14 or higher?
           required: false
-        - label: You have installed all dependencies and tools listed in here? [📝 Basic requirements](https://github.com/rudemex/nestjs-starter#basic-requirements)
+        - label: You have installed all dependencies and tools listed in the documentation?
           required: false
         - label: You have searched the existing issues if someone has already asked the same issue?
           required: false
