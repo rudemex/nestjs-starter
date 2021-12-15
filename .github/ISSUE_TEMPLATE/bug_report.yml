@@ -1,4 +1,4 @@
-name: 🐛Bug Report
+name: 🐛 Bug Report
 description: File a bug report here
 title: "[BUG]: "
 labels: ["bug"]
@@ -8,14 +8,10 @@ body:
     attributes:
       value: |
         Thanks for taking the time to fill out this bug report!!!
+
   - type: checkboxes
     id: new-bug
     attributes:
-      #label: Is there an existing issue for this?
-      #description: Please search to see if an issue already exists for the bug you encountered.
-      #options:
-      #  - label: I have searched the existing issues
-      #    required: true
       label: Make sure these boxes are checked before submitting your issue, thank you!
       options:
         - label: You are using NodeJs 14 or higher?
@@ -30,6 +26,7 @@ body:
           required: true
         - label: You are using latest code of Starter?
           required: false
+
   - type: textarea
     id: bug-description
     attributes:
@@ -37,6 +34,7 @@ body:
       description: Tell us what bug you encountered and what should have happened
     validations:
       required: true
+
   - type: textarea
     id: steps-to-reproduce
     attributes:
@@ -45,6 +43,7 @@ body:
       placeholder: Please write the steps in a list form
     validations:
       required: true
+
   - type: dropdown
     id: versions
     attributes:
@@ -76,6 +75,7 @@ body:
         - v1.0.0-beta.1
     validations:
       required: true
+
   - type: textarea
     id: additional-information
     attributes:
@@ -83,10 +83,11 @@ body:
       description: Provide any additional information such as logs, screenshots, likes, scenarios in which the bug occurs so that it facilitates resolving the issue.
     validations:
       required: false
+
   - type: checkboxes
     attributes:
       label: Code of Conduct
-      description: Read the [Code of Conduct](.github/CODE_OF_CONDUCT.md) first.
+      description: Read the [Code of Conduct](https://github.com/rudemex/nestjs-starter/blob/master/.github/CODE_OF_CONDUCT.md) first.
       options:
         - label: I agree to follow the Code of Conduct
           required: true
