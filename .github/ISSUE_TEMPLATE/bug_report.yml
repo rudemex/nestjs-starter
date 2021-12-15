@@ -83,3 +83,10 @@ body:
       description: Provide any additional information such as logs, screenshots, likes, scenarios in which the bug occurs so that it facilitates resolving the issue.
     validations:
       required: false
+  - type: checkboxes
+    attributes:
+      label: Code of Conduct
+      description: Read the [Code of Conduct](../CODE_OF_CONDUCT.md) first.
+      options:
+        - label: I agree to follow the Code of Conduct
+          required: true
