@@ -27,7 +27,7 @@ body:
         - label:  You have read the documentation?
           required: false
         - label: Is not a programming question.
-          required: false
+          required: true
         - label: You are using latest code of Starter?
           required: false
   - type: textarea
