@@ -2,6 +2,23 @@
 
 ---
 
+### [1.2.4](https://github.com/rudemex/nestjs-starter/compare/v1.2.3...v1.2.4) (2021-12-18)
+
+
+### 👨‍💻 Chores
+
+* **.github:** edit bug report, feature request and code of conduct ([af4ba82](https://github.com/rudemex/nestjs-starter/commit/af4ba8249796182dbe8bd58b07637ab336ff5aad))
+* **.github:** edit github templates issues and feature ([edd5dc6](https://github.com/rudemex/nestjs-starter/commit/edd5dc60f5e0680de4a67c2a9fb44f568f008e24))
+* **bug_report:** add code of conduct ([9c638a9](https://github.com/rudemex/nestjs-starter/commit/9c638a96ded65ce1a3695d2f5d2c3cd756c04235))
+* **bug_report:** edit link code of conduct ([8b12632](https://github.com/rudemex/nestjs-starter/commit/8b1263210917dd17d541741df168fbd1a27f2a82))
+* edit bug report file ([00d52a9](https://github.com/rudemex/nestjs-starter/commit/00d52a9d270b409d6391b3c87ee8e8d71c1e5659))
+* **issue:** add issue template ([cb297ac](https://github.com/rudemex/nestjs-starter/commit/cb297ac883f18873be27015199ba0e200d508b8a))
+* **issues:** edit template for issues ([3be1e62](https://github.com/rudemex/nestjs-starter/commit/3be1e62dfbc889e4e9f3654b5471e65155cc9bbc))
+* **issues:** template for issues ([a5b1c23](https://github.com/rudemex/nestjs-starter/commit/a5b1c239581277a4f17dfb603ba8c883ffd396a4))
+* **package:** update nest cli in dependencies ([025bab0](https://github.com/rudemex/nestjs-starter/commit/025bab065dd841b553c3ba814dcfcad89d66fd96))
+* update dependencies for nestjs ([510f6e4](https://github.com/rudemex/nestjs-starter/commit/510f6e43b42aa993c1b73234f087abd472dca7b1))
+* **update:** update swagger ui express for vulnerabilities ([a99295f](https://github.com/rudemex/nestjs-starter/commit/a99295fbe5202a17f525bff54fdb8aa4be2463ea))
+
 ### [1.2.3](https://github.com/rudemex/nestjs-starter/compare/v1.2.2...v1.2.3) (2021-12-12)
 
 
