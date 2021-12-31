@@ -67,9 +67,11 @@ dependencias.
 
 ## ⚙️ Configuración
 
-Este starter viene con el archivo **.env.example** y **.env.test**, el cual contiene las configuraciones básicas para que funcione la aplicación.
+Este starter viene con el archivo **.env.example** y **.env.test**, el cual contiene las configuraciones básicas para
+que funcione la aplicación.
 
-Para el entorno de desarrollo local, es necesario contar con un archivo **.env** del cual se puede utilizar el archivo de ejemplo para generarlo.
+Para el entorno de desarrollo local, es necesario contar con un archivo **.env** del cual se puede utilizar el archivo
+de ejemplo para generarlo.
 
 ```sh
 # SERVER
@@ -148,7 +150,8 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 
 #### Params, Services y Otros enviroments
 
-A modo de ejemplo, se pueden cargar todas las variables de entorno que requieras, es importante seguir con el esquema de `key:value` para configurarlas.
+A modo de ejemplo, se pueden cargar todas las variables de entorno que requieras, es importante seguir con el esquema
+de `key:value` para configurarlas.
 
 ```
 # PARAMS
@@ -164,7 +167,8 @@ Este proyecto utiliza el módulo `@nestjs/config`, el cual centraliza todas las 
 te permite consumirlas como **typing** para evitar errores de typo, como asi también evitar usar el **process.env** en
 todo el proyecto, lo que te permite darle soporte más fácil si se requiere cambiar el **KEY** de la variable de entorno.
 
-También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato y si es requerido o no dicha variable.
+También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato y si es requerido o no
+dicha variable.
 
 Todos estos features los podemos encontrar en la carpeta **./src/config**, en dicha carpeta podemos encontrar el archivo
 **enviroments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
@@ -215,11 +219,14 @@ npm run lint
 
 ## 📚 Swagger
 
-El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/docs/)
+El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus
+definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/docs/)
 
-Para expandir la documentación, es importante aplicar los decoradores correspondientes a la aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
+Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
+aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
 
-Esta documentación puede ser activada o desactivada desde la configuración por medio las variables de entorno del proyecto.
+Esta documentación puede ser activada o desactivada desde la configuración por medio las variables de entorno del
+proyecto.
 
 ```sh
 SWAGGER_PATH=docs
@@ -238,7 +245,8 @@ Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/doc
 
 #### Exportar el swagger en JSON
 
-Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-json)
+Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path
+definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-json)
 
 - Default: `http://localhost:8080/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
@@ -247,7 +255,8 @@ Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** 
 
 ## 🧰 Toolkit
 
-Los módulos de la siguiente lista, están pensados para ser consumidos para la arquitectura de este starter, o arquitectura similar siguiento los lineamientos de `schematics`.
+Los módulos de la siguiente lista, están pensados para ser consumidos para la arquitectura de este starter, o
+arquitectura similar siguiento los lineamientos de `schematics`.
 
 | Package                                                                        | Descripción                                | Versión                                                                                                                               | Changelog                                                                           |
 | ------------------------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
@@ -259,7 +268,8 @@ Los módulos de la siguiente lista, están pensados para ser consumidos para la 
 
 ## 📤 Commits
 
-Para los mensajes de commits se toma como referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary).
+Para los mensajes de commits se toma como
+referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary).
 
 ```
 <type>[optional scope]: <description>
