@@ -1,7 +1,7 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { HttpModule } from '@nestjs/axios';
 import { HealthModule } from '@tresdoce/nestjs-health';
+import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -44,7 +44,7 @@ import { config, enviroments, validationSchema } from './config';
       },
     }),
     HealthModule.register(config()),
-    HttpModule,
+    HttpClientModule,
     UtilsModule,
     CharactersModule,
     UsersModule,

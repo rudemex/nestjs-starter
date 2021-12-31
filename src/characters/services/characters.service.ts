@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { HttpService } from '@nestjs/axios';
 import { ConfigType } from '@nestjs/config';
-import { lastValueFrom } from 'rxjs';
+import { HttpClientService } from '@tresdoce/nestjs-httpclient';
 
 import { FilterCharacter } from '../dtos/character.dto';
 import { config } from '../../config';
@@ -10,15 +9,16 @@ import { config } from '../../config';
 export class CharactersService {
   constructor(
     @Inject(config.KEY) private readonly appConfig: ConfigType<typeof config>,
-    private readonly httpClient: HttpService,
+    private readonly httpClient: HttpClientService,
   ) {}
 
   async getCharacter(params?: FilterCharacter) {
     try {
-      const { data } = await lastValueFrom(
-        this.httpClient.get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), {
+      const { data } = await this.httpClient.get(
+        encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`),
+        {
           params,
-        }),
+        },
       );
       return data;
     } catch (error) /* istanbul ignore next */ {
@@ -28,9 +28,7 @@ export class CharactersService {
 
   async tracingTest() {
     try {
-      const { data } = await lastValueFrom(
-        this.httpClient.get(encodeURI(`http://localhost:8080/api/characters`)),
-      );
+      const { data } = await this.httpClient.get(encodeURI(`http://localhost:8080/api/characters`));
       return data;
     } catch (error) /* istanbul ignore next */ {
       return error;
