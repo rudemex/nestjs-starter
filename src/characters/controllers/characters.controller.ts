@@ -14,4 +14,9 @@ export class CharactersController {
   async getCharacter(@Query() params?: FilterCharacter) {
     return this.characterService.getCharacter(params);
   }
+
+  @Get('test')
+  async tracingTest() {
+    return this.characterService.tracingTest();
+  }
 }

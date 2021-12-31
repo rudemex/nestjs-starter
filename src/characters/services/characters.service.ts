@@ -4,7 +4,6 @@ import { ConfigType } from '@nestjs/config';
 import { lastValueFrom } from 'rxjs';
 
 import { FilterCharacter } from '../dtos/character.dto';
-
 import { config } from '../../config';
 
 @Injectable()
@@ -20,6 +19,17 @@ export class CharactersService {
         this.httpClient.get(encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`), {
           params,
         }),
+      );
+      return data;
+    } catch (error) /* istanbul ignore next */ {
+      return error;
+    }
+  }
+
+  async tracingTest() {
+    try {
+      const { data } = await lastValueFrom(
+        this.httpClient.get(encodeURI(`http://localhost:8080/api/characters`)),
       );
       return data;
     } catch (error) /* istanbul ignore next */ {
