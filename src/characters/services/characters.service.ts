@@ -25,13 +25,4 @@ export class CharactersService {
       return error;
     }
   }
-
-  async tracingTest() {
-    try {
-      const { data } = await this.httpClient.get(encodeURI(`http://localhost:8080/api/characters`));
-      return data;
-    } catch (error) /* istanbul ignore next */ {
-      return error;
-    }
-  }
 }

@@ -35,6 +35,11 @@ test-report.xml
 !.vscode/launch.json
 !.vscode/extensions.json
 
+# FILES
+*.tgz
+*.zip
+*.rar
+
 # ENVIROMENTS
 ./*.env
 ./.*.env
