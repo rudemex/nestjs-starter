@@ -2,6 +2,39 @@
 
 ---
 
+### [1.2.6](https://github.com/rudemex/nestjs-starter/compare/v1.2.5...v1.2.6) (2022-01-12)
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([ccfc91b](https://github.com/rudemex/nestjs-starter/commit/ccfc91b25a78aa8af18907c866ff8c4b9b5f72d6))
+
+### [1.2.5](https://github.com/rudemex/nestjs-starter/compare/v1.2.4...v1.2.5) (2022-01-12)
+
+
+### ♻️Refactors
+
+* **http:** implement http client module ([c95e04e](https://github.com/rudemex/nestjs-starter/commit/c95e04edcab9b4470ba2359ae766de97ee418266))
+
+
+### 🐛 Bug Fixes
+
+* **character:** refactor request to tracing test ([c4c6809](https://github.com/rudemex/nestjs-starter/commit/c4c6809b33e0c9c1ff68b70b6a6b16eb4b02b533))
+* **nestjs-cli:** resolver corruption in cli of colors dependencie ([662ddf9](https://github.com/rudemex/nestjs-starter/commit/662ddf942fc3e882a8a42f53d6528cfa88167ace))
+
+
+### 👨‍💻 Chores
+
+* format code ([98332ad](https://github.com/rudemex/nestjs-starter/commit/98332ad8cfb1e7c0b3280ef509f4d7b7a4ebedd0))
+* test tracing module ([cd6d358](https://github.com/rudemex/nestjs-starter/commit/cd6d3585ae81e15e360931c3282f54a49d822d7c))
+* update dependencies ([d88c017](https://github.com/rudemex/nestjs-starter/commit/d88c0173c7a0244e7fe8a26e394fd20066f7df70))
+
+
+### 📝 Docs
+
+* edit readme table of toolkit ([1e59003](https://github.com/rudemex/nestjs-starter/commit/1e5900347847bfc9d6ff5bceafd66371ec28952a))
+* **readme:** edit readme with new package ([4594690](https://github.com/rudemex/nestjs-starter/commit/4594690c07416f6a0ea98e175b547f7bbccc06c7))
+
 ### [1.2.4](https://github.com/rudemex/nestjs-starter/compare/v1.2.3...v1.2.4) (2021-12-18)
 
 ### 👨‍💻 Chores
