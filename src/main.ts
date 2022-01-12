@@ -24,8 +24,8 @@ async function bootstrap() {
       validatorPackage: require('@nestjs/class-validator'),
       transformerPackage: require('@nestjs/class-transformer'),
       whitelist: true,
-      forbidNonWhitelisted: true,
       forbidUnknownValues: true,
+      forbidNonWhitelisted: true,
       transformOptions: {
         enableImplicitConversion: true,
       },
