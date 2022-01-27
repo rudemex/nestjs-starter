@@ -2,6 +2,19 @@
 
 ---
 
+### [1.2.7](https://github.com/rudemex/nestjs-starter/compare/v1.2.6...v1.2.7) (2022-01-27)
+
+
+### 👨‍💻 Chores
+
+* merge master ([bc06c48](https://github.com/rudemex/nestjs-starter/commit/bc06c4803d16acf41b649fe3909ac377a7ac447d))
+* test packages firts commit ([4ff61b2](https://github.com/rudemex/nestjs-starter/commit/4ff61b28356eabf96989d66475ba0db37d9790d9))
+* update dependencie health ([d729f49](https://github.com/rudemex/nestjs-starter/commit/d729f49a3289ccea3c5549164d9a90e926eb9f6c))
+* update dependencies ([d952f55](https://github.com/rudemex/nestjs-starter/commit/d952f55a8c289034ee3005b1d75ebb04b21c060c))
+* update httpcliente module ([42db652](https://github.com/rudemex/nestjs-starter/commit/42db65207be0d1c76668bda467f2a1978f0b0091))
+* **workflow:** edit release workflow ([171ecfe](https://github.com/rudemex/nestjs-starter/commit/171ecfeea1ccb5aba39953c3c335b04a966e437a))
+* **workflow:** rollback workflow release ([2f79c32](https://github.com/rudemex/nestjs-starter/commit/2f79c323be7d1f7cd8293eef4e1e5537aa1c8679))
+
 ### [1.2.6](https://github.com/rudemex/nestjs-starter/compare/v1.2.5...v1.2.6) (2022-01-12)
 
 
