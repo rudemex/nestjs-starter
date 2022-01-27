@@ -3,15 +3,10 @@ name: "Release"
 on:
   workflow_dispatch:
     inputs:
-      release:
-        type: choice
-        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]-[PRE-RELEASE].X"
+      newVersion:
+        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]"
         required: true
-        options:
-          - pre-release
-          - patch
-          - minor
-          - major
+        default: '0.0.0'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -47,28 +42,12 @@ jobs:
       - name: "📦 Install Dependencies"
         run: npm install
 
-      - name: "🔦 Lint"
-        run: npm run lint
-
-      - name: "🔨 Build"
-        run: npm run build
-
-      - name: "👨‍💻 Run Test"
-        run: npm run test
-        env:
-          NODE_ENV: 'test'
-
-      - name: "🎉️ Create Release as ${{ github.event.inputs.release }} version"
+      - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
         run: |
           git config --global user.name "GitHub CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
-          if ${{github.event.inputs.release == 'pre-release'}}; then
-            npm run release -- --prerelease alpha
-          else
-            npm run release -- --release-as ${{github.event.inputs.release}}
-          fi
+          npm run release -- --release-as ${{github.event.inputs.newVersion}}
           git push --follow-tags origin master
-          echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
 
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
@@ -79,8 +58,8 @@ jobs:
       - name: "🚀 Publish Release: v${{github.event.inputs.newVersion}}"
         uses: actions/create-release@v1
         with:
-          tag_name: "${{env.LATEST_TAG}}"
-          release_name: "${{env.LATEST_TAG}}"
+          tag_name: "v${{github.event.inputs.newVersion}}"
+          release_name: "v${{github.event.inputs.newVersion}}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
 
@@ -88,4 +67,4 @@ jobs:
 
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
-          prerelease: ${{ github.event.inputs.release == 'pre-release' }}
+          prerelease: false
