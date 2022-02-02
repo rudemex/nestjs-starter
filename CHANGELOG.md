@@ -2,6 +2,18 @@
 
 ---
 
+### [1.2.8](https://github.com/rudemex/nestjs-starter/compare/v1.2.7...v1.2.8) (2022-02-02)
+
+
+### 🐛 Bug Fixes
+
+* put method parameter as unknown value was passed to the validate function ([9f05f27](https://github.com/rudemex/nestjs-starter/commit/9f05f2764619e236924d401061610aad823ff3b2))
+
+
+### 👨‍💻 Chores
+
+* **docker:** remove files of docker test ([ced9f8c](https://github.com/rudemex/nestjs-starter/commit/ced9f8cc2d1f691cbf2a58ea6c25c3ead521e31c))
+
 ### [1.2.7](https://github.com/rudemex/nestjs-starter/compare/v1.2.6...v1.2.7) (2022-01-27)
 
 
