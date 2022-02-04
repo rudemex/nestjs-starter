@@ -12,7 +12,8 @@
     "baseUrl": "./",
     "incremental": true,
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
+    "esModuleInterop": true
   },
   "exclude": ["node_modules", "dist"]
 }

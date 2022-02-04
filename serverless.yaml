@@ -1,0 +1,38 @@
+service: nestjs-starter
+
+useDotenv: true
+
+plugins:
+  #- '@hewmen/serverless-plugin-typescript'
+  #- serverless-plugin-optimize
+  - serverless-offline
+  #- serverless-plugin-warmup
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    NODE_ENV: 'production'
+    PORT: ${env:PORT}
+    CONTEXT: ${env:CONTEXT}
+    ORIGINS: ${env:ORIGINS}
+    ALLOWED_HEADERS: ${env:ALLOWED_HEADERS}
+    ALLOWED_METHODS: ${env:ALLOWED_METHODS}
+    CORS_ENABLED: ${env:CORS_ENABLED}
+    CORS_CREDENTIALS: ${env:CORS_CREDENTIALS}
+    SWAGGER_PATH: ${env:SWAGGER_PATH}
+    SWAGGER_ENABLED: ${env:SWAGGER_ENABLED}
+    TEST_KEY: ${env:TEST_KEY}
+    NEST_JS_DOCS_URL: ${env:NEST_JS_DOCS_URL}
+    RICK_AND_MORTY_API_URL: ${env:RICK_AND_MORTY_API_URL}
+
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'
