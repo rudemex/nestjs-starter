@@ -2,6 +2,13 @@
 
 ---
 
+### [1.2.9](https://github.com/rudemex/nestjs-starter/compare/v1.2.8...v1.2.9) (2022-02-04)
+
+
+### 👨‍💻 Chores
+
+* add cookie parser ([9fc2db1](https://github.com/rudemex/nestjs-starter/commit/9fc2db1034b4d9f5f80c10e7f02f304898ec65ad))
+
 ### [1.2.8](https://github.com/rudemex/nestjs-starter/compare/v1.2.7...v1.2.8) (2022-02-02)
 
 
