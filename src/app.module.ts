@@ -16,7 +16,7 @@ import { config, enviroments, validationSchema } from './config';
   imports: [
     ConfigModule.forRoot({
       envFilePath: enviroments[`${process.env.NODE_ENV}`],
-      ignoreEnvFile: process.env.NODE_ENV === 'production',
+      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true' || false,
       load: [config],
       isGlobal: true,
       validationSchema,
