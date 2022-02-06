@@ -4,6 +4,11 @@ services:
   dev:
     container_name: nestjs_starter_dev
     image: nestjs-starter-dev:1.0.0
+    env_file:
+      - ./.env
+    environment:
+      - NODE_ENV=dev
+      - IGNORE_ENV_FILE=false
     build:
       context: .
       target: development
@@ -20,6 +25,11 @@ services:
   prod:
     container_name: nestjs_starter_prod
     image: nestjs-starter-prod:1.0.0
+    env_file:
+      - ./.env.prod
+    environment:
+      - NODE_ENV=production
+      - IGNORE_ENV_FILE=true
     build:
       context: .
       target: production
