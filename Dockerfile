@@ -6,8 +6,8 @@
 
 FROM node:14-alpine3.14 as builder
 
-ARG APP_BUILD=build
-ENV APP_BUILD=${APP_BUILD}
+ARG NODE_ENV=build
+ENV NODE_ENV=${NODE_ENV}
 
 WORKDIR /usr/src/app
 
