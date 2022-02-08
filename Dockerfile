@@ -1,8 +1,11 @@
-# docker build . -t <user-docker>/nestjs-starter
-# docker run -d -p 8080:8080 --env-file .env.prod <user-docker>/nestjs-starter
+# COMMANDS
+# docker build . -t <user-docker>/<app-name>
+# docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>
 
+# EXAMPLES
 # docker build -t nestjs-starter .
 # docker run -d -p 8080:8080 --env-file .env.prod nestjs-starter
+# docker system prune
 
 FROM node:14-alpine3.14 as builder
 
@@ -30,8 +33,6 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/package*.json ./
-#COPY --from=builder /usr/src/app/.env ./
-#COPY --from=builder /usr/src/app/.env.prod ./
 COPY --from=builder /usr/src/app/node_modules/ ./node_modules/
 COPY --from=builder /usr/src/app/dist ./dist
 
