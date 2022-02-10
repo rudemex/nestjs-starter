@@ -10,7 +10,7 @@ module.exports = (options) => {
     },
     optimization: {
       ...options.optimization,
-      minimize: isBuild,
+      minimize: false,
       nodeEnv: isBuild ? 'production' : false,
     },
   };
