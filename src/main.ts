@@ -47,7 +47,7 @@ async function bootstrap() {
     app.use(
       swaggerStats.getMiddleware({
         swaggerSpec: document,
-        elasticsearch: 'http://127.0.0.1:9200',
+        //elasticsearch: 'http://127.0.0.1:9200',
         swaggerOnly: true,
       }),
     );
