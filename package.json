@@ -72,6 +72,7 @@
     "@nestjs/swagger": "^5.2.0",
     "@tresdoce/nestjs-health": "0.0.4",
     "@tresdoce/nestjs-httpclient": "0.1.2",
+    "class-transformer": "^0.5.1",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "joi": "^17.5.0",
