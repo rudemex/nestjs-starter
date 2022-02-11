@@ -4,7 +4,6 @@ import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { controllersExcludes } from '@tresdoce/nestjs-health';
-import * as swaggerStats from 'swagger-stats';
 
 import { AppModule } from './app.module';
 
@@ -26,7 +25,7 @@ async function bootstrap() {
   app.useGlobalPipes(
     new ValidationPipe({
       validatorPackage: require('@nestjs/class-validator'),
-      transformerPackage: require('@nestjs/class-transformer'),
+      transformerPackage: require('class-transformer'),
       whitelist: true,
       forbidUnknownValues: true,
       forbidNonWhitelisted: true,
@@ -44,15 +43,6 @@ async function bootstrap() {
       .setExternalDoc('Documentation', project.homepage)
       .build();
     const document = SwaggerModule.createDocument(app, config);
-    app.use(
-      swaggerStats.getMiddleware({
-        swaggerSpec: document,
-        name: `${project.name}`,
-        version: `${project.version}`,
-        swaggerOnly: true,
-        //elasticsearch: 'http://127.0.0.1:9200',
-      }),
-    );
     SwaggerModule.setup(`${swagger.path}`, app, document);
   }
 
