@@ -2,6 +2,49 @@
 
 ---
 
+### [1.2.10](https://github.com/rudemex/nestjs-starter/compare/v1.2.9...v1.2.10) (2022-02-12)
+
+
+### ✨ Features
+
+* dockerized application ([f8527a6](https://github.com/rudemex/nestjs-starter/commit/f8527a6356378097e57dfc74c4905d896b4ea7cc))
+
+
+### 🐛 Bug Fixes
+
+* an unknown value was passed to the validate function in put method ([52cd0b0](https://github.com/rudemex/nestjs-starter/commit/52cd0b05d0e2a971700ae9e99be63081a0dfbac1))
+* **webpack:** set minimize in false for to resolve broken schemas ([28994d9](https://github.com/rudemex/nestjs-starter/commit/28994d991d0cbb01d6e0b6f712ad37ccd6ddb41c))
+
+
+### 📝 Docs
+
+* **readme:** add commons dependencie to toolkit table ([3b61fc7](https://github.com/rudemex/nestjs-starter/commit/3b61fc7df7236d69b64ea4fd38a18123f5808cd0))
+
+
+### 👨‍💻 Chores
+
+* add class transformer ([0fc7265](https://github.com/rudemex/nestjs-starter/commit/0fc7265e473d8c9544e74ec1d4938bac9f5c4f17))
+* add commons dependencie ([24ee68e](https://github.com/rudemex/nestjs-starter/commit/24ee68e25484a56dde29a84b8e1bf9dfe5c3a1ba))
+* **dockerfile:** edit dockerfile to dockerizing ([d343feb](https://github.com/rudemex/nestjs-starter/commit/d343feb2f311798db38218f3ed39e1ce86c7bb73))
+* **docker:** optimization of image ([03cd2dc](https://github.com/rudemex/nestjs-starter/commit/03cd2dc86f7686c304cc49075b7ed36b4dc42150))
+* edit character controller ([e46b581](https://github.com/rudemex/nestjs-starter/commit/e46b581bc55fa65de3de987cd48cd73d37227b49))
+* edit dockerfile and docker compose ([c80946b](https://github.com/rudemex/nestjs-starter/commit/c80946bf7af3f649bf60c4a65948bec7b4b299e2))
+* edit ts build config ([a0271d1](https://github.com/rudemex/nestjs-starter/commit/a0271d1cecf9b21ede1ea5bddada1143ad08c545))
+* remove swagger stats ([926040f](https://github.com/rudemex/nestjs-starter/commit/926040f133f44335e6e1af1d310981d2b717491c))
+* remove webpack file and add commons config ([0f8c1d7](https://github.com/rudemex/nestjs-starter/commit/0f8c1d788c78d063da1bf3ae1fa422c4dcd059ff))
+* rename manager of envs and edit readme ([b5c3c9e](https://github.com/rudemex/nestjs-starter/commit/b5c3c9e1826faf8b6cd1b5e54b78d5280f9ff5f4))
+* **swagger-stats:** add swagger stats ([1d7a7ae](https://github.com/rudemex/nestjs-starter/commit/1d7a7aee7e7f32c9295d3a78017e310c61784f06))
+* **swagger-stats:** comment elasticsearch url ([9b85e96](https://github.com/rudemex/nestjs-starter/commit/9b85e96fd2ab55d79cb1f81d3cfbb146a1e909b1))
+* **swagger-stats:** edit config swagger stats ([71be0d4](https://github.com/rudemex/nestjs-starter/commit/71be0d4b2f3a199f2e06a4f4739db1d898fd1e3c))
+* **swagger:** add definitions to entity and dto ([fa8d245](https://github.com/rudemex/nestjs-starter/commit/fa8d245f49b27a83955ecac280a2a1da31297468))
+* update dependencies ([224b2f2](https://github.com/rudemex/nestjs-starter/commit/224b2f216335625f424037e07b19ede0914f9934))
+* **webpack:** edit build configuration ([be06274](https://github.com/rudemex/nestjs-starter/commit/be0627454384988eabeab95ad04c3240c53abddf))
+* **webpack:** rename file of configuration ([6312e21](https://github.com/rudemex/nestjs-starter/commit/6312e2165937941958bcbddb71ed4fef81922362))
+* work with build and optimization app ([deb0fcc](https://github.com/rudemex/nestjs-starter/commit/deb0fcc4c54531343c89401535ee1390f3bff9c1))
+* **workflow:** add workflow to docker ([e3cab1f](https://github.com/rudemex/nestjs-starter/commit/e3cab1fb1edb3b80cf09d504c5a88622c3d80c00))
+* **workflow:** edit workflow for docker ([10608c7](https://github.com/rudemex/nestjs-starter/commit/10608c786177e7c3470a6cd9effaceeab57c178c))
+* **workflow:** edit workflow to docker ([59d8650](https://github.com/rudemex/nestjs-starter/commit/59d865070df9c53cc98ba7d65b270c46f04f9c93))
+
 ### [1.2.9](https://github.com/rudemex/nestjs-starter/compare/v1.2.8...v1.2.9) (2022-02-04)
 
 ### 👨‍💻 Chores
