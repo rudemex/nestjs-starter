@@ -10,12 +10,12 @@ import { CharactersModule } from './characters/characters.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-import { config, enviroments, validationSchema } from './config';
+import { config, environments, validationSchema } from './config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: enviroments[`${process.env.NODE_ENV}`],
+      envFilePath: environments[`${process.env.NODE_ENV}`],
       ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true' || false,
       load: [config],
       isGlobal: true,

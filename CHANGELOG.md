@@ -4,68 +4,59 @@
 
 ### [1.2.9](https://github.com/rudemex/nestjs-starter/compare/v1.2.8...v1.2.9) (2022-02-04)
 
-
 ### 👨‍💻 Chores
 
-* add cookie parser ([9fc2db1](https://github.com/rudemex/nestjs-starter/commit/9fc2db1034b4d9f5f80c10e7f02f304898ec65ad))
+- add cookie parser ([9fc2db1](https://github.com/rudemex/nestjs-starter/commit/9fc2db1034b4d9f5f80c10e7f02f304898ec65ad))
 
 ### [1.2.8](https://github.com/rudemex/nestjs-starter/compare/v1.2.7...v1.2.8) (2022-02-02)
 
-
 ### 🐛 Bug Fixes
 
-* put method parameter as unknown value was passed to the validate function ([9f05f27](https://github.com/rudemex/nestjs-starter/commit/9f05f2764619e236924d401061610aad823ff3b2))
-
+- put method parameter as unknown value was passed to the validate function ([9f05f27](https://github.com/rudemex/nestjs-starter/commit/9f05f2764619e236924d401061610aad823ff3b2))
 
 ### 👨‍💻 Chores
 
-* **docker:** remove files of docker test ([ced9f8c](https://github.com/rudemex/nestjs-starter/commit/ced9f8cc2d1f691cbf2a58ea6c25c3ead521e31c))
+- **docker:** remove files of docker test ([ced9f8c](https://github.com/rudemex/nestjs-starter/commit/ced9f8cc2d1f691cbf2a58ea6c25c3ead521e31c))
 
 ### [1.2.7](https://github.com/rudemex/nestjs-starter/compare/v1.2.6...v1.2.7) (2022-01-27)
 
-
 ### 👨‍💻 Chores
 
-* merge master ([bc06c48](https://github.com/rudemex/nestjs-starter/commit/bc06c4803d16acf41b649fe3909ac377a7ac447d))
-* test packages firts commit ([4ff61b2](https://github.com/rudemex/nestjs-starter/commit/4ff61b28356eabf96989d66475ba0db37d9790d9))
-* update dependencie health ([d729f49](https://github.com/rudemex/nestjs-starter/commit/d729f49a3289ccea3c5549164d9a90e926eb9f6c))
-* update dependencies ([d952f55](https://github.com/rudemex/nestjs-starter/commit/d952f55a8c289034ee3005b1d75ebb04b21c060c))
-* update httpcliente module ([42db652](https://github.com/rudemex/nestjs-starter/commit/42db65207be0d1c76668bda467f2a1978f0b0091))
-* **workflow:** edit release workflow ([171ecfe](https://github.com/rudemex/nestjs-starter/commit/171ecfeea1ccb5aba39953c3c335b04a966e437a))
-* **workflow:** rollback workflow release ([2f79c32](https://github.com/rudemex/nestjs-starter/commit/2f79c323be7d1f7cd8293eef4e1e5537aa1c8679))
+- merge master ([bc06c48](https://github.com/rudemex/nestjs-starter/commit/bc06c4803d16acf41b649fe3909ac377a7ac447d))
+- test packages firts commit ([4ff61b2](https://github.com/rudemex/nestjs-starter/commit/4ff61b28356eabf96989d66475ba0db37d9790d9))
+- update dependencie health ([d729f49](https://github.com/rudemex/nestjs-starter/commit/d729f49a3289ccea3c5549164d9a90e926eb9f6c))
+- update dependencies ([d952f55](https://github.com/rudemex/nestjs-starter/commit/d952f55a8c289034ee3005b1d75ebb04b21c060c))
+- update httpcliente module ([42db652](https://github.com/rudemex/nestjs-starter/commit/42db65207be0d1c76668bda467f2a1978f0b0091))
+- **workflow:** edit release workflow ([171ecfe](https://github.com/rudemex/nestjs-starter/commit/171ecfeea1ccb5aba39953c3c335b04a966e437a))
+- **workflow:** rollback workflow release ([2f79c32](https://github.com/rudemex/nestjs-starter/commit/2f79c323be7d1f7cd8293eef4e1e5537aa1c8679))
 
 ### [1.2.6](https://github.com/rudemex/nestjs-starter/compare/v1.2.5...v1.2.6) (2022-01-12)
 
-
 ### 👨‍💻 Chores
 
-* update dependencies ([ccfc91b](https://github.com/rudemex/nestjs-starter/commit/ccfc91b25a78aa8af18907c866ff8c4b9b5f72d6))
+- update dependencies ([ccfc91b](https://github.com/rudemex/nestjs-starter/commit/ccfc91b25a78aa8af18907c866ff8c4b9b5f72d6))
 
 ### [1.2.5](https://github.com/rudemex/nestjs-starter/compare/v1.2.4...v1.2.5) (2022-01-12)
 
-
 ### ♻️Refactors
 
-* **http:** implement http client module ([c95e04e](https://github.com/rudemex/nestjs-starter/commit/c95e04edcab9b4470ba2359ae766de97ee418266))
-
+- **http:** implement http client module ([c95e04e](https://github.com/rudemex/nestjs-starter/commit/c95e04edcab9b4470ba2359ae766de97ee418266))
 
 ### 🐛 Bug Fixes
 
-* **character:** refactor request to tracing test ([c4c6809](https://github.com/rudemex/nestjs-starter/commit/c4c6809b33e0c9c1ff68b70b6a6b16eb4b02b533))
-* **nestjs-cli:** resolver corruption in cli of colors dependencie ([662ddf9](https://github.com/rudemex/nestjs-starter/commit/662ddf942fc3e882a8a42f53d6528cfa88167ace))
-
+- **character:** refactor request to tracing test ([c4c6809](https://github.com/rudemex/nestjs-starter/commit/c4c6809b33e0c9c1ff68b70b6a6b16eb4b02b533))
+- **nestjs-cli:** resolver corruption in cli of colors dependencie ([662ddf9](https://github.com/rudemex/nestjs-starter/commit/662ddf942fc3e882a8a42f53d6528cfa88167ace))
 
 ### 👨‍💻 Chores
 
-* format code ([98332ad](https://github.com/rudemex/nestjs-starter/commit/98332ad8cfb1e7c0b3280ef509f4d7b7a4ebedd0))
-* test tracing module ([cd6d358](https://github.com/rudemex/nestjs-starter/commit/cd6d3585ae81e15e360931c3282f54a49d822d7c))
-* update dependencies ([d88c017](https://github.com/rudemex/nestjs-starter/commit/d88c0173c7a0244e7fe8a26e394fd20066f7df70))
-
+- format code ([98332ad](https://github.com/rudemex/nestjs-starter/commit/98332ad8cfb1e7c0b3280ef509f4d7b7a4ebedd0))
+- test tracing module ([cd6d358](https://github.com/rudemex/nestjs-starter/commit/cd6d3585ae81e15e360931c3282f54a49d822d7c))
+- update dependencies ([d88c017](https://github.com/rudemex/nestjs-starter/commit/d88c0173c7a0244e7fe8a26e394fd20066f7df70))
 
 ### 📝 Docs
 
-* edit readme table of toolkit ([1e59003](https://github.com/rudemex/nestjs-starter/commit/1e5900347847bfc9d6ff5bceafd66371ec28952a))
-* **readme:** edit readme with new package ([4594690](https://github.com/rudemex/nestjs-starter/commit/4594690c07416f6a0ea98e175b547f7bbccc06c7))
+- edit readme table of toolkit ([1e59003](https://github.com/rudemex/nestjs-starter/commit/1e5900347847bfc9d6ff5bceafd66371ec28952a))
+- **readme:** edit readme with new package ([4594690](https://github.com/rudemex/nestjs-starter/commit/4594690c07416f6a0ea98e175b547f7bbccc06c7))
 
 ### [1.2.4](https://github.com/rudemex/nestjs-starter/compare/v1.2.3...v1.2.4) (2021-12-18)
 
@@ -113,7 +104,7 @@
 
 ### ♻️Refactors
 
-- **config:** add is prod property and refactor env files fot enviroments ([f975c90](https://github.com/rudemex/nestjs-starter/commit/f975c90a5dc36b4f49a4fb5c14f3b55120929259))
+- **config:** add is prod property and refactor env files fot environments ([f975c90](https://github.com/rudemex/nestjs-starter/commit/f975c90a5dc36b4f49a4fb5c14f3b55120929259))
 
 ### 📝 Docs
 

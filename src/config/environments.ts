@@ -1,4 +1,4 @@
-export const enviroments = {
+export const environments = {
   dev: '.env',
   int: '.env.int',
   qas: '.env.qas',

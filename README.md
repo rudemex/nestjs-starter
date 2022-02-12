@@ -148,7 +148,7 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 - Type: `Boolean`
 - Default: `true`
 
-#### Params, Services y Otros enviroments
+#### Params, Services y Otros environments
 
 A modo de ejemplo, se pueden cargar todas las variables de entorno que requieras, es importante seguir con el esquema
 de `key:value` para configurarlas.
@@ -171,7 +171,7 @@ También cuenta con un validador de variables de entorno, que nos permite valida
 dicha variable.
 
 Todos estos features los podemos encontrar en la carpeta **./src/config**, en dicha carpeta podemos encontrar el archivo
-**enviroments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
+**environments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
 
 <a name="scripts"></a>
 
