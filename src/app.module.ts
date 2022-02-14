@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from '@tresdoce/nestjs-health';
 import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
+import { ArchetypeModule } from '@tresdoce/nestjs-archetype';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -21,6 +22,7 @@ import { config, environments, validationSchema } from './config';
       isGlobal: true,
       validationSchema,
     }),
+    ArchetypeModule,
     HealthModule.register(config()),
     HttpClientModule,
     UtilsModule,

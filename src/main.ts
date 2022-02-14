@@ -4,6 +4,7 @@ import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { controllersExcludes } from '@tresdoce/nestjs-health';
+import { manifestControllerExcludes } from '@tresdoce/nestjs-archetype';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -16,7 +17,7 @@ async function bootstrap() {
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
-    exclude: [...controllersExcludes],
+    exclude: [...controllersExcludes, ...manifestControllerExcludes],
   });
 
   app.use(cookieParser());
