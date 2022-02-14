@@ -28,7 +28,7 @@
     "start:prod": "cross-env NODE_ENV=production IGNORE_ENV_FILE=true node dist/main",
     "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
     "pre-commit": "lint-staged",
-    "test": "jest --runInBand --detectOpenHandles --coverage",
+    "test": "jest --runInBand --detectOpenHandles --forceExit --coverage",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -50,7 +50,7 @@
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged && jest"
+      "pre-commit": "lint-staged && npm run test"
     }
   },
   "lint-staged": {
