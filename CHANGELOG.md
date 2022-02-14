@@ -2,6 +2,18 @@
 
 ---
 
+### [1.2.12](https://github.com/rudemex/nestjs-starter/compare/v1.2.11...v1.2.12) (2022-02-14)
+
+
+### 👨‍💻 Chores
+
+* add archetype module ([0a2960b](https://github.com/rudemex/nestjs-starter/commit/0a2960bc9c6cb6991352a830abd15129f1f2173b))
+* add flags to jest pre commit ([66af6d7](https://github.com/rudemex/nestjs-starter/commit/66af6d75e06e083811183dbecba8b422db3a3207))
+* edit husky pre commit ([7785c7e](https://github.com/rudemex/nestjs-starter/commit/7785c7ee8d25c5f89e9c530fa2c618b92b697a41))
+* edit script to husky pre commit ([495edc4](https://github.com/rudemex/nestjs-starter/commit/495edc421aedf79b5e13c8a075212f7bfbce146c))
+* fixes ([3420c20](https://github.com/rudemex/nestjs-starter/commit/3420c2021ec942cdb911ebfde9827d4efcca5112))
+* pre commit run script test ([a70998a](https://github.com/rudemex/nestjs-starter/commit/a70998a01f5e7a10d397571957aa7f7e76a706bf))
+
 ### [1.2.11](https://github.com/rudemex/nestjs-starter/compare/v1.2.10...v1.2.11) (2022-02-12)
 
 
