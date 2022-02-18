@@ -15,9 +15,9 @@
     {"type": "ci", "hidden": true},
     {"type": "revert", "hidden": true}
   ],
+  "issuePrefixes": ["#"],
   "commitUrlFormat": "https://github.com/rudemex/nestjs-starter/commit/{{hash}}",
   "compareUrlFormat": "https://github.com/rudemex/nestjs-starter/compare/{{previousTag}}...{{currentTag}}",
-  "issuePrefixes": ["#"],
   "issueUrlFormat": "https://github.com/rudemex/nestjs-starter/issues/{{id}}",
   "skip": {
     "bump": false,

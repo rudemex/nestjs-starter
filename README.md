@@ -39,6 +39,7 @@
 - [📚 Swagger](#swagger-info)
 - [🧰 Toolkit](#toolkit)
 - [📤 Commits](#commits)
+- [🏷️ Versioning](#versioning)
 - [📄 Changelog](./CHANGELOG.md)
 - [📜 License MIT](license.md)
 
@@ -82,6 +83,7 @@ ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origi
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
 CORS_ENABLED=true
 CORS_CREDENTIALS=false
+IGNORE_ENV_FILE=false
 
 # SWAGGER ENVIRONMENTS
 SWAGGER_PATH=docs
@@ -132,6 +134,11 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 - Default: `false`
 
 `CORS_CREDENTIALS`: Habilita o deshabilita el uso de las credenciales en las peticiones CORS en el servidor.
+
+- Type: `Boolean`
+- Default: `false`
+
+`IGNORE_ENV_FILE`: Habilita o deshabilita obtener las variables de entorno desde un archivo `.env`.
 
 - Type: `Boolean`
 - Default: `false`
@@ -284,6 +291,54 @@ referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.
 - **type:** chore, docs, feat, fix, refactor (más comunes)
 - **scope:** indica la página, componente, funcionalidad
 - **description:** comienza en minúsculas y no debe superar los 72 caracteres.
+
+### Ejemplo
+
+`git commit -m "docs(readme): add documentantion to readme"`
+
+<a name="versioning"></a>
+
+## 🏷️ Versioning
+
+Este stater cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions, ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version), actualmente está configurado para incrementar la version en un archivo custom y no en el package.json.
+
+Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
+
+- Asegurarse de que la version del `package.json` este en un valor inicial de `0.0.1` o `1.0.0`.
+- - Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
+- Borrar los archivos `CHANGELOG.md` y `VERSION_TRACKER.txt`
+- Editar el archivo `.versionrc` borrando la configuración del **bumpFile**, y editando él `owner` y el nombre del `repo`.
+
+```json
+// .versionrc
+{
+  "header": "<div align=\"center\"><h1>📝 Changelog</h1><p>All changes of this project will be documented in this file.</p></div>\n\n---\n",
+  "path": "./",
+  "releaseCommitMessageFormat": "ci(release): bumped version to {{currentTag}}",
+  "types": [
+    { "type": "feat", "section": "✨ Features", "hidden": false },
+    { "type": "fix", "section": "\uD83D\uDC1B Bug Fixes", "hidden": false },
+    { "type": "chore", "section": "👨‍💻 Chores", "hidden": false },
+    { "type": "docs", "section": "\uD83D\uDCDD Docs", "hidden": false },
+    { "type": "refactor", "section": "♻️Refactors", "hidden": false },
+    { "type": "test", "section": "🧪 Tests", "hidden": true },
+    { "type": "build", "section": "🛠 Build", "hidden": true },
+    { "type": "perf", "hidden": true },
+    { "type": "style", "hidden": true },
+    { "type": "ci", "hidden": true },
+    { "type": "revert", "hidden": true }
+  ],
+  "issuePrefixes": ["#"],
+  "commitUrlFormat": "https://github.com/<owner>/<repo-name>/commit/{{hash}}",
+  "compareUrlFormat": "https://github.com/<owner>/<repo-name>/compare/{{previousTag}}...{{currentTag}}",
+  "issueUrlFormat": "https://github.com/<owner>/<repo-name>/issues/{{id}}",
+  "skip": {
+    "bump": false,
+    "commit": false,
+    "tag": false
+  }
+}
+```
 
 ## 📄 Changelog
 
