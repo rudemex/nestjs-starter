@@ -39,7 +39,7 @@
 - [📚 Swagger](#swagger-info)
 - [🧰 Toolkit](#toolkit)
 - [📤 Commits](#commits)
-- [🏷️ Versioning](#versioning)
+- [🏷️ Versionado](#versioning)
 - [📄 Changelog](./CHANGELOG.md)
 - [📜 License MIT](license.md)
 
@@ -298,14 +298,14 @@ referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.
 
 <a name="versioning"></a>
 
-## 🏷️ Versioning
+## 🏷️ Versionado
 
-Este stater cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions, ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version), actualmente está configurado para incrementar la version en un archivo custom y no en el package.json.
+Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./github/workflows/release.yml`), ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version), actualmente está configurado para incrementar la version en un archivo custom y no en el package.json.
 
 Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
 
 - Asegurarse de que la version del `package.json` este en un valor inicial de `0.0.1` o `1.0.0`.
-- - Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
+- Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
 - Borrar los archivos `CHANGELOG.md` y `VERSION_TRACKER.txt`
 - Editar el archivo `.versionrc` borrando la configuración del **bumpFile**, y editando él `owner` y el nombre del `repo`.
 
