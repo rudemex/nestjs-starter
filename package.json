@@ -63,6 +63,7 @@
     "npm": "^6.x"
   },
   "dependencies": {
+    "@tresdoce/nestjs-tracing": "./tresdoce-nestjs-tracing-0.0.1.tgz",
     "@tresdoce/nestjs-archetype": "0.0.2",
     "@nestjs/class-transformer": "^0.4.0",
     "@nestjs/class-validator": "^0.13.3",

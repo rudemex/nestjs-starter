@@ -3,6 +3,7 @@ import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from '@tresdoce/nestjs-health';
 import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
 import { ArchetypeModule } from '@tresdoce/nestjs-archetype';
+import { TracingInterceptor, TracingModule } from '@tresdoce/nestjs-tracing';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -12,6 +13,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { config, environments, validationSchema } from './config';
+import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -22,6 +24,7 @@ import { config, environments, validationSchema } from './config';
       isGlobal: true,
       validationSchema,
     }),
+    TracingModule,
     ArchetypeModule,
     HealthModule.register(config()),
     HttpClientModule,
@@ -30,6 +33,12 @@ import { config, environments, validationSchema } from './config';
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [
+    AppService,
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: TracingInterceptor,
+    },
+  ],
 })
 export class AppModule {}

@@ -5,9 +5,18 @@ import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { controllersExcludes } from '@tresdoce/nestjs-health';
 import { manifestControllerExcludes } from '@tresdoce/nestjs-archetype';
+import { otelSDK } from '@tresdoce/nestjs-tracing';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
+  await otelSDK({
+    serviceName: 'nestjs-starter',
+    jaegerExporterConfig: {
+      endpoint: 'http://localhost:14268/api/traces',
+    },
+  }).start();
+
   const app = await NestFactory.create(AppModule, {
     logger: new Logger(),
   });
