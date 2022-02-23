@@ -37,6 +37,7 @@
 - [⚙️ Configuración](#configurations)
 - [💻 Scripts](#scripts)
 - [📚 Swagger](#swagger-info)
+- [🐳 Docker](#docker)
 - [🧰 Toolkit](#toolkit)
 - [📤 Commits](#commits)
 - [🏷️ Versionado](#versioning)
@@ -257,6 +258,27 @@ definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-
 
 - Default: `http://localhost:8080/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
+
+<a name="docker"></a>
+
+## 🐳 Docker
+
+El proyecto cuenta con un `dockerfile` y un `docker-compose.yml` de base, listo para utilizar y expandir sus capacidades.
+
+### Docker Build
+
+Schema: `docker build . -t <user-docker>/<app-name>`
+
+### Docker Compose
+
+Schema: `docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>`
+
+### Ejemplo
+
+```
+docker build -t nestjs-starter .
+docker run -d -p 8080:8080 --env-file .env.prod nestjs-starter
+```
 
 <a name="toolkit"></a>
 
