@@ -11,6 +11,8 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
   GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
+  DOCKER_USER: ${{ secrets.DOCKER_USER }}
+  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
 
 jobs:
   setup:
@@ -43,11 +45,57 @@ jobs:
       - name: "📦 Install packages"
         run: npm install
 
+      - name: "🔦 Lint"
+        run: npm run lint
+
+      - name: "🔨 Build"
+        run: npm run build
+
+      - name: "👨‍💻 Run Test"
+        run: npm run test
+        env:
+          NODE_ENV: 'test'
+
+      - name: "📊 Upload coverage report to Codecov"
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: "📊 SonarCloud Scan"
+        uses: SonarSource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=${{ github.repository_owner }}
+            -Dsonar.projectKey=${{ github.repository_owner }}_${{ github.event.repository.name }}
+            -Dsonar.projectName=${{ github.repository_owner }}_${{ github.event.repository.name }}
+            -Dsonar.projectVersion=1.0
+            -Dsonar.sourceEncoding=UTF-8
+            -Dsonar.sources=./src
+            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
+            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
+            -Dsonar.testExecutionReportPaths=test-report.xml
+            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
+            -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+      - name: "🐳 Docker"
+        run: |
+          docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+          docker build -t ${{ github.event.repository.name }} .
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:v${{github.event.inputs.newVersion}}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:v${{github.event.inputs.newVersion}}  
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest       
+
       - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
         run: |
           git config --global user.name "GitHub CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
-          npm run release -- --release-as ${{github.event.inputs.newVersion}}
+          npm run release -- --release-as ${{github.event.inputs.newVersion}}        
           git push --follow-tags origin master
 
       - name: "📄 Create Changelog"
@@ -63,9 +111,9 @@ jobs:
           release_name: "v${{github.event.inputs.newVersion}}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
-
+            
             ---
-
+            
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
           prerelease: false

@@ -64,9 +64,9 @@ jobs:
         uses: SonarSource/sonarcloud-github-action@master
         with:
           args: >
-            -Dsonar.organization=${{ github.event.repository.owner.login }}
-            -Dsonar.projectKey=${{ github.event.repository.owner.login }}_${{ github.event.repository.name }}
-            -Dsonar.projectName=${{ github.event.repository.owner.login }}_${{ github.event.repository.name }}
+            -Dsonar.organization=${{ github.repository_owner }}
+            -Dsonar.projectKey=${{ github.repository_owner }}_${{ github.event.repository.name }}
+            -Dsonar.projectName=${{ github.repository_owner }}_${{ github.event.repository.name }}
             -Dsonar.projectVersion=1.0
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.sources=./src
