@@ -2,6 +2,34 @@
 
 ---
 
+## [1.3.0](https://github.com/rudemex/nestjs-starter/compare/v1.2.12...v1.3.0) (2022-02-24)
+
+
+### 👨‍💻 Chores
+
+* **workflow:** edit owner repository in all workflows ([c839d58](https://github.com/rudemex/nestjs-starter/commit/c839d58ac6637752085d6358e119df8fd2c04faa))
+* **workflow:** edit owner repository sonar ([8f066f4](https://github.com/rudemex/nestjs-starter/commit/8f066f42de54c3f7156418ea9317b3e28643592a))
+* **workflows:** edit develop master and release workflows ([8ad9a3f](https://github.com/rudemex/nestjs-starter/commit/8ad9a3ff1297a9b6c9ff4e49f76777e07ee50f7d))
+
+
+### 🐛 Bug Fixes
+
+* **workflow:** add envs docker in workflow master ([642b543](https://github.com/rudemex/nestjs-starter/commit/642b543bcf984ecb4540e3a6c60480275137cc10))
+
+
+### 📝 Docs
+
+* **readme:** add docker documentation ([3435c2b](https://github.com/rudemex/nestjs-starter/commit/3435c2b767d7dd1b207d7beae1cd34c7cf227965))
+* **readme:** add versioning configuration ([9b0096e](https://github.com/rudemex/nestjs-starter/commit/9b0096ecc487ea18fa2d2abd239176c3030c2911))
+* **readme:** edit documentation ([25de11a](https://github.com/rudemex/nestjs-starter/commit/25de11a3efabd6fee43415618fc39f9044bdc581))
+* **readme:** edit readme ([e5e022f](https://github.com/rudemex/nestjs-starter/commit/e5e022fd1b2bf88a8b3d6abf9e6ee6f841b2cd6f))
+
+
+### ♻️Refactors
+
+* **version:** change verstion tracker to version file ([baa4f6f](https://github.com/rudemex/nestjs-starter/commit/baa4f6f7cda8d493dcfe170ddab6e501bd23519b))
+* **workflow:** refactor workflow release to manual dispatch ([ad06ea3](https://github.com/rudemex/nestjs-starter/commit/ad06ea3093be8285b14709bb4f13df01017b28da))
+
 ### [1.2.12](https://github.com/rudemex/nestjs-starter/compare/v1.2.11...v1.2.12) (2022-02-14)
 
 
