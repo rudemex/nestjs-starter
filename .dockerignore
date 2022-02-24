@@ -25,4 +25,4 @@ jest.config.ts
 jest.setup.ts
 license.md
 test-report.xml
-VERSION_TRACKER.txt
+version.txt

@@ -26,7 +26,7 @@
   },
   "bumpFiles":[
     {
-      "filename": "VERSION_TRACKER.txt",
+      "filename": "version.txt",
       "type": "plain-text"
     }
   ]

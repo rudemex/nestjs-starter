@@ -328,7 +328,7 @@ Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
 
 - Asegurarse de que la version del `package.json` este en un valor inicial. Ej. `0.0.1` o `1.0.0`.
 - Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
-- Borrar los archivos `CHANGELOG.md` y `VERSION_TRACKER.txt`
+- Borrar los archivos `CHANGELOG.md` y `version.txt`
 - Editar el archivo `.versionrc` borrando la configuración del **bumpFile**, y editando él `owner` y el nombre del `repo`.
 
 ```json
