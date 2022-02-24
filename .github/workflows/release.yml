@@ -3,15 +3,10 @@ name: "Release"
 on:
   workflow_dispatch:
     inputs:
-      release:
-        type: choice
-        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]-[PRE-RELEASE].X"
+      newVersion:
+        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]"
         required: true
-        options:
-          - pre-release
-          - patch
-          - minor
-          - major
+        default: '0.0.0'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -85,37 +80,23 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
-      - name: "🏷️ Create Release as ${{ github.event.inputs.release }} version"
-        run: |
-          git config --global user.name "GitHub CD bot"
-          git config --global user.email "${GITHUB_EMAIL}"
-          if ${{github.event.inputs.release == 'pre-release'}}; then
-            npm run release -- --prerelease alpha
-          else
-            npm run release -- --release-as ${{github.event.inputs.release}}
-          fi          
-          git push --follow-tags origin master
-          echo "LATEST_TAG=$(git describe --abbrev=0 --tags)" >> $GITHUB_ENV
-
       - name: "🐳 Docker"
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
           docker build -t ${{ github.event.repository.name }} .
-          if ${{github.event.inputs.release == 'pre-release'}}; then
-            # prerelease alpha
-            docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-            docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{env.LATEST_TAG}}
-            docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-            docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{env.LATEST_TAG}}   
-          else
-            # release-as 
-            docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-            docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{env.LATEST_TAG}}
-            docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
-            docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-            docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{env.LATEST_TAG}}  
-            docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest   
-          fi     
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:v${{github.event.inputs.newVersion}}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:v${{github.event.inputs.newVersion}}  
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest       
+
+      - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
+        run: |
+          git config --global user.name "GitHub CD bot"
+          git config --global user.email "${GITHUB_EMAIL}"
+          npm run release -- --release-as ${{github.event.inputs.newVersion}}        
+          git push --follow-tags origin master
 
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
@@ -123,11 +104,11 @@ jobs:
         env:
           REPO: ${{ github.repository }}
 
-      - name: "🚀 Publish Release: ${{env.LATEST_TAG}}"
+      - name: "🚀 Publish Release: v${{github.event.inputs.newVersion}}"
         uses: actions/create-release@v1
         with:
-          tag_name: "${{env.LATEST_TAG}}"
-          release_name: "${{env.LATEST_TAG}}"
+          tag_name: "v${{github.event.inputs.newVersion}}"
+          release_name: "v${{github.event.inputs.newVersion}}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
             
@@ -135,4 +116,4 @@ jobs:
             
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
-          prerelease: ${{ github.event.inputs.release == 'pre-release' }}
+          prerelease: false
