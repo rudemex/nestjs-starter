@@ -4,32 +4,32 @@
 
 # EXAMPLES
 # docker build -t nestjs-starter .
-# docker run -d -p 8080:8080 --env-file .env.prod nestjs-starter
+# docker run -d -p 8080:8080 --env-file .env nestjs-starter
+# docker run -it -p 8080:8080 --env-file .env nestjs-starter
 # docker system prune
 
-FROM node:14-alpine3.14 as builder
+FROM node:14-alpine3.15 as builder
 
 ARG NODE_ENV=build
 ENV NODE_ENV=${NODE_ENV}
 
+USER node
 WORKDIR /usr/src/app
 
-COPY package.json ./
+COPY package*.json yarn.lock ./
 
-RUN npm install
+RUN yarn install
 
 COPY . .
 
-RUN npm run build
-RUN npm prune --production
+RUN yarn build
 
 # ---
 
-FROM node:14-alpine3.14
+FROM node:14-alpine3.15
+LABEL name=nestjs-starter
 
-ARG NODE_ENV=production
-ENV NODE_ENV=${NODE_ENV}
-
+USER node
 WORKDIR /usr/src/app
 
 COPY --from=builder /usr/src/app/package*.json ./
@@ -37,4 +37,4 @@ COPY --from=builder /usr/src/app/node_modules/ ./node_modules/
 COPY --from=builder /usr/src/app/dist ./dist
 
 EXPOSE 8080
-CMD ["node", "dist/main"]
+ENTRYPOINT ["yarn", "start"]

@@ -1,9 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { HealthModule } from '@tresdoce/nestjs-health';
+import { HealthModule } from '@tresdoce-nestjs-toolkit/health';
 import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
 import { ArchetypeModule } from '@tresdoce/nestjs-archetype';
-import { TracingInterceptor, TracingModule } from '@tresdoce/nestjs-tracing';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -13,32 +12,24 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { config, environments, validationSchema } from './config';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: environments[`${process.env.NODE_ENV}`],
-      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true' || false,
+      ignoreEnvFile: process.env.NODE_ENV === 'production' || false,
       load: [config],
       isGlobal: true,
       validationSchema,
     }),
-    TracingModule,
     ArchetypeModule,
-    HealthModule.register(config()),
+    HealthModule,
     HttpClientModule,
     UtilsModule,
     CharactersModule,
     UsersModule,
   ],
   controllers: [AppController],
-  providers: [
-    AppService,
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: TracingInterceptor,
-    },
-  ],
+  providers: [AppService],
 })
 export class AppModule {}

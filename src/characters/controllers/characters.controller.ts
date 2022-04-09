@@ -14,10 +14,4 @@ export class CharactersController {
   async getCharacter(@Query() params?: FilterCharacter) {
     return this.characterService.getCharacter(params);
   }
-
-  @Get('testTrace')
-  @ApiOperation({ summary: 'Test trace character' })
-  async testTrace() {
-    return this.characterService.testTrace();
-  }
 }

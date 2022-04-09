@@ -15,20 +15,11 @@ export class CharactersService {
   async getCharacter(params?: FilterCharacter) {
     try {
       const { data } = await this.httpClient.get(
-        encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`),
+        encodeURI(`${this.appConfig.services.rickAndMortyAPI.url}/character`),
         {
           params,
         },
       );
-      return data;
-    } catch (error) /* istanbul ignore next */ {
-      return error;
-    }
-  }
-
-  async testTrace() {
-    try {
-      const { data } = await this.httpClient.get(encodeURI(`http://localhost:8080/api/characters`));
       return data;
     } catch (error) /* istanbul ignore next */ {
       return error;
