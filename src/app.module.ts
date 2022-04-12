@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { HealthModule } from '@tresdoce-nestjs-toolkit/health';
-import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
-import { ArchetypeModule } from '@tresdoce/nestjs-archetype';
+import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
+import { ArchetypeModule } from '@tresdoce-nestjs-toolkit/archetype';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';

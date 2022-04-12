@@ -17,7 +17,7 @@ async function bootstrap() {
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
-    exclude: [...corePathsExcludes],
+    exclude: corePathsExcludes,
   });
 
   app.use(cookieParser());

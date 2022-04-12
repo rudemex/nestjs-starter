@@ -32,7 +32,9 @@ export default registerAs('config', (): Typings.AppConfig => {
       testEnv: process.env.TEST_KEY,
     },
     services: {
-      nestJsDocs: { url: process.env.NEST_JS_DOCS_URL },
+      nestJsDocs: {
+        url: process.env.NEST_JS_DOCS_URL,
+      },
       rickAndMortyAPI: { url: process.env.RICK_AND_MORTY_API_URL, timeout: 3000 },
     },
   };
