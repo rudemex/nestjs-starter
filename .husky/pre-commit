@@ -3,4 +3,4 @@
 
 yarn lint
 yarn format
-jest --runInBand --detectOpenHandles --forceExit
+jest --detectOpenHandles --forceExit
