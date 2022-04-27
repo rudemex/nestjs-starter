@@ -2,31 +2,44 @@ version: '3.8'
 
 services:
   postgres:
-    image: postgres
+    image: postgres:13
     container_name: loc-postgres
-    logging:
-      driver: none
     environment:
       TZ: UTC
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: my_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
     ports:
       - '5432:5432'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    # get ip address for connect to pgadmin
+    # docker inspect loc-postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: loc-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
 
   mongo:
     image: mongo:5.0
     container_name: loc-mongo
-    logging:
-      driver: none
     environment:
       TZ: UTC
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
     ports:
       - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
 
   redis:
     image: redis:3-alpine
     container_name: loc-redis
-    logging:
-      driver: none
     environment:
       TZ: UTC
     ports:
