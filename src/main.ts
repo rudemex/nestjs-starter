@@ -21,7 +21,7 @@ async function bootstrap() {
     exclude: [...controllersExcludes, ...manifestControllerExcludes],
   });
 
-  app.use([helmet.xssFilter(), cookieParser()]);
+  app.use([helmet(), cookieParser()]);
 
   app.useGlobalPipes(
     new ValidationPipe({
