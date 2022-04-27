@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
+import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -20,7 +21,7 @@ async function bootstrap() {
     exclude: [...controllersExcludes, ...manifestControllerExcludes],
   });
 
-  app.use(cookieParser());
+  app.use([helmet(), cookieParser()]);
 
   app.useGlobalPipes(
     new ValidationPipe({

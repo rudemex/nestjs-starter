@@ -43,16 +43,16 @@ jobs:
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
       - name: "📦 Install packages"
-        run: npm install
+        run: yarn install
 
       - name: "🔦 Lint"
-        run: npm run lint
+        run: yarn lint
 
       - name: "🔨 Build"
-        run: npm run build
+        run: yarn build
 
       - name: "👨‍💻 Run Test"
-        run: npm run test
+        run: yarn test
         env:
           NODE_ENV: 'test'
 
