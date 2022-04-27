@@ -58,10 +58,6 @@
       "prettier --write"
     ]
   },
-  "engines": {
-    "node": "^14.x",
-    "npm": "^6.x"
-  },
   "dependencies": {
     "@nestjs/class-transformer": "^0.4.0",
     "@nestjs/class-validator": "^0.13.3",
