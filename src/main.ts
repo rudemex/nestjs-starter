@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { corePathsExcludes } from '@tresdoce-nestjs-toolkit/core';
@@ -20,7 +21,7 @@ async function bootstrap() {
     exclude: corePathsExcludes,
   });
 
-  app.use(cookieParser());
+  app.use([cookieParser(), helmet()]);
 
   app.useGlobalPipes(
     new ValidationPipe({

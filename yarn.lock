@@ -938,39 +938,44 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
 
-"@tresdoce-nestjs-toolkit/archetype@^0.1.0-beta.0":
-  version "0.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/archetype/-/archetype-0.1.0-beta.0.tgz#5f02f5728403372d3594d60c3f8ad8a9cec395c5"
-  integrity sha512-kCP2qIhtBKijCLme64+ZytWDWgXCCeywECp272vnO4KQgNkiBbqC0arpcEeZL9GpEhkYf8SKM6Aj4eNK0KUGbA==
+"@tresdoce-nestjs-toolkit/archetype@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/archetype/-/archetype-0.1.0-beta.1.tgz#8b9a7f0048037874d1fb4a5010a63ebbb2af3c4a"
+  integrity sha512-hOpEUwTxCn10zT4mCWLyN37ScnqJmsTcEb0LEH7jwIRoLo36mkCIkloqmzbBAypaWYlmXtdwJx9OrHleoryRWw==
 
-"@tresdoce-nestjs-toolkit/commons@^0.1.0-beta.0":
-  version "0.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/commons/-/commons-0.1.0-beta.0.tgz#b86e419cd078ebcbe9a34fb47e3115a56ec7f5b4"
-  integrity sha512-lwQHwtVWH2vwktrVi0+KAB9TE1Ht711204qpebmV0/BCNBRVSHaJ2S5MdMxlFCdv8BvajOVqlPeW0GyIn0nNMQ==
+"@tresdoce-nestjs-toolkit/commons@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/commons/-/commons-0.1.0-beta.1.tgz#5fa8c248c6269a1e940cb393537ead663c5abe66"
+  integrity sha512-lLKpA1qmeh6nBY/WGIPOE+6MvGen4gNDcW2Lay7PV+aE8X26AeX78MTkeKbR27sN/EC/2vK4o9C1UGvWoKvT6w==
 
-"@tresdoce-nestjs-toolkit/core@^0.1.0-beta.0":
-  version "0.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/core/-/core-0.1.0-beta.0.tgz#f65110b284b22b63e68011a9c40ccf3c717948e8"
-  integrity sha512-v6rmvIn7BZWqmF5+i/Q3MuuNyeSA6jwJbg9ATwN55ZFr9qZ1g8NOKY46EqwuDo259TwPUXzT6R72fheTnn12gw==
+"@tresdoce-nestjs-toolkit/core@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/core/-/core-0.1.0-beta.1.tgz#852e417dfe327d16193868cfb74adff3a0de0738"
+  integrity sha512-FcQFOsrSOlQcD2MhzJ6JTEWkKlnszjUIDo7f/ry4D7e6y7Q5yTtaWlfLzWD+kylCH4yIR4KHKYPhqrO956+UVQ==
 
-"@tresdoce-nestjs-toolkit/health@^0.1.0-beta.0":
-  version "0.1.0-beta.0"
-  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/health/-/health-0.1.0-beta.0.tgz#1d925d2604b20f0ff7373e1c756c3b9e053e75dc"
-  integrity sha512-8Z6R694VLPuddySd8Z4SGwZYBymUbtcZKCmSB76J94lIXp+ue5UR5q8rj2E8BO3ZgDd4Nr4+vdDcdwYJIyG4+Q==
+"@tresdoce-nestjs-toolkit/health@^0.1.0-beta.1":
+  version "0.1.0-beta.1"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/health/-/health-0.1.0-beta.1.tgz#c8cbad3b2d4a85de18af775d68096541cfc85799"
+  integrity sha512-Wv4pctsaaC8H/AXP82lsKErjNnZdh78VeMmXbCGuEkIAIe/+C2MPPipJJUGvFYQFhVD03HgW0Gb4qzggZ1fpyw==
   dependencies:
     "@nestjs/axios" "0.0.7"
     "@nestjs/swagger" "^5.2.0"
     "@nestjs/terminus" "^8.0.4"
     lodash "^4.17.21"
 
-"@tresdoce-nestjs-toolkit/http-client@^0.0.1-beta.0":
-  version "0.0.1-beta.0"
-  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/http-client/-/http-client-0.0.1-beta.0.tgz#2a67c2503f342cf84431b9a648d3c5cc56651a1b"
-  integrity sha512-xxK18eoeodNonp+VZFv6ujHXrQSldWjVLrJJg9pFPs4uhOU5linl0MJu+Hn2HISH8s36lUwm0S348WuVa7Ri3g==
+"@tresdoce-nestjs-toolkit/http-client@^0.0.1-beta.1":
+  version "0.0.1-beta.1"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/http-client/-/http-client-0.0.1-beta.1.tgz#afd78b9d51deeec65c8618790a0f0a8ef21e923a"
+  integrity sha512-o9Wta5mqE9OVZclFFS30zcL15+gRupOHbO0FJ4MBNMoqWLQU6kk45VwsaQG+kld3X3Hzq/qm7FOiHvUSiFfwOQ==
   dependencies:
     axios "^0.26.0"
     axios-retry "^3.2.4"
     lodash "^4.17.21"
+
+"@tresdoce-nestjs-toolkit/test-utils@^0.1.0-beta.0":
+  version "0.1.0-beta.0"
+  resolved "https://registry.yarnpkg.com/@tresdoce-nestjs-toolkit/test-utils/-/test-utils-0.1.0-beta.0.tgz#4f1e17738a34307962ef440bcd64693ee1e484b0"
+  integrity sha512-+iO76UICFWJAhs18kc8Qg6Bf3nhqKQP/AkebWCuzFYz0BffQGSARq+xUIagttkmHaUzFeA1VLJhsXxWidLMxmg==
 
 "@tsconfig/node10@^1.0.7":
   version "1.0.8"
@@ -3356,6 +3361,11 @@ has@^1.0.3:
   integrity sha512-f2dvO0VU6Oej7RkWJGrehjbzMAjFp5/VKPp5tTpWIV4JHHZK1/BxbFRtf/siA2SWTe09caDmVtYYzWEIbBS4zw==
   dependencies:
     function-bind "^1.1.1"
+
+helmet@^5.0.2:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/helmet/-/helmet-5.1.0.tgz#e98a5d4bf89ab8119c856018a3bcc82addadcd47"
+  integrity sha512-klsunXs8rgNSZoaUrNeuCiWUxyc+wzucnEnFejUg3/A+CaF589k9qepLZZ1Jehnzig7YbD4hEuscGXuBY3fq+g==
 
 hexoid@1.0.0:
   version "1.0.0"

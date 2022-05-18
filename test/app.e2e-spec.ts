@@ -31,14 +31,14 @@ describe('AppController (e2e)', () => {
     return request(app.getHttpServer()).get('/my-util').expect(200).expect('this is an util');
   });
 
-  it('/health/live (GET)', () => {
-    return request(app.getHttpServer()).get('/health/live').expect(200).expect({
+  it('/health/liveness (GET)', () => {
+    return request(app.getHttpServer()).get('/health/liveness').expect(200).expect({
       status: 'up',
     });
   });
 
-  it('/health/ready (GET)', () => {
-    return request(app.getHttpServer()).get('/health/ready').expect(200);
+  it('/health/readiness (GET)', () => {
+    return request(app.getHttpServer()).get('/health/readiness').expect(200);
   });
 
   it('/characters (GET)', () => {

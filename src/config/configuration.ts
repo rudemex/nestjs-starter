@@ -35,7 +35,11 @@ export default registerAs('config', (): Typings.AppConfig => {
       nestJsDocs: {
         url: process.env.NEST_JS_DOCS_URL,
       },
-      rickAndMortyAPI: { url: process.env.RICK_AND_MORTY_API_URL, timeout: 3000 },
+      rickAndMortyAPI: {
+        url: process.env.RICK_AND_MORTY_API_URL,
+        timeout: 3000,
+        healthPath: '/api/character/1',
+      },
     },
   };
 });
