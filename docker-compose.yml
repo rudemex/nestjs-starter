@@ -1,48 +1,66 @@
 version: '3.8'
 
 services:
-  dev:
-    container_name: nestjs_starter_dev
-    image: nestjs-starter-dev:1.0.0
-    env_file:
-      - ./.env
+  postgres:
+    image: postgres:13
+    container_name: loc-postgres
     environment:
-      - NODE_ENV=dev
-      - IGNORE_ENV_FILE=false
+      TZ: UTC
+      POSTGRES_DB: my_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+    # get ip address for connect to pgadmin
+    # docker inspect loc-postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: loc-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+  mongo:
+    image: mongo:5.0
+    container_name: loc-mongo
+    environment:
+      TZ: UTC
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
+
+  redis:
+    image: redis:3-alpine
+    container_name: loc-redis
+    environment:
+      TZ: UTC
+    ports:
+      - '6379:6379'
+
+  app:
+    container_name: loc-app
+    env_file:
+      - .env.dev
     build:
       context: .
-      target: development
-      dockerfile: ./Dockerfile
-    command: npm run start:dev
+      dockerfile: Dockerfile
+    command: "yarn start:dev"
     ports:
-      - 8080:8080
+      - '8080:8080'
     networks:
-      - nesjs-network
+      - nestjs-network
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
-  prod:
-    container_name: nestjs_starter_prod
-    image: nestjs-starter-prod:1.0.0
-    env_file:
-      - ./.env.prod
-    environment:
-      - NODE_ENV=production
-      - IGNORE_ENV_FILE=true
-    build:
-      context: .
-      target: production
-      dockerfile: ./Dockerfile
-    command: npm run start:prod
-    ports:
-      - 8080:8080
-    networks:
-      - nesjs-network
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./usr/src/app
+      - ./usr/src/app/node_modules
     restart: unless-stopped
 
 networks:
-  nesjs-network:
+  nestjs-network:

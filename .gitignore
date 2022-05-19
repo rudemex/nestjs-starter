@@ -50,3 +50,7 @@ test-report.xml
 .env
 !.env.test
 !.env.example
+
+# DATA
+./mongo_data
+./postgres_data

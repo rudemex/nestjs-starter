@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { HealthModule } from '@tresdoce/nestjs-health';
-import { HttpClientModule } from '@tresdoce/nestjs-httpclient';
-import { ArchetypeModule } from '@tresdoce/nestjs-archetype';
+import { HealthModule } from '@tresdoce-nestjs-toolkit/health';
+import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
+import { ArchetypeModule } from '@tresdoce-nestjs-toolkit/archetype';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -17,13 +17,13 @@ import { config, environments, validationSchema } from './config';
   imports: [
     ConfigModule.forRoot({
       envFilePath: environments[`${process.env.NODE_ENV}`],
-      ignoreEnvFile: process.env.IGNORE_ENV_FILE.toLowerCase() === 'true' || false,
+      ignoreEnvFile: process.env.NODE_ENV === 'production' || false,
       load: [config],
       isGlobal: true,
       validationSchema,
     }),
     ArchetypeModule,
-    HealthModule.register(config()),
+    HealthModule,
     HttpClientModule,
     UtilsModule,
     CharactersModule,

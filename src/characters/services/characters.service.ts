@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
-import { HttpClientService } from '@tresdoce/nestjs-httpclient';
+import { HttpClientService } from '@tresdoce-nestjs-toolkit/http-client';
 
 import { FilterCharacter } from '../dtos/character.dto';
 import { config } from '../../config';
@@ -15,7 +15,7 @@ export class CharactersService {
   async getCharacter(params?: FilterCharacter) {
     try {
       const { data } = await this.httpClient.get(
-        encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`),
+        encodeURI(`${this.appConfig.services.rickAndMortyAPI.url}/character`),
         {
           params,
         },

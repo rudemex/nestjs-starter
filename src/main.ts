@@ -1,11 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import helmet from 'helmet';
 import * as cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { controllersExcludes } from '@tresdoce/nestjs-health';
-import { manifestControllerExcludes } from '@tresdoce/nestjs-archetype';
+import { corePathsExcludes } from '@tresdoce-nestjs-toolkit/core';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -18,10 +18,10 @@ async function bootstrap() {
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
-    exclude: [...controllersExcludes, ...manifestControllerExcludes],
+    exclude: corePathsExcludes,
   });
 
-  app.use([helmet(), cookieParser()]);
+  app.use([cookieParser(), helmet()]);
 
   app.useGlobalPipes(
     new ValidationPipe({
