@@ -1,48 +1,95 @@
+# docker-compose.yml - Only for local debug purposes
+
 version: '3.8'
 
 services:
-  dev:
-    container_name: nestjs_starter_dev
-    image: nestjs-starter-dev:1.0.0
-    env_file:
-      - ./.env
+  postgres:
+    image: postgres:13
+    container_name: local-postgres
     environment:
-      - NODE_ENV=dev
-      - IGNORE_ENV_FILE=false
+      TZ: UTC
+      POSTGRES_DB: my_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data
+      # get ip address for connect to pgadmin
+      # docker inspect local-postgres
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: local-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
+
+  mysql:
+    image: mysql:5.7
+    container_name: local-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.mysql-data/db:/var/lib/mysql
+
+  mongo:
+    image: mongo:5.0
+    container_name: local-mongo
+    environment:
+      TZ: UTC
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    ports:
+      - '27017:27017'
+    volumes:
+      - ./mongo_data:/data/db
+
+  redis:
+    image: redis:3-alpine
+    container_name: local-redis
+    environment:
+      TZ: UTC
+    ports:
+      - '6379:6379'
+
+  jaeger:
+    container_name: local-jaeger
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    environment:
+      - LOG_LEVEL=debug
+
+  app:
+    container_name: local-app
+    env_file:
+      - .env.dev
     build:
       context: .
-      target: development
-      dockerfile: ./Dockerfile
-    command: npm run start:dev
+      dockerfile: Dockerfile
+    command: "yarn start:dev"
     ports:
-      - 8080:8080
+      - '8080:8080'
     networks:
-      - nesjs-network
+      - nestjs-network
     volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: unless-stopped
-  prod:
-    container_name: nestjs_starter_prod
-    image: nestjs-starter-prod:1.0.0
-    env_file:
-      - ./.env.prod
-    environment:
-      - NODE_ENV=production
-      - IGNORE_ENV_FILE=true
-    build:
-      context: .
-      target: production
-      dockerfile: ./Dockerfile
-    command: npm run start:prod
-    ports:
-      - 8080:8080
-    networks:
-      - nesjs-network
-    volumes:
-      - .:/usr/src/app
-      - /usr/src/app/node_modules
+      - ./usr/src/app
+      - ./usr/src/app/node_modules
     restart: unless-stopped
 
 networks:
-  nesjs-network:
+  nestjs-network:
