@@ -37,6 +37,9 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+      - name: test ref name
+        run: |
+          echo ${GITHUB_REF##*/}
 
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
