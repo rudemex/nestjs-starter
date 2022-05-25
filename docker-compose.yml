@@ -1,9 +1,11 @@
+# docker-compose.yml - Only for local debug purposes
+
 version: '3.8'
 
 services:
   postgres:
     image: postgres:13
-    container_name: loc-postgres
+    container_name: local-postgres
     environment:
       TZ: UTC
       POSTGRES_DB: my_db
@@ -13,21 +15,34 @@ services:
       - '5432:5432'
     volumes:
       - ./postgres_data:/var/lib/postgresql/data
-    # get ip address for connect to pgadmin
-    # docker inspect loc-postgres
+      # get ip address for connect to pgadmin
+      # docker inspect loc-postgres
 
   pgadmin:
     image: dpage/pgadmin4
-    container_name: loc-pgadmin
+    container_name: local-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: root@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
     ports:
       - "5050:80"
 
+  mysql:
+    image: mysql:5.7
+    container_name: local-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123456
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./.mysql-data/db:/var/lib/mysql
+
   mongo:
     image: mongo:5.0
-    container_name: loc-mongo
+    container_name: local-mongo
     environment:
       TZ: UTC
       MONGO_INITDB_ROOT_USERNAME: root
@@ -39,14 +54,28 @@ services:
 
   redis:
     image: redis:3-alpine
-    container_name: loc-redis
+    container_name: local-redis
     environment:
       TZ: UTC
     ports:
       - '6379:6379'
 
+  jaeger:
+    container_name: local-jaeger
+    image: jaegertracing/all-in-one:latest
+    ports:
+      - "5775:5775/udp"
+      - "6831:6831/udp"
+      - "6832:6832/udp"
+      - "5778:5778"
+      - "16686:16686"
+      - "14268:14268"
+      - "9411:9411"
+    environment:
+      - LOG_LEVEL=debug
+
   app:
-    container_name: loc-app
+    container_name: local-app
     env_file:
       - .env.dev
     build:

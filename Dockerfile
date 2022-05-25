@@ -8,15 +8,16 @@
 # docker run -it -p 8080:8080 --env-file .env nestjs-starter
 # docker system prune
 
+#docker run -it --rm --entrypoint=sh nestjs-starter
+
 FROM node:14-alpine3.15 as builder
 
 ARG NODE_ENV=build
 ENV NODE_ENV=${NODE_ENV}
 
-USER node
 WORKDIR /usr/src/app
 
-COPY package*.json yarn.lock ./
+COPY package*.json yarn.lock .npmrc ./
 
 RUN yarn install
 
