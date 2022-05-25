@@ -39,6 +39,7 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
         env:
