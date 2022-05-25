@@ -1,6 +1,6 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
+yarn test:husky
 yarn lint
 yarn format
-jest --detectOpenHandles --forceExit
