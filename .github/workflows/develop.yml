@@ -37,9 +37,6 @@ jobs:
             node_modules
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
-      - name: test ref name
-        run: |
-          echo ${GITHUB_REF##*/}
 
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
@@ -47,7 +44,7 @@ jobs:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
           GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          GITHUB_DEFAULT_BRANCH: develop
+          GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
       - name: "📦 Install packages"
