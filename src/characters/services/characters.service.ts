@@ -21,15 +21,10 @@ export class CharactersService {
           params,
         },
       );
+
       return data;
     } catch (error) /* istanbul ignore next */ {
-      throw new HttpException(
-        {
-          status: error.response.status,
-          error: error.message,
-        },
-        error.response.status,
-      );
+      throw new HttpException(error.message, error.response.status);
     }
   }
 }

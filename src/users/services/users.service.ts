@@ -22,7 +22,9 @@ export class UsersService {
   async findOne(id: number) {
     const user = this.users.find((item) => item.id === id);
     if (!user) {
-      throw new NotFoundException(`User #${id} not found`);
+      throw new NotFoundException({
+        message: `User #${id} not found`,
+      });
     }
     return user;
   }
