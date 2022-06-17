@@ -6,12 +6,12 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
+  async getHello(): Promise<string> {
     return this.appService.getHello();
   }
 
   @Get('test-env')
-  getTestEnv(): string {
+  async getTestEnv(): Promise<string> {
     return this.appService.getTestEnv();
   }
 

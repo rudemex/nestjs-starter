@@ -53,12 +53,19 @@ services:
       - ./mongo_data:/data/db
 
   redis:
-    image: redis:3-alpine
+    image: redis:6.2-alpine
     container_name: local-redis
     environment:
       TZ: UTC
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: 123456
+      REDIS_HOST: cache
+      #REDIS_USERNAME: default
+    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
     ports:
       - '6379:6379'
+    volumes:
+      - ./redis_data:/data
 
   jaeger:
     container_name: local-jaeger

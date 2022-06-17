@@ -1,6 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
+
 import { AppModule } from '../src/app.module';
 
 describe('AppController (e2e)', () => {
@@ -16,32 +17,32 @@ describe('AppController (e2e)', () => {
   });
 
   afterEach(async () => {
-    await app.close();
+    await Promise.all([app.close()]);
   });
 
-  it('/ (GET)', () => {
+  it('(GET) /', () => {
     return request(app.getHttpServer()).get('/').expect(200).expect('Hello World!');
   });
 
-  it('/test-env (GET)', () => {
+  it('(GET) /test-env', () => {
     return request(app.getHttpServer()).get('/test-env').expect(200).expect('testKeyEnv-test');
   });
 
-  it('/my-util (GET)', () => {
+  it('(GET) /my-util', () => {
     return request(app.getHttpServer()).get('/my-util').expect(200).expect('this is an util');
   });
 
-  it('/health/liveness (GET)', () => {
+  it('(GET) /health/liveness', () => {
     return request(app.getHttpServer()).get('/health/liveness').expect(200).expect({
       status: 'up',
     });
   });
 
-  it('/health/readiness (GET)', () => {
+  it('(GET) /health/readiness', () => {
     return request(app.getHttpServer()).get('/health/readiness').expect(200);
   });
 
-  it('/characters (GET)', () => {
+  it('(GET) /characters', () => {
     return request(app.getHttpServer())
       .get('/characters')
       .expect(200)

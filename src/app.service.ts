@@ -12,11 +12,11 @@ export class AppService {
     private utilsService: UtilsService,
   ) {}
 
-  getHello(): string {
+  async getHello(): Promise<string> {
     return 'Hello World!';
   }
 
-  getTestEnv(): string {
+  async getTestEnv(): Promise<string> {
     return `${this.appConfig.params.testEnv}`;
   }
 
