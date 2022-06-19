@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
+import * as compression from 'compression';
 import helmet from 'helmet';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
@@ -22,7 +23,7 @@ async function bootstrap() {
     exclude: corePathsExcludes,
   });
 
-  app.use([cookieParser(), helmet()]);
+  app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
 
   app.useGlobalPipes(

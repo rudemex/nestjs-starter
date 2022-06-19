@@ -14,7 +14,7 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./.postgres_data:/var/lib/postgresql/data
       # get ip address for connect to pgadmin
       # docker inspect loc-postgres
 
@@ -33,7 +33,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: my_db
-      MYSQL_USER: root
+      MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
     ports:
       - "3306:3306"
@@ -50,7 +50,7 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - ./mongo_data:/data/db
+      - ./.mongo_data:/data/db
 
   redis:
     image: redis:6.2-alpine
@@ -65,7 +65,7 @@ services:
     ports:
       - '6379:6379'
     volumes:
-      - ./redis_data:/data
+      - ./.redis_data:/data
 
   jaeger:
     container_name: local-jaeger

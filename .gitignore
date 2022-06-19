@@ -52,15 +52,15 @@ test-report.xml
 !.env.example
 
 # DATA
-mongo_data
-mongo_data/*
-./mongo_data
-postgres_data
-postgres_data/*
-./postgres_data
-mysql_data
-mysql_data/*
-./mysql_data
-redis_data
-redis_data/*
-./redis_data
+.mongo_data
+.mongo_data/*
+./.mongo_data
+.postgres_data
+.postgres_data/*
+./.postgres_data
+.mysql_data
+.mysql_data/*
+./.mysql_data
+.redis_data
+.redis_data/*
+./.redis_data
