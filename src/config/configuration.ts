@@ -1,9 +1,6 @@
 import { Typings } from '@tresdoce-nestjs-toolkit/core';
 import { registerAs } from '@nestjs/config';
 
-import { join } from 'path';
-import { HandlebarsAdapter } from '@tresdoce-nestjs-toolkit/mailer';
-
 import * as PACKAGE_JSON from '../../package.json';
 
 export default registerAs('config', (): Typings.AppConfig => {
