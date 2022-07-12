@@ -1,6 +1,6 @@
 # docker-compose.yml - Only for local debug purposes
 
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
