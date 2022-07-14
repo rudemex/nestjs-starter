@@ -6,7 +6,7 @@
 <p align="center">
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=Node&message=v14.15.4&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=Npm&message=v6.14.10&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJs&message=v8.2.6&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJs&message=v9.0.0&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
         <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     </a>
@@ -52,7 +52,7 @@
 
 - Node.js v14.15.4 or higher ([Download](https://nodejs.org/es/download/))
 - NPM v6.14.10 or higher
-- NestJS v8.2.0 or higher ([Documentación](https://nestjs.com/))
+- NestJS v9.0.0 or higher ([Documentación](https://nestjs.com/))
 
 <a name="install-dependencies"></a>
 
