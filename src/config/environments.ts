@@ -1,5 +1,5 @@
 export const environments = {
-  dev: '.env.dev',
+  dev: '.env',
   int: '.env.int',
   qas: '.env.qas',
   prod: '.env',

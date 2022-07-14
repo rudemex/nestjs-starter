@@ -1,30 +1,29 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import * as cookieParser from 'cookie-parser';
-import * as compression from 'compression';
-import helmet from 'helmet';
-import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { corePathsExcludes } from '@tresdoce-nestjs-toolkit/core';
 import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/filters';
 
+import helmet from 'helmet';
+import compression from 'compression';
+import cookieParser from 'cookie-parser';
+
 import { AppModule } from './app.module';
+import { config } from './config';
 
 async function bootstrap() {
+  const { server, swagger, project } = config();
+
   const app = await NestFactory.create(AppModule, {
     logger: new Logger(),
   });
-
-  const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
-  const { server, swagger, project } = appConfig;
-  const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
     exclude: corePathsExcludes,
   });
 
   app.use([cookieParser(), helmet(), compression()]);
-  app.useGlobalFilters(new ExceptionsFilter(appConfig));
+  app.useGlobalFilters(new ExceptionsFilter(config()));
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -44,7 +43,18 @@ async function bootstrap() {
       .setTitle(`${project.name}`)
       .setVersion(`${project.version}`)
       .setDescription(`Swagger - ${project.description}`)
-      .setExternalDoc('Documentation', project.homepage)
+      .setExternalDoc('Documentation', project.documentation)
+      .addBearerAuth(
+        {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          name: 'authorization',
+          description: 'Enter JWT token',
+          in: 'header',
+        },
+        'access-token',
+      )
       .build();
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup(`${swagger.path}`, app, document);
@@ -58,9 +68,9 @@ async function bootstrap() {
       credentials: server.corsCredentials,
     });
   }
-  await app.listen(port, () => {
-    console.log(`App running on: http://localhost:${port}`);
+
+  await app.listen(server.port, async () => {
+    await console.log(`App running on: http://localhost:${server.port}`);
   });
 }
-
 bootstrap();

@@ -4,7 +4,7 @@ import { registerAs } from '@nestjs/config';
 import * as PACKAGE_JSON from '../../package.json';
 
 export default registerAs('config', (): Typings.AppConfig => {
-  return {
+  const configuration: Typings.AppConfig = {
     project: {
       apiPrefix: process.env.API_PREFIX,
       name: PACKAGE_JSON.name,
@@ -14,6 +14,7 @@ export default registerAs('config', (): Typings.AppConfig => {
       repository: PACKAGE_JSON.repository,
       bugs: PACKAGE_JSON.bugs,
       homepage: PACKAGE_JSON.homepage,
+      documentation: PACKAGE_JSON.homepage,
     },
     server: {
       isProd: process.env.NODE_ENV === 'production',
@@ -43,4 +44,5 @@ export default registerAs('config', (): Typings.AppConfig => {
       },
     },
   };
+  return configuration;
 });
