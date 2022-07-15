@@ -62,7 +62,7 @@ jobs:
       - name: "🔦 Lint"
         run: yarn lint
 
-      - name: "🔨 Build"
+      - name: "💅 Lint"
         run: yarn build
 
       - name: "👨‍💻 Run Test"

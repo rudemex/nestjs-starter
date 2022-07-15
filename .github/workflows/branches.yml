@@ -60,7 +60,7 @@ jobs:
       - name: "📦 Install packages"
         run: yarn install
 
-      - name: "🔦 Lint"
+      - name: "💅 Lint"
         run: yarn lint
 
       - name: "🔨 Build"

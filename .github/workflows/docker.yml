@@ -44,7 +44,7 @@ jobs:
       - name: "📦 Install packages"
         run: npm install
 
-      - name: "🔦 Lint"
+      - name: "💅 Lint"
         run: npm run lint
 
       - name: "🔨 Build"
