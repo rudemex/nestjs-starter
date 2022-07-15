@@ -2,6 +2,61 @@
 
 ---
 
+## [1.4.0](https://github.com/rudemex/nestjs-starter/compare/v1.3.0...v1.4.0) (2022-07-15)
+
+
+### ♻️Refactors
+
+* change dependencies and starter ([ac2acee](https://github.com/rudemex/nestjs-starter/commit/ac2acee06bcf863f87e0ad6983617909566c0fdc))
+
+
+### 🐛 Bug Fixes
+
+* **docker:** copy files in dockerfile ([8fc21e2](https://github.com/rudemex/nestjs-starter/commit/8fc21e21afde4a38fdb6166f7f1c1622f7fda622))
+
+
+### 👨‍💻 Chores
+
+* add cron to quality analize ([3788292](https://github.com/rudemex/nestjs-starter/commit/3788292e42d1820bbb2def34fe293d02a932d4cb))
+* add exception filters ([c99cc46](https://github.com/rudemex/nestjs-starter/commit/c99cc4605967f907aa8f1b70ad3952c853150f52))
+* add exception to http ([9d31184](https://github.com/rudemex/nestjs-starter/commit/9d311846105e47619edc9450a50dc018367c80a8))
+* add git guardian ([5bb1887](https://github.com/rudemex/nestjs-starter/commit/5bb1887037db5aff021f2e422494fc886557d934))
+* add helmet, and changes in workflows ([7cb2288](https://github.com/rudemex/nestjs-starter/commit/7cb2288800d0961384e14141da4cd43949a8f557))
+* add otel ([80589eb](https://github.com/rudemex/nestjs-starter/commit/80589eb54f859bd53afdab86805f1910ce1621bf))
+* **docker:** edit dockers files ([41d795b](https://github.com/rudemex/nestjs-starter/commit/41d795b23dd6396d108ac4b8ffb163a49965d73c))
+* **docker:** update dockerfile and docker compose ([96cdc3d](https://github.com/rudemex/nestjs-starter/commit/96cdc3d9eef63e128708dae2c2896c92a8a0c801))
+* edit dockerfiles ([9a2ff4d](https://github.com/rudemex/nestjs-starter/commit/9a2ff4de3e1028af8688a5dbee2d3b518c3daa29))
+* edit gitignore ([76826e4](https://github.com/rudemex/nestjs-starter/commit/76826e469ca2ad4dea5aecd24d39afebcaea9cdd))
+* edit gitignore ([96b6f85](https://github.com/rudemex/nestjs-starter/commit/96b6f85cd9fac10b6feb61abd6858b9ba3e219e9))
+* edit http client in character module ([9c7e8bb](https://github.com/rudemex/nestjs-starter/commit/9c7e8bb6ca3c0863333fb01299e118d14aa83dd5))
+* edit husky ([6bcf07e](https://github.com/rudemex/nestjs-starter/commit/6bcf07eaca661fe39c3e5e8fd887edab015afcd4))
+* edit husky ([a7b7214](https://github.com/rudemex/nestjs-starter/commit/a7b7214bc135e27a4f3bb1e18d16c21e827959d8))
+* edit husky ([8ce1050](https://github.com/rudemex/nestjs-starter/commit/8ce1050079f6f9ca18c9d12a607993361811b4e1))
+* edit starter ([2887b83](https://github.com/rudemex/nestjs-starter/commit/2887b83c27f4eaad9a6219306ae0696fafc59244))
+* edit workflow dispatch quality ([41d4d9a](https://github.com/rudemex/nestjs-starter/commit/41d4d9a261c9150a319135d2ece3062a4745ee4d))
+* edit workflows ([1d97822](https://github.com/rudemex/nestjs-starter/commit/1d9782283de7dc1bd2ec0b9378eb6385a22ef817))
+* **husky:** edit workflow husky ([f0937e3](https://github.com/rudemex/nestjs-starter/commit/f0937e38386e24403b56317c2a40b402fb1d06e7))
+* migrate dependencies of tresdoce ([ac650bb](https://github.com/rudemex/nestjs-starter/commit/ac650bbf3da9a9e885338c75bd1280d25f0542de))
+* remove mailer module ([3a7c7be](https://github.com/rudemex/nestjs-starter/commit/3a7c7be5194e3835b1f7820eb36e0cd147f72f19))
+* remove mailer module ([3e2e8e6](https://github.com/rudemex/nestjs-starter/commit/3e2e8e69ee8cfa311583cf3aa90aab7c165d7457))
+* remove node and npm version engine ([31c925b](https://github.com/rudemex/nestjs-starter/commit/31c925b46946fcfa94a75224b1dc3e2eeb9b5869))
+* remove run in band arg in test husky ([7d607b4](https://github.com/rudemex/nestjs-starter/commit/7d607b4196c070de7e0f06e1acd0af8d71a3a501))
+* remove unused type in character module ([cd5d82f](https://github.com/rudemex/nestjs-starter/commit/cd5d82f678a9f9b3a98c9b7533e2615ac9ebcdd6))
+* remove yarn lock ([11443fc](https://github.com/rudemex/nestjs-starter/commit/11443fc080b24770a9a9790f08ea7c9c108ffafc))
+* resolve conflicts with merge ([1d75249](https://github.com/rudemex/nestjs-starter/commit/1d7524952852b66b22e2ae0b4f6b29c20cc91032))
+* resolve problem with health module ([e0719d5](https://github.com/rudemex/nestjs-starter/commit/e0719d51c513efa56ac9cb75e2e00f1ffbce6529))
+* update dependencie ([462c30f](https://github.com/rudemex/nestjs-starter/commit/462c30f3afcb8f0bf7b3da30622e1e608cf36f07))
+* update dependencies ([aaaf64c](https://github.com/rudemex/nestjs-starter/commit/aaaf64c85e50bfd46869a12ad95cdd70fa20473b))
+* update dependencies ([0b3bad6](https://github.com/rudemex/nestjs-starter/commit/0b3bad66629f9910245093b5af21cfecc9157ffa))
+* update dependencies and docker compose ([d905614](https://github.com/rudemex/nestjs-starter/commit/d905614f5c5f4f792a13c5fd7416ec977d34dea8))
+* update dependencies tresdoce ([420a71b](https://github.com/rudemex/nestjs-starter/commit/420a71b4848122dd5f24ace8e605f0d858d85527))
+* update docker ([0b5734d](https://github.com/rudemex/nestjs-starter/commit/0b5734d264658a477107f9b33748f3496d6b7050))
+* **workflow:** add git guardian to pipelines ([63985c0](https://github.com/rudemex/nestjs-starter/commit/63985c00d1705144e4c2abefd6d0f74ac39177eb))
+* **workflow:** add git guardian to pipelines ([2b4ba58](https://github.com/rudemex/nestjs-starter/commit/2b4ba5839ad8c2f8c0ff013a4cfab2292dc1cc65))
+* **workflow:** edit master pipeline and add quality pipeline ([96693e2](https://github.com/rudemex/nestjs-starter/commit/96693e27494883db1a0b3e3624d26cf953198913))
+* **workflow:** edit ref name ([ff480e7](https://github.com/rudemex/nestjs-starter/commit/ff480e7e453c00fb954858e695dd3bfb8036d178))
+* **workflows:** edit name of steps ([040a3e5](https://github.com/rudemex/nestjs-starter/commit/040a3e5ecab407681081db1cd54a255e69c9663d))
+
 ## [1.3.0](https://github.com/rudemex/nestjs-starter/compare/v1.2.12...v1.3.0) (2022-02-24)
 
 
