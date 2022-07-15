@@ -29,22 +29,54 @@
     <br/> 
 </p>
 
+<p>NestJS es un framework progresivo de Node.js para la creación de aplicaciones eficientes, confiables y escalables del
+lado del servidor, el cual está construido y es completamente compatible con TypeScript y JavaScript, combinando
+elementos de la programación orientada a objetos, programación funcional y programación reactiva funcional.</p>
+
+
 ## Glosario
 
 - [🥳 Demo](https://rudemex-nestjs-starter.herokuapp.com/api)
+- [🤓 Objetivo](#objective)
 - [📝 Requerimientos básicos](#basic-requirements)
 - [🛠️ Instalar dependencias](#install-dependencies)
 - [⚙️ Configuración](#configurations)
 - [💻 Scripts](#scripts)
 - [📚 Swagger](#swagger-info)
 - [🐳 Docker](#docker)
-- [🧰 Toolkit](#toolkit)
+- [🧰 Toolkit](https://github.com/tresdoce/tresdoce-nestjs-toolkit)
 - [📤 Commits](#commits)
 - [🏷️ Versionado](#versioning)
 - [📄 Changelog](./CHANGELOG.md)
 - [📜 License MIT](license.md)
 
 ---
+
+<a name="objective"></a>
+
+## 🤓 Objetivo
+
+### Extensibilidad
+Gracias a su arquitectura modular, es flexible y nos permite utilizar las otras bibliotecas existentes en nuestro proyecto.
+
+### Arquitectura 
+Tiene una arquitectura de proyecto que proporciona capacidad de prueba, escalabilidad y mantenimiento sin mucho esfuerzo.
+
+### Versatilidad
+Proporciona un ecosistema adaptable, el cual está desarrollado para crear todo tipo de aplicaciones del lado del servidor.
+
+### Progresividad
+Hace uso de las últimas funciones de JavaScript e implementa soluciones maduras y patrones de diseño en el desarrollo de software.
+
+### Transaccionalidad
+Orquestación de servicios. El BFF es responsable de orquestar la llamada a los distintos servicios y manejarlos transaccionalmente de manera transparente para el cliente.
+
+### Performance
+Reduce envío de datos. Las API's del BFF se diseñó tomando como base los requerimientos de las pantallas y solo se expondrán los datos que requieran las mismas. Sesión de usuario/caché. Puede manejar caché de sesión para la experiencia del frontend.
+
+### Seguridad
+Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos datos y solo se exponen los datos necesarios. Gestión de tokens. El BFF es quien se encarga del almacenamiento y gestiona la renovación del access-token.
+
 
 <a name="basic-requirements"></a>
 
@@ -62,7 +94,11 @@ Cuando tenemos los requisitos básicos, clonamos el repositorio, vamos a la carp
 dependencias.
 
 ```
- npm install
+yarn install
+```
+
+```
+npm install
 ```
 
 <a name="configurations"></a>
@@ -78,13 +114,13 @@ de ejemplo para generarlo.
 ```sh
 # SERVER
 PORT=8080
+API_PREFIX=MY-API
 CONTEXT=api
 ORIGINS=http://localhost:3000,http://localhost:8080
 ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
 CORS_ENABLED=true
 CORS_CREDENTIALS=false
-IGNORE_ENV_FILE=false
 
 # SWAGGER ENVIRONMENTS
 SWAGGER_PATH=docs
@@ -94,6 +130,7 @@ SWAGGER_ENABLED=true
 TEST_KEY="testKeyEnv-dev"
 
 # SERVICES
+NEST_JS_DOCS_URL=https://docs.nestjs.com
 RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 ```
 
@@ -106,6 +143,11 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 
 - Type: `Number`
 - Default: `8080`
+
+`API_PREFIX`: Es el prefijo que hace referencia a la api, y alimenta otros módulos, como es el de los filter exceptions.
+
+- Type: `String`
+- Default: `MY-API`
 
 `CONTEXT`: Es el contexto el que se puede acceder a la API del servidor, de esta manera no se exponen los endpoints en
 la ruta principal de la aplicación. Se escribe sin el `/` (slash).
@@ -135,11 +177,6 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 - Default: `false`
 
 `CORS_CREDENTIALS`: Habilita o deshabilita el uso de las credenciales en las peticiones CORS en el servidor.
-
-- Type: `Boolean`
-- Default: `false`
-
-`IGNORE_ENV_FILE`: Habilita o deshabilita obtener las variables de entorno desde un archivo `.env`.
 
 - Type: `Boolean`
 - Default: `false`
@@ -175,8 +212,8 @@ Este proyecto utiliza el módulo `@nestjs/config`, el cual centraliza todas las 
 te permite consumirlas como **typing** para evitar errores de typo, como asi también evitar usar el **process.env** en
 todo el proyecto, lo que te permite darle soporte más fácil si se requiere cambiar el **KEY** de la variable de entorno.
 
-También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato y si es requerido o no
-dicha variable.
+También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato, si es requerido o no
+dicha variable, y muchas validaciones más.
 
 Todos estos features los podemos encontrar en la carpeta **./src/config**, en dicha carpeta podemos encontrar el archivo
 **environments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
@@ -188,11 +225,17 @@ Todos estos features los podemos encontrar en la carpeta **./src/config**, en di
 Inicia la aplicación en modo desarrollo
 
 ```
+yarn start:dev
+```
+```
 npm run start:dev
 ```
 
 Inicia los test con coverage
 
+```
+yarn test
+```
 ```
 npm run test
 ```
@@ -200,11 +243,17 @@ npm run test
 Realiza el build de la aplicación
 
 ```
+yarn build
+```
+```
 npm run build
 ```
 
 Inicia la aplicación en modo productivo
 
+```
+yarn start
+```
 ```
 npm run start
 ```
@@ -214,11 +263,17 @@ npm run start
 Formatea el código
 
 ```
+yarn format
+```
+```
 npm run format
 ```
 
 Eslintea el código
 
+```
+yarn lint
+```
 ```
 npm run lint
 ```
@@ -269,38 +324,23 @@ El proyecto cuenta con un `dockerfile` y un `docker-compose.yml` de base, listo 
 
 Schema: `docker build . -t <user-docker>/<app-name>`
 
-### Docker Compose
-
 Schema: `docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>`
 
 ### Ejemplo
 
 ```
 docker build -t nestjs-starter .
+```
+```
 docker run -d -p 8080:8080 --env-file .env.prod nestjs-starter
 ```
-
-<a name="toolkit"></a>
-
-## 🧰 Toolkit
-
-Los módulos de la siguiente lista, están pensados para ser consumidos para la arquitectura de este starter, o
-arquitectura similar siguiendo los lineamientos de `schematics`.
-
-| Package                                                                        | Descripción                                | Versión                                                                                                                               | Changelog                                                                           |
-| ------------------------------------------------------------------------------ | ------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| [`@tresdoce/nestjs-archetype`](https://github.com/tresdoce/nestjs-archetype)   | Módulo de información del proyecto         | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-archetype.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-archetype)   | [changelog](https://github.com/tresdoce/nestjs-archetype/blob/master/CHANGELOG.md)  |
-| [`@tresdoce/nestjs-commons`](https://github.com/tresdoce/nestjs-commons)       | Configuración centralizada                 | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-commons.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-commons)       | [changelog](https://github.com/tresdoce/nestjs-commons/blob/master/CHANGELOG.md)    |
-| [`@tresdoce/nestjs-health`](https://github.com/tresdoce/nestjs-health)         | Módulo de health check: liveness/readiness | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-health.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-health)         | [changelog](https://github.com/tresdoce/nestjs-health/blob/master/CHANGELOG.md)     |
-| [`@tresdoce/nestjs-database`](https://github.com/tresdoce/nestjs-database)     | Módulo conexión a base de datos Mongo      | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-database.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-database)     | [changelog](https://github.com/tresdoce/nestjs-database/blob/master/CHANGELOG.md)   |
-| [`@tresdoce/nestjs-httpclient`](https://github.com/tresdoce/nestjs-httpclient) | Módulo http con axios y axios-retry        | [![version](https://img.shields.io/npm/v/@tresdoce/nestjs-httpclient.svg)](https://www.npmjs.com/package/@tresdoce/nestjs-httpclient) | [changelog](https://github.com/tresdoce/nestjs-httpclient/blob/master/CHANGELOG.md) |
 
 <a name="commits"></a>
 
 ## 📤 Commits
 
 Para los mensajes de commits se toma como
-referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.0-beta.4/#summary).
+referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.0/#summary).
 
 ```
 <type>[optional scope]: <description>
@@ -316,23 +356,26 @@ referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.
 
 ### Ejemplo
 
-`git commit -m "docs(readme): add documentantion to readme"`
+```
+git commit -m "docs(readme): add documentantion to readme"
+```
 
 <a name="versioning"></a>
 
 ## 🏷️ Versionado
 
-Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./github/workflows/release.yml`), ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los `conventional commits` del repo. Actualmente está configurado para incrementar la version en un archivo custom y no en el package.json.
+Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./github/workflows/release.yml`), 
+ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los 
+`conventional commits` del repo. Actualmente, está configurado para incrementar la version en un archivo custom y no en el package.json.
 
 Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
 
-- Asegurarse de que la version del `package.json` este en un valor inicial. Ej. `0.0.1` o `1.0.0`.
+- Asegurarse de que la version del `package.json` este en un valor inicial y los datos de la aplicación editados. Ej. `1.0.0`.
 - Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
 - Borrar los archivos `CHANGELOG.md` y `version.txt`
-- Editar el archivo `.versionrc` borrando la configuración del **bumpFile**, y editando él `owner` y el nombre del `repo`.
 
 ```json
-// .versionrc
+//.versionrc
 {
   "header": "<div align=\"center\"><h1>📝 Changelog</h1><p>All changes of this project will be documented in this file.</p></div>\n\n---\n",
   "path": "./",
@@ -350,15 +393,7 @@ Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
     { "type": "ci", "hidden": true },
     { "type": "revert", "hidden": true }
   ],
-  "issuePrefixes": ["#"],
-  "commitUrlFormat": "https://github.com/<owner>/<repo-name>/commit/{{hash}}",
-  "compareUrlFormat": "https://github.com/<owner>/<repo-name>/compare/{{previousTag}}...{{currentTag}}",
-  "issueUrlFormat": "https://github.com/<owner>/<repo-name>/issues/{{id}}",
-  "skip": {
-    "bump": false,
-    "commit": false,
-    "tag": false
-  }
+  "issuePrefixes": ["#"]
 }
 ```
 

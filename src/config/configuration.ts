@@ -3,8 +3,9 @@ import { registerAs } from '@nestjs/config';
 
 import * as PACKAGE_JSON from '../../package.json';
 
-export default registerAs('config', (): Typings.AppConfig => {
-  return {
+export default registerAs(
+  'config',
+  (): Typings.AppConfig => ({
     project: {
       apiPrefix: process.env.API_PREFIX,
       name: PACKAGE_JSON.name,
@@ -42,5 +43,5 @@ export default registerAs('config', (): Typings.AppConfig => {
         healthPath: '/api/character/1',
       },
     },
-  };
-});
+  }),
+);
