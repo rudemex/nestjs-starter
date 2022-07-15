@@ -1,7 +1,0 @@
-organization=rudemex
-projectKey=rudemex_nestjs-starter
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.30262
-dashboardUrl=https://sonarcloud.io/dashboard?id=rudemex_nestjs-starter
-ceTaskId=AYH_1dydP6kiJCRA0jre
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYH_1dydP6kiJCRA0jre
