@@ -1,26 +1,41 @@
 name: "Quality"
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '0 8 * * *'
 
 jobs:
   setup:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16 ]
+    name: "Setup"
     steps:
-      - name: "⚙ Set up Node.js"
-        uses: actions/setup-node@v1
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
+        uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
   build:
-    needs: setup
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14, 16 ]
+    needs: setup
+    name: "Build"
     steps:
-      - uses: actions/checkout@v2
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: "✅ Checkout repository"
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -47,7 +62,7 @@ jobs:
       - name: "🔦 Lint"
         run: yarn lint
 
-      - name: "🔨 Build"
+      - name: "💅 Lint"
         run: yarn build
 
       - name: "👨‍💻 Run Test"
@@ -73,7 +88,6 @@ jobs:
             -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.testExecutionReportPaths=test-report.xml
-            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

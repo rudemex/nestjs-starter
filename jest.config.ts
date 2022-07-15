@@ -1,4 +1,4 @@
-import { jestConfig } from '@tresdoce/nestjs-commons';
+import { jestConfig } from '@tresdoce-nestjs-toolkit/commons';
 import * as dotenv from 'dotenv';
 
 process.env.NODE_ENV = 'test';

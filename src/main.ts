@@ -1,11 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import helmet from 'helmet';
-import * as cookieParser from 'cookie-parser';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { controllersExcludes } from '@tresdoce/nestjs-health';
-import { manifestControllerExcludes } from '@tresdoce/nestjs-archetype';
+import { corePathsExcludes, ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
+import * as cookieParser from 'cookie-parser';
+import * as compression from 'compression';
+import helmet from 'helmet';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -13,15 +14,16 @@ async function bootstrap() {
     logger: new Logger(),
   });
 
-  const { server, swagger, project } =
-    app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+  const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+  const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
 
   app.setGlobalPrefix(`${server.context}`, {
-    exclude: [...controllersExcludes, ...manifestControllerExcludes],
+    exclude: corePathsExcludes,
   });
 
-  app.use([helmet(), helmet.xssFilter(), cookieParser()]);
+  app.use([cookieParser(), helmet(), compression()]);
+  app.useGlobalFilters(new ExceptionsFilter(appConfig));
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -31,7 +33,6 @@ async function bootstrap() {
       forbidUnknownValues: true,
       forbidNonWhitelisted: true,
       transformOptions: {
-        excludeExtraneousValues: true,
         enableImplicitConversion: true,
       },
     }),
@@ -56,6 +57,7 @@ async function bootstrap() {
       credentials: server.corsCredentials,
     });
   }
+
   await app.listen(port, () => {
     console.log(`App running on: http://localhost:${port}`);
   });

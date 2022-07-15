@@ -1,6 +1,6 @@
 # docker-compose.yml - Only for local debug purposes
 
-version: '3.8'
+version: '3.9'
 
 services:
   postgres:
@@ -14,9 +14,9 @@ services:
     ports:
       - '5432:5432'
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - ./.postgres_data:/var/lib/postgresql/data
       # get ip address for connect to pgadmin
-      # docker inspect local-postgres
+      # docker inspect loc-postgres
 
   pgadmin:
     image: dpage/pgadmin4
@@ -33,12 +33,12 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: my_db
-      MYSQL_USER: root
+      MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
     ports:
       - "3306:3306"
     volumes:
-      - ./.mysql-data/db:/var/lib/mysql
+      - ./.mysql_data/db:/var/lib/mysql
 
   mongo:
     image: mongo:5.0
@@ -50,15 +50,22 @@ services:
     ports:
       - '27017:27017'
     volumes:
-      - ./mongo_data:/data/db
+      - ./.mongo_data:/data/db
 
   redis:
-    image: redis:3-alpine
+    image: redis:6.2-alpine
     container_name: local-redis
     environment:
       TZ: UTC
+      REDIS_PORT: 6379
+      REDIS_PASSWORD: 123456
+      REDIS_HOST: cache
+      #REDIS_USERNAME: default
+    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
     ports:
       - '6379:6379'
+    volumes:
+      - ./.redis_data:/data
 
   jaeger:
     container_name: local-jaeger
@@ -77,11 +84,12 @@ services:
   app:
     container_name: local-app
     env_file:
-      - .env.dev
+      - .env
+      #- .env.dev
     build:
       context: .
       dockerfile: Dockerfile
-    command: "yarn start:dev"
+    command: "yarn start"
     ports:
       - '8080:8080'
     networks:

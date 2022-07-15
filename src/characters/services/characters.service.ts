@@ -1,6 +1,7 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
-import { HttpClientService } from '@tresdoce/nestjs-httpclient';
+import { HttpClientService } from '@tresdoce-nestjs-toolkit/http-client';
+import { AxiosResponse } from 'axios';
 
 import { FilterCharacter } from '../dtos/character.dto';
 import { config } from '../../config';
@@ -12,17 +13,17 @@ export class CharactersService {
     private readonly httpClient: HttpClientService,
   ) {}
 
-  async getCharacter(params?: FilterCharacter) {
+  async getCharacter(params?: FilterCharacter): Promise<AxiosResponse> {
     try {
       const { data } = await this.httpClient.get(
-        encodeURI(`${this.appConfig.services.rickAndMortyAPI}/character`),
+        encodeURI(`${this.appConfig.services.rickAndMortyAPI.url}/character`),
         {
           params,
         },
       );
       return data;
     } catch (error) /* istanbul ignore next */ {
-      return error;
+      throw new HttpException(error.message, error.response.status);
     }
   }
 }

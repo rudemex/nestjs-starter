@@ -1,39 +1,46 @@
-name: "Docker"
+name: "Branches"
 
 on:
-  workflow_dispatch:
-    inputs:
-      newVersion:
-        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]"
-        required: true
-        default: '0.0.0'
-
-env:
-  GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-  GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
-  DOCKER_USER: ${{ secrets.DOCKER_USER }}
-  DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  push:
+    branches: [ "feat/*", "fix/*", "refactor/*", "chore/*", "docs/*", "test/*", "build/*", "perf/*", "style/*", "revert/*" ]
+  pull_request:
+    branches: [ "feat/*", "fix/*", "refactor/*", "chore/*", "docs/*", "test/*", "build/*", "perf/*", "style/*", "revert/*" ]
 
 jobs:
   setup:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14 ]
+    name: "Setup"
     steps:
-      - name: "⚙ Set up Node.js"
-        uses: actions/setup-node@v2
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
+        uses: actions/setup-node@v1
         with:
-          node-version: '14.x'
+          node-version: ${{ matrix.node }}
+
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
-  release:
-    needs: setup
+  build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14 ]
+    needs: setup
+    name: "Build"
     steps:
-      - uses: actions/checkout@v2
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: "✅ Checkout repository"
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: "💾 Restore Dependencies from cache"
+      - name: "💾 Restore packages from cache"
         uses: actions/cache@v2
         with:
           path: |
@@ -41,17 +48,26 @@ jobs:
             */*/node_modules
           key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
 
+      - name: "🦉 GitGuardian scan"
+        uses: GitGuardian/ggshield-action@master
+        env:
+          GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
+          GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
+          GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
+          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
+
       - name: "📦 Install packages"
-        run: npm install
+        run: yarn install
 
       - name: "💅 Lint"
-        run: npm run lint
+        run: yarn lint
 
       - name: "🔨 Build"
-        run: npm run build
+        run: yarn build
 
       - name: "👨‍💻 Run Test"
-        run: npm run test
+        run: yarn test
         env:
           NODE_ENV: 'test'
 
@@ -73,26 +89,7 @@ jobs:
             -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.testExecutionReportPaths=test-report.xml
-            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-      - name: "🐳 Docker login"
-        run: |
-          docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-
-      - name: "🐳 Docker build"
-        run: |
-          docker build -t ${{ github.event.repository.name }} .
-
-      - name: "🐳 Docker tag"
-        run: |
-          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
-
-      - name: "🐳 Docker push"
-        run: |
-          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest

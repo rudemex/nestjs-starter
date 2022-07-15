@@ -1,9 +1,13 @@
+import { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { registerAs } from '@nestjs/config';
+
 import * as PACKAGE_JSON from '../../package.json';
 
-export default registerAs('config', () => {
-  return {
+export default registerAs(
+  'config',
+  (): Typings.AppConfig => ({
     project: {
+      apiPrefix: process.env.API_PREFIX,
       name: PACKAGE_JSON.name,
       version: PACKAGE_JSON.version,
       description: PACKAGE_JSON.description,
@@ -30,8 +34,14 @@ export default registerAs('config', () => {
       testEnv: process.env.TEST_KEY,
     },
     services: {
-      nestJsDocs: process.env.NEST_JS_DOCS_URL,
-      rickAndMortyAPI: process.env.RICK_AND_MORTY_API_URL,
+      nestJsDocs: {
+        url: process.env.NEST_JS_DOCS_URL,
+      },
+      rickAndMortyAPI: {
+        url: process.env.RICK_AND_MORTY_API_URL,
+        timeout: 3000,
+        healthPath: '/api/character/1',
+      },
     },
-  };
-});
+  }),
+);

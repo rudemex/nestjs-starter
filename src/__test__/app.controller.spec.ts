@@ -29,12 +29,12 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "Hello World!"', async () => {
+      expect(await appController.getHello()).toBe('Hello World!');
     });
 
-    it('should return test_key', () => {
-      expect(appController.getTestEnv()).toBe(configService.get('TEST_KEY'));
+    it('should return test_key', async () => {
+      expect(await appController.getTestEnv()).toBe(configService.get('TEST_KEY'));
     });
 
     it('should return custom util', () => {
