@@ -1,10 +1,10 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
 import { HttpClientService } from '@tresdoce-nestjs-toolkit/http-client';
+import { AxiosResponse } from 'axios';
 
 import { FilterCharacter } from '../dtos/character.dto';
 import { config } from '../../config';
-import { AxiosResponse } from 'axios';
 
 @Injectable()
 export class CharactersService {

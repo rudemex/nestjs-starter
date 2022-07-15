@@ -1,12 +1,11 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
+import { ConfigService } from '@nestjs/config';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { corePathsExcludes, ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
 import * as cookieParser from 'cookie-parser';
 import * as compression from 'compression';
 import helmet from 'helmet';
-import { ConfigService } from '@nestjs/config';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { corePathsExcludes } from '@tresdoce-nestjs-toolkit/core';
-import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/filters';
 
 import { AppModule } from './app.module';
 
