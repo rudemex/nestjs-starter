@@ -2,6 +2,15 @@
 
 ---
 
+### [1.4.1](https://github.com/rudemex/nestjs-starter/compare/v1.4.0...v1.4.1) (2022-07-16)
+
+
+### 👨‍💻 Chores
+
+* add test api prefix ([a37fe57](https://github.com/rudemex/nestjs-starter/commit/a37fe5703e2fc29ed421b65a0a9a97e837be2a87))
+* remove scannerwork ([4c99efd](https://github.com/rudemex/nestjs-starter/commit/4c99efdb89a140e1ebe6ff3c25a2df9402cc4ebb))
+* update filters and change api prefix ([7f2be79](https://github.com/rudemex/nestjs-starter/commit/7f2be79deae903b65fc9fd7f772381948367157f))
+
 ## [1.4.0](https://github.com/rudemex/nestjs-starter/compare/v1.3.0...v1.4.0) (2022-07-15)
 
 
