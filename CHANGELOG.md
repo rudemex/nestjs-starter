@@ -2,6 +2,13 @@
 
 ---
 
+### [1.4.2](https://github.com/rudemex/nestjs-starter/compare/v1.4.1...v1.4.2) (2022-07-16)
+
+
+### 👨‍💻 Chores
+
+* update paas ([3cf034a](https://github.com/rudemex/nestjs-starter/commit/3cf034a46ff677d6653e66991b364a14410c6c1e))
+
 ### [1.4.1](https://github.com/rudemex/nestjs-starter/compare/v1.4.0...v1.4.1) (2022-07-16)
 
 
