@@ -7,7 +7,7 @@ export default registerAs(
   'config',
   (): Typings.AppConfig => ({
     project: {
-      apiPrefix: process.env.API_PREFIX,
+      apiPrefix: process.env.API_PREFIX || 'API-PREFIX',
       name: PACKAGE_JSON.name,
       version: PACKAGE_JSON.version,
       description: PACKAGE_JSON.description,

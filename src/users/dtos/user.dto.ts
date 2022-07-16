@@ -25,7 +25,6 @@ export class CreateUserDto {
   readonly email: string;
 }
 
-//export class UpdateUserDto extends PartialType(CreateUserDto) {}
 export class UpdateUserDto {
   @IsString()
   @ApiProperty({
