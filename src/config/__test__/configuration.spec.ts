@@ -9,6 +9,23 @@ describe('configuration', () => {
     appConfig = config();
   });
 
+  it('should have a api-prefix', () => {
+    const { apiPrefix } = appConfig.project;
+
+    expect(apiPrefix).toBeDefined();
+    expect(apiPrefix).toEqual(expect.any(String));
+    expect(apiPrefix).toEqual(process.env.API_PREFIX);
+  });
+
+  it('should have a api-prefix default', () => {
+    process.env.API_PREFIX = '';
+    const { apiPrefix } = appConfig.project;
+
+    expect(apiPrefix).toBeDefined();
+    expect(apiPrefix).toEqual(expect.any(String));
+    expect(apiPrefix).toEqual('API-PREFIX');
+  });
+
   it('should have a project name', () => {
     const { name } = appConfig.project;
 

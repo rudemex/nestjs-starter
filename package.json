@@ -1,6 +1,6 @@
 {
   "name": "nestjs-starter",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "NestJS Starter - Server",
   "author": {
     "name": "Maximiliano \"Mex\" Delgado",
@@ -49,12 +49,6 @@
       "@commitlint/config-conventional"
     ]
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged && jest --forceExit"
-    }
-  },
   "lint-staged": {
     "*.{ts,json,md}": [
       "eslint --fix",
@@ -65,25 +59,23 @@
     "@nestjs/class-transformer": "^0.4.0",
     "@nestjs/class-validator": "^0.13.4",
     "@nestjs/common": "^9.0.3",
-    "@nestjs/config": "^^2.2.0",
+    "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.3",
     "@nestjs/platform-express": "^9.0.3",
-    "@nestjs/swagger": "^6.0.3",
-    "@tresdoce-nestjs-toolkit/archetype": "./tresdoce-nestjs-toolkit-archetype-v0.1.0-beta.3.tgz",
-    "@tresdoce-nestjs-toolkit/core": "./tresdoce-nestjs-toolkit-core-v0.1.0-beta.6.tgz",
-    "@tresdoce-nestjs-toolkit/filters": "./tresdoce-nestjs-toolkit-filters-v0.1.0-beta.3.tgz",
-    "@tresdoce-nestjs-toolkit/health": "./tresdoce-nestjs-toolkit-health-v0.1.0-beta.7.tgz",
-    "@tresdoce-nestjs-toolkit/http-client": "./tresdoce-nestjs-toolkit-http-client-v0.0.1-beta.5.tgz",
+    "@nestjs/swagger": "^6.0.4",
+    "@tresdoce-nestjs-toolkit/archetype": "file:./tresdoce-nestjs-toolkit-archetype-0.1.1.tgz",
+    "@tresdoce-nestjs-toolkit/http-client": "file:./tresdoce-nestjs-toolkit-http-client-0.0.2.tgz",
+    "@tresdoce-nestjs-toolkit/paas": "file:./tresdoce-nestjs-toolkit-paas-0.1.2.tgz",
     "class-transformer": "^0.5.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "helmet": "^5.1.0",
     "joi": "^17.6.0",
-    "lodash": "^4.17.21",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.5.6"
+    "rxjs": "^7.5.6",
+    "swagger-ui-express": "^4.3.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.3",
@@ -91,11 +83,10 @@
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.1",
     "@nestjs/testing": "^9.0.3",
-    "@tresdoce-nestjs-toolkit/commons": "./tresdoce-nestjs-toolkit-commons-v0.1.0-beta.3.tgz",
-    "@tresdoce-nestjs-toolkit/test-utils": "./tresdoce-nestjs-toolkit-test-utils-v0.1.0-beta.5.tgz",
+    "@tresdoce-nestjs-toolkit/commons": "file:./tresdoce-nestjs-toolkit-commons-0.1.1.tgz",
     "@types/express": "^4.17.13",
-    "@types/jest": "^28.1.5",
-    "@types/node": "^18.0.4",
+    "@types/jest": "^28.1.6",
+    "@types/node": "^18.0.6",
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
@@ -109,7 +100,6 @@
     "jest-sonar-reporter": "^2.0.0",
     "lint-staged": "^13.0.3",
     "prettier": "^2.7.1",
-    "source-map-support": "^0.5.21",
     "standard-version": "^9.5.0",
     "supertest": "^6.2.4",
     "ts-jest": "^28.0.5",

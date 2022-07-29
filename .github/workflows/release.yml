@@ -17,20 +17,34 @@ env:
 jobs:
   setup:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14 ]
+    name: "Setup"
     steps:
-      - name: "⚙ Set up Node.js"
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
         uses: actions/setup-node@v2
         with:
-          node-version: '14.x'
+          node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
         uses: actions/checkout@v2
 
   release:
-    needs: setup
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [ 14 ]
+    name: "Release"
+    needs: setup
     steps:
-      - uses: actions/checkout@v2
+      - name: "⚙ Set up Node.js v${{ matrix.node }}"
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: "✅ Checkout repository"
+        uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
@@ -54,7 +68,7 @@ jobs:
       - name: "📦 Install packages"
         run: yarn install
 
-      - name: "🔦 Lint"
+      - name: "💅 Lint"
         run: yarn lint
 
       - name: "🔨 Build"
@@ -83,7 +97,6 @@ jobs:
             -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
             -Dsonar.testExecutionReportPaths=test-report.xml
-            -Dsonar.typescript.lcov.reportPaths=./coverage/lcov.info
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}

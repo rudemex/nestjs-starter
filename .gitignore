@@ -14,11 +14,14 @@ lerna-debug.log*
 
 # OS
 .DS_Store
+.npmrc
+.nvmrc
 
 # Tests
 /coverage
 /.nyc_output
 test-report.xml
+.scannerwork
 
 # IDEs and editors
 /.idea
