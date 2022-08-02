@@ -67,6 +67,14 @@ services:
     volumes:
       - ./.redis_data:/data
 
+  camunda:
+    image: camunda/camunda-bpm-platform:run-latest
+    container_name: local-camunda
+    environment:
+      TZ: UTC
+    ports:
+      - "8443:8080"
+
   jaeger:
     container_name: local-jaeger
     image: jaegertracing/all-in-one:latest
