@@ -133,7 +133,7 @@ describe('configuration', () => {
 
     expect(context).toBeDefined();
     expect(context).toEqual(expect.any(String));
-    expect(context).toEqual('api');
+    expect(context).toEqual('v1');
   });
 
   it('should have a origins', () => {

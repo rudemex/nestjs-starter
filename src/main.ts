@@ -45,8 +45,8 @@ async function bootstrap() {
       .setDescription(`Swagger - ${project.description}`)
       .setExternalDoc('Documentation', project.homepage)
       .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup(`${swagger.path}`, app, document);
+    const document = SwaggerModule.createDocument(app, config, {});
+    SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document);
   }
 
   if (server.corsEnabled) {
@@ -59,8 +59,15 @@ async function bootstrap() {
   }
 
   await app.listen(port, () => {
-    console.log(`App running on: http://localhost:${port}`);
+    Logger.log(
+      `📚 Swagger is running on: http://localhost:${port}/${server.context}/${swagger.path}`,
+      `${project.name}`,
+    );
+    Logger.log(
+      `🚀 Application is running on: http://localhost:${port}/${server.context}`,
+      `${project.name}`,
+    );
   });
 }
 
-bootstrap();
+(async () => await bootstrap())();
