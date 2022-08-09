@@ -115,7 +115,7 @@ de ejemplo para generarlo.
 # SERVER
 PORT=8080
 API_PREFIX=API-PREFIX
-CONTEXT=api
+CONTEXT=v1
 ORIGINS=http://localhost:3000,http://localhost:8080
 ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
@@ -153,7 +153,7 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 la ruta principal de la aplicación. Se escribe sin el `/` (slash).
 
 - Type: `String`
-- Default: `api`
+- Default: `v1`
 
 `ORIGINS`: Es una whitelist para que la aplicación sólo pueda ser consumida por urls confiables y evitar cualquier tipo
 de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por una coma.
@@ -283,7 +283,7 @@ npm run lint
 ## 📚 Swagger
 
 El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus
-definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/docs/)
+definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/v1/docs/)
 
 Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
 aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
@@ -298,21 +298,21 @@ SWAGGER_ENABLED=true
 
 #### URL
 
-Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/docs`
+Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/v1/docs`
 
 #### Scheme
 
 ```
-<http|https>://<server_url><:port>/<swagger-path>
+<http|https>://<server_url><:port>/<app-context>/<swagger-path>
 ```
 
 #### Exportar el swagger en JSON
 
 Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path
-definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-json)
+definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/v1/docs-json)
 
-- Default: `http://localhost:8080/docs-json`
-- Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
+- Default: `http://localhost:8080/v1/docs-json`
+- Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`
 
 <a name="docker"></a>
 

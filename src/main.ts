@@ -46,7 +46,7 @@ async function bootstrap() {
       .setExternalDoc('Documentation', project.homepage)
       .build();
     const document = SwaggerModule.createDocument(app, config, {});
-    SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document);
+    SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
 
   if (server.corsEnabled) {
@@ -58,7 +58,7 @@ async function bootstrap() {
     });
   }
 
-  await app.listen(port, () => {
+  await app.listen(port, async () => {
     Logger.log(
       `📚 Swagger is running on: http://localhost:${port}/${server.context}/${swagger.path}`,
       `${project.name}`,
