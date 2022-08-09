@@ -2,6 +2,18 @@
 
 ---
 
+## [1.5.0](https://github.com/rudemex/nestjs-starter/compare/v1.4.3...v1.5.0) (2022-08-09)
+
+
+### 👨‍💻 Chores
+
+* edit logs on running app and set new swagger path ([895fad1](https://github.com/rudemex/nestjs-starter/commit/895fad1928e0902c5943c302f66fcc894eca9fd9))
+
+
+### 📝 Docs
+
+* edit readme ([9d5f3ad](https://github.com/rudemex/nestjs-starter/commit/9d5f3ad9799c8abae1421237ecbe653a3e533647))
+
 ### [1.4.3](https://github.com/rudemex/nestjs-starter/compare/v1.4.2...v1.4.3) (2022-08-02)
 
 
