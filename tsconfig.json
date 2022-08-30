@@ -12,7 +12,7 @@
     "baseUrl": "./",
     "incremental": true,
     "resolveJsonModule": true,
-    "allowJs": true
+    "allowJs": true,
   },
   "exclude": [
     "node_modules",

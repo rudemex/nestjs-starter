@@ -17,7 +17,7 @@ describe('AppController (e2e)', () => {
   });
 
   afterEach(async () => {
-    await Promise.all([app.close()]);
+    await app.close();
   });
 
   it('(GET) /', () => {
