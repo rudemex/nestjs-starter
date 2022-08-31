@@ -2,6 +2,14 @@
 
 ---
 
+### [1.5.1](https://github.com/rudemex/nestjs-starter/compare/v1.5.0...v1.5.1) (2022-08-31)
+
+
+### 👨‍💻 Chores
+
+* edit docker documentation ([bed3bfa](https://github.com/rudemex/nestjs-starter/commit/bed3bfa7fd89bc42c3fcaa7b3c9d78696fbdea8b))
+* update dependencies ([5a1a3ad](https://github.com/rudemex/nestjs-starter/commit/5a1a3ad38dd2b227c30c5d7e472256f2987a99a5))
+
 ## [1.5.0](https://github.com/rudemex/nestjs-starter/compare/v1.4.3...v1.5.0) (2022-08-09)
 
 
