@@ -1,11 +1,11 @@
 # COMMANDS
 # docker build . -t <user-docker>/<app-name>
-# docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>
+# docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <user-docker>/<app-name>
 
 # EXAMPLES
 # docker build -t nestjs-starter .
-# docker run -d -p 8080:8080 --env-file .env nestjs-starter
-# docker run -it -p 8080:8080 --env-file .env nestjs-starter
+# docker run -d -p 8080:8080 --name nestjs-starter-app--env-file .env nestjs-starter
+# docker run -it -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
 # docker system prune
 
 #docker run -it --rm --entrypoint=sh nestjs-starter
