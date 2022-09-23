@@ -8,6 +8,7 @@ import * as compression from 'compression';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
+import { LOGGING_MODULE_PROVIDER, LoggingService } from '@tresdoce-nestjs-toolkit/logging';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
@@ -18,10 +19,11 @@ async function bootstrap() {
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
 
+  app.useLogger(app.get(LOGGING_MODULE_PROVIDER));
+
   app.setGlobalPrefix(`${server.context}`, {
     exclude: corePathsExcludes,
   });
-
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
 

@@ -12,6 +12,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { config, environments, validationSchema } from './config';
+import { LoggingModule } from '@tresdoce-nestjs-toolkit/logging';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { config, environments, validationSchema } from './config';
       isGlobal: true,
       validationSchema,
     }),
+    LoggingModule,
     ArchetypeModule,
     HealthModule,
     HttpClientModule,
