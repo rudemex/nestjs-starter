@@ -67,4 +67,5 @@ test-report.xml
 .redis_data
 .redis_data/*
 ./.redis_data
-
+.elasticsearch-data/*
+./.elasticsearch-data
