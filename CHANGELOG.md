@@ -2,6 +2,22 @@
 
 ---
 
+### [1.5.2](https://github.com/rudemex/nestjs-starter/compare/v1.5.1...v1.5.2) (2022-12-18)
+
+
+### 🐛 Bug Fixes
+
+* upgrade @tresdoce-nestjs-toolkit/http-client from 0.0.3 to 0.0.4 ([fb1455d](https://github.com/rudemex/nestjs-starter/commit/fb1455dcb48b06b93f01523fce9299d61f9a56f5))
+
+
+### 👨‍💻 Chores
+
+* add deploy to railway ([5f2775a](https://github.com/rudemex/nestjs-starter/commit/5f2775a81bce0e0b89121df67cb16e045040842f))
+* edit gitignore ([f954c89](https://github.com/rudemex/nestjs-starter/commit/f954c891eac9697898b2629557af9d366c4519e1))
+* edit url demo ([c0777b7](https://github.com/rudemex/nestjs-starter/commit/c0777b7cd0be9240e22a8963c34496f83d30b433))
+* remove unused import ([e634971](https://github.com/rudemex/nestjs-starter/commit/e634971fa26dbb8ab5b9c57ce56c09d513230681))
+* update dependencies and changes in starter ([b896325](https://github.com/rudemex/nestjs-starter/commit/b8963256a2526ffbe1981e232f6bf608d529a961))
+
 ### [1.5.1](https://github.com/rudemex/nestjs-starter/compare/v1.5.0...v1.5.1) (2022-08-31)
 
 
