@@ -23,7 +23,7 @@ describe('configuration', () => {
 
     expect(apiPrefix).toBeDefined();
     expect(apiPrefix).toEqual(expect.any(String));
-    expect(apiPrefix).toEqual('API-PREFIX');
+    expect(apiPrefix).toEqual('TD_MY_API');
   });
 
   it('should have a project name', () => {

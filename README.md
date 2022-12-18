@@ -119,7 +119,7 @@ de ejemplo para generarlo.
 ```sh
 # SERVER
 PORT=8080
-API_PREFIX=API-PREFIX
+API_PREFIX=TD_MY_API
 CONTEXT=v1
 ORIGINS=http://localhost:3000,http://localhost:8080
 ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
@@ -152,7 +152,7 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 `API_PREFIX`: Es el prefijo que hace referencia a la api, y alimenta otros módulos, como es el de los filter exceptions.
 
 - Type: `String`
-- Default: `API-PREFIX`
+- Default: `TD_MY_API`
 
 `CONTEXT`: Es el contexto el que se puede acceder a la API del servidor, de esta manera no se exponen los endpoints en
 la ruta principal de la aplicación. Se escribe sin el `/` (slash).

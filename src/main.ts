@@ -18,9 +18,7 @@ async function bootstrap() {
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
 
-  app.setGlobalPrefix(`${server.context}`, {
-    exclude: corePathsExcludes,
-  });
+  app.setGlobalPrefix(`${server.context}`);
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
@@ -44,8 +42,12 @@ async function bootstrap() {
       .setVersion(`${project.version}`)
       .setDescription(`Swagger - ${project.description}`)
       .setExternalDoc('Documentation', project.homepage)
+      .setContact(project.author.name, project.author.url, project.author.email)
+      .addServer(`/${server.context}`)
       .build();
-    const document = SwaggerModule.createDocument(app, config, {});
+    const document = SwaggerModule.createDocument(app, config, {
+      ignoreGlobalPrefix: true,
+    });
     SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
 
