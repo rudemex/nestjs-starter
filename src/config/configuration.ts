@@ -1,4 +1,4 @@
-import { Typings } from '@tresdoce-nestjs-toolkit/core';
+import { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { registerAs } from '@nestjs/config';
 
 import * as PACKAGE_JSON from '../../package.json';
