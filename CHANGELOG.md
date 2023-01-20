@@ -2,6 +2,49 @@
 
 ---
 
+### [1.5.2](https://github.com/rudemex/nestjs-starter/compare/v1.5.1...v1.5.2) (2022-12-18)
+
+
+### 🐛 Bug Fixes
+
+* upgrade @tresdoce-nestjs-toolkit/http-client from 0.0.3 to 0.0.4 ([fb1455d](https://github.com/rudemex/nestjs-starter/commit/fb1455dcb48b06b93f01523fce9299d61f9a56f5))
+
+
+### 👨‍💻 Chores
+
+* add deploy to railway ([5f2775a](https://github.com/rudemex/nestjs-starter/commit/5f2775a81bce0e0b89121df67cb16e045040842f))
+* edit gitignore ([f954c89](https://github.com/rudemex/nestjs-starter/commit/f954c891eac9697898b2629557af9d366c4519e1))
+* edit url demo ([c0777b7](https://github.com/rudemex/nestjs-starter/commit/c0777b7cd0be9240e22a8963c34496f83d30b433))
+* remove unused import ([e634971](https://github.com/rudemex/nestjs-starter/commit/e634971fa26dbb8ab5b9c57ce56c09d513230681))
+* update dependencies and changes in starter ([b896325](https://github.com/rudemex/nestjs-starter/commit/b8963256a2526ffbe1981e232f6bf608d529a961))
+
+### [1.5.1](https://github.com/rudemex/nestjs-starter/compare/v1.5.0...v1.5.1) (2022-08-31)
+
+
+### 👨‍💻 Chores
+
+* edit docker documentation ([bed3bfa](https://github.com/rudemex/nestjs-starter/commit/bed3bfa7fd89bc42c3fcaa7b3c9d78696fbdea8b))
+* update dependencies ([5a1a3ad](https://github.com/rudemex/nestjs-starter/commit/5a1a3ad38dd2b227c30c5d7e472256f2987a99a5))
+
+## [1.5.0](https://github.com/rudemex/nestjs-starter/compare/v1.4.3...v1.5.0) (2022-08-09)
+
+
+### 👨‍💻 Chores
+
+* edit logs on running app and set new swagger path ([895fad1](https://github.com/rudemex/nestjs-starter/commit/895fad1928e0902c5943c302f66fcc894eca9fd9))
+
+
+### 📝 Docs
+
+* edit readme ([9d5f3ad](https://github.com/rudemex/nestjs-starter/commit/9d5f3ad9799c8abae1421237ecbe653a3e533647))
+
+### [1.4.3](https://github.com/rudemex/nestjs-starter/compare/v1.4.2...v1.4.3) (2022-08-02)
+
+
+### 👨‍💻 Chores
+
+* update dependencies and docker compose ([0eb4309](https://github.com/rudemex/nestjs-starter/commit/0eb4309dd17afca8b2a32cda372213ab6610bec5))
+
 ### [1.4.2](https://github.com/rudemex/nestjs-starter/compare/v1.4.1...v1.4.2) (2022-07-16)
 
 

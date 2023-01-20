@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { corePathsExcludes, ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
+import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
@@ -18,9 +18,7 @@ async function bootstrap() {
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
 
-  app.setGlobalPrefix(`${server.context}`, {
-    exclude: corePathsExcludes,
-  });
+  app.setGlobalPrefix(`${server.context}`);
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
@@ -44,9 +42,13 @@ async function bootstrap() {
       .setVersion(`${project.version}`)
       .setDescription(`Swagger - ${project.description}`)
       .setExternalDoc('Documentation', project.homepage)
+      .setContact(project.author.name, project.author.url, project.author.email)
+      .addServer(`/${server.context}`)
       .build();
-    const document = SwaggerModule.createDocument(app, config);
-    SwaggerModule.setup(`${swagger.path}`, app, document);
+    const document = SwaggerModule.createDocument(app, config, {
+      ignoreGlobalPrefix: true,
+    });
+    SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
 
   if (server.corsEnabled) {
@@ -58,9 +60,11 @@ async function bootstrap() {
     });
   }
 
-  await app.listen(port, () => {
-    console.log(`App running on: http://localhost:${port}`);
+  await app.listen(port, async () => {
+    const appServer = `http://localhost:${port}/${server.context}`;
+    Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
   });
 }
 
-bootstrap();
+(async () => await bootstrap())();

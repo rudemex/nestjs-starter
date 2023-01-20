@@ -23,7 +23,7 @@ describe('configuration', () => {
 
     expect(apiPrefix).toBeDefined();
     expect(apiPrefix).toEqual(expect.any(String));
-    expect(apiPrefix).toEqual('API-PREFIX');
+    expect(apiPrefix).toEqual('TD_MY_API');
   });
 
   it('should have a project name', () => {
@@ -133,7 +133,7 @@ describe('configuration', () => {
 
     expect(context).toBeDefined();
     expect(context).toEqual(expect.any(String));
-    expect(context).toEqual('api');
+    expect(context).toEqual('v1');
   });
 
   it('should have a origins', () => {

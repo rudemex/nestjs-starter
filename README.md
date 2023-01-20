@@ -32,11 +32,16 @@
 <p>NestJS es un framework progresivo de Node.js para la creación de aplicaciones eficientes, confiables y escalables del
 lado del servidor, el cual está construido y es completamente compatible con TypeScript y JavaScript, combinando
 elementos de la programación orientada a objetos, programación funcional y programación reactiva funcional.</p>
-
+<br>
+<div>
+    <a href="https://railway.app/new/template/BOGqHd?referralCode=mfmi1X" target="_blank">
+        <img src="https://railway.app/button.svg" alt="Deploy to Railway"/>
+    </a>
+</div>
 
 ## Glosario
 
-- [🥳 Demo](https://rudemex-nestjs-starter.herokuapp.com/api)
+- [🥳 Demo](https://nestjs-starter.up.railway.app/v1)
 - [🤓 Objetivo](#objective)
 - [📝 Requerimientos básicos](#basic-requirements)
 - [🛠️ Instalar dependencias](#install-dependencies)
@@ -114,8 +119,8 @@ de ejemplo para generarlo.
 ```sh
 # SERVER
 PORT=8080
-API_PREFIX=API-PREFIX
-CONTEXT=api
+API_PREFIX=TD_MY_API
+CONTEXT=v1
 ORIGINS=http://localhost:3000,http://localhost:8080
 ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
@@ -147,13 +152,13 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 `API_PREFIX`: Es el prefijo que hace referencia a la api, y alimenta otros módulos, como es el de los filter exceptions.
 
 - Type: `String`
-- Default: `API-PREFIX`
+- Default: `TD_MY_API`
 
 `CONTEXT`: Es el contexto el que se puede acceder a la API del servidor, de esta manera no se exponen los endpoints en
 la ruta principal de la aplicación. Se escribe sin el `/` (slash).
 
 - Type: `String`
-- Default: `api`
+- Default: `v1`
 
 `ORIGINS`: Es una whitelist para que la aplicación sólo pueda ser consumida por urls confiables y evitar cualquier tipo
 de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por una coma.
@@ -283,7 +288,7 @@ npm run lint
 ## 📚 Swagger
 
 El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus
-definiciones. [Demo Swagger](https://rudemex-nestjs-starter.herokuapp.com/docs/)
+definiciones. [Demo Swagger](https://nestjs-starter.up.railway.app/v1/docs/)
 
 Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
 aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
@@ -298,21 +303,21 @@ SWAGGER_ENABLED=true
 
 #### URL
 
-Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/docs`
+Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/v1/docs`
 
 #### Scheme
 
 ```
-<http|https>://<server_url><:port>/<swagger-path>
+<http|https>://<server_url><:port>/<app-context>/<swagger-path>
 ```
 
 #### Exportar el swagger en JSON
 
 Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path
-definido. [Demo Swagger JSON](https://rudemex-nestjs-starter.herokuapp.com/docs-json)
+definido. [Demo Swagger JSON](https://nestjs-starter.up.railway.app/v1/docs-json)
 
-- Default: `http://localhost:8080/docs-json`
-- Schema: `<http|https>://<server_url><:port>/<swagger-path>-json`
+- Default: `http://localhost:8080/v1/docs-json`
+- Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`
 
 <a name="docker"></a>
 
@@ -324,7 +329,7 @@ El proyecto cuenta con un `dockerfile` y un `docker-compose.yml` de base, listo 
 
 Schema: `docker build . -t <user-docker>/<app-name>`
 
-Schema: `docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>`
+Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <user-docker>/<app-name>`
 
 ### Ejemplo
 
@@ -332,7 +337,7 @@ Schema: `docker run -d -p 8080:8080 --env-file <.env> <user-docker>/<app-name>`
 docker build -t nestjs-starter .
 ```
 ```
-docker run -d -p 8080:8080 --env-file .env.prod nestjs-starter
+docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env.prod nestjs-starter
 ```
 
 <a name="commits"></a>

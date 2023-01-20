@@ -1,5 +1,5 @@
 # docker-compose.yml - Only for local debug purposes
-
+# docker-compose up -d elasticsearch kibana jaeger camunda redis mongo mysql postgres pgadmin
 version: '3.9'
 
 services:
@@ -66,6 +66,50 @@ services:
       - '6379:6379'
     volumes:
       - ./.redis_data:/data
+
+  camunda:
+    image: camunda/camunda-bpm-platform:run-latest
+    container_name: local-camunda
+    environment:
+      TZ: UTC
+    ports:
+      - "8443:8080"
+
+  elasticsearch:
+    #7.17.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    container_name: local-elasticsearch
+    restart: always
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
+      - ELASTIC_PASSWORD=elastic
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - ./.elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+
+  kibana:
+    container_name: local-kibana
+    image: docker.elastic.co/kibana/kibana:8.3.3
+    restart: always
+    environment:
+      SERVER_NAME: kibana
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
 
   jaeger:
     container_name: local-jaeger

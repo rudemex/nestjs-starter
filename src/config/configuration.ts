@@ -19,7 +19,7 @@ export default registerAs(
     server: {
       isProd: process.env.NODE_ENV === 'production',
       port: parseInt(process.env.PORT, 10) || 8080,
-      context: process.env.CONTEXT || 'api',
+      context: process.env.CONTEXT || 'v1',
       origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
