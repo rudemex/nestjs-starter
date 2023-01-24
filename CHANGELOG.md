@@ -2,6 +2,27 @@
 
 ---
 
+## [2.0.0](https://github.com/rudemex/nestjs-starter/compare/v1.5.2...v2.0.0) (2023-01-24)
+
+
+### 📝 Docs
+
+* update readme nest version ([8b65988](https://github.com/rudemex/nestjs-starter/commit/8b6598822464dc1a2b27e5cfd10ec0000d8f5a5d))
+
+
+### 👨‍💻 Chores
+
+* resolve problem with envs ([7fdc47c](https://github.com/rudemex/nestjs-starter/commit/7fdc47cf761c42dcba00940750f5087cb4777a14))
+* update dependencies ([2e41e9b](https://github.com/rudemex/nestjs-starter/commit/2e41e9bd6210abe895c06f8316d4621f8d6a5e12))
+* update dependencies ([0d31d75](https://github.com/rudemex/nestjs-starter/commit/0d31d75284c3a76bedfda0b1d73f162201ed4a4d))
+* update docker compose ([f7a655e](https://github.com/rudemex/nestjs-starter/commit/f7a655efa18392f2f95a3c55374bcd7b4818e08f))
+* update starter to nest v9 ([d9c6f33](https://github.com/rudemex/nestjs-starter/commit/d9c6f33f8a04d1aa4c90908e039b81de7d4768f2))
+
+
+### ✨ Features
+
+* update dependencies ([4cb897f](https://github.com/rudemex/nestjs-starter/commit/4cb897f70db683afcfd51e1352e22d89180db5ec))
+
 ### [1.5.2](https://github.com/rudemex/nestjs-starter/compare/v1.5.1...v1.5.2) (2022-12-18)
 
 
