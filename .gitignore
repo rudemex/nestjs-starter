@@ -68,3 +68,5 @@ sonar-project.properties
 .redis_data
 .redis_data/*
 ./.redis_data
+.elasticsearch-data/*
+./.elasticsearch-data

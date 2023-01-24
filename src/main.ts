@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { corePathsExcludes, ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
-import * as cookieParser from 'cookie-parser';
-import * as compression from 'compression';
+import { ExceptionsFilter, ResponseInterceptor } from '@tresdoce-nestjs-toolkit/paas';
+import cookieParser from 'cookie-parser';
+import compression from 'compression';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
@@ -18,12 +18,11 @@ async function bootstrap() {
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
 
-  app.setGlobalPrefix(`${server.context}`, {
-    exclude: corePathsExcludes,
-  });
+  app.setGlobalPrefix(`${server.context}`);
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
+  app.useGlobalInterceptors(new ResponseInterceptor());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -44,8 +43,12 @@ async function bootstrap() {
       .setVersion(`${project.version}`)
       .setDescription(`Swagger - ${project.description}`)
       .setExternalDoc('Documentation', project.homepage)
+      .setContact(project.author.name, project.author.url, project.author.email)
+      .addServer(`/${server.context}`)
       .build();
-    const document = SwaggerModule.createDocument(app, config, {});
+    const document = SwaggerModule.createDocument(app, config, {
+      ignoreGlobalPrefix: true,
+    });
     SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }
 
@@ -59,14 +62,9 @@ async function bootstrap() {
   }
 
   await app.listen(port, async () => {
-    Logger.log(
-      `📚 Swagger is running on: http://localhost:${port}/${server.context}/${swagger.path}`,
-      `${project.name}`,
-    );
-    Logger.log(
-      `🚀 Application is running on: http://localhost:${port}/${server.context}`,
-      `${project.name}`,
-    );
+    const appServer = `http://localhost:${port}/${server.context}`;
+    Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
   });
 }
 
