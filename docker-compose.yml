@@ -1,5 +1,5 @@
 # docker-compose.yml - Only for local debug purposes
-
+# docker-compose up -d elasticsearch kibana jaeger camunda redis mongo mysql postgres pgadmin
 version: '3.9'
 
 services:
@@ -61,7 +61,7 @@ services:
       REDIS_PASSWORD: 123456
       REDIS_HOST: cache
       #REDIS_USERNAME: default
-    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "123456"]
     ports:
       - '6379:6379'
     volumes:
@@ -78,7 +78,7 @@ services:
   elasticsearch:
     #7.17.0
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
-    container_name: elasticsearch
+    container_name: local-elasticsearch
     restart: always
     environment:
       - discovery.type=single-node
@@ -100,7 +100,7 @@ services:
       - "9200:9200"
 
   kibana:
-    container_name: kibana
+    container_name: local-kibana
     image: docker.elastic.co/kibana/kibana:8.3.3
     restart: always
     environment:

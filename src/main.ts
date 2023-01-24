@@ -2,9 +2,9 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
-import * as cookieParser from 'cookie-parser';
-import * as compression from 'compression';
+import { ExceptionsFilter, ResponseInterceptor } from '@tresdoce-nestjs-toolkit/paas';
+import cookieParser from 'cookie-parser';
+import compression from 'compression';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
@@ -22,6 +22,7 @@ async function bootstrap() {
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
+  app.useGlobalInterceptors(new ResponseInterceptor());
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -61,14 +62,9 @@ async function bootstrap() {
   }
 
   await app.listen(port, async () => {
-    Logger.log(
-      `📚 Swagger is running on: http://localhost:${port}/${server.context}/${swagger.path}`,
-      `${project.name}`,
-    );
-    Logger.log(
-      `🚀 Application is running on: http://localhost:${port}/${server.context}`,
-      `${project.name}`,
-    );
+    const appServer = `http://localhost:${port}/${server.context}`;
+    Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
   });
 }
 
