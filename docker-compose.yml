@@ -61,7 +61,7 @@ services:
       REDIS_PASSWORD: 123456
       REDIS_HOST: cache
       #REDIS_USERNAME: default
-    command: ["redis-server", "--appendonly", "yes", "--requirepass","123456"]
+    command: ["redis-server", "--appendonly", "yes", "--requirepass", "123456"]
     ports:
       - '6379:6379'
     volumes:

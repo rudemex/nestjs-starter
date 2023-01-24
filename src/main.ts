@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
+import { ExceptionsFilter, ResponseInterceptor } from '@tresdoce-nestjs-toolkit/paas';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
@@ -22,6 +22,7 @@ async function bootstrap() {
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
+  app.useGlobalInterceptors(new ResponseInterceptor());
 
   app.useGlobalPipes(
     new ValidationPipe({
