@@ -115,7 +115,7 @@ jobs:
 
       - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
         run: |
-          git config --global user.name "GitHub CD bot"
+          git config --global user.name "GitHub CI/CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
           npm run release -- --release-as ${{github.event.inputs.newVersion}}        
           git push --follow-tags origin master
@@ -139,3 +139,15 @@ jobs:
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
           prerelease: false
+
+      - name: "🔁 Rebase"
+        run: |
+          git remote set-url origin "https://github.com/${{ github.repository }}.git"
+          git config --global user.name "GitHub CI/CD bot"
+          git config --global user.email "${GITHUB_EMAIL}"
+          git config pull.rebase true
+          git fetch
+          git checkout develop
+          git pull
+          git merge --no-ff -m "ci(rebase): merge master" origin/master
+          git push -f
