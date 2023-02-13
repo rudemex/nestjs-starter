@@ -2,6 +2,14 @@
 
 ---
 
+### [2.0.2](https://github.com/rudemex/nestjs-starter/compare/v2.0.1...v2.0.2) (2023-02-13)
+
+
+### 👨‍💻 Chores
+
+* add rebase after versioning ([4f2a3e5](https://github.com/rudemex/nestjs-starter/commit/4f2a3e56f8c8d2b59b3a28083d9440a9d5136f5a))
+* update test-utils ([18e5187](https://github.com/rudemex/nestjs-starter/commit/18e518770b3f474342ff99c837d82d5bed2d0ddf))
+
 ### [2.0.1](https://github.com/rudemex/nestjs-starter/compare/v2.0.0...v2.0.1) (2023-01-25)
 
 
