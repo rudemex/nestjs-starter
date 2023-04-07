@@ -374,7 +374,7 @@ git commit -am 'feat!: changes in application'
 
 ## 🏷️ Versionado
 
-Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./github/workflows/release.yml`), 
+Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./.github/workflows/release.yml`), 
 ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los 
 `conventional commits` del repositorio. Actualmente, está configurado para incrementar la version en un archivo custom y no en el package.json.
 
@@ -392,7 +392,7 @@ git fetch
 git tag -l | xargs -n 1 git push --delete origin
 ```
 - Borrar los archivos `CHANGELOG.md` y `version.txt`
-- Editar el workflow [`release.yml`](./github/workflows/release.yml) para que el versionado solo se realice si es una aplicación.
+- Editar el workflow [`release.yml`](./.github/workflows/release.yml) para que el versionado solo se realice si es una aplicación.
 
 ## 📄 Changelog
 
