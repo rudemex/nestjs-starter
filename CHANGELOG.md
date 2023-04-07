@@ -2,6 +2,13 @@
 
 ---
 
+### [2.0.4](https://github.com/rudemex/nestjs-starter/compare/v2.0.3...v2.0.4) (2023-04-07)
+
+
+### 👨‍💻 Chores
+
+* **workflow:** move docker step in release to end of pipeline ([f956d1f](https://github.com/rudemex/nestjs-starter/commit/f956d1fa0cd59193218d2a72e51728e4d7aa82a0))
+
 ### [2.0.3](https://github.com/rudemex/nestjs-starter/compare/v2.0.2...v2.0.3) (2023-04-07)
 
 
