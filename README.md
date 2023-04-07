@@ -364,42 +364,35 @@ referencia [`conventional commits`](https://www.conventionalcommits.org/en/v1.0.
 git commit -m "docs(readme): add documentantion to readme"
 ```
 
+### Breaking change
+
+```
+git commit -am 'feat!: changes in application'
+```
+
 <a name="versioning"></a>
 
 ## 🏷️ Versionado
 
-Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./github/workflows/release.yml`), 
+Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./.github/workflows/release.yml`), 
 ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los 
-`conventional commits` del repo. Actualmente, está configurado para incrementar la version en un archivo custom y no en el package.json.
+`conventional commits` del repositorio. Actualmente, está configurado para incrementar la version en un archivo custom y no en el package.json.
 
 Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
 
-- Asegurarse de que la version del `package.json` este en un valor inicial y los datos de la aplicación editados. Ej. `1.0.0`.
-- Correr el siguiente script para borrar cualquier posible tag local o remoto: <br>`git tag -d $(git tag -l) && git push origin --delete $(git tag -l)`
-- Borrar los archivos `CHANGELOG.md` y `version.txt`
+- Asegurarse de que la version del `package.json` este en un valor inicial (`1.0.0`), y los datos de la aplicación ajustados.
+- Correr el siguiente script para borrar cualquier posible tag local o remoto:
+```sh
+git tag -d $(git tag -l)
+git fetch
+git push origin --delete $(git tag -l)
+git tag -d $(git tag -l)
 
-```json
-//.versionrc
-{
-  "header": "<div align=\"center\"><h1>📝 Changelog</h1><p>All changes of this project will be documented in this file.</p></div>\n\n---\n",
-  "path": "./",
-  "releaseCommitMessageFormat": "ci(release): bumped version to {{currentTag}}",
-  "types": [
-    { "type": "feat", "section": "✨ Features", "hidden": false },
-    { "type": "fix", "section": "\uD83D\uDC1B Bug Fixes", "hidden": false },
-    { "type": "chore", "section": "👨‍💻 Chores", "hidden": false },
-    { "type": "docs", "section": "\uD83D\uDCDD Docs", "hidden": false },
-    { "type": "refactor", "section": "♻️Refactors", "hidden": false },
-    { "type": "test", "section": "🧪 Tests", "hidden": true },
-    { "type": "build", "section": "🛠 Build", "hidden": true },
-    { "type": "perf", "hidden": true },
-    { "type": "style", "hidden": true },
-    { "type": "ci", "hidden": true },
-    { "type": "revert", "hidden": true }
-  ],
-  "issuePrefixes": ["#"]
-}
+git fetch
+git tag -l | xargs -n 1 git push --delete origin
 ```
+- Borrar los archivos `CHANGELOG.md` y `version.txt`
+- Editar el workflow [`release.yml`](./.github/workflows/release.yml) para que el versionado solo se realice si es una aplicación.
 
 ## 📄 Changelog
 

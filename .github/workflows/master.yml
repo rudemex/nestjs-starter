@@ -15,42 +15,44 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 14 ]
+        node: [ 16 ]
     name: "Setup"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 14 ]
+        node: [ 16 ]
     needs: setup
     name: "Build"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: "💾 Restore packages from cache"
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
