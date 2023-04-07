@@ -3,10 +3,12 @@ name: "Release"
 on:
   workflow_dispatch:
     inputs:
-      newVersion:
-        description: "Version to publish: v[MAJOR].[MINOR].[PATCH]"
+      release:
+        description: "Version as:"
         required: true
-        default: '0.0.0'
+        options:
+          - template
+          - application
 
 env:
   GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -19,42 +21,44 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 14 ]
+        node: [ 16 ]
     name: "Setup"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
   release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 14 ]
+        node: [ 16 ]
     name: "Release"
     needs: setup
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: "💾 Restore Dependencies from cache"
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: |
             node_modules
             */*/node_modules
-          key: ${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
 
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
@@ -113,12 +117,19 @@ jobs:
           docker push ${DOCKER_USER}/${{ github.event.repository.name }}:v${{github.event.inputs.newVersion}}  
           docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest       
 
-      - name: "🏷️ Create Release: v${{github.event.inputs.newVersion}}"
+      - name: "🏷️ Create Release"
+        id: Release
         run: |
           git config --global user.name "GitHub CI/CD bot"
           git config --global user.email "${GITHUB_EMAIL}"
-          npm run release -- --release-as ${{github.event.inputs.newVersion}}        
+          if ${{github.event.inputs.release == 'template'}}; then
+            yarn release --packageFiles 'version.txt' --bumpFiles 'version.txt'
+          else
+            yarn release
+          fi
           git push --follow-tags origin master
+          tag=$(git describe --tags $(git rev-list --tags --max-count=1))
+          echo "tag=$tag" >> $GITHUB_OUTPUT
 
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
@@ -126,11 +137,11 @@ jobs:
         env:
           REPO: ${{ github.repository }}
 
-      - name: "🚀 Publish Release: v${{github.event.inputs.newVersion}}"
+      - name: "🚀 Publish Release"
         uses: actions/create-release@v1
         with:
-          tag_name: "v${{github.event.inputs.newVersion}}"
-          release_name: "v${{github.event.inputs.newVersion}}"
+          tag_name: "${{steps.Release.outputs.tag}}"
+          release_name: "${{steps.Release.outputs.tag}}"
           body: |
             ${{ steps.Changelog.outputs.changelog }}
             
