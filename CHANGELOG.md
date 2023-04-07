@@ -2,6 +2,25 @@
 
 ---
 
+### [2.0.3](https://github.com/rudemex/nestjs-starter/compare/v2.0.2...v2.0.3) (2023-04-07)
+
+
+### 👨‍💻 Chores
+
+* **workflow:** changes in release application ([275e15d](https://github.com/rudemex/nestjs-starter/commit/275e15d41d01b57a6cca403b608b14d3c521bcbd))
+* **workflows:** update actions ([bd4f7b2](https://github.com/rudemex/nestjs-starter/commit/bd4f7b26ffb63e8cbd1cd30d3c5303bba93333b2))
+
+
+### 📝 Docs
+
+* **readme:** edit readme ([80600fe](https://github.com/rudemex/nestjs-starter/commit/80600fef1a47774232766eb9517ed34062e62a4e))
+
+
+### 🐛 Bug Fixes
+
+* **workflow:** change input to workflow dispatch in release ([6013e9d](https://github.com/rudemex/nestjs-starter/commit/6013e9d26a1eb4e4bdbeb402b167900be19b6e04))
+* **workflow:** re order docker step in release for get the latest tag ([dccc76c](https://github.com/rudemex/nestjs-starter/commit/dccc76c297b7a177b5e5ee3bf3746e8735292cd5))
+
 ### [2.0.2](https://github.com/rudemex/nestjs-starter/compare/v2.0.1...v2.0.2) (2023-02-13)
 
 
