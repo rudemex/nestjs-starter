@@ -121,17 +121,6 @@ jobs:
           tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "tag=$tag" >> $GITHUB_OUTPUT
 
-      - name: "🐳 Docker"
-        run: |
-          docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-          docker build -t ${{ github.event.repository.name }} .
-          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}
-          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
-          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
-          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}  
-          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest      
-
       - name: "📄 Create Changelog"
         uses: Bullrich/generate-release-changelog@master
         id: Changelog
@@ -163,3 +152,14 @@ jobs:
           git pull
           git merge --no-ff -m "ci(rebase): merge master" origin/master
           git push -f
+
+      - name: "🐳 Docker"
+        run: |
+          docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
+          docker build -t ${{ github.event.repository.name }} .
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}
+          docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}  
+          docker push ${DOCKER_USER}/${{ github.event.repository.name }}:latest
