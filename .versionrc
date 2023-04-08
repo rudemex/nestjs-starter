@@ -19,11 +19,5 @@
     "bump": false,
     "commit": false,
     "tag": false
-  },
-  "bumpFiles":[
-    {
-      "filename": "version.txt",
-      "type": "plain-text"
-    }
-  ]
+  }
 }

@@ -2,6 +2,13 @@
 
 ---
 
+## [2.1.0](https://github.com/rudemex/nestjs-starter/compare/v2.0.4...v2.1.0) (2023-04-08)
+
+
+### ✨ Features
+
+* update dependencies and tresdoce toolkit ([fe55b5f](https://github.com/rudemex/nestjs-starter/commit/fe55b5fc2d5c6d64c1ac502141bbc966d6393427))
+
 ### [2.0.4](https://github.com/rudemex/nestjs-starter/compare/v2.0.3...v2.0.4) (2023-04-07)
 
 
