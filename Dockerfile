@@ -10,7 +10,7 @@
 
 #docker run -it --rm --entrypoint=sh nestjs-starter
 
-FROM node:14-alpine3.15 as builder
+FROM node:16.14.2-alpine as builder
 
 ARG NODE_ENV=build
 ENV NODE_ENV=${NODE_ENV}
@@ -27,7 +27,7 @@ RUN yarn build
 
 # ---
 
-FROM node:14-alpine3.15
+FROM node:16.14.2-alpine
 LABEL name=nestjs-starter
 
 USER node
