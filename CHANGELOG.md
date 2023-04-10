@@ -2,6 +2,13 @@
 
 ---
 
+### [2.1.2](https://github.com/rudemex/nestjs-starter/compare/v2.1.1...v2.1.2) (2023-04-10)
+
+
+### 📝 Docs
+
+* **readme:** edit version badge on node and npm ([a84d16c](https://github.com/rudemex/nestjs-starter/commit/a84d16c98d649b346091edaacecce4e1719d910b))
+
 ### [2.1.1](https://github.com/rudemex/nestjs-starter/compare/v2.1.0...v2.1.1) (2023-04-10)
 
 
