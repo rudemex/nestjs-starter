@@ -2,6 +2,14 @@
 
 ---
 
+### [2.1.1](https://github.com/rudemex/nestjs-starter/compare/v2.1.0...v2.1.1) (2023-04-10)
+
+
+### 🐛 Bug Fixes
+
+* **docker:** upgrade node version in dockerfile ([f0a7ec8](https://github.com/rudemex/nestjs-starter/commit/f0a7ec82dd070e6e95e5c3833a4a0b01c3ee3c1a))
+* **workflow:** change node matrix in quality pipeline ([c834a6a](https://github.com/rudemex/nestjs-starter/commit/c834a6a7e18f5a9696672cab608c11692e6e8501))
+
 ## [2.1.0](https://github.com/rudemex/nestjs-starter/compare/v2.0.4...v2.1.0) (2023-04-08)
 
 
