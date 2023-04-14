@@ -33,8 +33,8 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: my_db
-      MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
+      #MYSQL_USER: admin
     ports:
       - "3306:3306"
     volumes:
@@ -125,23 +125,23 @@ services:
     environment:
       - LOG_LEVEL=debug
 
-  app:
-    container_name: local-app
-    env_file:
-      - .env
-      #- .env.dev
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: "yarn start"
-    ports:
-      - '8080:8080'
-    networks:
-      - nestjs-network
-    volumes:
-      - ./usr/src/app
-      - ./usr/src/app/node_modules
-    restart: unless-stopped
+  #app:
+  #  container_name: local-app
+  #  env_file:
+  #    - .env
+  #    #- .env.dev
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile
+  #  command: "yarn start"
+  #  ports:
+  #    - '8080:8080'
+  #  networks:
+  #    - nestjs-network
+  #  volumes:
+  #    - ./usr/src/app
+  #    - ./usr/src/app/node_modules
+  #  restart: unless-stopped
 
-networks:
-  nestjs-network:
+#networks:
+#  nestjs-network:
