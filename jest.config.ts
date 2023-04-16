@@ -7,4 +7,8 @@ dotenv.config({
   path: '.env.test',
 });
 
-module.exports = jestConfig;
+module.exports = {
+  ...jestConfig(),
+  //globalSetup: './jest.globalSetup.ts',
+  //globalTeardown: './jest.globalTeardown.ts',
+};
