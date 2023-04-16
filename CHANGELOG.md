@@ -2,6 +2,18 @@
 
 ---
 
+## [2.2.0](https://github.com/rudemex/nestjs-starter/compare/v2.1.2...v2.2.0) (2023-04-16)
+
+
+### ✨ Features
+
+* add global test container to tests ([1760677](https://github.com/rudemex/nestjs-starter/commit/17606771fbd3b170f42925d091d442211132956d))
+
+
+### 👨‍💻 Chores
+
+* disable global setup and global teardown of testcontainers ([c115706](https://github.com/rudemex/nestjs-starter/commit/c115706c0fdcca8b7032a910c08a425a9e3a9fd0))
+
 ### [2.1.2](https://github.com/rudemex/nestjs-starter/compare/v2.1.1...v2.1.2) (2023-04-10)
 
 
