@@ -9,6 +9,6 @@ dotenv.config({
 
 module.exports = {
   ...jestConfig(),
-  globalSetup: './setup.js',
-  globalTeardown: './teardown.js',
+  globalSetup: './jest.globalSetup.ts',
+  globalTeardown: './jest.globalTeardown.ts',
 };
