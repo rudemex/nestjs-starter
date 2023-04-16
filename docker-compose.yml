@@ -6,81 +6,96 @@ services:
   postgres:
     image: postgres:13
     container_name: local-postgres
+    restart: always
+    ports:
+      - '5432:5432'
     environment:
       TZ: UTC
       POSTGRES_DB: my_db
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123456
-    ports:
-      - '5432:5432'
-    volumes:
-      - ./.postgres_data:/var/lib/postgresql/data
-      # get ip address for connect to pgadmin
-      # docker inspect loc-postgres
+    #logging:
+    #  driver: none
+    #volumes:
+    #  - ./.postgres_data:/var/lib/postgresql/data
 
   pgadmin:
     image: dpage/pgadmin4
     container_name: local-pgadmin
+    restart: always
+    ports:
+      - '5050:80'
     environment:
+      TZ: UTC
       PGADMIN_DEFAULT_EMAIL: root@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
-    ports:
-      - "5050:80"
 
   mysql:
     image: mysql:5.7
     container_name: local-mysql
+    restart: always
+    ports:
+      - '3306:3306'
     environment:
+      TZ: UTC
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: my_db
-      MYSQL_USER: admin
       MYSQL_PASSWORD: 123456
-    ports:
-      - "3306:3306"
-    volumes:
-      - ./.mysql_data/db:/var/lib/mysql
+      #MYSQL_USER: root
+    #volumes:
+    #  - ./.mysql-data/db:/var/lib/mysql
 
   mongo:
     image: mongo:5.0
     container_name: local-mongo
+    restart: always
+    ports:
+      - '27017:27017'
     environment:
       TZ: UTC
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
-    ports:
-      - '27017:27017'
-    volumes:
-      - ./.mongo_data:/data/db
+      MONGO_INITDB_DATABASE: test_db
+    #logging:
+    #  driver: none
+    #volumes:
+    #  - ./.mongo_data:/data/db
 
   redis:
     image: redis:6.2-alpine
     container_name: local-redis
+    restart: always
+    ports:
+      - '6379:6379'
     environment:
       TZ: UTC
       REDIS_PORT: 6379
       REDIS_PASSWORD: 123456
       REDIS_HOST: cache
       #REDIS_USERNAME: default
-    command: ["redis-server", "--appendonly", "yes", "--requirepass", "123456"]
-    ports:
-      - '6379:6379'
-    volumes:
-      - ./.redis_data:/data
+    command: [ "redis-server", "--appendonly", "yes", "--requirepass","123456" ]
+    #logging:
+    #  driver: none
+    #volumes:
+    #  - ./.redis_data:/data
 
   camunda:
     image: camunda/camunda-bpm-platform:run-latest
     container_name: local-camunda
+    restart: always
+    ports:
+      - '8443:8080'
     environment:
       TZ: UTC
-    ports:
-      - "8443:8080"
 
   elasticsearch:
-    #7.17.0
     image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
     container_name: local-elasticsearch
     restart: always
+    ports:
+      - '9200:9200'
     environment:
+      - TZ=UTC
       - discovery.type=single-node
       - ES_JAVA_OPTS=-Xms1g -Xmx1g
       - xpack.security.enabled=false
@@ -94,54 +109,55 @@ services:
         hard: 65536
     cap_add:
       - IPC_LOCK
-    volumes:
-      - ./.elasticsearch-data:/usr/share/elasticsearch/data
-    ports:
-      - "9200:9200"
+    #volumes:
+    #  - ./.elasticsearch-data:/usr/share/elasticsearch/data
 
   kibana:
-    container_name: local-kibana
     image: docker.elastic.co/kibana/kibana:8.3.3
+    container_name: local-kibana
     restart: always
+    ports:
+      - '5601:5601'
     environment:
+      TZ: UTC
       SERVER_NAME: kibana
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
-    ports:
-      - "5601:5601"
     depends_on:
       - elasticsearch
 
   jaeger:
-    container_name: local-jaeger
+    container_name: loc-jaeger
     image: jaegertracing/all-in-one:latest
+    restart: always
     ports:
-      - "5775:5775/udp"
-      - "6831:6831/udp"
-      - "6832:6832/udp"
-      - "5778:5778"
-      - "16686:16686"
-      - "14268:14268"
-      - "9411:9411"
+      - '5775:5775/udp'
+      - '6831:6831/udp'
+      - '6832:6832/udp'
+      - '5778:5778'
+      - '16686:16686'
+      - '14268:14268'
+      - '9411:9411'
     environment:
-      - LOG_LEVEL=debug
+      TZ: UTC
+      #LOG_LEVEL: debug
 
-  app:
-    container_name: local-app
-    env_file:
-      - .env
-      #- .env.dev
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: "yarn start"
-    ports:
-      - '8080:8080'
-    networks:
-      - nestjs-network
-    volumes:
-      - ./usr/src/app
-      - ./usr/src/app/node_modules
-    restart: unless-stopped
+  #app:
+  #  container_name: local-app
+  #  env_file:
+  #    - .env
+  #    #- .env.dev
+  #  build:
+  #    context: .
+  #    dockerfile: Dockerfile
+  #  command: "yarn start"
+  #  ports:
+  #    - '8080:8080'
+  #  networks:
+  #    - nestjs-network
+  #  volumes:
+  #    - ./usr/src/app
+  #    - ./usr/src/app/node_modules
+  #  restart: unless-stopped
 
-networks:
-  nestjs-network:
+#networks:
+#  nestjs-network:
