@@ -2,6 +2,13 @@
 
 ---
 
+### [2.2.2](https://github.com/rudemex/nestjs-starter/compare/v2.2.1...v2.2.2) (2023-04-17)
+
+
+### 👨‍💻 Chores
+
+* change remove volumes to true in global teardown ([e9c6458](https://github.com/rudemex/nestjs-starter/commit/e9c6458e4e51b342471a83c6133f3d86dd94dbf5))
+
 ### [2.2.1](https://github.com/rudemex/nestjs-starter/compare/v2.2.0...v2.2.1) (2023-04-17)
 
 
