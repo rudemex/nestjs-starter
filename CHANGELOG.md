@@ -2,6 +2,13 @@
 
 ---
 
+### [2.2.4](https://github.com/rudemex/nestjs-starter/compare/v2.2.3...v2.2.4) (2023-04-20)
+
+
+### 👨‍💻 Chores
+
+* **http-client:** update dependencie ([9de70e3](https://github.com/rudemex/nestjs-starter/commit/9de70e3001297c4966c42bb3841f6fec907e762f))
+
 ### [2.2.3](https://github.com/rudemex/nestjs-starter/compare/v2.2.2...v2.2.3) (2023-04-18)
 
 
