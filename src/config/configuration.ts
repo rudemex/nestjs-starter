@@ -2,6 +2,7 @@ import { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { registerAs } from '@nestjs/config';
 
 import * as PACKAGE_JSON from '../../package.json';
+import * as process from 'process';
 
 export default registerAs(
   'config',
@@ -18,6 +19,7 @@ export default registerAs(
     },
     server: {
       isProd: process.env.NODE_ENV === 'production',
+      appStage: process.env.APP_STAGE,
       port: parseInt(process.env.PORT, 10) || 8080,
       context: process.env.CONTEXT || 'v1',
       origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',

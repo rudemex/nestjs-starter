@@ -1,6 +1,7 @@
 import { ConfigType } from '@nestjs/config';
 import { config } from '../index';
 import * as PACKAGE_JSON from '../../../package.json';
+import * as process from 'process';
 
 describe('configuration', () => {
   let appConfig: ConfigType<typeof config>;
@@ -98,6 +99,14 @@ describe('configuration', () => {
     expect(isProd).toBeDefined();
     expect(isProd).toEqual(expect.any(Boolean));
     expect(isProd).toEqual(true);
+  });
+
+  it('should have an app stage', () => {
+    const { appStage } = appConfig.server;
+
+    expect(appStage).toBeDefined();
+    expect(appStage).toEqual(expect.any(String));
+    expect(appStage).toEqual(process.env.APP_STAGE);
   });
 
   it('should have a PORT', () => {
