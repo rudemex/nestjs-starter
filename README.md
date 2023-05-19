@@ -34,7 +34,7 @@ lado del servidor, el cual está construido y es completamente compatible con Ty
 elementos de la programación orientada a objetos, programación funcional y programación reactiva funcional.</p>
 <br>
 <div>
-    <a href="https://railway.app/new/template/BOGqHd?referralCode=mfmi1X" target="_blank">
+    <a href="https://railway.app/template/BOGqHd?referralCode=mfmi1X" target="_blank">
         <img src="https://railway.app/button.svg" alt="Deploy to Railway"/>
     </a>
 </div>
@@ -118,6 +118,7 @@ de ejemplo para generarlo.
 
 ```sh
 # SERVER
+APP_STAGE=local
 PORT=8080
 API_PREFIX=TD_MY_API
 CONTEXT=v1
@@ -142,6 +143,11 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 <summary>💬 Para ver en detalle todas las propiedades de la configuración, hace click acá.</summary>
 
 #### Server
+`APP_STAGE`: Es el entorno en el que está corriendo la aplicación.
+
+- Type: `String`
+- Default: `local`
+- Values: `local | test | snd | dev | qa | homo | prod`
 
 `PORT`: Es el puerto por el cual va a correr el servidor.
 

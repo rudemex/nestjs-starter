@@ -2,6 +2,18 @@
 
 ---
 
+## [2.3.0](https://github.com/rudemex/nestjs-starter/compare/v2.2.4...v2.3.0) (2023-05-19)
+
+
+### ✨ Features
+
+* add app stage and update dependencies ([a6f0a45](https://github.com/rudemex/nestjs-starter/commit/a6f0a45e3c53321d2705c7f0129257d0a45dc801))
+
+
+### 📝 Docs
+
+* update link template railway ([8aae87f](https://github.com/rudemex/nestjs-starter/commit/8aae87f6dda1b9c7dbe32d09a24c57832683a620))
+
 ### [2.2.4](https://github.com/rudemex/nestjs-starter/compare/v2.2.3...v2.2.4) (2023-04-20)
 
 
