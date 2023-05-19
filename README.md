@@ -34,7 +34,7 @@ lado del servidor, el cual está construido y es completamente compatible con Ty
 elementos de la programación orientada a objetos, programación funcional y programación reactiva funcional.</p>
 <br>
 <div>
-    <a href="https://railway.app/new/template/BOGqHd?referralCode=mfmi1X" target="_blank">
+    <a href="https://railway.app/template/BOGqHd?referralCode=mfmi1X" target="_blank">
         <img src="https://railway.app/button.svg" alt="Deploy to Railway"/>
     </a>
 </div>
