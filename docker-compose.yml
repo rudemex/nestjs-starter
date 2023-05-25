@@ -126,7 +126,7 @@ services:
       - elasticsearch
 
   jaeger:
-    container_name: loc-jaeger
+    container_name: local-jaeger
     image: jaegertracing/all-in-one:latest
     restart: always
     ports:
@@ -140,6 +140,13 @@ services:
     environment:
       TZ: UTC
       #LOG_LEVEL: debug
+
+  grafana:
+    container_name: local-grafana
+    image: grafana/grafana:latest
+    restart: always
+    ports:
+      - '3000:3000'
 
   #app:
   #  container_name: local-app
