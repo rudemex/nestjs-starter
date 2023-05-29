@@ -32,6 +32,15 @@ export default registerAs(
       path: process.env.SWAGGER_PATH || 'docs',
       enabled: process.env.SWAGGER_ENABLED.toLowerCase() === 'true',
     },
+    tracing: {
+      exporterType: 'jaeger',
+      serviceName: `${process.env.API_PREFIX.toLowerCase()}-${PACKAGE_JSON.name}`,
+      resourceAttributes: {},
+      endpoint: process.env.TRACING_ENDPOINT,
+      excludePaths: process.env.TRACING_EXCLUDE_PATHS
+        ? process.env.TRACING_EXCLUDE_PATHS.split(',')
+        : [],
+    },
     params: {
       testEnv: process.env.TEST_KEY,
     },

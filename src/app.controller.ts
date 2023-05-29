@@ -19,4 +19,9 @@ export class AppController {
   getMyUtil() {
     return this.appService.getMyCustomUtil();
   }
+
+  @Get('trace')
+  trace() {
+    return this.appService.trace();
+  }
 }

@@ -63,6 +63,7 @@
     "@nestjs/core": "^9.4.2",
     "@nestjs/platform-express": "^9.4.2",
     "@nestjs/swagger": "^6.3.0",
+    "@tresdoce-nestjs-toolkit/tracing": "file:./tresdoce-nestjs-toolkit-tracing-0.0.0-beta.6.tgz",
     "@tresdoce-nestjs-toolkit/archetype": "^0.4.1",
     "@tresdoce-nestjs-toolkit/http-client": "^0.2.1",
     "@tresdoce-nestjs-toolkit/paas": "^0.3.1",
