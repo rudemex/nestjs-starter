@@ -12,6 +12,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { config, environments, validationSchema } from './config';
+import { PrometheusModule } from '@willsoto/nestjs-prometheus';
 
 @Module({
   imports: [
@@ -28,6 +29,14 @@ import { config, environments, validationSchema } from './config';
     UtilsModule,
     CharactersModule,
     UsersModule,
+    PrometheusModule.register({
+      defaultLabels: {
+        app: 'nestjs-starter',
+      },
+      pushgateway: {
+        url: 'https://tresdoce-prometheus.up.railway.app',
+      },
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
