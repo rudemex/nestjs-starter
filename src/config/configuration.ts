@@ -40,9 +40,9 @@ export default registerAs(
       },
       exporter: {
         url: process.env.TRACING_ENDPOINT,
-        headers: {
+        /*headers: {
           Authorization: `${process.env.TRACING_ASPECTO_TOKEN}`,
-        },
+        },*/
       },
     },
     params: {
