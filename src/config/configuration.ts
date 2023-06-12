@@ -2,7 +2,6 @@ import { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { registerAs } from '@nestjs/config';
 
 import * as PACKAGE_JSON from '../../package.json';
-import * as process from 'process';
 
 export default registerAs(
   'config',
@@ -33,13 +32,18 @@ export default registerAs(
       enabled: process.env.SWAGGER_ENABLED.toLowerCase() === 'true',
     },
     tracing: {
-      exporterType: 'jaeger',
-      serviceName: `${process.env.API_PREFIX.toLowerCase()}-${PACKAGE_JSON.name}`,
-      resourceAttributes: {},
-      endpoint: process.env.TRACING_ENDPOINT,
-      excludePaths: process.env.TRACING_EXCLUDE_PATHS
-        ? process.env.TRACING_EXCLUDE_PATHS.split(',')
-        : [],
+      resourceAttributes: {
+        serviceName: `${PACKAGE_JSON.name}`,
+        version: PACKAGE_JSON.version,
+        'service.namespace': `${process.env.API_PREFIX}`,
+        'deployment.environment': process.env.APP_STAGE,
+      },
+      exporter: {
+        url: process.env.TRACING_ENDPOINT,
+        headers: {
+          Authorization: `${process.env.TRACING_ASPECTO_TOKEN}`,
+        },
+      },
     },
     params: {
       testEnv: process.env.TEST_KEY,

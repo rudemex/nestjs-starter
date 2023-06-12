@@ -40,7 +40,6 @@ import { config, environments, validationSchema } from './config';
       provide: APP_INTERCEPTOR,
       useClass: TracingInterceptor,
     },
-
   ],
 })
 export class AppModule {}

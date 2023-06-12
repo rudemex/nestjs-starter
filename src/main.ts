@@ -8,12 +8,14 @@ import compression from 'compression';
 import helmet from 'helmet';
 
 import { AppModule } from './app.module';
+import { otelProvider } from '@tresdoce-nestjs-toolkit/tracing';
+import { config } from './config';
 
 async function bootstrap() {
+  await otelProvider(config().tracing);
   const app = await NestFactory.create(AppModule, {
     logger: new Logger(),
   });
-
   const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
@@ -63,7 +65,9 @@ async function bootstrap() {
 
   await app.listen(port, async () => {
     const appServer = `http://localhost:${port}/${server.context}`;
-    Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    if (swagger.enabled) {
+      Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+    }
     Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
   });
 }
