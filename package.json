@@ -65,7 +65,7 @@
     "@nestjs/swagger": "^6.3.0",
     "@tresdoce-nestjs-toolkit/archetype": "^0.4.1",
     "@tresdoce-nestjs-toolkit/http-client": "^0.2.1",
-    "@tresdoce-nestjs-toolkit/paas": "^0.3.1",
+    "@tresdoce-nestjs-toolkit/paas": "^0.4.0",
     "class-transformer": "^0.5.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
