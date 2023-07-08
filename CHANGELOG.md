@@ -2,6 +2,19 @@
 
 ---
 
+## [2.4.0](https://github.com/rudemex/nestjs-starter/compare/v2.3.1...v2.4.0) (2023-07-08)
+
+
+### 👨‍💻 Chores
+
+* add tracing ([6fc00ae](https://github.com/rudemex/nestjs-starter/commit/6fc00aeae3268c4255f9b76539b7642365a1009f))
+* remove token aspecto ([080022c](https://github.com/rudemex/nestjs-starter/commit/080022c33ebd8c14753d005aa481321012358f67))
+
+
+### ✨ Features
+
+* update libs of tresdoce ([7096a9b](https://github.com/rudemex/nestjs-starter/commit/7096a9bb5889513db55f5844d3b9e1d190a9f930))
+
 ### [2.3.1](https://github.com/rudemex/nestjs-starter/compare/v2.3.0...v2.3.1) (2023-05-25)
 
 
