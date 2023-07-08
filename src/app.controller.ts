@@ -1,5 +1,6 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
+import { SkipTrace } from '@tresdoce-nestjs-toolkit/tracing';
 
 @Controller()
 export class AppController {
@@ -16,6 +17,7 @@ export class AppController {
   }
 
   @Get('my-util')
+  @SkipTrace()
   getMyUtil() {
     return this.appService.getMyCustomUtil();
   }
