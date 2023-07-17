@@ -32,11 +32,9 @@ WORKDIR /usr/src/app
 
 # Copia los archivos package.json y yarn.lock al contenedor
 COPY package*.json ./
-COPY yarn.lock ./
 
 # Instala las dependencias del proyecto utilizando Yarn
-# --frozen-lockfile asegura que las versiones de las dependencias sean las mismas en todos los entornos
-RUN yarn install --frozen-lockfile
+RUN yarn install
 
 # Copia el resto del código del proyecto al contenedor
 COPY . .
@@ -56,12 +54,9 @@ USER node
 # Define el directorio de trabajo en el contenedor
 WORKDIR /usr/src/app
 
-# Copia los archivos package.json y yarn.lock desde la etapa de construcción
-COPY --from=builder /usr/src/app/package.json ./
-COPY --from=builder /usr/src/app/yarn.lock ./
-# Copia el directorio node_modules desde la etapa de construcción
+# Copia los archivos y directorios desde la etapa de construcción
+COPY --from=builder /usr/src/app/package*.json ./
 COPY --from=builder /usr/src/app/node_modules/ ./node_modules/
-# Copia el directorio dist (donde se almacena la aplicación construida) desde la etapa de construcción
 COPY --from=builder /usr/src/app/dist ./dist
 
 # Expone el puerto que usa la aplicación
