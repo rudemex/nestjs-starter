@@ -2,6 +2,14 @@
 
 ---
 
+## [2.5.0](https://github.com/rudemex/nestjs-starter/compare/v2.4.0...v2.5.0) (2023-07-17)
+
+
+### ✨ Features
+
+* **build:** add webpack build to optimize app ([6068d3f](https://github.com/rudemex/nestjs-starter/commit/6068d3fa448db11876276a01c48d3e707ba42931))
+* update libs to enabled webpack build ([411d14f](https://github.com/rudemex/nestjs-starter/commit/411d14f5ee31f867b28b76a1077e853659de9d3d))
+
 ## [2.4.0](https://github.com/rudemex/nestjs-starter/compare/v2.3.1...v2.4.0) (2023-07-08)
 
 
