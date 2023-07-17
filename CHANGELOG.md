@@ -2,6 +2,13 @@
 
 ---
 
+### [2.5.1](https://github.com/rudemex/nestjs-starter/compare/v2.5.0...v2.5.1) (2023-07-17)
+
+
+### 👨‍💻 Chores
+
+* **dockerfile:** improvements in the dockerfile ([eff51b3](https://github.com/rudemex/nestjs-starter/commit/eff51b37799283f2a3f361f839009e9b57188189))
+
 ## [2.5.0](https://github.com/rudemex/nestjs-starter/compare/v2.4.0...v2.5.0) (2023-07-17)
 
 
