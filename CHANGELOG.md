@@ -2,6 +2,41 @@
 
 ---
 
+### [2.5.2](https://github.com/rudemex/nestjs-starter/compare/v2.5.1...v2.5.2) (2023-07-17)
+
+
+### 🐛 Bug Fixes
+
+* **dockerfile:** edit dockerfile to build ([f607bb7](https://github.com/rudemex/nestjs-starter/commit/f607bb72ff06a222ab09f6ce55181fe8eef6bb0a))
+
+### [2.5.1](https://github.com/rudemex/nestjs-starter/compare/v2.5.0...v2.5.1) (2023-07-17)
+
+
+### 👨‍💻 Chores
+
+* **dockerfile:** improvements in the dockerfile ([eff51b3](https://github.com/rudemex/nestjs-starter/commit/eff51b37799283f2a3f361f839009e9b57188189))
+
+## [2.5.0](https://github.com/rudemex/nestjs-starter/compare/v2.4.0...v2.5.0) (2023-07-17)
+
+
+### ✨ Features
+
+* **build:** add webpack build to optimize app ([6068d3f](https://github.com/rudemex/nestjs-starter/commit/6068d3fa448db11876276a01c48d3e707ba42931))
+* update libs to enabled webpack build ([411d14f](https://github.com/rudemex/nestjs-starter/commit/411d14f5ee31f867b28b76a1077e853659de9d3d))
+
+## [2.4.0](https://github.com/rudemex/nestjs-starter/compare/v2.3.1...v2.4.0) (2023-07-08)
+
+
+### 👨‍💻 Chores
+
+* add tracing ([6fc00ae](https://github.com/rudemex/nestjs-starter/commit/6fc00aeae3268c4255f9b76539b7642365a1009f))
+* remove token aspecto ([080022c](https://github.com/rudemex/nestjs-starter/commit/080022c33ebd8c14753d005aa481321012358f67))
+
+
+### ✨ Features
+
+* update libs of tresdoce ([7096a9b](https://github.com/rudemex/nestjs-starter/commit/7096a9bb5889513db55f5844d3b9e1d190a9f930))
+
 ### [2.3.1](https://github.com/rudemex/nestjs-starter/compare/v2.3.0...v2.3.1) (2023-05-25)
 
 

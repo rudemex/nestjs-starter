@@ -10,7 +10,7 @@ services:
     ports:
       - '5432:5432'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       POSTGRES_DB: my_db
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123456
@@ -26,7 +26,7 @@ services:
     ports:
       - '5050:80'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       PGADMIN_DEFAULT_EMAIL: root@admin.com
       PGADMIN_DEFAULT_PASSWORD: root
 
@@ -37,7 +37,7 @@ services:
     ports:
       - '3306:3306'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       MYSQL_ROOT_PASSWORD: 123456
       MYSQL_DATABASE: my_db
       MYSQL_PASSWORD: 123456
@@ -52,7 +52,7 @@ services:
     ports:
       - '27017:27017'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: 123456
       MONGO_INITDB_DATABASE: test_db
@@ -68,7 +68,7 @@ services:
     ports:
       - '6379:6379'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       REDIS_PORT: 6379
       REDIS_PASSWORD: 123456
       REDIS_HOST: cache
@@ -86,7 +86,7 @@ services:
     ports:
       - '8443:8080'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
@@ -119,7 +119,7 @@ services:
     ports:
       - '5601:5601'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
       SERVER_NAME: kibana
       ELASTICSEARCH_HOSTS: http://elasticsearch:9200
     depends_on:
@@ -130,15 +130,19 @@ services:
     image: jaegertracing/all-in-one:latest
     restart: always
     ports:
-      - '5775:5775/udp'
       - '6831:6831/udp'
       - '6832:6832/udp'
       - '5778:5778'
       - '16686:16686'
+      - '4317:4317'
+      - '4318:4318'
+      - '14250:14250'
       - '14268:14268'
+      - '14269:14269'
       - '9411:9411'
     environment:
-      TZ: UTC
+      TZ: 'America/Argentina/Buenos_Aires'
+      COLLECTOR_OTLP_ENABLED: 'true'
       #LOG_LEVEL: debug
 
   grafana:
@@ -147,3 +151,5 @@ services:
     restart: always
     ports:
       - '3000:3000'
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin

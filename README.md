@@ -332,7 +332,7 @@ El proyecto cuenta con un `dockerfile` y un `docker-compose.yml` de base, listo 
 
 ### Docker Build
 
-Schema: `docker build . -t <user-docker>/<app-name>`
+Schema: `docker build -t <user-docker>/<app-name> .`
 
 Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <user-docker>/<app-name>`
 
@@ -342,7 +342,7 @@ Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <u
 docker build -t nestjs-starter .
 ```
 ```
-docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env.prod nestjs-starter
+docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
 ```
 
 <a name="commits"></a>
@@ -408,7 +408,7 @@ All notable changes to this project will be documented in [Changelog](./CHANGELO
 
 <div align="center">
     <a href="mailto:mdelgado@tresdoce.com.ar" target="_blank" alt="Send an email">
-        <img src="./.readme-static/logo-mex-red.svg" width="120" alt="Mex" />
+        <img src="https://raw.githubusercontent.com/tresdoce/tresdoce-nestjs-toolkit/ab924d5bdd9a9b9acb3ca5721d4ce977c6b7f680/.readme-static/logo-mex-red.svg" width="120" alt="Mex" />
     </a><br/>
     <!--<a href="mailto:mdelgado@tresdoce.com.ar" target="_blank" alt="Send an email">
         <img src="https://img.shields.io/static/v1.svg?style=flat-square&label=&message=Sr.%20Fullstack%20Developer&labelColor=1A1A1A&color=999999&logo=hackaday" alt="Mex Delgado" />
