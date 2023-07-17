@@ -332,7 +332,7 @@ El proyecto cuenta con un `dockerfile` y un `docker-compose.yml` de base, listo 
 
 ### Docker Build
 
-Schema: `docker build . -t <user-docker>/<app-name>`
+Schema: `docker build -t <user-docker>/<app-name> .`
 
 Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <user-docker>/<app-name>`
 
@@ -342,7 +342,7 @@ Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <u
 docker build -t nestjs-starter .
 ```
 ```
-docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env.prod nestjs-starter
+docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
 ```
 
 <a name="commits"></a>
