@@ -8,7 +8,7 @@
 # docker build -t nestjs-starter .
 
 # Build with ARG
-# docker build --build-arg NODE_VERSION=14.18.1 --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
+# docker build --build-arg NODE_VERSION=16.14.2 --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
 
 # Run
 # docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
