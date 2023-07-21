@@ -2,6 +2,13 @@
 
 ---
 
+### [2.5.4](https://github.com/rudemex/nestjs-starter/compare/v2.5.3...v2.5.4) (2023-07-21)
+
+
+### 👨‍💻 Chores
+
+* update test-utils lib and set node 18 in dockerfile ([3c73986](https://github.com/rudemex/nestjs-starter/commit/3c7398684084d5c0801f3f553d8a7ade0ef559db))
+
 ### [2.5.3](https://github.com/rudemex/nestjs-starter/compare/v2.5.2...v2.5.3) (2023-07-21)
 
 
