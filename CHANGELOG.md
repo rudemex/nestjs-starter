@@ -2,6 +2,15 @@
 
 ---
 
+### [2.5.3](https://github.com/rudemex/nestjs-starter/compare/v2.5.2...v2.5.3) (2023-07-21)
+
+
+### 👨‍💻 Chores
+
+* edit workflows ([29efc2e](https://github.com/rudemex/nestjs-starter/commit/29efc2e6edd6dce903a004d5ea35f4c83835a57c))
+* **workflow:** add docker build node version ([2d92f22](https://github.com/rudemex/nestjs-starter/commit/2d92f224cbb5c9606c22f89bcf71385e4b66eb7f))
+* **workflow:** add node 18 to workflow ([87bba20](https://github.com/rudemex/nestjs-starter/commit/87bba20c030b7c47325f65beee37aeb4e697b79f))
+
 ### [2.5.2](https://github.com/rudemex/nestjs-starter/compare/v2.5.1...v2.5.2) (2023-07-17)
 
 
