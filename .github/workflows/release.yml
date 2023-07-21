@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 16 ]
+        node: [ '18.17.0' ]
     name: "Setup"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ 16 ]
+        node: [ '18.17.0' ]
     name: "Release"
     needs: setup
     steps:
@@ -156,7 +156,7 @@ jobs:
       - name: "🐳 Docker"
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-          docker build -t ${{ github.event.repository.name }} .
+          docker build --build-arg NODE_VERSION=${{ matrix.node }} -t ${{ github.event.repository.name }} .
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
