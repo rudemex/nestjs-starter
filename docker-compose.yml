@@ -89,7 +89,7 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.3.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
     container_name: local-elasticsearch
     restart: always
     ports:
@@ -113,7 +113,7 @@ services:
     #  - ./.elasticsearch-data:/usr/share/elasticsearch/data
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.3.3
+    image: docker.elastic.co/kibana/kibana:8.8.1
     container_name: local-kibana
     restart: always
     ports:
@@ -153,24 +153,3 @@ services:
       - '3000:3000'
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
-
-  #app:
-  #  container_name: local-app
-  #  env_file:
-  #    - .env
-  #    #- .env.dev
-  #  build:
-  #    context: .
-  #    dockerfile: Dockerfile
-  #  command: "yarn start"
-  #  ports:
-  #    - '8080:8080'
-  #  networks:
-  #    - nestjs-network
-  #  volumes:
-  #    - ./usr/src/app
-  #    - ./usr/src/app/node_modules
-  #  restart: unless-stopped
-
-#networks:
-#  nestjs-network:
