@@ -17,10 +17,10 @@
 
 #docker run -it --rm --entrypoint=sh nestjs-starter
 
+ARG IMAGE_NAME=nestjs-starter
 ARG NODE_VERSION=16.14.2
 ARG NODE_ENV=build
 ARG APP_PORT=8080
-ARG IMAGE_NAME=nestjs-starter
 
 # Utiliza una versión ligera de Node.js como imagen base
 FROM node:${NODE_VERSION}-alpine as builder
