@@ -2,6 +2,31 @@
 
 ---
 
+## [3.0.0](https://github.com/rudemex/nestjs-starter/compare/v2.5.4...v3.0.0) (2023-08-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to nestjs v10.1.3 and others libs
+
+### ✨ Features
+
+* upgrade to nestjs v10.1.3 and others libs ([ad72bbf](https://github.com/rudemex/nestjs-starter/commit/ad72bbfaf288e15f1fe8191f8d4dd8dde983b242))
+
+
+### 🐛 Bug Fixes
+
+* resolve merge conflicts ([1f21e15](https://github.com/rudemex/nestjs-starter/commit/1f21e153069c666764529b6316d091b6c22274f3))
+
+
+### 👨‍💻 Chores
+
+* add tresdoce nestjs toolkit libs version stable ([d88d34c](https://github.com/rudemex/nestjs-starter/commit/d88d34c4ca3c637bb7af47e6778f96ac2aef0198))
+* merge updates ([7538d01](https://github.com/rudemex/nestjs-starter/commit/7538d010f797fbc8d840cc5223fa4a971800e524))
+* update commons libs for test junit ([62625d2](https://github.com/rudemex/nestjs-starter/commit/62625d2f065ceff1452c497798a78686e181c76b))
+* update nest 10 ([5da9a0d](https://github.com/rudemex/nestjs-starter/commit/5da9a0d46f8c630852107903de9dd82a20bdb03f))
+* update tracing lib ([418db52](https://github.com/rudemex/nestjs-starter/commit/418db52795e38f2e1b0be2a8bc5919c2bd3ada8a))
+
 ### [2.5.4](https://github.com/rudemex/nestjs-starter/compare/v2.5.3...v2.5.4) (2023-07-21)
 
 
