@@ -84,6 +84,12 @@ jobs:
         env:
           NODE_ENV: 'test'
 
+      - name: "📊 Publish Test Report"
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: '**/junit.xml'
+
       - name: "📊 Upload coverage report to Codecov"
         uses: codecov/codecov-action@v1
         with:
