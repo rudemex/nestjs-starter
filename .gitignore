@@ -20,7 +20,14 @@ lerna-debug.log*
 # Tests
 /coverage
 /.nyc_output
+test-results
+test-results/*
 test-report.xml
+junit.xml
+sonar-project.properties
+gl-sast-report.json
+gl-secret-detection-report.json
+semgrep.sarif
 .scannerwork
 
 # IDEs and editors
