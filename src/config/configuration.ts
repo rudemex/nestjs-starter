@@ -24,6 +24,9 @@ export default registerAs(
       origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
+      propagateHeaders: process.env.PROPAGATE_HEADERS
+        ? process.env.PROPAGATE_HEADERS.split(',')
+        : [],
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',
       corsCredentials: process.env.CORS_CREDENTIALS.toLowerCase() === 'true',
     },

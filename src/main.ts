@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { ExceptionsFilter, ResponseInterceptor } from '@tresdoce-nestjs-toolkit/paas';
+import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
@@ -12,7 +12,7 @@ import { otelProvider } from '@tresdoce-nestjs-toolkit/tracing';
 import { config } from './config';
 
 async function bootstrap() {
-  await otelProvider(config().tracing);
+  otelProvider(config().tracing);
   const app = await NestFactory.create(AppModule, {
     logger: new Logger(),
   });
@@ -24,7 +24,6 @@ async function bootstrap() {
 
   app.use([cookieParser(), helmet(), compression()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
-  app.useGlobalInterceptors(new ResponseInterceptor());
 
   app.useGlobalPipes(
     new ValidationPipe({
