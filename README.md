@@ -126,6 +126,7 @@ CONTEXT=v1
 ORIGINS=http://localhost:3000,http://localhost:8080
 ALLOWED_HEADERS=Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma
 ALLOWED_METHODS=GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS
+PROPAGATE_HEADERS=x-custom-header
 CORS_ENABLED=true
 CORS_CREDENTIALS=false
 
@@ -177,10 +178,15 @@ de solicitudes no deseadas y maliciosas. Debes escribir las urls separadas por u
 - Type: `String`
 - Default: `Content-Type,Authorization,Set-Cookie,Access-Control-Allow-Origin,Cache-Control,Pragma`
 
-`ALLOWED_METHODS`: Métodos http disponibles para el cors
+`ALLOWED_METHODS`: Métodos http disponibles para el cors.
 
 - Type: `String`
 - Default: `GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS`
+
+`PROPAGATE_HEADERS`: Lista de headers que desea propagar en la respuesta del controller.
+
+- Type: `String`
+- Example: `x-custom-header,x-custom-header-2,x-custom-header-n`
 
 `CORS_ENABLED`: Habilita o deshabilita el uso de CORS en el servidor.
 
