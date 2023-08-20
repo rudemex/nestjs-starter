@@ -41,7 +41,7 @@ elementos de la programación orientada a objetos, programación funcional y pro
 
 ## Glosario
 
-- [🥳 Demo](https://nestjs-starter.up.railway.app/v1)
+- [🥳 Demo](https://nestjs-starter.tresdoce.com.ar/v1)
 - [🤓 Objetivo](#objective)
 - [📝 Requerimientos básicos](#basic-requirements)
 - [🛠️ Instalar dependencias](#install-dependencies)
@@ -300,7 +300,7 @@ npm run lint
 ## 📚 Swagger
 
 El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus
-definiciones. [Demo Swagger](https://nestjs-starter.up.railway.app/v1/docs/)
+definiciones. [Demo Swagger](https://nestjs-starter.tresdoce.com.ar/v1/docs/)
 
 Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
 aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
@@ -326,7 +326,7 @@ Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/v1/
 #### Exportar el swagger en JSON
 
 Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path
-definido. [Demo Swagger JSON](https://nestjs-starter.up.railway.app/v1/docs-json)
+definido. [Demo Swagger JSON](https://nestjs-starter.tresdoce.com.ar/v1/docs-json)
 
 - Default: `http://localhost:8080/v1/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`
