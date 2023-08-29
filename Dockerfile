@@ -67,4 +67,4 @@ CMD ["yarn", "start"]
 # Define un healthcheck para verificar la salud de la aplicación
 # Dependiendo de la configuración de tu aplicación, necesitarás ajustar este comando
 # Aquí se asume que tu aplicación tiene un endpoint GET /v1/health/liveness que devuelve un código de estado 200 si está en funcionamiento
-HEALTHCHECK CMD curl --fail http://localhost:${APP_PORT}/v1/health/liveness || exit 1
+#HEALTHCHECK CMD curl --fail http://localhost:${APP_PORT}/v1/health/liveness || exit 1
