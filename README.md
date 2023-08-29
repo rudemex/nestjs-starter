@@ -6,7 +6,7 @@
 <p align="center">
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v18.17.0&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v9.6.7&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v10.1.3&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v10.2.2&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
         <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     </a>
@@ -41,7 +41,7 @@ elementos de la programación orientada a objetos, programación funcional y pro
 
 ## Glosario
 
-- [🥳 Demo](https://nestjs-starter.up.railway.app/v1)
+- [🥳 Demo](https://nestjs-starter.tresdoce.com.ar/v1)
 - [🤓 Objetivo](#objective)
 - [📝 Requerimientos básicos](#basic-requirements)
 - [🛠️ Instalar dependencias](#install-dependencies)
@@ -90,7 +90,7 @@ Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos d
 - Node.js v18.17.0 or higher ([Download](https://nodejs.org/es/download/))
 - YARN v1.22.18 or higher
 - NPM v9.6.7 or higher
-- NestJS v10.1.3 or higher ([Documentación](https://nestjs.com/))
+- NestJS v10.2.2 or higher ([Documentación](https://nestjs.com/))
 
 <a name="install-dependencies"></a>
 
@@ -300,7 +300,7 @@ npm run lint
 ## 📚 Swagger
 
 El proyecto cuenta con un **Swagger** (OpenAPI 3.0.0) que tiene documentado los endpoints con sus
-definiciones. [Demo Swagger](https://nestjs-starter.up.railway.app/v1/docs/)
+definiciones. [Demo Swagger](https://nestjs-starter.tresdoce.com.ar/v1/docs/)
 
 Para expandir la documentación, es importante aplicar los decoradores correspondientes a la
 aplicación. [NestJS OpenApi](https://docs.nestjs.com/openapi/introduction)
@@ -326,7 +326,7 @@ Acceso a la documentación y testeo de los endpoints: `http://localhost:8080/v1/
 #### Exportar el swagger en JSON
 
 Se puede exportar la documentación a un **JSON** agregando el sufijo **-json** al path
-definido. [Demo Swagger JSON](https://nestjs-starter.up.railway.app/v1/docs-json)
+definido. [Demo Swagger JSON](https://nestjs-starter.tresdoce.com.ar/v1/docs-json)
 
 - Default: `http://localhost:8080/v1/docs-json`
 - Schema: `<http|https>://<server_url><:port>/<app-context>/<swagger-path>-json`

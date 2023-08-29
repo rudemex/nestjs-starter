@@ -55,7 +55,7 @@ export default registerAs(
       rickAndMortyAPI: {
         url: process.env.RICK_AND_MORTY_API_URL,
         timeout: 3000,
-        healthPath: '/api/character/1',
+        healthPath: process.env.RICK_AND_MORTY_API_URL_LIVENESS,
       },
     },
   }),
