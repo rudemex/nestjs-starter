@@ -24,6 +24,9 @@ export default registerAs(
       origins: process.env.ORIGINS ? process.env.ORIGINS.split(',') : '*',
       allowedHeaders: process.env.ALLOWED_HEADERS,
       allowedMethods: process.env.ALLOWED_METHODS,
+      propagateHeaders: process.env.PROPAGATE_HEADERS
+        ? process.env.PROPAGATE_HEADERS.split(',')
+        : [],
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',
       corsCredentials: process.env.CORS_CREDENTIALS.toLowerCase() === 'true',
     },
@@ -40,9 +43,9 @@ export default registerAs(
       },
       exporter: {
         url: process.env.TRACING_ENDPOINT,
-        /*headers: {
-          Authorization: `${process.env.TRACING_ASPECTO_TOKEN}`,
-        },*/
+        headers: {
+          Authorization: `${process.env.TRACING_AUTH_TOKEN}`,
+        },
       },
     },
     params: {
@@ -52,7 +55,7 @@ export default registerAs(
       rickAndMortyAPI: {
         url: process.env.RICK_AND_MORTY_API_URL,
         timeout: 3000,
-        healthPath: '/api/character/1',
+        healthPath: process.env.RICK_AND_MORTY_API_URL_LIVENESS,
       },
     },
   }),

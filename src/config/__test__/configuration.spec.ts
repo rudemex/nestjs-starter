@@ -170,12 +170,29 @@ describe('configuration', () => {
     expect(allowedHeaders).toEqual(process.env.ALLOWED_HEADERS);
   });
 
-  it('should have a allowed headers', () => {
+  it('should have a allowed methods', () => {
     const { allowedMethods } = appConfig.server;
 
     expect(allowedMethods).toBeDefined();
     expect(allowedMethods).toEqual(expect.any(String));
     expect(allowedMethods).toEqual(process.env.ALLOWED_METHODS);
+  });
+
+  it('should have a propagate headers', () => {
+    const { propagateHeaders } = appConfig.server;
+
+    expect(propagateHeaders).toBeDefined();
+    expect(propagateHeaders).toEqual(expect.any(Array));
+    expect(propagateHeaders).toEqual(process.env.PROPAGATE_HEADERS.split(','));
+  });
+
+  it('should have a empty propagate headers', () => {
+    process.env.PROPAGATE_HEADERS = '';
+    appConfig = config();
+    const { propagateHeaders } = appConfig.server;
+
+    expect(propagateHeaders).toBeDefined();
+    expect(propagateHeaders).toEqual([]);
   });
 
   it('should have a corsEnabled', () => {
