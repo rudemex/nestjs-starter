@@ -2,6 +2,29 @@
 
 ---
 
+## [3.1.0](https://github.com/rudemex/nestjs-starter/compare/v3.0.0...v3.1.0) (2023-08-29)
+
+
+### 📝 Docs
+
+* edit readme with propagate headers data ([b5b3aec](https://github.com/rudemex/nestjs-starter/commit/b5b3aecad577a5a30ab451bc5274f2383003880b))
+
+
+### ✨ Features
+
+* add propagate headers and exclude paths to healthchecks in filter ([8b1241b](https://github.com/rudemex/nestjs-starter/commit/8b1241b6208ca5ef80bb63b9019ddc7698724af2))
+* add validation schema of congifuration ([3686301](https://github.com/rudemex/nestjs-starter/commit/3686301c165ab91a4c1b395a1040c9002edce593))
+
+
+### 👨‍💻 Chores
+
+* add aspecto tracing ([0941a77](https://github.com/rudemex/nestjs-starter/commit/0941a77f5911d52bec055d5ebccc0ad7935a173d))
+* **dockerfile:** enabled healthcheck ([4b6a5d1](https://github.com/rudemex/nestjs-starter/commit/4b6a5d11869e88fe42699220e6db2fb9e04b2c9d))
+* **dockerfile:** remove healthcheck ([fe344fe](https://github.com/rudemex/nestjs-starter/commit/fe344fecb9cf43c3546bbafb47e3cea151af1d3c))
+* update libs ([bdc98e5](https://github.com/rudemex/nestjs-starter/commit/bdc98e5efea4a1945080565e9dab356813cb8221))
+* update the tresdoce libs stable ([4fbe8f9](https://github.com/rudemex/nestjs-starter/commit/4fbe8f9840cfccdffdf167555c6a6677f8c00fe3))
+* updates libs ([13d1a06](https://github.com/rudemex/nestjs-starter/commit/13d1a0650df1e57d4edc3b029f844ea860542b9d))
+
 ## [3.0.0](https://github.com/rudemex/nestjs-starter/compare/v2.5.4...v3.0.0) (2023-08-16)
 
 
