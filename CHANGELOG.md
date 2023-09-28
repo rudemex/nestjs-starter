@@ -2,6 +2,13 @@
 
 ---
 
+### [3.1.2](https://github.com/rudemex/nestjs-starter/compare/v3.1.1...v3.1.2) (2023-09-28)
+
+
+### 🐛 Bug Fixes
+
+* **dockerfile:** disabled healthcheck ([3f4a1f1](https://github.com/rudemex/nestjs-starter/commit/3f4a1f136742329c32ea8be6d3ef607925190868))
+
 ### [3.1.1](https://github.com/rudemex/nestjs-starter/compare/v3.1.0...v3.1.1) (2023-09-23)
 
 
