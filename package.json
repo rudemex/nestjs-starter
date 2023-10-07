@@ -64,11 +64,13 @@
     "@tresdoce-nestjs-toolkit/archetype": "^1.0.2",
     "@tresdoce-nestjs-toolkit/http-client": "^1.0.2",
     "@tresdoce-nestjs-toolkit/paas": "^1.0.2",
+    "@tresdoce-nestjs-toolkit/prometheus": "file:./tresdoce-nestjs-toolkit-prometheus-0.0.0.tgz",
     "class-transformer": "^0.5.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "cross-env": "^7.0.3",
     "helmet": "^7.0.0",
+    "joi": "^17.11.0",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0",
     "swagger-ui-express": "^5.0.0"

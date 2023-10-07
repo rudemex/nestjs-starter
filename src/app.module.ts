@@ -6,6 +6,7 @@ import { ArchetypeModule } from '@tresdoce-nestjs-toolkit/archetype';
 import { HealthModule, ResponseInterceptor } from '@tresdoce-nestjs-toolkit/paas';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
 import { TracingModule, TracingInterceptor } from '@tresdoce-nestjs-toolkit/tracing';
+import { PrometheusModule } from '@tresdoce-nestjs-toolkit/prometheus';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -32,6 +33,7 @@ import { config, environments, validationSchema } from './config';
     UtilsModule,
     CharactersModule,
     UsersModule,
+    PrometheusModule.register(),
   ],
   controllers: [AppController],
   providers: [

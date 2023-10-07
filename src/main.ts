@@ -6,7 +6,6 @@ import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
-
 import { AppModule } from './app.module';
 import { otelProvider } from '@tresdoce-nestjs-toolkit/tracing';
 import { config } from './config';
