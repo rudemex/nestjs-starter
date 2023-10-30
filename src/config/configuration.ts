@@ -51,6 +51,9 @@ export default registerAs(
     params: {
       testEnv: process.env.TEST_KEY,
     },
+    camunda: {
+      baseUrl: process.env.CAMUNDA_URL_REST || 'http://localhost:8443/engine-rest',
+    },
     services: {
       rickAndMortyAPI: {
         url: process.env.RICK_AND_MORTY_API_URL,

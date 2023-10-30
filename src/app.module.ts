@@ -15,6 +15,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { config, environments, validationSchema } from './config';
+import { CamundaModule } from '@tresdoce-nestjs-toolkit/camunda';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { config, environments, validationSchema } from './config';
     UtilsModule,
     CharactersModule,
     UsersModule,
+    CamundaModule,
   ],
   controllers: [AppController],
   providers: [

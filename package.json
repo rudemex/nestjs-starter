@@ -62,6 +62,7 @@
     "@nestjs/platform-express": "^10.2.6",
     "@nestjs/swagger": "^7.1.12",
     "@tresdoce-nestjs-toolkit/archetype": "^1.0.2",
+    "@tresdoce-nestjs-toolkit/camunda": "^1.0.2",
     "@tresdoce-nestjs-toolkit/http-client": "^1.0.2",
     "@tresdoce-nestjs-toolkit/paas": "^1.0.2",
     "class-transformer": "^0.5.1",

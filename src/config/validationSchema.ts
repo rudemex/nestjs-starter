@@ -5,4 +5,5 @@ export const validationSchema = validateSchemaForApp({
   TEST_KEY: Joi.string().required(),
   RICK_AND_MORTY_API_URL: Joi.string().required(),
   RICK_AND_MORTY_API_URL_LIVENESS: Joi.string().required(),
+  CAMUNDA_URL_REST: Joi.string().required(),
 });

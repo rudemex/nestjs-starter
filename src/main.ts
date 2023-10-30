@@ -10,6 +10,7 @@ import helmet from 'helmet';
 import { AppModule } from './app.module';
 import { otelProvider } from '@tresdoce-nestjs-toolkit/tracing';
 import { config } from './config';
+import { CamundaTaskConnector } from '@tresdoce-nestjs-toolkit/camunda';
 
 async function bootstrap() {
   otelProvider(config().tracing);
@@ -19,6 +20,11 @@ async function bootstrap() {
   const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
   const { server, swagger, project } = appConfig;
   const port = parseInt(server.port, 10) || 8080;
+
+  app.connectMicroservice({
+    strategy: app.get(CamundaTaskConnector),
+  });
+  await app.startAllMicroservices();
 
   app.setGlobalPrefix(`${server.context}`);
 
