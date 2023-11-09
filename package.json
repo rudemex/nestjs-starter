@@ -18,6 +18,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
+    "clean": "rimraf coverage dist node_modules junit.xml test-report.xml yarn.lock package-lock.json",
     "prebuild": "rimraf dist",
     "build": "cross-env NODE_ENV=build nest build",
     "start": "cross-env NODE_ENV=production node dist/main",
@@ -63,7 +64,7 @@
     "@nestjs/swagger": "^7.1.12",
     "@tresdoce-nestjs-toolkit/archetype": "^1.0.2",
     "@tresdoce-nestjs-toolkit/http-client": "^1.0.2",
-    "@tresdoce-nestjs-toolkit/paas": "^1.0.2",
+    "@tresdoce-nestjs-toolkit/paas": "^1.0.3",
     "class-transformer": "^0.5.1",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",

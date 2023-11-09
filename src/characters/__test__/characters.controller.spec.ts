@@ -22,7 +22,7 @@ describe('CharactersController', () => {
     jest.clearAllMocks();
   });
 
-  it('should be defined', () => {
+  it('should be defined', async () => {
     expect(controller).toBeDefined();
   });
 
