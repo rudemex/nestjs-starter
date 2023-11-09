@@ -2,6 +2,13 @@
 
 ---
 
+### [3.1.4](https://github.com/rudemex/nestjs-starter/compare/v3.1.3...v3.1.4) (2023-11-09)
+
+
+### 👨‍💻 Chores
+
+* update tresdoce nestjs toolkit and others changes ([b0351e0](https://github.com/rudemex/nestjs-starter/commit/b0351e0b79501d61db097cb6b3c259e80056044c))
+
 ### [3.1.3](https://github.com/rudemex/nestjs-starter/compare/v3.1.2...v3.1.3) (2023-10-23)
 
 
