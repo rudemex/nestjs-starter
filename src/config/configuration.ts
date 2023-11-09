@@ -1,4 +1,4 @@
-import { Typings } from '@tresdoce-nestjs-toolkit/paas';
+import { getSkipHealthChecks, Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { registerAs } from '@nestjs/config';
 
 import * as PACKAGE_JSON from '../../package.json';
@@ -29,6 +29,9 @@ export default registerAs(
         : [],
       corsEnabled: process.env.CORS_ENABLED.toLowerCase() === 'true',
       corsCredentials: process.env.CORS_CREDENTIALS.toLowerCase() === 'true',
+    },
+    health: {
+      skipChecks: getSkipHealthChecks(process.env.SKIP_HEALTH_CHECKS),
     },
     swagger: {
       path: process.env.SWAGGER_PATH || 'docs',

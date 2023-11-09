@@ -1,6 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
 import { SkipTrace } from '@tresdoce-nestjs-toolkit/tracing';
+
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {

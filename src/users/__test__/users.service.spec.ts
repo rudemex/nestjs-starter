@@ -19,7 +19,7 @@ describe('UsersService', () => {
     //jest.clearAllMocks();
   });
 
-  it('should be defined', () => {
+  it('should be defined', async () => {
     expect(service).toBeDefined();
   });
 

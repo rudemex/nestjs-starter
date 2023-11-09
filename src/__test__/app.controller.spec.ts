@@ -37,7 +37,7 @@ describe('AppController', () => {
       expect(await appController.getTestEnv()).toBe(configService.get('TEST_KEY'));
     });
 
-    it('should return custom util', () => {
+    it('should return custom util', async () => {
       expect(appController.getMyUtil()).toBe('this is an util');
     });
   });

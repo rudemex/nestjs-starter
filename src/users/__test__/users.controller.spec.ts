@@ -20,7 +20,7 @@ describe('UsersController', () => {
     //service = module.get<UsersService>(UsersService);
   });
 
-  it('should be defined', () => {
+  it('should be defined', async () => {
     expect(controller).toBeDefined();
   });
 

@@ -24,7 +24,7 @@ export class CharactersService {
 
       return data;
     } catch (error) /* istanbul ignore next */ {
-      throw new HttpException(error.message, error.response.status);
+      throw new HttpException(error.response.data, error.response.status);
     }
   }
 }
