@@ -2,6 +2,18 @@
 
 ---
 
+## [3.2.0](https://github.com/rudemex/nestjs-starter/compare/v3.1.4...v3.2.0) (2023-11-24)
+
+
+### 👨‍💻 Chores
+
+* update libs ([c333d18](https://github.com/rudemex/nestjs-starter/commit/c333d18db02f65e0e95e341c82c88441b950c6b7))
+
+
+### ✨ Features
+
+* update tresdoce libs ([f77c189](https://github.com/rudemex/nestjs-starter/commit/f77c18947083a623ebb26f9fb3978d3451c9579b))
+
 ### [3.1.4](https://github.com/rudemex/nestjs-starter/compare/v3.1.3...v3.1.4) (2023-11-09)
 
 
