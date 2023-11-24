@@ -8,7 +8,7 @@ import {
   TracingModule,
   TracingInterceptor,
 } from '@tresdoce-nestjs-toolkit/paas';
-import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
+import { HttpClientInterceptor, HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
 
 import { UtilsModule } from './utils/utils.module';
 import { UsersModule } from './users/users.module';
@@ -41,11 +41,15 @@ import { config, environments, validationSchema } from './config';
     AppService,
     {
       provide: APP_INTERCEPTOR,
+      useClass: TracingInterceptor,
+    },
+    {
+      provide: APP_INTERCEPTOR,
       useClass: ResponseInterceptor,
     },
     {
       provide: APP_INTERCEPTOR,
-      useClass: TracingInterceptor,
+      useClass: HttpClientInterceptor,
     },
   ],
 })
