@@ -79,6 +79,28 @@ services:
     #volumes:
     #  - ./.redis_data:/data
 
+  authorizer:
+    image: lakhansamani/authorizer:1.3.5
+    container_name: local-authorizer
+    restart: always
+    ports:
+      - '8080:8080'
+    environment:
+      TZ: 'America/Argentina/Buenos_Aires'
+      ENV: 'development'
+      DATABASE_URL: Postgres.DATABASE_URL}}
+      PGDATABASE: Postgres.PGDATABASE}}
+      PGHOST: Postgres.PGHOST}}
+      PGPASSWORD: Postgres.PGPASSWORD}}
+      PGPORT: Postgres.PGPORT}}
+      PGUSER: Postgres.PGUSER}}
+      REDISHOST: Redis.REDISHOST}}
+      REDISPASSWORD: Redis.REDISPASSWORD}}
+      REDISPORT: Redis.REDISPORT}}
+      REDISUSER: Redis.REDISUSER}}
+      REDIS_URL: Redis.REDIS_URL}}
+      CUSTOM_ACCESS_TOKEN_SCRIPT=function(user,tokenPayload){var data =tokenPayload;data.user=user;return data;}
+
   camunda:
     image: camunda/camunda-bpm-platform:run-latest
     container_name: local-camunda
