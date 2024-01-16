@@ -79,6 +79,24 @@ services:
     #volumes:
     #  - ./.redis_data:/data
 
+  authorizer:
+    image: lakhansamani/authorizer:1.3.6
+    container_name: local-authorizer
+    restart: always
+    ports:
+      - '3001:3001'
+    environment:
+      ENV: 'development'
+      ADMIN_SECRET: 'admin'
+      PORT: 3001
+      DATABASE_TYPE: postgres
+      DATABASE_URL: postgres://root:123456@postgres:5432/my_db
+      REDIS_URL: redis://:123456@redis:6379
+      CUSTOM_ACCESS_TOKEN_SCRIPT: function(user,tokenPayload){var data=tokenPayload;data.user=user;return data;}
+    depends_on:
+      - postgres
+      - redis
+
   camunda:
     image: camunda/camunda-bpm-platform:run-latest
     container_name: local-camunda
