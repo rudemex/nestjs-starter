@@ -1,5 +1,5 @@
 <div align="center">
-    <img alt="nestjs-starter" width="250" height="auto" src="https://camo.githubusercontent.com/c704e8013883cc3a04c7657e656fe30be5b188145d759a6aaff441658c5ffae0/68747470733a2f2f6e6573746a732e636f6d2f696d672f6c6f676f5f746578742e737667" />
+    <img alt="nestjs-starter" width="250" height="auto" src="https://raw.githubusercontent.com/tresdoce/tresdoce-nestjs-toolkit/ab924d5bdd9a9b9acb3ca5721d4ce977c6b7f680/.readme-static/logo-nestjs.svg" />
     <h1>NestJS Starter</h1>
 </div>
 
