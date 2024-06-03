@@ -1,5 +1,19 @@
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
-import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiBody,
+  ApiExtraModels,
+  ApiOperation,
+  ApiQuery,
+  ApiResponse,
+  ApiTags,
+  getSchemaPath,
+} from '@nestjs/swagger';
+import {
+  Pagination,
+  PaginationParams,
+  PaginationResponse,
+  PaginationParamsDto,
+} from '@tresdoce-nestjs-toolkit/paas';
 
 import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
@@ -11,17 +25,31 @@ export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @ApiOperation({
-    summary: 'Get all users',
+    summary: 'Get all users with pagination',
+    description: 'Retrieves a list of users with optional pagination.',
   })
-  @Get()
   @ApiResponse({
     status: 200,
-    description: 'Return list of users',
-    type: User,
-    isArray: true,
+    description: 'List of users retrieved successfully.',
+    schema: {
+      allOf: [
+        { $ref: getSchemaPath(PaginationResponse) },
+        {
+          properties: {
+            data: {
+              type: 'array',
+              items: { $ref: getSchemaPath(User) },
+            },
+          },
+        },
+      ],
+    },
   })
-  findAll(): Promise<User[]> {
-    return this.usersService.findAll();
+  @ApiExtraModels(PaginationResponse)
+  @ApiQuery({ type: PaginationParamsDto })
+  @Get()
+  findAll(@Pagination() pagination?: PaginationParams): Promise<PaginationResponse<User>> {
+    return this.usersService.findAll(pagination);
   }
 
   @ApiOperation({
@@ -82,8 +110,8 @@ export class UsersController {
   @ApiResponse({
     status: 200,
     description: 'User deleted',
-    type: Boolean,
-    isArray: false,
+    //type: Boolean,
+    //isArray: false,
   })
   @Delete(':id')
   remove(@Param('id') id: number): Promise<any> {

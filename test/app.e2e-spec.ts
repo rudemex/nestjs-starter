@@ -3,16 +3,18 @@ import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 
 import { AppModule } from '../src/app.module';
+import { CreateUserDto, UpdateUserDto } from '../src/users/dtos/user.dto';
 
+jest.setTimeout(80000);
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 
-    app = moduleFixture.createNestApplication();
+    app = moduleRef.createNestApplication();
     await app.init();
   });
 
@@ -52,7 +54,7 @@ describe('AppController (e2e)', () => {
       });
   });
 
-  it('(GET) /characters with query params', async () => {
+  it('(GET) /characters - with query params', async () => {
     return request(app.getHttpServer())
       .get('/characters')
       .query({ name: 'morty' })
@@ -61,8 +63,23 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect((res) => {
         expect(res.body).toHaveProperty('info');
+        expect(res.body.info).toHaveProperty('count');
+        expect(res.body.info).toHaveProperty('pages');
+        expect(res.body.info).toHaveProperty('next');
+        expect(res.body.info).toHaveProperty('prev');
         expect(res.body).toHaveProperty('results');
+        expect(res.body.results.length).toBeGreaterThan(0);
       });
+  });
+
+  it('(GET) /characters - with invalid query params', async () => {
+    return request(app.getHttpServer())
+      .get('/characters')
+      .query({ page: 1000 })
+      .query({ name: 'morty' })
+      .query({ status: 'alive' })
+      .query({ gender: 'female' })
+      .expect(404);
   });
 
   it('(GET) /users', async () => {
@@ -72,7 +89,34 @@ describe('AppController (e2e)', () => {
       .expect((res) => {
         expect(res.body).toEqual(expect.any(Object));
         expect(res.body).toHaveProperty('data');
-        expect(res.body.data).toHaveLength(1);
+        expect(res.body.data.length).toBeGreaterThan(0);
+        expect(res.body.data).toHaveLength(10);
+        expect(res.body).toHaveProperty('meta');
+        expect(res.body.meta).toHaveProperty('page');
+        expect(res.body.meta).toHaveProperty('size');
+        expect(res.body.meta).toHaveProperty('total');
+        expect(res.body.meta).toHaveProperty('totalPages');
+        expect(res.body.meta).toHaveProperty('hasNext');
+        expect(res.body.meta).toHaveProperty('hasPrevious');
+      });
+  });
+
+  it('(GET) /users?page=2&size=5 - with pagination', async () => {
+    return request(app.getHttpServer())
+      .get('/users?page=2&size=5')
+      .expect(200)
+      .expect((res) => {
+        expect(res.body).toEqual(expect.any(Object));
+        expect(res.body).toHaveProperty('data');
+        expect(res.body.data.length).toBeGreaterThan(0);
+        expect(res.body.data).toHaveLength(5);
+        expect(res.body).toHaveProperty('meta');
+        expect(res.body.meta).toHaveProperty('page');
+        expect(res.body.meta).toHaveProperty('size');
+        expect(res.body.meta).toHaveProperty('total');
+        expect(res.body.meta).toHaveProperty('totalPages');
+        expect(res.body.meta).toHaveProperty('hasNext');
+        expect(res.body.meta).toHaveProperty('hasPrevious');
       });
   });
 
@@ -86,14 +130,20 @@ describe('AppController (e2e)', () => {
         expect(res.body).toHaveProperty('email');
         expect(res.body).toHaveProperty('firstName');
         expect(res.body).toHaveProperty('lastName');
+        expect(res.body).toHaveProperty('gender');
+        expect(res.body).toHaveProperty('seniority');
+        expect(res.body).toHaveProperty('experience');
       });
   });
 
   it('(POST) /users', async () => {
-    const payload = {
+    const payload: CreateUserDto = {
       firstName: 'Juan',
       lastName: 'Perez',
       email: 'jperez@email.com',
+      gender: 'male',
+      seniority: 'trainee',
+      experience: '',
     };
     return request(app.getHttpServer())
       .post('/users')
@@ -106,6 +156,9 @@ describe('AppController (e2e)', () => {
         expect(res.body).toHaveProperty('email');
         expect(res.body).toHaveProperty('firstName');
         expect(res.body).toHaveProperty('lastName');
+        expect(res.body).toHaveProperty('gender');
+        expect(res.body).toHaveProperty('seniority');
+        expect(res.body).toHaveProperty('experience');
         expect(res.body.email).toEqual(payload.email);
         expect(res.body.firstName).toEqual(payload.firstName);
         expect(res.body.lastName).toEqual(payload.lastName);
@@ -113,7 +166,7 @@ describe('AppController (e2e)', () => {
   });
 
   it('(PUT) /users/{id}', async () => {
-    const payload = {
+    const payload: UpdateUserDto = {
       firstName: 'TestName',
       lastName: 'TestLastname',
       email: 'testmail@email.com',
@@ -129,6 +182,9 @@ describe('AppController (e2e)', () => {
         expect(res.body).toHaveProperty('email');
         expect(res.body).toHaveProperty('firstName');
         expect(res.body).toHaveProperty('lastName');
+        expect(res.body).toHaveProperty('gender');
+        expect(res.body).toHaveProperty('seniority');
+        expect(res.body).toHaveProperty('experience');
         expect(res.body.email).toEqual(payload.email);
         expect(res.body.firstName).toEqual(payload.firstName);
         expect(res.body.lastName).toEqual(payload.lastName);
