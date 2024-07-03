@@ -1,17 +1,16 @@
 import { HttpException, HttpStatus, INestApplication } from '@nestjs/common';
-import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { Test, TestingModule } from '@nestjs/testing';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
 import { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import path from 'path';
 import fs from 'fs';
 
-import { CharactersController } from '../controllers/characters.controller';
 import { CharactersService } from '../services/characters.service';
-import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto';
 
 import { config, validationSchema } from '../../config';
 import { createMock } from '@tresdoce-nestjs-toolkit/test-utils';
+import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto';
 
 const readFixtureFile = (filePath: string) => {
   const absolutePath = path.resolve(__dirname, filePath);
@@ -19,9 +18,9 @@ const readFixtureFile = (filePath: string) => {
   return JSON.parse(fileContents);
 };
 
-describe('CharactersController', () => {
+describe('CharactersService', () => {
   let app: INestApplication;
-  let controller: CharactersController;
+  let service: CharactersService;
   let appConfig: Typings.AppConfig;
 
   beforeEach(async () => {
@@ -36,12 +35,11 @@ describe('CharactersController', () => {
         }),
         HttpClientModule,
       ],
-      controllers: [CharactersController],
       providers: [CharactersService],
     }).compile();
 
     app = moduleRef.createNestApplication();
-    controller = moduleRef.get<CharactersController>(CharactersController);
+    service = moduleRef.get<CharactersService>(CharactersService);
     await app.init();
     appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
   });
@@ -51,7 +49,7 @@ describe('CharactersController', () => {
   });
 
   it('should be defined', async () => {
-    expect(controller).toBeDefined();
+    expect(service).toBeDefined();
   });
 
   it('should be return characters without params', async () => {
@@ -65,7 +63,7 @@ describe('CharactersController', () => {
       responseBody: readFixtureFile('../../../fixtures/characters/response-200.json'),
     });
 
-    const characters = await controller.getCharacter();
+    const characters = await service.getCharacter();
     expect(characters).toBeDefined();
     expect(characters).toEqual(expect.any(Object));
     expect(characters).toHaveProperty('info');
@@ -96,7 +94,6 @@ describe('CharactersController', () => {
       status: CharacterStatus.Dead,
       gender: CharacterGender.Male,
     };
-
     createMock({
       url: `${appConfig.services.rickAndMortyAPI.url}/character`,
       method: 'get',
@@ -108,7 +105,7 @@ describe('CharactersController', () => {
       responseBody: readFixtureFile('../../../fixtures/characters/response-params-200.json'),
     });
 
-    const characters = await controller.getCharacter(params);
+    const characters = await service.getCharacter(params);
     expect(characters).toBeDefined();
     expect(characters).toEqual(expect.any(Object));
     expect(characters).toHaveProperty('info');
@@ -132,7 +129,7 @@ describe('CharactersController', () => {
     expect(characters.results[0]).toHaveProperty('created');
   });
 
-  it('should be return characters exception with invalids params', async () => {
+  it('should be return characters exception with invalid params', async () => {
     createMock({
       url: `${appConfig.services.rickAndMortyAPI.url}/character`,
       method: 'get',
@@ -146,7 +143,7 @@ describe('CharactersController', () => {
       responseBody: readFixtureFile('../../../fixtures/characters/response-404.json'),
     });
     try {
-      await controller.getCharacter({
+      await service.getCharacter({
         page: 9999,
       });
     } catch (_error) {

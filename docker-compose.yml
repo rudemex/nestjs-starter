@@ -107,7 +107,7 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.8.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
     container_name: local-elasticsearch
     restart: always
     ports:
@@ -131,7 +131,7 @@ services:
     #  - ./.elasticsearch-data:/usr/share/elasticsearch/data
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.8.1
+    image: docker.elastic.co/kibana/kibana:8.13.4
     container_name: local-kibana
     restart: always
     ports:

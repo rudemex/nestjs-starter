@@ -1,0 +1,425 @@
+{
+  "info": {
+    "count": 54,
+    "pages": 3,
+    "next": "https://rickandmortyapi.com/api/character?page=2&name=rick&status=dead&gender=male",
+    "prev": null
+  },
+  "results": [
+    {
+      "id": 8,
+      "name": "Adjudicator Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/8.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/8",
+      "created": "2017-11-04T20:03:34.737Z"
+    },
+    {
+      "id": 56,
+      "name": "Bootleg Portal Chemist Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/56.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/56",
+      "created": "2017-11-05T11:34:16.447Z"
+    },
+    {
+      "id": 69,
+      "name": "Commander Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/69.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/22"],
+      "url": "https://rickandmortyapi.com/api/character/69",
+      "created": "2017-11-30T11:28:06.461Z"
+    },
+    {
+      "id": 86,
+      "name": "Cyclops Rick",
+      "status": "Dead",
+      "species": "Humanoid",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/86.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/10",
+        "https://rickandmortyapi.com/api/episode/22",
+        "https://rickandmortyapi.com/api/episode/28"
+      ],
+      "url": "https://rickandmortyapi.com/api/character/86",
+      "created": "2017-11-30T20:53:10.382Z"
+    },
+    {
+      "id": 119,
+      "name": "Evil Rick",
+      "status": "Dead",
+      "species": "Humanoid",
+      "type": "Robot",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/119.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/10"],
+      "url": "https://rickandmortyapi.com/api/character/119",
+      "created": "2017-12-26T16:17:16.472Z"
+    },
+    {
+      "id": 135,
+      "name": "Garment District Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/135.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/135",
+      "created": "2017-12-26T20:51:43.614Z"
+    },
+    {
+      "id": 165,
+      "name": "Investigator Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/165.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/165",
+      "created": "2017-12-29T17:05:15.514Z"
+    },
+    {
+      "id": 215,
+      "name": "Maximums Rickimus",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Rick's Memories",
+        "url": "https://rickandmortyapi.com/api/location/126"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/215.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/10",
+        "https://rickandmortyapi.com/api/episode/22",
+        "https://rickandmortyapi.com/api/episode/51"
+      ],
+      "url": "https://rickandmortyapi.com/api/character/215",
+      "created": "2017-12-30T14:27:55.489Z"
+    },
+    {
+      "id": 278,
+      "name": "Regional Manager Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/278.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/278",
+      "created": "2017-12-31T14:19:36.487Z"
+    },
+    {
+      "id": 281,
+      "name": "Reverse Rick Outrage",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/281.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/281",
+      "created": "2017-12-31T14:23:53.056Z"
+    },
+    {
+      "id": 283,
+      "name": "Rick D. Sanchez III",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/283.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/283",
+      "created": "2017-12-31T19:23:53.188Z"
+    },
+    {
+      "id": 285,
+      "name": "Rick Prime",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/285.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/22",
+        "https://rickandmortyapi.com/api/episode/51"
+      ],
+      "url": "https://rickandmortyapi.com/api/character/285",
+      "created": "2017-12-31T19:45:46.470Z"
+    },
+    {
+      "id": 286,
+      "name": "Rick D-99",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (D-99)",
+        "url": "https://rickandmortyapi.com/api/location/58"
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/286.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/22"],
+      "url": "https://rickandmortyapi.com/api/character/286",
+      "created": "2017-12-31T19:49:55.181Z"
+    },
+    {
+      "id": 287,
+      "name": "Rick D716",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (D716)",
+        "url": "https://rickandmortyapi.com/api/location/59"
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/287.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/287",
+      "created": "2017-12-31T19:51:33.244Z"
+    },
+    {
+      "id": 290,
+      "name": "Rick Sanchez",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (Evil Rick's Target Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/34"
+      },
+      "location": {
+        "name": "Earth (Evil Rick's Target Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/34"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/290.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/10"],
+      "url": "https://rickandmortyapi.com/api/character/290",
+      "created": "2017-12-31T20:15:25.716Z"
+    },
+    {
+      "id": 293,
+      "name": "Rick Sanchez",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (Replacement Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/20"
+      },
+      "location": {
+        "name": "Earth (Replacement Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/20"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/293.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/6"],
+      "url": "https://rickandmortyapi.com/api/character/293",
+      "created": "2017-12-31T20:22:29.032Z"
+    },
+    {
+      "id": 294,
+      "name": "Ricktiminus Sancheziminius",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Rick's Memories",
+        "url": "https://rickandmortyapi.com/api/location/126"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/294.jpeg",
+      "episode": [
+        "https://rickandmortyapi.com/api/episode/10",
+        "https://rickandmortyapi.com/api/episode/22",
+        "https://rickandmortyapi.com/api/episode/51"
+      ],
+      "url": "https://rickandmortyapi.com/api/character/294",
+      "created": "2017-12-31T20:24:30.396Z"
+    },
+    {
+      "id": 322,
+      "name": "Simple Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "Citadel of Ricks",
+        "url": "https://rickandmortyapi.com/api/location/3"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/322.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/28"],
+      "url": "https://rickandmortyapi.com/api/character/322",
+      "created": "2018-01-05T15:12:03.933Z"
+    },
+    {
+      "id": 349,
+      "name": "The Scientist Formerly Known as Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "",
+      "gender": "Male",
+      "origin": {
+        "name": "unknown",
+        "url": ""
+      },
+      "location": {
+        "name": "unknown",
+        "url": ""
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/349.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/10"],
+      "url": "https://rickandmortyapi.com/api/character/349",
+      "created": "2018-01-10T17:49:09.995Z"
+    },
+    {
+      "id": 353,
+      "name": "Tiny Rick",
+      "status": "Dead",
+      "species": "Human",
+      "type": "Clone",
+      "gender": "Male",
+      "origin": {
+        "name": "Earth (Replacement Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/20"
+      },
+      "location": {
+        "name": "Earth (Replacement Dimension)",
+        "url": "https://rickandmortyapi.com/api/location/20"
+      },
+      "image": "https://rickandmortyapi.com/api/character/avatar/353.jpeg",
+      "episode": ["https://rickandmortyapi.com/api/episode/18"],
+      "url": "https://rickandmortyapi.com/api/character/353",
+      "created": "2018-01-10T18:00:35.848Z"
+    }
+  ]
+}

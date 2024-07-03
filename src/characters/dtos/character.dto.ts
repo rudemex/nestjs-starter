@@ -1,42 +1,83 @@
-import { IsOptional, IsPositive, IsString } from '@nestjs/class-validator';
+import { IsEnum, IsOptional, IsPositive, IsString } from '@nestjs/class-validator';
 import { ApiProperty } from '@nestjs/swagger';
+
+export enum CharacterStatus {
+  Alive = 'alive',
+  Dead = 'dead',
+  Unknown = 'unknown',
+}
+
+export enum CharacterGender {
+  Female = 'female',
+  Male = 'male',
+  Genderless = 'genderless',
+  Unknown = 'unknown',
+}
 
 export class FilterCharacter {
   @IsOptional()
   @IsPositive()
-  @ApiProperty({ description: 'Number of page', required: false })
-  page: number;
-
-  @IsOptional()
-  @IsString()
-  @ApiProperty({ description: 'filter by the given name', required: false })
-  name: string;
+  @ApiProperty({
+    description: 'Number of page',
+    required: false,
+    example: 1,
+    default: 1,
+  })
+  page?: number;
 
   @IsOptional()
   @IsString()
   @ApiProperty({
-    description: 'filter by the given status',
+    description: 'Filter by the given name.',
     required: false,
-    enum: ['', 'alive', 'dead', 'unknown'],
+    example: 'rick',
+    default: '',
   })
-  status: 'alive' | 'dead' | 'unknown';
+  name?: string;
 
   @IsOptional()
-  @IsString()
-  @ApiProperty({ description: 'filter by the given species', required: false })
-  species: string;
-
-  @IsOptional()
-  @IsString()
-  @ApiProperty({ description: 'filter by the given type', required: false })
-  type: string;
+  @IsEnum(CharacterStatus, {
+    message: 'Status must be one of: alive, dead, unknown',
+  })
+  @ApiProperty({
+    description: 'Filter by the given status.',
+    required: false,
+    enum: CharacterStatus,
+    example: CharacterStatus.Alive,
+    default: CharacterStatus.Alive,
+  })
+  status?: CharacterStatus;
 
   @IsOptional()
   @IsString()
   @ApiProperty({
-    description: 'filter by the given gender',
+    description: 'Filter by the given species.',
     required: false,
-    enum: ['', 'female', 'male', 'genderless', 'unknown'],
+    example: 'Human',
+    default: '',
   })
-  gender: 'female' | 'male' | 'genderless' | 'unknown';
+  species?: string;
+
+  @IsOptional()
+  @IsString()
+  @ApiProperty({
+    description: 'Filter by the given type.',
+    required: false,
+    example: '',
+    default: '',
+  })
+  type?: string;
+
+  @IsOptional()
+  @IsEnum(CharacterGender, {
+    message: 'Gender must be one of: female, male, genderless, unknown',
+  })
+  @ApiProperty({
+    description: 'Filter by the given gender.',
+    required: false,
+    enum: CharacterGender,
+    example: CharacterGender.Male,
+    default: CharacterGender.Unknown,
+  })
+  gender?: CharacterGender;
 }
