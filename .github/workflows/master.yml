@@ -15,37 +15,37 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '18.17.0' ]
+        node: [ '18.20.3' ]
     name: "Setup"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
   build:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '18.17.0' ]
+        node: [ '18.20.3' ]
     needs: setup
     name: "Build"
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
 
       - name: "✅ Checkout repository"
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
       - name: "💾 Restore packages from cache"
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: |
             node_modules
@@ -78,13 +78,15 @@ jobs:
           NODE_ENV: 'test'
 
       - name: "📊 Publish Test Report"
-        uses: mikepenz/action-junit-report@v3
-        if: always()
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
         with:
-          report_paths: '**/junit.xml'
+          name: "Test Report"
+          path: './junit.xml'
+          reporter: jest-junit
 
       - name: "📊 Upload coverage report to Codecov"
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 

@@ -22,7 +22,7 @@ async function bootstrap() {
 
   app.setGlobalPrefix(`${server.context}`);
 
-  app.use([cookieParser(), helmet(), compression()]);
+  app.use([cookieParser(), compression(), helmet()]);
   app.useGlobalFilters(new ExceptionsFilter(appConfig));
 
   app.useGlobalPipes(

@@ -11,7 +11,7 @@ export class CharactersController {
 
   @Get()
   @ApiOperation({ summary: 'Get character' })
-  async getCharacter(@Query() params?: FilterCharacter) {
+  async getCharacter(@Query() params?: FilterCharacter): Promise<any> {
     return this.characterService.getCharacter(params);
   }
 }

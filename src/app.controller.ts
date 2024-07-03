@@ -1,5 +1,4 @@
 import { Controller, Get } from '@nestjs/common';
-import { SkipTrace } from '@tresdoce-nestjs-toolkit/tracing';
 
 import { AppService } from './app.service';
 
@@ -7,18 +6,17 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get()
-  async getHello(): Promise<string> {
+  @Get('/')
+  getHello(): string {
     return this.appService.getHello();
   }
 
   @Get('test-env')
-  async getTestEnv(): Promise<string> {
+  getTestEnv(): string {
     return this.appService.getTestEnv();
   }
 
   @Get('my-util')
-  @SkipTrace()
   getMyUtil() {
     return this.appService.getMyCustomUtil();
   }

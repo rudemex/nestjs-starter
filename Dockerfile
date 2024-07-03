@@ -8,7 +8,7 @@
 # docker build -t nestjs-starter .
 
 # Build with ARG
-# docker build --build-arg NODE_VERSION=16.14.2 --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
+# docker build --build-arg NODE_VERSION=18.20.3-alpine3.18 --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
 
 # Run
 # docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
@@ -19,13 +19,13 @@
 
 
 
-ARG NODE_VERSION=18.17.0
+ARG NODE_VERSION=18.20.3-alpine3.18
 ARG NODE_ENV=build
 ARG APP_PORT=8080
 ARG IMAGE_NAME=nestjs-starter
 
 # Utiliza una versión ligera de Node.js como imagen base
-FROM node:${NODE_VERSION}-alpine as builder
+FROM node:${NODE_VERSION} as builder
 # Establece la variable de entorno NODE_ENV a partir del ARG
 ENV NODE_ENV=${NODE_ENV}
 
@@ -47,7 +47,7 @@ RUN yarn build
 # ---
 
 # Comienza una nueva etapa para reducir el tamaño de la imagen final
-FROM node:${NODE_VERSION}-alpine
+FROM node:${NODE_VERSION}
 # Información sobre la imagen, con el valor de la etiqueta name parametrizado
 LABEL name=${IMAGE_NAME}
 

@@ -1,22 +1,27 @@
+import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { PaginationResponse } from '@tresdoce-nestjs-toolkit/paas';
 
-import { User } from '../entities/user.entity';
 import { UsersService } from '../services/users.service';
-import { userStub } from './stubs/user.stub';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-
-//jest.mock('../services/users.service');
+import { User } from '../entities/user.entity';
 
 describe('UsersService', () => {
+  let app: INestApplication;
   let service: UsersService;
 
   beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
+    const moduleRef: TestingModule = await Test.createTestingModule({
       providers: [UsersService],
     }).compile();
 
-    service = module.get<UsersService>(UsersService);
-    //jest.clearAllMocks();
+    app = moduleRef.createNestApplication();
+    service = moduleRef.get<UsersService>(UsersService);
+    await app.init();
+  });
+
+  afterEach(async () => {
+    await app.close();
   });
 
   it('should be defined', async () => {
@@ -24,14 +29,40 @@ describe('UsersService', () => {
   });
 
   it('should be return all users', async () => {
-    const users: User[] = await service.findAll();
-    expect(users).toEqual([userStub()]);
+    const response: PaginationResponse<User> = await service.findAll({ page: 1, size: 10 });
+    expect(response).toBeDefined();
+    expect(response).toEqual(expect.any(Object));
+    expect(response).toHaveProperty('data');
+    expect(response.data).toEqual(expect.any(Array));
+    expect(response.data).toHaveLength(10);
+    expect(response).toHaveProperty('meta');
+    expect(response.meta).toHaveProperty('hasNext');
+    expect(response.meta).toHaveProperty('hasPrevious');
+    expect(response.meta).toHaveProperty('page');
+    expect(response.meta).toHaveProperty('size');
+    expect(response.meta).toHaveProperty('total');
+    expect(response.meta).toHaveProperty('totalPages');
+  });
+
+  it('should be return exception in findAll when page greater than the total pages', async () => {
+    const page = 1000;
+    await expect(service.findAll({ page, size: 10 })).rejects.toThrowError(
+      `The page #${page} is greater than the total pages.`,
+    );
   });
 
   it('should be return user find by id', async () => {
     const userID = 1;
-    const user: User = await service.findOne(userID);
-    expect(user).toEqual(userStub());
+    const response: User = await service.findOne(userID);
+    expect(response).toBeDefined();
+    expect(response).toEqual(expect.any(Object));
+    expect(response).toHaveProperty('id');
+    expect(response).toHaveProperty('firstName');
+    expect(response).toHaveProperty('lastName');
+    expect(response).toHaveProperty('email');
+    expect(response).toHaveProperty('gender');
+    expect(response).toHaveProperty('seniority');
+    expect(response).toHaveProperty('experience');
   });
 
   it('should be return error exception when find user by id and dont exist', async () => {
@@ -44,6 +75,9 @@ describe('UsersService', () => {
       firstName: 'Jane',
       lastName: 'Doe',
       email: 'janedoe@email.com',
+      gender: 'female',
+      seniority: 'jr',
+      experience: '',
     };
     const user: User = await service.create(payload);
     expect(user).toEqual(expect.objectContaining(payload));
@@ -55,6 +89,9 @@ describe('UsersService', () => {
       firstName: 'Jhon',
       lastName: 'Doe',
       email: 'jdoe@email.com',
+      seniority: 'jr',
+      gender: 'male',
+      experience: 'test',
     };
     const user: User = await service.update(userID, changes);
     expect(user).toEqual({ id: userID, ...changes });
@@ -80,63 +117,4 @@ describe('UsersService', () => {
     const userID = 9999;
     await expect(service.remove(userID)).rejects.toThrowError(`User #${userID} not found`);
   });
-
-  // Test for mocks
-  /*
-  it('should be return all users', async () => {
-    const users: User[] = await service.findAll();
-    expect(await service.findAll).toBeCalledWith();
-    expect(users).toEqual([userStub()]);
-  });
-
-  it('should be find user by id', async () => {
-    const user: User = await service.findOne(userStub().id);
-    //expect(await service.findOne).toBeCalledWith(userStub().id);
-    expect(user).toEqual(userStub());
-  });
-
-  it('should be return error when find user by incorrect id', async () => {
-    jest.spyOn(service, 'findOne').mockImplementationOnce(
-      jest.fn().mockResolvedValue({
-        statusCode: 404,
-        message: 'User #4 not found',
-        error: 'Not Found',
-      }),
-    );
-
-    try {
-      await service.findOne(4);
-    } catch (error) {
-      expect(error).toBeInstanceOf(NotFoundException);
-    }
-  });
-
-  it('should be create a user', async () => {
-    const payload: CreateUserDto = {
-      firstName: userStub().firstName,
-      lastName: userStub().lastName,
-      email: userStub().email,
-    };
-
-    const user: User = await service.create(payload);
-    expect(await service.create).toBeCalledWith(payload);
-    expect(user).toEqual(userStub());
-  });
-
-  it('should be update user by id', async () => {
-    const changes: UpdateUserDto = {
-      firstName: 'Jhon',
-      lastName: 'Doe',
-      email: 'jdoe@email.com',
-    };
-    const user: User = await service.update(userStub().id, changes);
-    expect(await service.update).toBeCalledWith(userStub().id, changes);
-    expect(user).toEqual(userStub());
-  });
-
-  it('should be remove user by id', async () => {
-    const user = await service.remove(userStub().id);
-    expect(await service.remove).toBeCalledWith(userStub().id);
-    expect(user).toBeTruthy();
-  });*/
 });
