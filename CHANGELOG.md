@@ -2,6 +2,33 @@
 
 ---
 
+## [3.3.0](https://github.com/rudemex/nestjs-starter/compare/v3.2.1...v3.3.0) (2024-07-03)
+
+
+### ✨ Features
+
+* add filters, fixtures and create mock ([2ea0b7c](https://github.com/rudemex/nestjs-starter/commit/2ea0b7c36223a0c81f68099f0cc8704f5fe33348))
+
+
+### 📝 Docs
+
+* update readme ([b17682b](https://github.com/rudemex/nestjs-starter/commit/b17682b185505c9fb1fd9d165e9eed6e8d28b903))
+
+
+### 🐛 Bug Fixes
+
+* **dockerfile:** edit to support any version of nodejs ([40fc3a2](https://github.com/rudemex/nestjs-starter/commit/40fc3a295b0da2922d9e71f910ce420fd4980dd5))
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([f149a8f](https://github.com/rudemex/nestjs-starter/commit/f149a8f5b9688dc620b2f3b649fb51b78a72c0cc))
+* update dependencies ([d5a9768](https://github.com/rudemex/nestjs-starter/commit/d5a9768b1ec0b11f918df214285973739b0928fe))
+* update dependencies ([1b5027e](https://github.com/rudemex/nestjs-starter/commit/1b5027e76e36f352656ffeef95385c8d2673a57e))
+* update dependencies ([c488f4c](https://github.com/rudemex/nestjs-starter/commit/c488f4cd25613edb176ad67342429f65f31fbf21))
+* update node version and dependencies ([0cef588](https://github.com/rudemex/nestjs-starter/commit/0cef588d3b235bf42c1a41df566322ee03c1454e))
+* update to latest dependencies ([ee83482](https://github.com/rudemex/nestjs-starter/commit/ee834820170edfd9ddf19e047b76624b5aedbbc3))
+
 ### [3.2.1](https://github.com/rudemex/nestjs-starter/compare/v3.2.0...v3.2.1) (2024-01-16)
 
 
