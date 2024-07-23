@@ -2,6 +2,16 @@
 
 ---
 
+### [3.3.1](https://github.com/rudemex/nestjs-starter/compare/v3.3.0...v3.3.1) (2024-07-23)
+
+
+### 👨‍💻 Chores
+
+* edit husky ([b414391](https://github.com/rudemex/nestjs-starter/commit/b414391d58462cd166ac2cf07531035c7a69d277))
+* last changes updates ([e77752b](https://github.com/rudemex/nestjs-starter/commit/e77752b65ebb5f6de00f054d7255711b3d5b2bd6))
+* update dependencies ([99a5a69](https://github.com/rudemex/nestjs-starter/commit/99a5a69fc63bbec6eb230be94214ad10935e9a0a))
+* update dependencies ([460ffad](https://github.com/rudemex/nestjs-starter/commit/460ffadc26bbef66320ac6d53b9c9eda659089f7))
+
 ## [3.3.0](https://github.com/rudemex/nestjs-starter/compare/v3.2.1...v3.3.0) (2024-07-03)
 
 
