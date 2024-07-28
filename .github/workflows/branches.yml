@@ -5,21 +5,6 @@ on:
     branches: [ "feat/*", "fix/*", "refactor/*", "chore/*", "docs/*", "test/*", "build/*", "perf/*", "style/*", "revert/*" ]
 
 jobs:
-  setup:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node: [ '18.20.4', '20.15.1', '20.16.0', '22.5.1' ]
-    name: "Setup"
-    steps:
-      - name: "⚙ Set up Node.js v${{ matrix.node }}"
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node }}
-
-      - name: "✅ Checkout repository"
-        uses: actions/checkout@v4
-
   build:
     runs-on: ubuntu-latest
     strategy:
