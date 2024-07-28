@@ -100,4 +100,4 @@ jobs:
       - name: "🐳 Docker"
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-          docker build --build-arg NODE_VERSION=${{ matrix.node }} -t ${{ github.event.repository.name }} .
+          docker build --build-arg NODE_VERSION=${{ matrix.node }}-alpine -t ${{ github.event.repository.name }} .
