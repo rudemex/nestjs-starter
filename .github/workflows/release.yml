@@ -24,7 +24,6 @@ jobs:
       matrix:
         node: [ '18.20.3' ]
     name: "Release"
-    needs: setup
     steps:
       - name: "⚙ Set up Node.js v${{ matrix.node }}"
         uses: actions/setup-node@v4
