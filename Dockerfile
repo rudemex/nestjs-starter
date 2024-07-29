@@ -8,7 +8,7 @@
 # docker build -t nestjs-starter .
 
 # Build with ARG
-# docker build --build-arg NODE_VERSION=18.20.3-alpine3.18 --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
+# docker build --build-arg NODE_VERSION=18.20.4-alpine --build-arg APP_PORT=3000 --build-arg IMAGE_NAME=my-nestjs-app -t mi-imagen .
 
 # Run
 # docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
@@ -19,7 +19,7 @@
 
 
 
-ARG NODE_VERSION=18.20.3-alpine3.18
+ARG NODE_VERSION=18.20.4-alpine
 ARG NODE_ENV=build
 ARG APP_PORT=8080
 ARG IMAGE_NAME=nestjs-starter
@@ -65,8 +65,3 @@ COPY --from=builder /usr/src/app/dist ./dist
 EXPOSE ${APP_PORT}
 # Define el comando para iniciar la aplicación
 CMD ["yarn", "start"]
-
-# Define un healthcheck para verificar la salud de la aplicación
-# Dependiendo de la configuración de tu aplicación, necesitarás ajustar este comando
-# Aquí se asume que tu aplicación tiene un endpoint GET /v1/health/liveness que devuelve un código de estado 200 si está en funcionamiento
-#HEALTHCHECK CMD curl --fail http://localhost:${APP_PORT}/v1/health/liveness || exit 1
