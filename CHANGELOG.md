@@ -2,6 +2,16 @@
 
 ---
 
+### [3.3.3](https://github.com/rudemex/nestjs-starter/compare/v3.3.2...v3.3.3) (2024-07-29)
+
+
+### 👨‍💻 Chores
+
+* changes in node version of dockerfile ([3cabe5c](https://github.com/rudemex/nestjs-starter/commit/3cabe5c1f7f57e8c7463f2707232ca21a325a562))
+* **envs:** add function tu return env file path by NODE_ENV var ([4d84bba](https://github.com/rudemex/nestjs-starter/commit/4d84bbaa6dbbfc330b7c2be4844b634944b339f7))
+* this project is compatible with node 18, 20 and 22 ([68a1248](https://github.com/rudemex/nestjs-starter/commit/68a124812e7da8f2200ef43d0334e2131f700655))
+* update dependencies ([cdd6033](https://github.com/rudemex/nestjs-starter/commit/cdd6033c725848c519e324959d6e7e0d57995b42))
+
 ### [3.3.2](https://github.com/rudemex/nestjs-starter/compare/v3.3.1...v3.3.2) (2024-07-24)
 
 
