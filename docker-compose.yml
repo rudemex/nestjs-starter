@@ -1,7 +1,5 @@
 # docker-compose.yml - Only for local debug purposes
 # docker-compose up -d elasticsearch kibana jaeger camunda redis mongo mysql postgres pgadmin
-version: '3.9'
-
 services:
   postgres:
     image: postgres:13

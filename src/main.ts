@@ -63,7 +63,7 @@ async function bootstrap(): Promise<void> {
   }
 
   await app.listen(port, async (): Promise<void> => {
-    const appServer = `http://localhost:${port}/${server.context}`;
+    const appServer: string = `http://localhost:${port}/${server.context}`;
     if (swagger.enabled) {
       Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
     }
