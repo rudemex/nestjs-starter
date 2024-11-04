@@ -19,6 +19,33 @@ import { UsersService } from '../services/users.service';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
 import { User } from '../entities/user.entity';
 
+/*export function ApiQueriesFromDto(dto: Type<any>) {
+  const instance = new dto();
+  const properties = Object.keys(instance);
+
+  const decorators = properties.map((property) => {
+    const apiPropertyOptions =
+      Reflect.getMetadata('swagger/apiModelProperties', dto.prototype, property) || {};
+
+    return ApiQuery({
+      name: property,
+      type: apiPropertyOptions.type || Reflect.getMetadata('design:type', dto.prototype, property),
+      required: apiPropertyOptions.required ?? false,
+      description: apiPropertyOptions.description,
+      example: apiPropertyOptions.example,
+      default: apiPropertyOptions.default,
+      enum: Array.isArray(apiPropertyOptions.enum) ? apiPropertyOptions.enum : undefined,
+      minimum: apiPropertyOptions.minimum,
+      maximum: apiPropertyOptions.maximum,
+      minLength: apiPropertyOptions.minLength,
+      maxLength: apiPropertyOptions.maxLength,
+      pattern: apiPropertyOptions.pattern,
+    });
+  });
+
+  return applyDecorators(ApiExtraModels(dto), ...decorators);
+}*/
+
 @ApiTags('Users')
 @Controller('users')
 export class UsersController {
@@ -47,8 +74,10 @@ export class UsersController {
   })
   @ApiExtraModels(PaginationResponse)
   @ApiQuery({ type: PaginationParamsDto })
+  //@ApiQueriesFromDto(PaginationParamsDto)
   @Get()
   findAll(@Pagination() pagination?: PaginationParams): Promise<PaginationResponse<User>> {
+    //findAll(@Query() pagination?: PaginationParamsDto): Promise<PaginationResponse<User>> {
     return this.usersService.findAll(pagination);
   }
 
