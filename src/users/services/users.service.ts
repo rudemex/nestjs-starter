@@ -2,7 +2,12 @@ import { BadRequestException, Injectable, NotFoundException } from '@nestjs/comm
 
 import { User } from '../entities/user.entity';
 import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { PaginationParams, calculatePagination } from '@tresdoce-nestjs-toolkit/paas';
+import {
+  calculatePagination,
+  IPaginateData,
+  PaginationParamsDto,
+  PaginationResponse,
+} from '@tresdoce-nestjs-toolkit/paas';
 
 @Injectable()
 export class UsersService {
@@ -280,8 +285,8 @@ export class UsersService {
   ];
   private counterId: number = this.users.length; //30
 
-  async findAll({ page, size }: PaginationParams) {
-    const meta = calculatePagination({
+  async findAll({ page, size }: PaginationParamsDto): Promise<PaginationResponse<User>> {
+    const meta: IPaginateData = calculatePagination({
       total: this.users.length,
       page,
       size,

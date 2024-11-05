@@ -49,6 +49,7 @@ async function bootstrap(): Promise<void> {
       .build();
     const document: OpenAPIObject = SwaggerModule.createDocument(app, config, {
       ignoreGlobalPrefix: true,
+      autoTagControllers: true,
     });
     SwaggerModule.setup(`${server.context}/${swagger.path}`, app, document, {});
   }

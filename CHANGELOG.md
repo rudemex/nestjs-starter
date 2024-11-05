@@ -2,6 +2,22 @@
 
 ---
 
+### [3.3.5](https://github.com/rudemex/nestjs-starter/compare/v3.3.4...v3.3.5) (2024-11-05)
+
+
+### 🐛 Bug Fixes
+
+* resolve problem with apiquery dto ([88c0a1f](https://github.com/rudemex/nestjs-starter/commit/88c0a1fb3ce59316b4b4d5279a63a18ab063f7b0))
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([9d28dfd](https://github.com/rudemex/nestjs-starter/commit/9d28dfdbcd1ddb786398e92e439b6c9a17750abd))
+* update dependencies ([e5d491b](https://github.com/rudemex/nestjs-starter/commit/e5d491bdc4421b9ddc60e4c1392d4912cf0c1d40))
+* update dependencies with fixes ([78d056d](https://github.com/rudemex/nestjs-starter/commit/78d056d4d825a57a27c58b07cb7f33ba250b6405))
+* update node versions ([1eb7add](https://github.com/rudemex/nestjs-starter/commit/1eb7addafbf8269d870baeba8fa86291aa98bad8))
+* update to latest dependencies ([110ba6f](https://github.com/rudemex/nestjs-starter/commit/110ba6f856314764a97535e3e4d676a33fa9cbe0))
+
 ### [3.3.4](https://github.com/rudemex/nestjs-starter/compare/v3.3.3...v3.3.4) (2024-09-24)
 
 

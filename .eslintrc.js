@@ -1,2 +1,2 @@
-const config = require('@tresdoce-nestjs-toolkit/commons');
-module.exports = config.eslintConfig();
+const { eslintConfig } = require('@tresdoce-nestjs-toolkit/commons');
+module.exports = eslintConfig();
