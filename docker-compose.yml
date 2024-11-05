@@ -78,7 +78,7 @@ services:
     #  - ./.redis_data:/data
 
   authorizer:
-    image: lakhansamani/authorizer:1.3.6
+    image: lakhansamani/authorizer:1.4.4
     container_name: local-authorizer
     restart: always
     ports:
@@ -91,6 +91,18 @@ services:
       DATABASE_URL: postgres://root:123456@postgres:5432/my_db
       REDIS_URL: redis://:123456@redis:6379
       CUSTOM_ACCESS_TOKEN_SCRIPT: function(user,tokenPayload){var data=tokenPayload;data.user=user;return data;}
+      DISABLE_PLAYGROUND: false
+      DISABLE_EMAIL_VERIFICATION: false
+      DISABLE_MAGIC_LINK_LOGIN: true
+      ROLES: user,admin,super_admin
+      DEFAULT_ROLES: user
+      PROTECTED_ROLES: admin,super_admin
+      SMTP_HOST:
+      SMTP_PORT: 465
+      SMTP_USERNAME:
+      SMTP_PASSWORD:
+      SENDER_EMAIL: onboarding@resend.dev
+      SENDER_NAME: Test Authorizer (Resend)
     depends_on:
       - postgres
       - redis
@@ -169,3 +181,181 @@ services:
       - '3000:3000'
     environment:
       - GF_SECURITY_ADMIN_PASSWORD=admin
+
+  zookeeper:
+    container_name: local-zookeeper
+    image: confluentinc/cp-zookeeper:5.5.3
+    restart: always
+    environment:
+      TZ: 'America/Argentina/Buenos_Aires'
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - '2181:2181'
+
+  kafka:
+    container_name: local-kafka
+    image: confluentinc/cp-kafka:5.5.3
+    restart: always
+    environment:
+      TZ: 'America/Argentina/Buenos_Aires'
+      KAFKA_BROKER_ID: 1
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+      KAFKA_CREATE_TOPICS: "test.topic:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://docker:9092
+      KAFKA_LISTENERS: PLAINTEXT://:29092,PLAINTEXT_HOST://:9092
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_JMX_PORT: 9997
+      KAFKA_JMX_HOSTNAME: kafka
+      KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
+      KAFKA_CONFLUENT_LICENSE_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_CONFLUENT_BALANCER_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+      KAFKA_LOG4J_LOGGERS: >-
+        kafka.controller=INFO,
+        kafka.producer.async.DefaultEventHandler=INFO,
+        state.change.logger=INFO
+    ports:
+      - '9092:9092'
+      - '9997:9997'
+    depends_on:
+      - zookeeper
+    command: >
+      bash -c "
+        echo 'Making magic 2.0'
+        echo 'echo \"Waiting for Kafka to start listening on localhost...\";' > startup.sh
+        echo 'start_timeout_exceeded=false' >> startup.sh
+        echo 'count=0' >> startup.sh
+        echo 'while ! nc -z kafka 29092; do' >> startup.sh
+        echo '  echo \"Waiting for Kafka to start listening on localhost...\"' >> startup.sh
+        echo '  sleep 1' >> startup.sh
+        echo '  ((count+=1))' >> startup.sh
+        echo '  if [ $$count -eq 30 ]; then' >> startup.sh
+        echo '    start_timeout_exceeded=true' >> startup.sh
+        echo '    break' >> startup.sh
+        echo '  fi' >> startup.sh
+        echo 'done' >> startup.sh
+        echo 'if [ \"$$start_timeout_exceeded\" = true ]; then' >> startup.sh
+        echo '  echo \"Kafka did not start within 30 seconds. Exiting...\"' >> startup.sh
+        echo '  exit 1' >> startup.sh
+        echo 'fi' >> startup.sh
+        echo 'echo \"Kafka is now listening on localhost:9092\"' >> startup.sh
+
+        echo 'kafka-topics --bootstrap-server kafka:29092 --list' >> startup.sh
+        echo 'echo \"Kafka started\";' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.a' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.b' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.c' >> startup.sh
+        echo 'echo \"Successfully created the following topics:\"' >> startup.sh
+        echo 'kafka-topics --bootstrap-server kafka:29092 --list' >> startup.sh
+        chmod a+x startup.sh
+        cat startup.sh
+        ./startup.sh &
+        exec /etc/confluent/docker/run
+      "
+
+  schema-registry:
+    container_name: local-kafka-schema-registry
+    image: confluentinc/cp-schema-registry:5.5.3
+    restart: always
+    depends_on:
+      - kafka
+    ports:
+      - '8085:8085'
+    environment:
+      SCHEMA_REGISTRY_HOST_NAME: schema-registry
+      SCHEMA_REGISTRY_LISTENERS: http://schema-registry:8085
+      SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL: 'zookeeper:2181'
+      SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://docker:9092
+
+  kafka_ui:
+    container_name: local-kafka-ui
+    image: provectuslabs/kafka-ui:latest
+    restart: always
+    environment:
+      KAFKA_CLUSTERS_0_ZOOKEEPER: 'zookeeper:2181'
+      KAFKA_CLUSTERS_0_NAME: local
+      KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:29092
+      KAFKA_CLUSTERS_0_METRICS_PORT: 9997
+      KAFKA_CLUSTERS_0_SCHEMAREGISTRY: http://schema-registry:8085
+      DYNAMIC_CONFIG_ENABLED: 'true'
+    ports:
+      - '8282:8080'
+    depends_on:
+      #- kafka
+      - schema-registry
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:25.0.2
+    container_name: local-keycloak
+    restart: always
+    ports:
+      - '8443:8443'
+    environment:
+      KC_DB: postgres
+      KC_DB_URL: jdbc:postgresql://postgres:5432/my_db
+      KC_DB_USERNAME: root
+      KC_DB_PASSWORD: 123456
+      KC_HOSTNAME: localhost
+      KC_HOSTNAME_PORT: 8443
+      KC_HOSTNAME_STRICT_BACKCHANNEL: true
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_LOG_LEVEL: info
+      KC_METRICS_ENABLED: true
+      KC_HEALTH_ENABLED: true
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:8443/health/ready" ]
+      interval: 15s
+      timeout: 2s
+      retries: 15
+    command: start-dev --http-port=8443
+    depends_on:
+      - postgres
+
+  sqs-localstack:
+    image: localstack/localstack
+    container_name: local-sqs-localstack
+    restart: always
+    ports:
+      - "4566:4566"
+    environment:
+      SERVICES: sqs
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DEFAULT_REGION: us-east-1
+      DEBUG: 0
+
+  aws-cli-sqs:
+    image: amazon/aws-cli
+    container_name: local-aws-cli-sqs
+    depends_on:
+      - sqs-localstack
+    environment:
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+      AWS_DEFAULT_REGION: us-east-1
+    entrypoint: /bin/sh -c
+    command: >
+      "
+        echo 'Waiting for SQS to be available...';
+        until curl -s http://sqs-localstack:4566/_localstack/health | grep '\"sqs\": \"available\"'; do
+          echo 'Waiting for SQS to be ready...';
+          sleep 2;
+        done;
+        echo 'Creating queues...';
+        aws sqs create-queue --endpoint-url=http://sqs-localstack:4566 --queue-name test-queue-1;
+        aws sqs create-queue --endpoint-url=http://sqs-localstack:4566 --queue-name test-queue-2;
+        aws sqs create-queue --endpoint-url=http://sqs-localstack:4566 --queue-name test-queue-3;
+        aws sqs create-queue --endpoint-url=http://sqs-localstack:4566 --queue-name orders;
+        aws sqs create-queue --endpoint-url=http://sqs-localstack:4566 --queue-name notifications;
+        echo 'Listing queues...';
+        aws sqs list-queues --endpoint-url=http://sqs-localstack:4566;
+      "

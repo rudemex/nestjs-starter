@@ -19,7 +19,7 @@
 
 
 
-ARG NODE_VERSION=18.20.4-alpine
+ARG NODE_VERSION=20.18.0-alpine
 ARG NODE_ENV=build
 ARG APP_PORT=8080
 ARG IMAGE_NAME=nestjs-starter
