@@ -74,10 +74,8 @@ export class UsersController {
   })
   @ApiExtraModels(PaginationResponse)
   @ApiQuery({ type: PaginationParamsDto })
-  //@ApiQueriesFromDto(PaginationParamsDto)
   @Get()
   findAll(@Pagination() pagination?: PaginationParams): Promise<PaginationResponse<User>> {
-    //findAll(@Query() pagination?: PaginationParamsDto): Promise<PaginationResponse<User>> {
     return this.usersService.findAll(pagination);
   }
 
