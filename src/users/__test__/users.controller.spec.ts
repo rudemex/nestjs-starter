@@ -45,13 +45,29 @@ describe('UsersController', () => {
     expect(response).toHaveProperty('experience');
   });
 
-  it('should be return users', async () => {
-    const response: PaginationResponse<User> = await controller.findAll({ page: 1, size: 10 });
+  it('should be return users without pagination', async () => {
+    const response: PaginationResponse<User> = await controller.findAll();
     expect(response).toBeDefined();
     expect(response).toEqual(expect.any(Object));
     expect(response).toHaveProperty('data');
     expect(response.data).toEqual(expect.any(Array));
     expect(response.data).toHaveLength(10);
+    expect(response).toHaveProperty('meta');
+    expect(response.meta).toHaveProperty('page');
+    expect(response.meta).toHaveProperty('size');
+    expect(response.meta).toHaveProperty('total');
+    expect(response.meta).toHaveProperty('totalPages');
+    expect(response.meta).toHaveProperty('hasNext');
+    expect(response.meta).toHaveProperty('hasPrevious');
+  });
+
+  it('should be return users with pagination', async () => {
+    const response: PaginationResponse<User> = await controller.findAll({ page: 2, size: 5 });
+    expect(response).toBeDefined();
+    expect(response).toEqual(expect.any(Object));
+    expect(response).toHaveProperty('data');
+    expect(response.data).toEqual(expect.any(Array));
+    expect(response.data).toHaveLength(5);
     expect(response).toHaveProperty('meta');
     expect(response.meta).toHaveProperty('page');
     expect(response.meta).toHaveProperty('size');
