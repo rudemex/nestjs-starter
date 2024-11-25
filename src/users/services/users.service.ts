@@ -285,7 +285,9 @@ export class UsersService {
   ];
   private counterId: number = this.users.length; //30
 
-  async findAll({ page, size }: PaginationParamsDto): Promise<PaginationResponse<User>> {
+  async findAll(
+    { page, size }: PaginationParamsDto = { page: 1, size: 10 },
+  ): Promise<PaginationResponse<User>> {
     const meta: IPaginateData = calculatePagination({
       total: this.users.length,
       page,

@@ -9,7 +9,7 @@ import { config } from '../../config';
 export class CharactersService {
   constructor(
     @Inject(config.KEY) private readonly appConfig: ConfigType<typeof config>,
-    private readonly httpClient: HttpClientService,
+    @Inject(HttpClientService) private readonly httpClient: HttpClientService,
   ) {}
 
   async getCharacter(params?: FilterCharacter) {
