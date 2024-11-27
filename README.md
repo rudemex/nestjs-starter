@@ -6,7 +6,7 @@
 <p align="center">
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v20.18.1&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v10.9.1&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v10.4.9&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v10.4.11&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
         <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     </a>
@@ -90,7 +90,7 @@ Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos d
 - Node.js v20.18.1 or higher ([Download](https://nodejs.org/es/download/))
 - YARN v1.22.22 or higher
 - NPM v10.9.1 or higher
-- NestJS v10.4.9 or higher ([Documentación](https://nestjs.com/))
+- NestJS v10.4.11 or higher ([Documentación](https://nestjs.com/))
 
 <a name="install-dependencies"></a>
 
