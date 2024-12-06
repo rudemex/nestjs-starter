@@ -70,7 +70,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: "📊 SonarCloud Scan"
-        uses: SonarSource/sonarcloud-github-action@master
+        uses: sonarsource/sonarqube-scan-action@v4.1.0
         with:
           args: >
             -Dsonar.organization=${{ github.repository_owner }}
