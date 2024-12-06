@@ -2,6 +2,14 @@
 
 ---
 
+### [3.4.4](https://github.com/rudemex/nestjs-starter/compare/v3.4.3...v3.4.4) (2024-12-06)
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([677bfff](https://github.com/rudemex/nestjs-starter/commit/677bffff1324f710706a01a9151804d876fb4c0b))
+* **workflow:** replace sonarqube action ([a829a0f](https://github.com/rudemex/nestjs-starter/commit/a829a0f8893a0dc7c3c3f92f85835c07c2a1c3b7))
+
 ### [3.4.3](https://github.com/rudemex/nestjs-starter/compare/v3.4.2...v3.4.3) (2024-11-27)
 
 
