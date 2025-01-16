@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '20.18.0' ]
+        node: [ '20.18.1' ]
     name: "Release"
     steps:
       - name: "⚙ Set up NodeJS v${{ matrix.node }}"

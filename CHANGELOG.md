@@ -2,6 +2,22 @@
 
 ---
 
+## [4.0.0](https://github.com/rudemex/nestjs-starter/compare/v3.4.5...v4.0.0) (2025-01-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* update nestjs dependencies to v11
+
+### ✨ Features
+
+* update nestjs dependencies to v11 ([2eaba46](https://github.com/rudemex/nestjs-starter/commit/2eaba4682585c0f56ff15c856cef56c5433e501e))
+
+
+### 👨‍💻 Chores
+
+* update versions ([f7e104c](https://github.com/rudemex/nestjs-starter/commit/f7e104cc8ec262efd53d76329edfcf1629e64bd2))
+
 ### [3.4.5](https://github.com/rudemex/nestjs-starter/compare/v3.4.4...v3.4.5) (2024-12-20)
 
 
