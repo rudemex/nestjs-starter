@@ -39,12 +39,6 @@ jobs:
       #    restore-keys: |
       #      ${{ runner.os }}-yarn-
 
-      - name: "💾 Restore packages from cache"
-        uses: actions/setup-node@v4
-        with:
-          cache: 'yarn-${{ matrix.node }}'
-          node-version: ${{ matrix.node }}
-
       - name: "🦉 GitGuardian scan"
         uses: GitGuardian/ggshield-action@master
         env:
