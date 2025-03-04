@@ -29,7 +29,7 @@ jobs:
           fetch-depth: 0
 
       - name: "💾 Restore packages from cache"
-        uses: actions/cache@v4.1.0
+        uses: actions/cache@v4.1.2
         id: yarn-cache
         with:
           path: |
