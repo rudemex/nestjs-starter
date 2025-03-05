@@ -15,11 +15,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '20.18.1', '22.13.0' ]
+        node: [ '20.18.2', '22.13.0' ]
     name: "Build"
     steps:
-      - name: "⚙ Set up NodeJS v${{ matrix.node }}"
-        uses: actions/setup-node@v4
+      - name: "⚙ Setup NodeJS v${{ matrix.node }}"
+        uses: actions/setup-node@v4.2.0
         with:
           node-version: ${{ matrix.node }}
 
@@ -28,8 +28,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "💾 Restore packages from cache"
-        uses: actions/cache@v4
+      - name: "💾 Restore Dependencies from cache"
+        uses: actions/cache@v4.2.2
         with:
           path: |
             node_modules
@@ -39,12 +39,12 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: "🦉 GitGuardian scan"
-        uses: GitGuardian/ggshield-action@master
+        uses: GitGuardian/ggshield-action@v1.37.0
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
           GITHUB_PULL_BASE_SHA: ${{ github.event.pull_request.base.sha }}
-          GITHUB_DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
       - name: "📦 Install packages"
@@ -62,7 +62,7 @@ jobs:
           NODE_ENV: 'test'
 
       - name: "📊 Publish Test Report"
-        uses: dorny/test-reporter@v1
+        uses: dorny/test-reporter@v1.9.1
         if: success() || failure()
         with:
           name: "Test Report (${{ matrix.node }})"
@@ -70,12 +70,12 @@ jobs:
           reporter: jest-junit
 
       - name: "📊 Upload coverage report to Codecov"
-        uses: codecov/codecov-action@v4
+        uses: codecov/codecov-action@v5.4.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: "📊 SonarCloud Scan"
-        uses: sonarsource/sonarqube-scan-action@v4.1.0
+        uses: sonarsource/sonarqube-scan-action@v5.0.0
         with:
           args: >
             -Dsonar.organization=${{ github.repository_owner }}
