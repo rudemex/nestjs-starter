@@ -2,6 +2,30 @@
 
 ---
 
+### [4.0.2](https://github.com/rudemex/nestjs-starter/compare/v4.0.1...v4.0.2) (2025-03-06)
+
+
+### 👨‍💻 Chores
+
+* add ignore codecov files ([9d293d0](https://github.com/rudemex/nestjs-starter/commit/9d293d02dc5bbb6d04b62594cfe2d3342fe98ebb))
+* change cache step ([d4b727c](https://github.com/rudemex/nestjs-starter/commit/d4b727cc9ec241ce0fd734dbc9af3b88178b9479))
+* change cache step ([3d589b1](https://github.com/rudemex/nestjs-starter/commit/3d589b18671f1622a761a2c98f0a85cd74bcaca0))
+* change cache step ([0adadb8](https://github.com/rudemex/nestjs-starter/commit/0adadb81fa1fd1c2ceacc822998b14c908bf98b7))
+* change cache step ([16652a2](https://github.com/rudemex/nestjs-starter/commit/16652a239461b49b10ee29625b5d426f14a64250))
+* change cache step ([361d295](https://github.com/rudemex/nestjs-starter/commit/361d295eaa7291a78e32a4c09da92297635e9d42))
+* change node versions ([d560061](https://github.com/rudemex/nestjs-starter/commit/d5600613de0597cd39d4594c58a4f9f47242ee5f))
+* edit workflows ([219a8ee](https://github.com/rudemex/nestjs-starter/commit/219a8ee164e22c34199bc2fe4f25df21a56a1cb0))
+* update ([f01a84b](https://github.com/rudemex/nestjs-starter/commit/f01a84b25184ea5f270934ee62a72faf3bd3abee))
+* update tresdoce toolkit ([29bc4d8](https://github.com/rudemex/nestjs-starter/commit/29bc4d8270f56286b4ba9b3315c69438715ece65))
+* **workflow:** change version of cache step ([3b24bfb](https://github.com/rudemex/nestjs-starter/commit/3b24bfb5ee55014935c5564bff759d9d94301c1f))
+* **workflow:** change version of cache step ([72d57e4](https://github.com/rudemex/nestjs-starter/commit/72d57e4be975fbb319e857bbbe89f9d9430bb93f))
+* **workflow:** change version of cache step ([e6e1098](https://github.com/rudemex/nestjs-starter/commit/e6e10989e342ea030949a82afbfbacb094b099da))
+* **workflow:** change version of cache step ([f92e9d9](https://github.com/rudemex/nestjs-starter/commit/f92e9d9a3348d264ee94c6d0ebc6bf31a0bb2675))
+* **workflow:** remove cache step ([c9b67c7](https://github.com/rudemex/nestjs-starter/commit/c9b67c7b656b7fba33655ce73629073ca4752931))
+* **workflow:** update version of action cache ([3619a2e](https://github.com/rudemex/nestjs-starter/commit/3619a2e2d8b167ff4b7521286cdab34ac31cde10))
+* **workflow:** update version of action cache ([61717dd](https://github.com/rudemex/nestjs-starter/commit/61717ddbe721c6bba59ec03d1f8b48b9c48488bd))
+* **workflow:** update version of action cache ([a03d073](https://github.com/rudemex/nestjs-starter/commit/a03d073d4088a039ce1b0c0ad1c988e039c04178))
+
 ### [4.0.1](https://github.com/rudemex/nestjs-starter/compare/v4.0.0...v4.0.1) (2025-01-20)
 
 

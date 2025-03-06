@@ -29,6 +29,9 @@ gl-sast-report.json
 gl-secret-detection-report.json
 semgrep.sarif
 .scannerwork
+codecov
+codecov.*
+!codecov.yml
 
 # IDEs and editors
 /.idea
