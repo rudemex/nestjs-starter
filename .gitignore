@@ -79,3 +79,4 @@ codecov.*
 ./.redis_data
 .elasticsearch-data/*
 ./.elasticsearch-data
+
