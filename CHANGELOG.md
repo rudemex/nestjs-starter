@@ -2,6 +2,13 @@
 
 ---
 
+### [4.0.4](https://github.com/rudemex/nestjs-starter/compare/v4.0.3...v4.0.4) (2025-04-03)
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([449c331](https://github.com/rudemex/nestjs-starter/commit/449c331d462b57fecba6c4421f49171d7018714b))
+
 ### [4.0.3](https://github.com/rudemex/nestjs-starter/compare/v4.0.2...v4.0.3) (2025-04-01)
 
 
