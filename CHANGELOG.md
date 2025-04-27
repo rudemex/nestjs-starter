@@ -2,6 +2,16 @@
 
 ---
 
+### [4.0.5](https://github.com/rudemex/nestjs-starter/compare/v4.0.4...v4.0.5) (2025-04-27)
+
+
+### 👨‍💻 Chores
+
+* edit dockerfile ([9bb5f55](https://github.com/rudemex/nestjs-starter/commit/9bb5f553168127d9fde919a0682f46137cc0b72a))
+* edit dockerfile ([eba540f](https://github.com/rudemex/nestjs-starter/commit/eba540fb4daf88c1175b7ed26cfda1b43aa9ddc8))
+* edit dockerfile remove verbose ([2e8ead4](https://github.com/rudemex/nestjs-starter/commit/2e8ead4c9156b075252a38f2fecc78ec4afdd057))
+* update dependencies ([182e011](https://github.com/rudemex/nestjs-starter/commit/182e011c1f748706e3f7731497f1460f723ef141))
+
 ### [4.0.4](https://github.com/rudemex/nestjs-starter/compare/v4.0.3...v4.0.4) (2025-04-03)
 
 
