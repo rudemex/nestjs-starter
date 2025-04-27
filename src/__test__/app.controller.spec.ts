@@ -1,6 +1,5 @@
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { APP_INTERCEPTOR } from '@nestjs/core';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { FormatService } from '@tresdoce-nestjs-toolkit/paas';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
@@ -20,7 +19,7 @@ describe('AppController', () => {
   beforeEach(async () => {
     const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [
-        ConfigModule.forRoot({
+        await ConfigModule.forRoot({
           envFilePath: '.env.test',
           ignoreEnvFile: false,
           load: [config],
