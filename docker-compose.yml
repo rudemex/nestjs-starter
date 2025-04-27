@@ -2,14 +2,15 @@
 # docker-compose up -d elasticsearch kibana jaeger camunda redis mongo mysql postgres pgadmin grafana
 services:
   postgres:
-    image: postgres:13
+    #image: postgres:13
+    image: postgres:15
     container_name: local-postgres
     restart: always
     ports:
       - '5432:5432'
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
-      POSTGRES_DB: my_db
+      POSTGRES_DB: test_db
       POSTGRES_USER: root
       POSTGRES_PASSWORD: 123456
     #logging:
@@ -30,6 +31,7 @@ services:
 
   mysql:
     image: mysql:5.7
+    #image: mysql:9.3.0
     container_name: local-mysql
     restart: always
     ports:
@@ -37,14 +39,15 @@ services:
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
       MYSQL_ROOT_PASSWORD: 123456
-      MYSQL_DATABASE: my_db
+      MYSQL_DATABASE: test_db
       MYSQL_PASSWORD: 123456
       #MYSQL_USER: root
     #volumes:
     #  - ./.mysql-data/db:/var/lib/mysql
 
   mongo:
-    image: mongo:5.0
+    #image: mongo:5.0
+    image: mongo:8.0.6
     container_name: local-mongo
     restart: always
     ports:
@@ -60,7 +63,8 @@ services:
     #  - ./.mongo_data:/data/db
 
   redis:
-    image: redis:6.2-alpine
+    #image: redis:6.2-alpine
+    image: redis:7.4.2-alpine
     container_name: local-redis
     restart: always
     ports:
@@ -76,6 +80,20 @@ services:
     #  driver: none
     #volumes:
     #  - ./.redis_data:/data
+
+  dynamodb:
+    #image: amazon/dynamodb-local:latest
+    #image: amazon/dynamodb-local:1.21.0
+    image: amazon/dynamodb-local:2.6.0
+    container_name: tresdoce-test-utils-global-dynamodb
+    restart: always
+    ports:
+      - '8000:8000'
+    environment:
+      TZ: 'America/Argentina/Buenos_Aires'
+      AWS_ACCESS_KEY_ID: local
+      AWS_SECRET_ACCESS_KEY: local
+      AWS_REGION: us-east-1
 
   authorizer:
     image: lakhansamani/authorizer:1.4.4
@@ -117,7 +135,8 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    #image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.18.0
     container_name: local-elasticsearch
     restart: always
     ports:
@@ -141,7 +160,8 @@ services:
     #  - ./.elasticsearch-data:/usr/share/elasticsearch/data
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:8.13.4
+    #image: docker.elastic.co/kibana/kibana:8.13.4
+    image: docker.elastic.co/kibana/kibana:8.18.0
     container_name: local-kibana
     restart: always
     ports:
@@ -184,7 +204,8 @@ services:
 
   zookeeper:
     container_name: local-zookeeper
-    image: confluentinc/cp-zookeeper:5.5.3
+    #image: confluentinc/cp-zookeeper:5.5.3
+    image: confluentinc/cp-zookeeper:7.8.0
     restart: always
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
@@ -195,7 +216,8 @@ services:
 
   kafka:
     container_name: local-kafka
-    image: confluentinc/cp-kafka:5.5.3
+    #image: confluentinc/cp-kafka:5.5.3
+    image: confluentinc/cp-kafka:7.8.0
     restart: always
     environment:
       TZ: 'America/Argentina/Buenos_Aires'
@@ -247,10 +269,16 @@ services:
 
         echo 'kafka-topics --bootstrap-server kafka:29092 --list' >> startup.sh
         echo 'echo \"Kafka started\";' >> startup.sh
-        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic' >> startup.sh
-        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.a' >> startup.sh
-        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.b' >> startup.sh
-        echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.c' >> startup.sh
+        #echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic' >> startup.sh
+        #echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.a' >> startup.sh
+        #echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.b' >> startup.sh
+        #echo 'kafka-topics --create --if-not-exists --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic test.topic.c' >> startup.sh
+        # for kafka 7.8.0
+        echo 'kafka-topics --create --if-not-exists --bootstrap-server docker:9092 --replication-factor 1 --partitions 1 --topic test.topic' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --bootstrap-server docker:9092 --replication-factor 1 --partitions 1 --topic test.topic.a' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --bootstrap-server docker:9092 --replication-factor 1 --partitions 1 --topic test.topic.b' >> startup.sh
+        echo 'kafka-topics --create --if-not-exists --bootstrap-server docker:9092 --replication-factor 1 --partitions 1 --topic test.topic.c' >> startup.sh
+        
         echo 'echo \"Successfully created the following topics:\"' >> startup.sh
         echo 'kafka-topics --bootstrap-server kafka:29092 --list' >> startup.sh
         chmod a+x startup.sh
@@ -261,7 +289,8 @@ services:
 
   schema-registry:
     container_name: local-kafka-schema-registry
-    image: confluentinc/cp-schema-registry:5.5.3
+    #image: confluentinc/cp-schema-registry:5.5.3
+    image: confluentinc/cp-schema-registry:7.8.0
     restart: always
     depends_on:
       - kafka
