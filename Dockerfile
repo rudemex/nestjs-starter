@@ -25,7 +25,8 @@ ARG APP_PORT=8080
 ARG IMAGE_NAME=nestjs-starter
 
 # Utiliza una versión ligera de Node.js como imagen base
-FROM node:${NODE_VERSION} as builder
+FROM node:${NODE_VERSION} AS builder
+
 # Establece la variable de entorno NODE_ENV a partir del ARG
 ENV NODE_ENV=${NODE_ENV}
 
@@ -33,10 +34,10 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 # Copia los archivos package.json y yarn.lock al contenedor
-COPY package*.json ./
+COPY package.json yarn.lock ./
 
 # Instala las dependencias del proyecto utilizando Yarn
-RUN yarn install
+RUN yarn install || cat yarn-error.log
 
 # Copia el resto del código del proyecto al contenedor
 COPY . .
