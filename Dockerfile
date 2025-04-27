@@ -37,7 +37,7 @@ WORKDIR /usr/src/app
 COPY package.json ./
 
 # Instala las dependencias del proyecto utilizando Yarn
-RUN yarn install --verbose || cat yarn-error.log
+RUN yarn install || cat yarn-error.log
 
 # Copia el resto del código del proyecto al contenedor
 COPY . .
