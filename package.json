@@ -71,9 +71,13 @@
     "cookie-parser": "^1.4.7",
     "cross-env": "^7.0.3",
     "helmet": "^8.1.0",
+    "puppeteer": "^24.10.1",
+    "qrcode": "^1.5.4",
+    "qrcode-terminal": "^0.12.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "whatsapp-web.js": "^1.30.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.0",
@@ -88,6 +92,7 @@
     "@types/express": "^5.0.1",
     "@types/jest": "^29.5.14",
     "@types/node": "^22.15.2",
+    "@types/qrcode-terminal": "^0.12.2",
     "@types/supertest": "^6.0.3",
     "@typescript-eslint/eslint-plugin": "^8.31.0",
     "@typescript-eslint/parser": "^8.31.0",

@@ -18,6 +18,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
 import { getEnvFilePath, config, validationSchema } from './config';
+import { WhatsappModule } from './whatsapp/whatsapp.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { getEnvFilePath, config, validationSchema } from './config';
     UtilsModule,
     CharactersModule,
     UsersModule,
+    WhatsappModule
   ],
   controllers: [AppController],
   providers: [
