@@ -46,7 +46,7 @@ describe('UsersService', () => {
 
   it('should be return exception in findAll when page greater than the total pages', async () => {
     const page = 1000;
-    await expect(service.findAll({ page, size: 10 })).rejects.toThrowError(
+    await expect(service.findAll({ page, size: 10 })).rejects.toThrow(
       `The page #${page} is greater than the total pages.`,
     );
   });
@@ -67,7 +67,7 @@ describe('UsersService', () => {
 
   it('should be return error exception when find user by id and dont exist', async () => {
     const userID = 9999;
-    await expect(service.findOne(userID)).rejects.toThrowError(`User #${userID} not found`);
+    await expect(service.findOne(userID)).rejects.toThrow(`User #${userID} not found`);
   });
 
   it('should be create a new user', async () => {
@@ -104,7 +104,7 @@ describe('UsersService', () => {
       lastName: 'Doe',
       email: 'jdoe@email.com',
     };
-    await expect(service.update(userID, changes)).rejects.toThrowError(`User #${userID} not found`);
+    await expect(service.update(userID, changes)).rejects.toThrow(`User #${userID} not found`);
   });
 
   it('should be remove user by id', async () => {
@@ -115,6 +115,6 @@ describe('UsersService', () => {
 
   it('should be return error exception when user id dont exist for remove user', async () => {
     const userID = 9999;
-    await expect(service.remove(userID)).rejects.toThrowError(`User #${userID} not found`);
+    await expect(service.remove(userID)).rejects.toThrow(`User #${userID} not found`);
   });
 });
