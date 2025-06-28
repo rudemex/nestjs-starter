@@ -4,9 +4,9 @@
 </div>
 
 <p align="center">
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v20.19.0&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v20.19.3&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v11.2.0&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v11.1.0&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v11.1.3&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
         <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     </a>
@@ -34,7 +34,7 @@ lado del servidor, el cual está construido y es completamente compatible con Ty
 elementos de la programación orientada a objetos, programación funcional y programación reactiva funcional.</p>
 <br>
 <div>
-    <a href="https://railway.app/template/BOGqHd?referralCode=mfmi1X" target="_blank">
+    <a href="https://railway.app/template/BOGqHd?referralCode=mexdelgado" target="_blank">
         <img src="https://railway.app/button.svg" alt="Deploy to Railway"/>
     </a>
     <a href="https://www.buymeacoffee.com/rudemex" target="_blank">
@@ -90,10 +90,10 @@ Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos d
 
 ## 📝 Requerimientos básicos
 
-- Node.js v20.19.0 or higher ([Download](https://nodejs.org/es/download/))
+- Node.js v20.19.3 or higher ([Download](https://nodejs.org/es/download/))
 - YARN v1.22.22 or higher
 - NPM v11.2.0 or higher
-- NestJS v11.1.0 or higher ([Documentación](https://nestjs.com/))
+- NestJS v11.1.3 or higher ([Documentación](https://nestjs.com/))
 
 <a name="install-dependencies"></a>
 
