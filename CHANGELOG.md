@@ -2,6 +2,20 @@
 
 ---
 
+### [4.0.6](https://github.com/rudemex/nestjs-starter/compare/v4.0.5...v4.0.6) (2025-06-28)
+
+
+### 👨‍💻 Chores
+
+* update dependencies ([fa93f01](https://github.com/rudemex/nestjs-starter/commit/fa93f0159cd0f9bb9a71138cfcb5dd30d9e841c8))
+* update dependencies ([8269211](https://github.com/rudemex/nestjs-starter/commit/82692117d994ab26cd51d967f525a31e061b7715))
+* update version of node to test ([dfcca3e](https://github.com/rudemex/nestjs-starter/commit/dfcca3ed2ac63c0a2ed28cf4e44c5277067ddc3c))
+
+
+### 🐛 Bug Fixes
+
+* resolve problem with jest config ([fc90b65](https://github.com/rudemex/nestjs-starter/commit/fc90b655dd7f2c9a7027f80f77b5d985b518b6ec))
+
 ### [4.0.5](https://github.com/rudemex/nestjs-starter/compare/v4.0.4...v4.0.5) (2025-04-27)
 
 
