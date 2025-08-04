@@ -157,6 +157,7 @@ jobs:
           git config --global user.email "${GITHUB_EMAIL}"
           git config pull.rebase true
           git fetch
+          git stash push -m "ci: stash standard-version changes"
           git checkout develop
           git pull
           git merge --no-ff -m "ci(rebase): merge master" origin/master
