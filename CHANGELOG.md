@@ -2,6 +2,24 @@
 
 ---
 
+### [4.0.10](https://github.com/rudemex/nestjs-starter/compare/v4.0.9...v4.0.10) (2025-08-04)
+
+### 🐛 Bug Fixes
+
+- resolve problem with create release ([2a85a2d](https://github.com/rudemex/nestjs-starter/commit/2a85a2d5d7772202f29dc804de0e3bb298a1fc6d))
+
+### [4.0.9](https://github.com/rudemex/nestjs-starter/compare/v4.0.8...v4.0.9) (2025-08-04)
+
+### 🐛 Bug Fixes
+
+- resolve problem with create release ([fbc2c22](https://github.com/rudemex/nestjs-starter/commit/fbc2c222fb987f0f426064d60ac076593229bd6b))
+
+### [4.0.8](https://github.com/rudemex/nestjs-starter/compare/v4.0.7...v4.0.8) (2025-08-04)
+
+### 👨‍💻 Chores
+
+- edit dockerfile ([b6e1a83](https://github.com/rudemex/nestjs-starter/commit/b6e1a83542bca3aa0cf90a4502f2b30311bc8c1d))
+
 ### [4.0.7](https://github.com/rudemex/nestjs-starter/compare/v4.0.6...v4.0.7) (2025-08-04)
 
 ### 👨‍💻 Chores

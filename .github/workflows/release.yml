@@ -120,10 +120,21 @@ jobs:
           echo "tag=$tag" >> $GITHUB_OUTPUT
 
       - name: '📄 Create Changelog'
-        uses: Bullrich/generate-release-changelog@2.0.2
         id: Changelog
-        env:
-          REPO: ${{ github.repository }}
+        run: |
+          git fetch --tags
+          tag=$(git tag --sort version:refname | tail -n 2 | head -n 1)
+          if [ "$tag" ]; then
+            changelog=$(git log --oneline --no-decorate "$tag"..HEAD)
+          else
+            changelog=$(git log --oneline --no-decorate)
+          fi
+
+          changelog="${changelog//'%'/'%25'}"
+          changelog="${changelog//$'\n'/'%0A' - }"
+          changelog=" - ${changelog//$'\r'/'%0D'}"
+
+          echo "changelog=$changelog" >> "$GITHUB_OUTPUT"
 
       - name: '🚀 Publish Release'
         uses: actions/create-release@v1
@@ -146,6 +157,7 @@ jobs:
           git config --global user.email "${GITHUB_EMAIL}"
           git config pull.rebase true
           git fetch
+          git stash push -m "ci: stash standard-version changes"
           git checkout develop
           git pull
           git merge --no-ff -m "ci(rebase): merge master" origin/master
