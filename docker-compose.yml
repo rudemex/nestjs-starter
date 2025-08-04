@@ -75,7 +75,7 @@ services:
       REDIS_PASSWORD: 123456
       REDIS_HOST: cache
       #REDIS_USERNAME: default
-    command: [ "redis-server", "--appendonly", "yes", "--requirepass","123456" ]
+    command: ['redis-server', '--appendonly', 'yes', '--requirepass', '123456']
     #logging:
     #  driver: none
     #volumes:
@@ -106,7 +106,7 @@ services:
       ADMIN_SECRET: 'admin'
       PORT: 3001
       DATABASE_TYPE: postgres
-      DATABASE_URL: postgres://root:123456@postgres:5432/my_db
+      DATABASE_URL: postgres://root:123456@postgres:5432/test_db
       REDIS_URL: redis://:123456@redis:6379
       CUSTOM_ACCESS_TOKEN_SCRIPT: function(user,tokenPayload){var data=tokenPayload;data.user=user;return data;}
       DISABLE_PLAYGROUND: false
@@ -223,7 +223,7 @@ services:
       TZ: 'America/Argentina/Buenos_Aires'
       KAFKA_BROKER_ID: 1
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
-      KAFKA_CREATE_TOPICS: "test.topic:1:1"
+      KAFKA_CREATE_TOPICS: 'test.topic:1:1'
       KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
       KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://docker:9092
@@ -320,14 +320,15 @@ services:
       - schema-registry
 
   keycloak:
-    image: quay.io/keycloak/keycloak:25.0.2
+    #image: quay.io/keycloak/keycloak:25.0.2
+    image: quay.io/keycloak/keycloak:26.3.1
     container_name: local-keycloak
     restart: always
     ports:
       - '8443:8443'
     environment:
       KC_DB: postgres
-      KC_DB_URL: jdbc:postgresql://postgres:5432/my_db
+      KC_DB_URL: jdbc:postgresql://postgres:5432/test_db
       KC_DB_USERNAME: root
       KC_DB_PASSWORD: 123456
       KC_HOSTNAME: localhost
@@ -338,10 +339,10 @@ services:
       KC_LOG_LEVEL: info
       KC_METRICS_ENABLED: true
       KC_HEALTH_ENABLED: true
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
     healthcheck:
-      test: [ "CMD", "curl", "-f", "http://localhost:8443/health/ready" ]
+      test: ['CMD', 'curl', '-f', 'http://localhost:8443/health/ready']
       interval: 15s
       timeout: 2s
       retries: 15
@@ -354,7 +355,7 @@ services:
     container_name: local-sqs-localstack
     restart: always
     ports:
-      - "4566:4566"
+      - '4566:4566'
     environment:
       SERVICES: sqs
       AWS_ACCESS_KEY_ID: test
@@ -388,3 +389,16 @@ services:
         echo 'Listing queues...';
         aws sqs list-queues --endpoint-url=http://sqs-localstack:4566;
       "
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: local-rabbitmq
+    environment:
+      RABBITMQ_DEFAULT_USER: rabbitmq
+      RABBITMQ_DEFAULT_PASS: rabbitmq
+      RABBITMQ_DEFAULT_VHOST: /
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    #volumes:
+    #- rabbitmq_data:/var/lib/rabbitmq
