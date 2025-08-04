@@ -5,8 +5,8 @@
 
 <p align="center">
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v20.19.3&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="Node.js"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v11.2.0&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v11.1.3&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v11.4.2&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="Npm"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v11.1.5&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJs"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
         <img alt="Last Release" src="https://img.shields.io/github/v/tag/rudemex/nestjs-starter?label=release">
     </a>
@@ -65,26 +65,32 @@ elementos de la programación orientada a objetos, programación funcional y pro
 ## 🤓 Objetivo
 
 ### Extensibilidad
+
 Gracias a su arquitectura modular, es flexible y nos permite utilizar las otras bibliotecas existentes en nuestro proyecto.
 
-### Arquitectura 
+### Arquitectura
+
 Tiene una arquitectura de proyecto que proporciona capacidad de prueba, escalabilidad y mantenimiento sin mucho esfuerzo.
 
 ### Versatilidad
+
 Proporciona un ecosistema adaptable, el cual está desarrollado para crear todo tipo de aplicaciones del lado del servidor.
 
 ### Progresividad
+
 Hace uso de las últimas funciones de JavaScript e implementa soluciones maduras y patrones de diseño en el desarrollo de software.
 
 ### Transaccionalidad
+
 Orquestación de servicios. El BFF es responsable de orquestar la llamada a los distintos servicios y manejarlos transaccionalmente de manera transparente para el cliente.
 
 ### Performance
+
 Reduce envío de datos. Las API's del BFF se diseñó tomando como base los requerimientos de las pantallas y solo se expondrán los datos que requieran las mismas. Sesión de usuario/caché. Puede manejar caché de sesión para la experiencia del frontend.
 
 ### Seguridad
-Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos datos y solo se exponen los datos necesarios. Gestión de tokens. El BFF es quien se encarga del almacenamiento y gestiona la renovación del access-token.
 
+Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos datos y solo se exponen los datos necesarios. Gestión de tokens. El BFF es quien se encarga del almacenamiento y gestiona la renovación del access-token.
 
 <a name="basic-requirements"></a>
 
@@ -92,8 +98,8 @@ Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos d
 
 - Node.js v20.19.3 or higher ([Download](https://nodejs.org/es/download/))
 - YARN v1.22.22 or higher
-- NPM v11.2.0 or higher
-- NestJS v11.1.3 or higher ([Documentación](https://nestjs.com/))
+- NPM v11.4.2 or higher
+- NestJS v11.1.5 or higher ([Documentación](https://nestjs.com/))
 
 <a name="install-dependencies"></a>
 
@@ -148,6 +154,7 @@ RICK_AND_MORTY_API_URL=https://rickandmortyapi.com/api
 <summary>💬 Para ver en detalle todas las propiedades de la configuración, hace click acá.</summary>
 
 #### Server
+
 `APP_STAGE`: Es el entorno en el que está corriendo la aplicación.
 
 - Type: `String`
@@ -247,6 +254,7 @@ Inicia la aplicación en modo desarrollo
 ```
 yarn start:dev
 ```
+
 ```
 npm run start:dev
 ```
@@ -256,6 +264,7 @@ Inicia los test con coverage
 ```
 yarn test
 ```
+
 ```
 npm run test
 ```
@@ -265,6 +274,7 @@ Realiza el build de la aplicación
 ```
 yarn build
 ```
+
 ```
 npm run build
 ```
@@ -274,6 +284,7 @@ Inicia la aplicación en modo productivo
 ```
 yarn start
 ```
+
 ```
 npm run start
 ```
@@ -285,6 +296,7 @@ Formatea el código
 ```
 yarn format
 ```
+
 ```
 npm run format
 ```
@@ -294,6 +306,7 @@ Eslintea el código
 ```
 yarn lint
 ```
+
 ```
 npm run lint
 ```
@@ -351,6 +364,7 @@ Schema: `docker run -d -p 8080:8080 --name <container-name> --env-file <.env> <u
 ```
 docker build -t nestjs-starter .
 ```
+
 ```
 docker run -d -p 8080:8080 --name nestjs-starter-app --env-file .env nestjs-starter
 ```
@@ -390,14 +404,15 @@ git commit -am 'feat!: changes in application'
 
 ## 🏷️ Versionado
 
-Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./.github/workflows/release.yml`), 
-ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los 
+Este starter cuenta con la posibilidad de auto versionarse por medio del workflow de GitHub Actions (`./.github/workflows/release.yml`),
+ya que utiliza la dependencia [standard-version](https://github.com/conventional-changelog/standard-version) y los
 `conventional commits` del repositorio. Actualmente, está configurado para incrementar la version en un archivo custom y no en el package.json.
 
 Para poder realizar el versionado correcto en su proyecto, siga estos pasos.
 
 - Asegurarse de que la version del `package.json` este en un valor inicial (`1.0.0`), y los datos de la aplicación ajustados.
 - Correr el siguiente script para borrar cualquier posible tag local o remoto:
+
 ```sh
 git tag -d $(git tag -l)
 git fetch
@@ -407,6 +422,7 @@ git tag -d $(git tag -l)
 git fetch
 git tag -l | xargs -n 1 git push --delete origin
 ```
+
 - Borrar los archivos `CHANGELOG.md` y `version.txt`
 - Editar el workflow [`release.yml`](./.github/workflows/release.yml) para que el versionado solo se realice si es una aplicación.
 

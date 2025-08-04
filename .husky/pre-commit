@@ -1,4 +1,3 @@
 yarn test:husky
-yarn lint
-yarn format
+yarn pre-commit
 git add .

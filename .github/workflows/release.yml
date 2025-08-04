@@ -1,11 +1,11 @@
-name: "Release"
+name: 'Release'
 
 on:
   workflow_dispatch:
     inputs:
       release:
         type: choice
-        description: "Version as:"
+        description: 'Version as:'
         required: true
         options:
           - template
@@ -16,26 +16,27 @@ env:
   GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+  NODE_VERSION: '22.17.1-alpine3.22'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '20.19.3' ]
-    name: "Release"
+        node: ['20.19.3']
+    name: 'Release'
     steps:
-      - name: "⚙ Setup NodeJS v${{ matrix.node }}"
+      - name: '⚙ Setup NodeJS v${{ matrix.node }}'
         uses: actions/setup-node@v4.2.0
         with:
           node-version: ${{ matrix.node }}
 
-      - name: "✅ Checkout repository"
+      - name: '✅ Checkout repository'
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - name: "💾 Restore Dependencies from cache"
+      - name: '💾 Restore Dependencies from cache'
         uses: actions/cache@v4.2.2
         with:
           path: |
@@ -45,7 +46,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
 
-      - name: "🦉 GitGuardian scan"
+      - name: '🦉 GitGuardian scan'
         uses: GitGuardian/ggshield-action@v1.37.0
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
@@ -54,34 +55,34 @@ jobs:
           GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
-      - name: "📦 Install packages"
+      - name: '📦 Install packages'
         run: yarn install
 
-      - name: "💅 Lint"
-        run: yarn lint
+      - name: '💅 Lint'
+        run: yarn lint:format:check
 
-      - name: "🔨 Build"
+      - name: '🔨 Build'
         run: yarn build
 
-      - name: "👨‍💻 Run Test"
+      - name: '👨‍💻 Run Test'
         run: yarn test
         env:
           NODE_ENV: 'test'
 
-      - name: "📊 Publish Test Report"
+      - name: '📊 Publish Test Report'
         uses: dorny/test-reporter@v1.9.1
         if: success() || failure()
         with:
-          name: "Test Report (${{ matrix.node }})"
+          name: 'Test Report (${{ matrix.node }})'
           path: './junit.xml'
           reporter: jest-junit
 
-      - name: "📊 Upload coverage report to Codecov"
+      - name: '📊 Upload coverage report to Codecov'
         uses: codecov/codecov-action@v5.4.0
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: "📊 SonarCloud Scan"
+      - name: '📊 SonarCloud Scan'
         uses: sonarsource/sonarqube-scan-action@v5.0.0
         with:
           args: >
@@ -104,7 +105,7 @@ jobs:
       #  env:
       #    SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
-      - name: "🏷️ Create Release"
+      - name: '🏷️ Create Release'
         id: Release
         run: |
           git config --global user.name "GitHub CI/CD bot"
@@ -118,27 +119,27 @@ jobs:
           tag=$(git describe --tags $(git rev-list --tags --max-count=1))
           echo "tag=$tag" >> $GITHUB_OUTPUT
 
-      - name: "📄 Create Changelog"
+      - name: '📄 Create Changelog'
         uses: Bullrich/generate-release-changelog@2.0.2
         id: Changelog
         env:
           REPO: ${{ github.repository }}
 
-      - name: "🚀 Publish Release"
+      - name: '🚀 Publish Release'
         uses: actions/create-release@v1
         with:
-          tag_name: "${{steps.Release.outputs.tag}}"
-          release_name: "${{steps.Release.outputs.tag}}"
+          tag_name: '${{steps.Release.outputs.tag}}'
+          release_name: '${{steps.Release.outputs.tag}}'
           body: |
             ${{ steps.Changelog.outputs.changelog }}
-            
+
             ---
-            
+
             > 💬 All notable changes to this project will be documented in [Changelog](${{ github.event.repository.html_url }}/blob/master/CHANGELOG.md) file.
           draft: false
           prerelease: false
 
-      - name: "🔁 Rebase"
+      - name: '🔁 Rebase'
         run: |
           git remote set-url origin "https://github.com/${{ github.repository }}.git"
           git config --global user.name "GitHub CI/CD bot"
@@ -150,10 +151,10 @@ jobs:
           git merge --no-ff -m "ci(rebase): merge master" origin/master
           git push -f
 
-      - name: "🐳 Docker"
+      - name: '🐳 Docker'
         run: |
           docker login -u ${DOCKER_USER} -p ${DOCKER_PASSWORD}
-          docker build --build-arg NODE_VERSION=${{ matrix.node }}-alpine -t ${{ github.event.repository.name }} .
+          docker build --build-arg NODE_VERSION=${NODE_VERSION} -t ${{ github.event.repository.name }} .
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{ github.sha }}
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:${{steps.Release.outputs.tag}}
           docker tag ${{ github.event.repository.name }} ${DOCKER_USER}/${{ github.event.repository.name }}:latest
