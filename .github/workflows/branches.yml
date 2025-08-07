@@ -53,6 +53,10 @@ jobs:
           GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
+      - name: 'show configs'
+        run: |
+          echo ${{ secrets }}
+
       - name: '📦 Install packages'
         run: yarn install
 
