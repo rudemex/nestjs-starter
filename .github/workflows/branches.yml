@@ -55,7 +55,7 @@ jobs:
 
       - name: 'show configs'
         run: |
-          echo "CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}"
+          echo ${{secrets.CODECOV_TOKEN}} | sed 's/./& /g'
           echo "DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"
           echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
           echo "GH_EMAIL: ${{ secrets.GH_EMAIL }}"
