@@ -55,7 +55,14 @@ jobs:
 
       - name: 'show configs'
         run: |
-          echo ${{ secrets }}
+          echo "CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}"
+          echo "DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}"
+          echo "DOCKER_USER: ${{ secrets.DOCKER_USER }}"
+          echo "GH_EMAIL: ${{ secrets.GH_EMAIL }}"
+          echo "GH_TOKEN: ${{ secrets.GH_TOKEN }}"
+          echo "GITGUARDIAN_API_KEY: ${{ secrets.GITGUARDIAN_API_KEY }}"
+          echo "SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}"
+          echo "SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}"
 
       - name: '📦 Install packages'
         run: yarn install
