@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['20.19.3', '22.17.0', '24.3.0']
+        node: ['20.19.4', '22.18.0', '24.5.0']
     name: 'Build'
     steps:
       - name: '⚙ Setup NodeJS v${{ matrix.node }}'
@@ -62,11 +62,11 @@ jobs:
           NODE_ENV: 'test'
 
       - name: '📊 Publish Test Report'
-        uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()
+        uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
         with:
           name: 'Test Report (${{ matrix.node }})'
-          path: './junit.xml'
+          path: 'junit.xml'
           reporter: jest-junit
 
       - name: '📊 Upload coverage report to Codecov'
