@@ -16,14 +16,14 @@ env:
   GITHUB_EMAIL: ${{ secrets.GH_EMAIL }}
   DOCKER_USER: ${{ secrets.DOCKER_USER }}
   DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-  NODE_VERSION: '22.17.1-alpine3.22'
+  NODE_VERSION: '22.18.0-alpine3.22'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['20.19.3']
+        node: ['22.18.0']
     name: 'Release'
     steps:
       - name: '⚙ Setup NodeJS v${{ matrix.node }}'
@@ -70,11 +70,11 @@ jobs:
           NODE_ENV: 'test'
 
       - name: '📊 Publish Test Report'
-        uses: dorny/test-reporter@v1.9.1
-        if: success() || failure()
+        uses: dorny/test-reporter@v2
+        if: ${{ !cancelled() }}
         with:
           name: 'Test Report (${{ matrix.node }})'
-          path: './junit.xml'
+          path: 'junit.xml'
           reporter: jest-junit
 
       - name: '📊 Upload coverage report to Codecov'
