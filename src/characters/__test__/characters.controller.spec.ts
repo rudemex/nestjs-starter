@@ -136,7 +136,7 @@ describe('CharactersController', () => {
     createMock({
       url: `${appConfig.services.rickAndMortyAPI.url}/character`,
       method: 'get',
-      statusCode: 200,
+      statusCode: 404,
       options: {
         encodedQueryParams: true,
       },
@@ -149,7 +149,7 @@ describe('CharactersController', () => {
       await controller.getCharacter({
         page: 9999,
       });
-    } catch (_error) {
+    } catch (_error: any) {
       expect(_error).toBeInstanceOf(HttpException);
       expect(_error.response.error).toBe('There is nothing here');
       expect(_error.status).toBe(HttpStatus.NOT_FOUND);

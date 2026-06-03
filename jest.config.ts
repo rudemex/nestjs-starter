@@ -12,6 +12,9 @@ const config: Config = {
   ...jestConfig(),
   //globalSetup: './jest.globalSetup.ts',
   //globalTeardown: './jest.globalTeardown.ts',
+  transform: {
+    '^.+\\.(t|j)s$': ['ts-jest', { tsconfig: 'tsconfig.test.json' }],
+  },
 };
 
 export default config;
