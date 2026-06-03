@@ -3,7 +3,7 @@
  * Define custom matchers for improved testing expressiveness.
  */
 
-import { expect } from '@jest/globals';
+import { expect, jest } from '@jest/globals';
 
 jest.setTimeout(30000); // Extiende el timeout global de las pruebas
 
@@ -59,7 +59,9 @@ expect.extend({
     const pass =
       received != null &&
       ((Array.isArray(received) && received.length === 0) ||
-        (typeof received === 'object' && !Array.isArray(received) && Object.keys(received).length === 0) ||
+        (typeof received === 'object' &&
+          !Array.isArray(received) &&
+          Object.keys(received).length === 0) ||
         (typeof received === 'string' && received.length === 0));
 
     return {
@@ -79,7 +81,9 @@ expect.extend({
    * expect({ id: 1, name: 'a' }).toMatchSchema({ id: 'number', name: 'string' });
    */
   toMatchSchema(received: object, schema: Record<string, string>) {
-    const pass = Object.entries(schema).every(([key, type]) => typeof (received as any)[key] === type);
+    const pass = Object.entries(schema).every(
+      ([key, type]) => typeof (received as any)[key] === type,
+    );
     return {
       message: () =>
         pass

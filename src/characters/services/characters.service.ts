@@ -21,8 +21,8 @@ export class CharactersService {
         },
       );
       return data;
-    } catch (error) {
-      throw new HttpException(error.response.data.error, error.response.status);
+    } catch (error: any) {
+      throw new HttpException(error.response.data, error.response.status);
     }
   }
 }
