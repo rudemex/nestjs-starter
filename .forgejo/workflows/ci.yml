@@ -1,0 +1,14 @@
+name: Validar template
+'on':
+  push:
+    branches:
+      - master
+      - fix/pipelines-desacoplados
+  pull_request: {}
+  workflow_dispatch: {}
+jobs:
+  template:
+    uses: mdelgado/ci-shared/.forgejo/workflows/template-be.yml@v2.0.0-rc.1
+    secrets:
+      nexus-user: ${{ secrets.NEXUS_USER }}
+      nexus-password: ${{ secrets.NEXUS_PASSWORD }}
