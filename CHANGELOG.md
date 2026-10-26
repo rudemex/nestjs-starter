@@ -2,6 +2,18 @@
 
 ---
 
+## [5.0.0](https://github.com/rudemex/nestjs-starter/compare/v4.0.14...v5.0.0) (2026-10-26)
+
+### ⚠ BREAKING CHANGES
+
+- the starter is ESM-only and requires NestJS 12 and the toolkit v3.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+### ✨ Features
+
+- migrate starter to ESM and NestJS 12 ([53210e3](https://github.com/rudemex/nestjs-starter/commit/53210e3fb11cb4bd1a6f26697cafdde068295a59))
+
 ### [4.0.14](https://github.com/rudemex/nestjs-starter/compare/v4.0.13...v4.0.14) (2026-06-03)
 
 ### 👨‍💻 Chores
