@@ -2,10 +2,9 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import request from 'supertest';
 
-import { AppModule } from '../src/app.module';
-import { CreateUserDto, UpdateUserDto } from '../src/users/dtos/user.dto';
+import { AppModule } from '../src/app.module.js';
+import { CreateUserDto, UpdateUserDto } from '../src/users/dtos/user.dto.js';
 
-jest.setTimeout(80000);
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 

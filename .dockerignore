@@ -16,12 +16,14 @@ npm-debug.log
 
 # Files not required for production
 README.md
-.eslintrc.js
 .versionrc
 CHANGELOG.md
 codecov.yml
-jest.config.ts
-jest.setup.ts
+vitest.config.ts
+vitest.config.e2e.ts
+vitest.setup.ts
+.oxlintrc.json
+junit.xml
 license.md
 test-report.xml
 version.txt

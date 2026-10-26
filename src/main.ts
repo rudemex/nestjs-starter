@@ -1,24 +1,26 @@
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { ConfigService } from '@nestjs/config';
 import cookieParser from 'cookie-parser';
 import compression from 'compression';
 import helmet from 'helmet';
-import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import type { OpenAPIObject } from '@nestjs/swagger';
 import { ExceptionsFilter } from '@tresdoce-nestjs-toolkit/paas';
+import type { Typings } from '@tresdoce-nestjs-toolkit/paas';
 import { otelProvider } from '@tresdoce-nestjs-toolkit/tracing';
 
-import { AppModule } from './app.module';
-import { config } from './config';
+import { AppModule } from './app.module.js';
+import { config, loadEnvFile } from './config/index.js';
 
 async function bootstrap(): Promise<void> {
+  loadEnvFile();
   otelProvider(config().tracing);
   const app = await NestFactory.create(AppModule, {
     logger: new Logger(),
   });
-  const appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+  const appConfig = app.get<Typings.AppConfig>(config.KEY);
   const { server, swagger, project } = appConfig;
-  const port: number = parseInt(server.port, 10) || 8080;
+  const port: number = Number(server.port) || 8080;
 
   app.setGlobalPrefix(`${server.context}`);
 
@@ -27,8 +29,6 @@ async function bootstrap(): Promise<void> {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      validatorPackage: require('@nestjs/class-validator'),
-      transformerPackage: require('class-transformer'),
       whitelist: true,
       forbidUnknownValues: true,
       forbidNonWhitelisted: true,
@@ -39,7 +39,7 @@ async function bootstrap(): Promise<void> {
   );
 
   if (swagger.enabled) {
-    const config = new DocumentBuilder()
+    const documentConfig = new DocumentBuilder()
       .setTitle(`${project.name}`)
       .setVersion(`${project.version}`)
       .setDescription(`Swagger - ${project.description}`)
@@ -47,7 +47,7 @@ async function bootstrap(): Promise<void> {
       .setContact(project.author.name, project.author.url, project.author.email)
       .addServer(`/${server.context}`)
       .build();
-    const document: OpenAPIObject = SwaggerModule.createDocument(app, config, {
+    const document: OpenAPIObject = SwaggerModule.createDocument(app, documentConfig, {
       ignoreGlobalPrefix: true,
       autoTagControllers: true,
     });
@@ -63,13 +63,12 @@ async function bootstrap(): Promise<void> {
     });
   }
 
-  await app.listen(port, async (): Promise<void> => {
-    const appServer: string = `http://localhost:${port}/${server.context}`;
-    if (swagger.enabled) {
-      Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
-    }
-    Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
-  });
+  await app.listen(port);
+  const appServer: string = `http://localhost:${port}/${server.context}`;
+  if (swagger.enabled) {
+    Logger.log(`📚 Swagger is running on: ${appServer}/${swagger.path}`, `${project.name}`);
+  }
+  Logger.log(`🚀 Application is running on: ${appServer}`, `${project.name}`);
 }
 
-(async (): Promise<void> => await bootstrap())();
+await bootstrap();

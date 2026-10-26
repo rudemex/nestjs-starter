@@ -1,9 +1,9 @@
 import { HttpException, Inject, Injectable } from '@nestjs/common';
-import { ConfigType } from '@nestjs/config';
+import type { ConfigType } from '@nestjs/config';
 import { HttpClientService } from '@tresdoce-nestjs-toolkit/http-client';
 
-import { FilterCharacter } from '../dtos/character.dto';
-import { config } from '../../config';
+import type { FilterCharacter } from '../dtos/character.dto.js';
+import { config } from '../../config/index.js';
 
 @Injectable()
 export class CharactersService {

@@ -1,9 +1,9 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { ConfigType } from '@nestjs/config';
+import type { ConfigType } from '@nestjs/config';
 
-import { UtilsService } from './utils/services/utils.service';
+import { UtilsService } from './utils/services/utils.service.js';
 
-import { config } from './config';
+import { config } from './config/index.js';
 
 @Injectable()
 export class AppService {
