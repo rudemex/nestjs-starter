@@ -1,7 +1,6 @@
-import { ConfigType } from '@nestjs/config';
-import { config } from '../index';
-import * as PACKAGE_JSON from '../../../package.json';
-import * as process from 'process';
+import type { ConfigType } from '@nestjs/config';
+import process from 'node:process';
+import { config, PACKAGE_JSON } from '../index.js';
 import { getSkipHealthChecks } from '@tresdoce-nestjs-toolkit/paas';
 
 describe('configuration', () => {

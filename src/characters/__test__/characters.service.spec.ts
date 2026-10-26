@@ -1,19 +1,19 @@
 import { HttpException, HttpStatus, INestApplication } from '@nestjs/common';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { Test, TestingModule } from '@nestjs/testing';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
-import { Typings } from '@tresdoce-nestjs-toolkit/paas';
-import path from 'path';
-import fs from 'fs';
+import type { Typings } from '@tresdoce-nestjs-toolkit/paas';
+import path from 'node:path';
+import fs from 'node:fs';
 
-import { CharactersService } from '../services/characters.service';
+import { CharactersService } from '../services/characters.service.js';
 
-import { config, validationSchema } from '../../config';
+import { config, validationSchema } from '../../config/index.js';
 import { createMock } from '@tresdoce-nestjs-toolkit/test-utils';
-import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto';
+import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto.js';
 
 const readFixtureFile = (filePath: string) => {
-  const absolutePath = path.resolve(__dirname, filePath);
+  const absolutePath = path.resolve(import.meta.dirname, filePath);
   const fileContents = fs.readFileSync(absolutePath, 'utf8');
   return JSON.parse(fileContents);
 };
@@ -27,7 +27,7 @@ describe('CharactersService', () => {
     const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot({
-          envFilePath: 'env.test',
+          envFilePath: '.env.test',
           ignoreEnvFile: false,
           load: [config],
           isGlobal: true,
@@ -41,7 +41,7 @@ describe('CharactersService', () => {
     app = moduleRef.createNestApplication();
     service = moduleRef.get<CharactersService>(CharactersService);
     await app.init();
-    appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+    appConfig = app.get<Typings.AppConfig>(config.KEY);
   });
 
   afterEach(async () => {
@@ -142,14 +142,12 @@ describe('CharactersService', () => {
       },
       responseBody: readFixtureFile('../../../fixtures/characters/response-404.json'),
     });
-    try {
-      await service.getCharacter({
-        page: 9999,
-      });
-    } catch (_error: any) {
-      expect(_error).toBeInstanceOf(HttpException);
-      expect(_error.response.error).toBe('There is nothing here');
-      expect(_error.status).toBe(HttpStatus.NOT_FOUND);
-    }
+    const request = service.getCharacter({ page: 9999 });
+
+    await expect(request).rejects.toBeInstanceOf(HttpException);
+    await expect(request).rejects.toMatchObject({
+      status: HttpStatus.NOT_FOUND,
+      response: { error: 'There is nothing here' },
+    });
   });
 });

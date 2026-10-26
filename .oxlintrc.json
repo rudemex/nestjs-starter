@@ -1,0 +1,5 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "extends": ["./node_modules/@tresdoce-nestjs-toolkit/commons/oxlint/oxlintrc.json"],
+  "ignorePatterns": ["dist/**", "coverage/**", "node_modules/**"]
+}

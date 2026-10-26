@@ -2,10 +2,10 @@ import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PaginationResponse } from '@tresdoce-nestjs-toolkit/paas';
 
-import { UsersController } from '../controllers/users.controller';
-import { UsersService } from '../services/users.service';
-import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { User } from '../entities/user.entity';
+import { UsersController } from '../controllers/users.controller.js';
+import { UsersService } from '../services/users.service.js';
+import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto.js';
+import { User } from '../entities/user.entity.js';
 
 describe('UsersController', () => {
   let app: INestApplication;

@@ -4,13 +4,12 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { FormatService } from '@tresdoce-nestjs-toolkit/paas';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
 
-import { AppController } from '../app.controller';
-import { AppService } from '../app.service';
-import { UtilsModule } from '../utils/utils.module';
+import { AppController } from '../app.controller.js';
+import { AppService } from '../app.service.js';
+import { UtilsModule } from '../utils/utils.module.js';
 
-import { config, validationSchema } from '../config';
+import { config, validationSchema } from '../config/index.js';
 
-jest.setTimeout(80000);
 describe('AppController', () => {
   let app: INestApplication;
   let controller: AppController;

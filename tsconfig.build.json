@@ -1,13 +1,15 @@
 {
   "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "./src"
+  },
+  "include": ["src"],
   "exclude": [
     "node_modules",
-    "coverage",
     "test",
     "dist",
-    "jest.*.ts",
+    "coverage",
     "**/*spec.ts",
-    "webpack.*.js",
     "**/__test__",
     "**/__mocks__"
   ]

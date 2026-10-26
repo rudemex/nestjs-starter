@@ -1,20 +1,20 @@
 import { HttpException, HttpStatus, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
-import { ConfigModule, ConfigService } from '@nestjs/config';
+import { ConfigModule } from '@nestjs/config';
 import { HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
-import { Typings } from '@tresdoce-nestjs-toolkit/paas';
-import path from 'path';
-import fs from 'fs';
+import type { Typings } from '@tresdoce-nestjs-toolkit/paas';
+import path from 'node:path';
+import fs from 'node:fs';
 
-import { CharactersController } from '../controllers/characters.controller';
-import { CharactersService } from '../services/characters.service';
-import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto';
+import { CharactersController } from '../controllers/characters.controller.js';
+import { CharactersService } from '../services/characters.service.js';
+import { CharacterGender, CharacterStatus, FilterCharacter } from '../dtos/character.dto.js';
 
-import { config, validationSchema } from '../../config';
+import { config, validationSchema } from '../../config/index.js';
 import { createMock } from '@tresdoce-nestjs-toolkit/test-utils';
 
 const readFixtureFile = (filePath: string) => {
-  const absolutePath = path.resolve(__dirname, filePath);
+  const absolutePath = path.resolve(import.meta.dirname, filePath);
   const fileContents = fs.readFileSync(absolutePath, 'utf8');
   return JSON.parse(fileContents);
 };
@@ -28,7 +28,7 @@ describe('CharactersController', () => {
     const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [
         ConfigModule.forRoot({
-          envFilePath: 'env.test',
+          envFilePath: '.env.test',
           ignoreEnvFile: false,
           load: [config],
           isGlobal: true,
@@ -43,7 +43,7 @@ describe('CharactersController', () => {
     app = moduleRef.createNestApplication();
     controller = moduleRef.get<CharactersController>(CharactersController);
     await app.init();
-    appConfig = app.get<ConfigService>(ConfigService)['internalConfig']['config'];
+    appConfig = app.get<Typings.AppConfig>(config.KEY);
   });
 
   afterEach(async () => {
@@ -145,14 +145,12 @@ describe('CharactersController', () => {
       },
       responseBody: readFixtureFile('../../../fixtures/characters/response-404.json'),
     });
-    try {
-      await controller.getCharacter({
-        page: 9999,
-      });
-    } catch (_error: any) {
-      expect(_error).toBeInstanceOf(HttpException);
-      expect(_error.response.error).toBe('There is nothing here');
-      expect(_error.status).toBe(HttpStatus.NOT_FOUND);
-    }
+    const request = controller.getCharacter({ page: 9999 });
+
+    await expect(request).rejects.toBeInstanceOf(HttpException);
+    await expect(request).rejects.toMatchObject({
+      status: HttpStatus.NOT_FOUND,
+      response: { error: 'There is nothing here' },
+    });
   });
 });
