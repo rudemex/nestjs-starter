@@ -10,14 +10,14 @@ import {
 } from '@tresdoce-nestjs-toolkit/paas';
 import { HttpClientInterceptor, HttpClientModule } from '@tresdoce-nestjs-toolkit/http-client';
 
-import { UtilsModule } from './utils/utils.module';
-import { UsersModule } from './users/users.module';
-import { CharactersModule } from './characters/characters.module';
+import { UtilsModule } from './utils/utils.module.js';
+import { UsersModule } from './users/users.module.js';
+import { CharactersModule } from './characters/characters.module.js';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { AppController } from './app.controller.js';
+import { AppService } from './app.service.js';
 
-import { getEnvFilePath, config, validationSchema } from './config';
+import { getEnvFilePath, config, validationSchema } from './config/index.js';
 
 @Module({
   imports: [

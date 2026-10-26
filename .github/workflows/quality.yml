@@ -10,21 +10,21 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ['24.16.0']
+        node: ['24']
     name: 'Build'
     steps:
       - name: '⚙ Setup NodeJS v${{ matrix.node }}'
-        uses: actions/setup-node@v4.2.0
+        uses: actions/setup-node@v7.1.0
         with:
           node-version: ${{ matrix.node }}
 
       - name: '✅ Checkout repository'
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
 
       - name: '💾 Restore Dependencies from cache'
-        uses: actions/cache@v4.2.2
+        uses: actions/cache@v6.1.0
         with:
           path: |
             node_modules
@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-yarn-
 
       - name: '🦉 GitGuardian scan'
-        uses: GitGuardian/ggshield-action@v1.37.0
+        uses: GitGuardian/ggshield-action@v1.56.0
         env:
           GITHUB_PUSH_BEFORE_SHA: ${{ github.event.before }}
           GITHUB_PUSH_BASE_SHA: ${{ github.event.base }}
@@ -57,20 +57,20 @@ jobs:
           NODE_ENV: 'test'
 
       - name: '📊 Publish Test Report'
-        uses: dorny/test-reporter@v2
+        uses: dorny/test-reporter@v3.0.0
         if: ${{ !cancelled() }}
         with:
           name: 'Test Report (${{ matrix.node }})'
           path: 'junit.xml'
-          reporter: jest-junit
+          reporter: java-junit
 
       - name: '📊 Upload coverage report to Codecov'
-        uses: codecov/codecov-action@v5.4.0
+        uses: codecov/codecov-action@v7.1.1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: '📊 SonarCloud Scan'
-        uses: sonarsource/sonarqube-scan-action@v5.0.0
+        uses: sonarsource/sonarqube-scan-action@v8.3.0
         with:
           args: >
             -Dsonar.organization=${{ github.repository_owner }}
@@ -79,8 +79,8 @@ jobs:
             -Dsonar.projectVersion=1.0
             -Dsonar.sourceEncoding=UTF-8
             -Dsonar.sources=./src
-            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
-            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts
+            -Dsonar.exclusions=**/*.bin,node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts,vitest.config*.ts,vitest.setup.ts
+            -Dsonar.coverage.exclusions=node_modules/**,test/**,**/__test__/**,**/__mocks__/**,src/main.ts,vitest.config*.ts,vitest.setup.ts
             -Dsonar.testExecutionReportPaths=test-report.xml
             -Dsonar.javascript.lcov.reportPaths=./coverage/lcov.info
         env:

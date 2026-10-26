@@ -1,8 +1,8 @@
 import { Controller, Get, Query } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
-import { FilterCharacter } from '../dtos/character.dto';
-import { CharactersService } from '../services/characters.service';
+import { FilterCharacter } from '../dtos/character.dto.js';
+import { CharactersService } from '../services/characters.service.js';
 
 @ApiTags('Characters')
 @Controller('characters')

@@ -8,16 +8,12 @@ import {
   ApiTags,
   getSchemaPath,
 } from '@nestjs/swagger';
-import {
-  Pagination,
-  PaginationParams,
-  PaginationResponse,
-  PaginationParamsDto,
-} from '@tresdoce-nestjs-toolkit/paas';
+import { Pagination, PaginationResponse, PaginationParamsDto } from '@tresdoce-nestjs-toolkit/paas';
+import type { PaginationParams } from '@tresdoce-nestjs-toolkit/paas';
 
-import { UsersService } from '../services/users.service';
-import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
-import { User } from '../entities/user.entity';
+import { UsersService } from '../services/users.service.js';
+import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto.js';
+import { User } from '../entities/user.entity.js';
 
 @ApiTags('Users')
 @Controller('users')

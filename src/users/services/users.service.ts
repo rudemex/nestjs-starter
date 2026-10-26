@@ -1,7 +1,7 @@
 import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 
-import { User } from '../entities/user.entity';
-import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto';
+import { User } from '../entities/user.entity.js';
+import { CreateUserDto, UpdateUserDto } from '../dtos/user.dto.js';
 import {
   calculatePagination,
   IPaginateData,

@@ -4,7 +4,7 @@
 </div>
 
 <p align="center">
-    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v22.21.1&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="NodeJS"/>
+    <img src="https://img.shields.io/static/v1.svg?style=flat&label=NodeJS&message=v22.22%2B&labelColor=339933&color=757575&logoColor=FFFFFF&logo=Node.js" alt="NodeJS"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NPM&message=v11.6.4&labelColor=CB3837&logoColor=FFFFFF&color=757575&logo=npm" alt="NPM"/>
     <img src="https://img.shields.io/static/v1.svg?style=flat&label=NestJS&message=v11.1.11&labelColor=E0234E&logoColor=FFFFFF&color=757575&logo=Nestjs" alt="NestJS"/>
     <a href="https://github.com/rudemex/nestjs-starter/releases/latest">
@@ -96,9 +96,14 @@ Reduce exposición de datos sensibles. El BFF contiene API's que filtran estos d
 
 ## 📝 Requerimientos básicos
 
-- Node.js v22.21.1 or higher ([Download](https://nodejs.org/es/download/))
+- Node.js v22.22 or higher, v24 recomendado ([Download](https://nodejs.org/es/download/))
 - YARN ≥ 1.22.22 o NPM ≥ 11.6.4
-- NestJS v11.1.11 or higher ([Documentación](https://nestjs.com/))
+- NestJS v12 or higher ([Documentación](https://nestjs.com/))
+
+El proyecto es **ESM** (`"type": "module"`): los imports relativos llevan extensión `.js`
+(`import { AppService } from './app.service.js'`) y los tipos que se usan en constructores decorados se importan
+con `import type`. Los tests corren con **Vitest** y el lint con **oxlint**, ambos configurados desde
+`@tresdoce-nestjs-toolkit/commons`.
 
 <a name="install-dependencies"></a>
 
@@ -238,11 +243,25 @@ Este proyecto utiliza el módulo `@nestjs/config`, el cual centraliza todas las 
 te permite consumirlas como **typing** para evitar errores de typo, como asi también evitar usar el **process.env** en
 todo el proyecto, lo que te permite darle soporte más fácil si se requiere cambiar el **KEY** de la variable de entorno.
 
-También cuenta con un validador de variables de entorno, que nos permite validar el tipo de dato, si es requerido o no
-dicha variable, y muchas validaciones más.
+También cuenta con un validador de variables de entorno con **Zod** (`./src/config/validationSchema.ts`), que nos
+permite validar el tipo de dato, si es requerido o no dicha variable, y muchas validaciones más. Parte de las variables
+base del toolkit (`validateSchemaForApp`) y se le agregan las propias de la app:
+
+```typescript
+import { z } from 'zod';
+import { validateSchemaForApp } from '@tresdoce-nestjs-toolkit/paas';
+
+export const validationSchema = validateSchemaForApp({
+  TEST_KEY: z.string(),
+  RICK_AND_MORTY_API_URL: z.url(),
+  RICK_AND_MORTY_API_URL_LIVENESS: z.string(),
+});
+```
 
 Todos estos features los podemos encontrar en la carpeta **./src/config**, en dicha carpeta podemos encontrar el archivo
 **environments.ts** que es un manejador de env files dependiendo el **NODE_ENV** que tenga nuestra aplicación.
+`main.ts` llama a `loadEnvFile()` al arrancar, para que las variables estén disponibles antes de iniciar el tracing
+(en producción no se lee ningún archivo: las variables vienen del entorno).
 
 <a name="scripts"></a>
 
@@ -258,7 +277,7 @@ yarn start:dev
 npm run start:dev
 ```
 
-Inicia los test con coverage
+Inicia los test unitarios con coverage (Vitest)
 
 ```
 yarn test
@@ -266,6 +285,16 @@ yarn test
 
 ```
 npm run test
+```
+
+Inicia los test e2e (`./test`, consumen los servicios reales)
+
+```
+yarn test:e2e
+```
+
+```
+npm run test:e2e
 ```
 
 Realiza el build de la aplicación
@@ -300,7 +329,7 @@ yarn format
 npm run format
 ```
 
-Eslintea el código
+Analiza el código con oxlint (y corrige lo que se pueda corregir automáticamente)
 
 ```
 yarn lint
